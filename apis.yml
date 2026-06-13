@@ -1,0 +1,195 @@
+aid: siemens-plm
+name: Siemens PLM
+description: >
+  Siemens PLM is Siemens Digital Industries Software's product lifecycle management platform
+  offering REST APIs for Teamcenter (PDM/PLM), Polarion (ALM), Insights Hub (Industrial IoT),
+  SiGREEN (sustainability), and the broader Siemens Xcelerator portfolio for digital
+  manufacturing, simulation via Simcenter, and CAD/CAM tooling including NX and Solid Edge.
+  The Siemens Xcelerator Developer Portal provides OpenAPI specifications, SDKs, Postman
+  collections, and sandbox access for developers integrating with these industrial platforms.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/siemens-plm/refs/heads/main/apis.yml
+created: 2026-06-13
+modified: 2026-06-13
+specificationVersion: "0.19"
+tags:
+  - PLM
+  - Product Lifecycle Management
+  - Teamcenter
+  - NX
+  - Solid Edge
+  - Simcenter
+  - Xcelerator
+  - Digital Manufacturing
+  - Industrial IoT
+  - CAD
+  - CAM
+  - Sustainability
+  - ALM
+apis:
+  - aid: siemens-plm:teamcenter-product-cost-management
+    name: Teamcenter Product Cost Management REST API
+    description: >
+      REST API for Teamcenter (X) Product Cost Management (TcPCM) enabling programmatic
+      access to cost estimation, dynamic calculations, and bulk export of cost data. Supports
+      OAuth 2.0 authentication via Resource Owner Password, Token Exchange, or TcPCM session
+      key flows. Bulk export endpoints require license PPC10029.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.siemens.com/tcpcm/overview.html
+    baseURL: https://developer.siemens.com
+    tags:
+      - PLM
+      - Product Cost Management
+      - Teamcenter
+      - Manufacturing
+    properties:
+      - type: Documentation
+        url: https://developer.siemens.com/tcpcm/overview.html
+      - type: OpenAPI
+        url: https://developer.siemens.com/tcpcm/tcpcm-api-spec.yaml
+      - type: GettingStarted
+        url: https://developer.siemens.com/tcpcm/getting-started.html
+      - type: Authentication
+        url: https://developer.siemens.com/tcpcm/getting-started.html
+    contact:
+      - FN: Siemens PLM Support
+        url: https://developer.siemens.com/tcpcm/contact.html
+        email: ""
+
+  - aid: siemens-plm:polarion-rest-api
+    name: Polarion REST API
+    description: >
+      Integration layer REST API for Polarion ALM (Application Lifecycle Management) giving
+      developers programmatic control over requirements, work items, documents, test cases,
+      and project structure. Supports Personal Access Token, session-based token, JWT, and
+      Teamcenter SSO authentication. OpenAPI spec available for download.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.siemens.com/polarion/rest-api-spec.html
+    baseURL: https://developer.siemens.com
+    tags:
+      - ALM
+      - Application Lifecycle Management
+      - Polarion
+      - Requirements Management
+    properties:
+      - type: Documentation
+        url: https://developer.siemens.com/polarion/rest-api-spec.html
+      - type: OpenAPI
+        url: https://developer.siemens.com/polarion/polarion-rest-apispec.json
+      - type: Authentication
+        url: https://developer.siemens.com/polarion/authentication.html
+    contact:
+      - FN: Siemens PLM Support
+        url: https://support.sw.siemens.com
+        email: ""
+
+  - aid: siemens-plm:insights-hub-industrial-iot
+    name: Insights Hub and Industrial IoT APIs
+    description: >
+      Suite of APIs for the Siemens Insights Hub (formerly MindSphere) Industrial IoT
+      platform providing access to time series data, asset management, event management,
+      Opcenter Intelligence, and manufacturing performance analytics. Authentication via
+      OAuth 2.0 through Siemens Xcelerator Developer Dashboard.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.siemens.com/apis.html
+    baseURL: https://developer.siemens.com
+    tags:
+      - Industrial IoT
+      - IIoT
+      - Time Series
+      - Asset Management
+      - Manufacturing
+      - Insights Hub
+    properties:
+      - type: Documentation
+        url: https://developer.siemens.com/insights-hub/docs/apis/advanced-assetmanagement/api-assetmanagement-api.html
+      - type: Documentation
+        url: https://developer.siemens.com/insights-hub/docs/apis/advanced-opcenter-intelligence/api-opcenter-intelligence-api.html
+    contact:
+      - FN: Siemens Developer Portal
+        url: https://developer.siemens.com
+        email: ""
+
+  - aid: siemens-plm:sigreen-api
+    name: SiGREEN API
+    description: >
+      REST APIs for SiGREEN, Siemens' supply chain sustainability and carbon footprint
+      management platform. Provides procurement, product, carbon footprint, and task
+      management endpoints enabling organizations to track and manage product carbon
+      footprints across global supply chains while preserving data sovereignty.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.siemens.com/sigreen/product-api/api-product.html
+    baseURL: https://developer.siemens.com
+    tags:
+      - Sustainability
+      - Carbon Footprint
+      - Supply Chain
+      - ESG
+      - SiGREEN
+    properties:
+      - type: Documentation
+        url: https://developer.siemens.com/sigreen/product-api/api-product.html
+    contact:
+      - FN: Siemens Developer Portal
+        url: https://developer.siemens.com
+        email: ""
+
+  - aid: siemens-plm:product-information-api
+    name: Product Information API
+    description: >
+      REST API empowering CMMS (Computerized Maintenance Management Systems) with product
+      information capabilities for functional obsolescence risk mitigation. Available via
+      subscription through the Siemens Xcelerator Developer Portal. Sandbox access can be
+      requested through the Developer Dashboard. OpenAPI specification available for download.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.siemens.com/product-information-api/rest-api-spec.html
+    baseURL: https://developer.siemens.com
+    tags:
+      - Product Information
+      - CMMS
+      - Maintenance
+      - Xcelerator
+    properties:
+      - type: Documentation
+        url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+      - type: OpenAPI
+        url: https://developer.siemens.com/product-information-api/product-information-api.spec.yaml
+      - type: Changelog
+        url: https://developer.siemens.com/product-information-api/changelog.html
+    contact:
+      - FN: Siemens Developer Portal
+        url: https://developer.siemens.com
+        email: ""
+
+common:
+  - type: Website
+    url: https://www.plm.automation.siemens.com/global/en/
+  - type: Documentation
+    url: https://developer.siemens.com/docs.html
+  - type: GitHubOrg
+    url: https://github.com/siemens
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/siemens-plm
+  - type: Blog
+    url: https://blogs.sw.siemens.com/
+  - type: Pricing
+    url: https://www.siemens.com/en-us/products/teamcenter/teamcenter-x-cloud-plm/teamcenter-x-plans-and-pricing/
+  - type: X
+    url: https://x.com/SiemensSoftware
+  - type: Plans
+    url: plans/siemens-plm-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/siemens-plm-rate-limits.yml
+  - type: FinOps
+    url: finops/siemens-plm-finops.yml
+  - type: PostmanWorkspace
+    url: https://www.postman.com/siemens-ag/siemens-xcelerator-developer-portal/overview
+  - type: APIWorld
+    url: https://xcelerator.siemens.com/global/en/api-world.html
+  - type: DeveloperPortal
+    url: https://developer.siemens.com/
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

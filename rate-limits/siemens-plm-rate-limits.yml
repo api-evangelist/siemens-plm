@@ -1,0 +1,44 @@
+name: Siemens PLM API Rate Limits
+description: >
+  Siemens PLM does not publish specific numeric rate limits for its APIs in public documentation.
+  Limits are enforced at the subscription and tenant level; enterprise customers should contact
+  Siemens support or their account representative for current SLA and throttling details.
+url: https://developer.siemens.com/apis.html
+limits:
+  - api: Teamcenter Product Cost Management REST API
+    description: >
+      Rate limiting details are not disclosed in public documentation. Access requires
+      OAuth 2.0 client credentials with Manage REST-API role permission. Bulk Export
+      endpoints require an additional license (PPC10029).
+    authentication: OAuth 2.0 (Resource Owner Password, Token Exchange, or TcPCM Session Key)
+    notes: No publicly documented rate limits.
+  - api: Polarion REST API
+    description: >
+      Rate limiting details are not disclosed in public documentation. Supports Personal
+      Access Token (PAT), Session-based token, JWT, and Teamcenter SSO authentication.
+      Every call is individually authenticated; no persistent sessions.
+    authentication: PAT, Session Token, JWT, or Teamcenter SSO
+    notes: No publicly documented rate limits.
+  - api: Insights Hub Industrial IoT API
+    description: >
+      Part of the Siemens Xcelerator platform. Time series, asset management, and event
+      management APIs. Rate limits are enforced per tenant subscription tier but are not
+      documented publicly.
+    authentication: OAuth 2.0 via Siemens login (uss.login.siemens.com)
+    notes: No publicly documented rate limits.
+  - api: SiGREEN API
+    description: >
+      Carbon footprint and sustainability APIs for supply chain emission management.
+      Access via Siemens Xcelerator Developer Dashboard.
+    authentication: OAuth 2.0 via Developer Dashboard credentials
+    notes: No publicly documented rate limits.
+  - api: Product Information API
+    description: >
+      CMMS-focused product information API available by subscription through the
+      Siemens Xcelerator Developer Portal. Sandbox access available on request.
+    authentication: OAuth 2.0 via Developer Dashboard credentials
+    notes: No publicly documented rate limits.
+general_notes: >
+  Siemens PLM API rate limits and quotas are governed by individual enterprise subscription
+  agreements and are not published in public documentation. Contact developer.siemens.com
+  support or your Siemens account team for tenant-specific throttling policies.

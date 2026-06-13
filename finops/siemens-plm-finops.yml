@@ -1,0 +1,43 @@
+name: Siemens PLM FinOps
+description: >
+  Financial operations guidance for teams consuming Siemens PLM APIs. Cost governance for
+  Teamcenter, Polarion, Insights Hub, and Xcelerator platform APIs is primarily driven by
+  enterprise subscription agreements. No consumption-based public pricing is disclosed.
+url: https://www.siemens.com/en-us/products/teamcenter/teamcenter-x-cloud-plm/teamcenter-x-plans-and-pricing/
+considerations:
+  - name: Subscription-Based Billing
+    description: >
+      All Siemens PLM API products are bundled within product subscriptions (e.g., Teamcenter X
+      Essentials through Premium). There is no publicly documented pay-per-call or metered API
+      billing. Costs are negotiated as part of enterprise SaaS agreements.
+  - name: API License Add-Ons
+    description: >
+      Certain API capabilities require additional licensed modules. For example, the TcPCM
+      Bulk Export API requires license PPC10029 - Bulk Export API of Dynamic Calculations,
+      which is purchased separately from the base subscription.
+  - name: Developer Sandbox Access
+    description: >
+      Free sandbox / test access is available for some APIs (e.g., Product Information API)
+      via the Siemens Xcelerator Developer Dashboard at developer.siemens.com. This allows
+      teams to evaluate and prototype without incurring subscription costs.
+  - name: Tier Right-Sizing
+    description: >
+      Teamcenter X has four tiers (Essentials, Standard, Advanced, Premium). Teams should
+      audit which PLM API capabilities they require before committing to higher tiers. The
+      Premium tier unlocks TcPCM cost management APIs and customization capabilities.
+  - name: Enterprise Negotiation
+    description: >
+      All pricing requires direct contact with Siemens sales. Enterprises with large user
+      counts or multi-product Xcelerator deployments may negotiate bundled rates across
+      Teamcenter, Polarion, Insights Hub, and SiGREEN.
+  - name: API World Marketplace
+    description: >
+      The Siemens Xcelerator Marketplace API World section (xcelerator.siemens.com) lists
+      API products available for purchase. Teams should review available listings and
+      compare against internal usage patterns before placing orders.
+recommendations:
+  - Request sandbox access via the Developer Dashboard before committing to a subscription.
+  - Identify required API capabilities and map them to the lowest Teamcenter X tier that satisfies requirements.
+  - Audit license requirements for add-on APIs (e.g., TcPCM Bulk Export) separately from base subscription.
+  - Work with Siemens account team to negotiate multi-product Xcelerator bundles for cost efficiency.
+  - Monitor API usage at the tenant level using Siemens Developer Dashboard access controls.
