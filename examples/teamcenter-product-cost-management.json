@@ -1,0 +1,177 @@
+{
+  "api": "TcPCM Gateway API",
+  "version": "v1.5",
+  "description": "Example requests and responses for Teamcenter Product Cost Management",
+  "examples": [
+    {
+      "path": "/token",
+      "method": "POST",
+      "operationId": "",
+      "summary": "Login to get the bearer token for protected endpoints",
+      "tags": [
+        "Account"
+      ]
+    },
+    {
+      "path": "/api/v1/administration/users/{userName}",
+      "method": "GET",
+      "operationId": "GetUser_GetUser",
+      "summary": "Fetch a user User by {userName}. Only allowed for admins.",
+      "tags": [
+        "Administration"
+      ]
+    },
+    {
+      "path": "/api/v1/administration/users/{userName}",
+      "method": "PATCH",
+      "operationId": "ToggleUserActivation_ToggleActivation",
+      "summary": "Activates or deactivate a user",
+      "tags": [
+        "Administration"
+      ]
+    },
+    {
+      "path": "/api/v1/administration/application-version",
+      "method": "GET",
+      "operationId": "Administration_GetApplicationVersion",
+      "summary": "Gets the current version of TcPCM. Available since version 2412",
+      "tags": [
+        "Administration"
+      ],
+      "responseExample": {
+        "status": "200",
+        "body": {
+          "data": {
+            "version": "2406.0001"
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/v1/Calculations/Export",
+      "method": "POST",
+      "operationId": "ExportCalculations_ExportCalculationsToResponseModel",
+      "summary": "Export calculations using export configurations",
+      "tags": [
+        "Import/Export: Calculations"
+      ]
+    },
+    {
+      "path": "/api/v1/Calculations/Import",
+      "method": "POST",
+      "operationId": "ImportCalculations_ImportCalculationsFromRequestModel",
+      "summary": "Import calculations from the given data table using an import configuration",
+      "tags": [
+        "Import/Export: Calculations"
+      ]
+    },
+    {
+      "path": "/api/v1/ToolCalculations/CostBreakDown/Export",
+      "method": "POST",
+      "operationId": "ExportToolCalculationCbd_ExportCostBreakDown",
+      "summary": "Exports cost break downs of tool calculations",
+      "tags": [
+        "Import/Export: Calculations"
+      ]
+    },
+    {
+      "path": "/api/v1/profitability-calculation-report",
+      "method": "GET",
+      "operationId": "get-ProfitabilityCalculation",
+      "summary": "Returns the profitability calculation report. Available since version 2406.0001",
+      "tags": [
+        "Profitability Calculation"
+      ]
+    },
+    {
+      "path": "/api/v1/aggregated-profitability-calculation-report",
+      "method": "GET",
+      "operationId": "get-AggregatedProfitabilityCalculationReport",
+      "summary": "Returns the aggregated profitability calculation report. Available since version 2512.2602",
+      "tags": [
+        "Profitability Calculation"
+      ]
+    },
+    {
+      "path": "/api/v1/MasterData/Export",
+      "method": "POST",
+      "operationId": "ExportMasterData_ExportMasterDataToResponseModel",
+      "summary": "Exports master data using export configurations",
+      "tags": [
+        "Import/Export: MasterData"
+      ]
+    },
+    {
+      "path": "/api/v1/MasterData/Import",
+      "method": "POST",
+      "operationId": "ImportMasterData_ImportMasterDataFromRequestModel",
+      "summary": "Import master data using import configurations",
+      "tags": [
+        "Import/Export: MasterData"
+      ]
+    },
+    {
+      "path": "/api/v1/Account/Logout",
+      "method": "GET",
+      "operationId": "Account_Logout",
+      "summary": "Logout and invalidate tokens",
+      "tags": [
+        "Account"
+      ]
+    },
+    {
+      "path": "/api/v1/Account/DeleteRefreshToken",
+      "method": "GET",
+      "operationId": "Account_DeleteRefreshToken",
+      "summary": "Delete RefreshToken",
+      "tags": [
+        "Account"
+      ]
+    },
+    {
+      "path": "/api/v1/projects/{id}",
+      "method": "GET",
+      "operationId": "",
+      "summary": "Get single project information. Available since version 2512.",
+      "tags": [
+        "Project"
+      ]
+    },
+    {
+      "path": "/api/v1/projects/{id}",
+      "method": "DELETE",
+      "operationId": "",
+      "summary": "Delete a project by Id. Available since version 2512.2602.",
+      "tags": [
+        "Project"
+      ]
+    },
+    {
+      "path": "/api/v1/product-costing/parts/{id}",
+      "method": "DELETE",
+      "operationId": "",
+      "summary": "Delete a product costing part by id. Available since version 2512.2602.",
+      "tags": [
+        "Product costing"
+      ]
+    },
+    {
+      "path": "/api/v1/projects/{id}/project-assumptions",
+      "method": "GET",
+      "operationId": "",
+      "summary": "Get all project assumptions of the given project. Available since version 2512.",
+      "tags": [
+        "Project"
+      ]
+    },
+    {
+      "path": "/api/v1/masterData/ping",
+      "method": "GET",
+      "operationId": "MasterData_Ping",
+      "summary": "Check if the service is running",
+      "tags": [
+        "Basic"
+      ]
+    }
+  ]
+}

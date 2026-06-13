@@ -1,0 +1,109 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "plm": "https://developer.siemens.com/ontology/plm#",
+    "xcelerator": "https://xcelerator.siemens.com/ontology#",
+    "aid": "https://apis.io/ontology#aid",
+    "humanURL": "https://apis.io/ontology#humanURL",
+    "baseURL": "https://apis.io/ontology#baseURL"
+  },
+  "@type": "WebAPI",
+  "@id": "https://raw.githubusercontent.com/api-evangelist/siemens-plm/refs/heads/main/apis.yml",
+  "name": "Siemens PLM APIs",
+  "description": "Siemens Digital Industries Software's product lifecycle management platform offering REST APIs for Teamcenter, Polarion, Insights Hub, SiGREEN, and the broader Siemens Xcelerator portfolio for digital manufacturing and industrial automation.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Siemens Digital Industries Software",
+    "url": "https://www.plm.automation.siemens.com/global/en/",
+    "sameAs": [
+      "https://www.linkedin.com/company/siemens-plm",
+      "https://x.com/SiemensSoftware",
+      "https://github.com/siemens"
+    ]
+  },
+  "documentation": "https://developer.siemens.com/docs.html",
+  "termsOfService": "https://new.siemens.com/global/en/general/terms-of-use.html",
+  "hasPart": [
+    {
+      "@type": "WebAPI",
+      "@id": "https://developer.siemens.com/tcpcm/overview.html",
+      "aid": "siemens-plm:teamcenter-product-cost-management",
+      "name": "Teamcenter Product Cost Management REST API",
+      "description": "REST API for Teamcenter (X) Product Cost Management enabling programmatic access to cost estimation, dynamic calculations, and bulk export of cost data.",
+      "humanURL": "https://developer.siemens.com/tcpcm/overview.html",
+      "baseURL": "https://developer.siemens.com",
+      "documentation": "https://developer.siemens.com/tcpcm/overview.html",
+      "schemaVersion": "OpenAPI 3.0.0",
+      "version": "v1.5",
+      "keywords": ["PLM", "Product Cost Management", "Teamcenter", "Manufacturing"],
+      "license": {
+        "@type": "CreativeWork",
+        "name": "Siemens Privacy Policy",
+        "url": "https://www.plm.automation.siemens.com/global/en/legal/privacy-policy.html"
+      },
+      "plm:authenticationMethod": "OAuth 2.0 (Resource Owner Password, Token Exchange, TcPCM Session Key)"
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://developer.siemens.com/polarion/rest-api-spec.html",
+      "aid": "siemens-plm:polarion-rest-api",
+      "name": "Polarion REST API",
+      "description": "Integration layer REST API for Polarion ALM providing programmatic control over requirements, work items, documents, test cases, and project structure.",
+      "humanURL": "https://developer.siemens.com/polarion/rest-api-spec.html",
+      "baseURL": "https://developer.siemens.com",
+      "documentation": "https://developer.siemens.com/polarion/rest-api-spec.html",
+      "schemaVersion": "OpenAPI 3.0",
+      "version": "v1",
+      "keywords": ["ALM", "Application Lifecycle Management", "Polarion", "Requirements Management"],
+      "license": {
+        "@type": "CreativeWork",
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      },
+      "plm:authenticationMethod": "Personal Access Token, Session Token, JWT, Teamcenter SSO"
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://developer.siemens.com/apis.html",
+      "aid": "siemens-plm:insights-hub-industrial-iot",
+      "name": "Insights Hub and Industrial IoT APIs",
+      "description": "Suite of APIs for the Siemens Insights Hub Industrial IoT platform providing access to time series data, asset management, event management, and manufacturing performance analytics.",
+      "humanURL": "https://developer.siemens.com/apis.html",
+      "baseURL": "https://developer.siemens.com",
+      "documentation": "https://developer.siemens.com/insights-hub/docs/apis/advanced-assetmanagement/api-assetmanagement-api.html",
+      "keywords": ["Industrial IoT", "IIoT", "Time Series", "Asset Management", "Manufacturing", "Insights Hub"],
+      "plm:authenticationMethod": "OAuth 2.0 (Siemens Xcelerator Developer Dashboard)"
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://developer.siemens.com/sigreen/product-api/api-product.html",
+      "aid": "siemens-plm:sigreen-api",
+      "name": "SiGREEN API",
+      "description": "REST APIs for SiGREEN, Siemens' supply chain sustainability and carbon footprint management platform.",
+      "humanURL": "https://developer.siemens.com/sigreen/product-api/api-product.html",
+      "baseURL": "https://developer.siemens.com",
+      "documentation": "https://developer.siemens.com/sigreen/product-api/api-product.html",
+      "keywords": ["Sustainability", "Carbon Footprint", "Supply Chain", "ESG", "SiGREEN"]
+    },
+    {
+      "@type": "WebAPI",
+      "@id": "https://developer.siemens.com/product-information-api/rest-api-spec.html",
+      "aid": "siemens-plm:product-information-api",
+      "name": "Product Information API",
+      "description": "REST API empowering CMMS with product information capabilities for functional obsolescence risk mitigation.",
+      "humanURL": "https://developer.siemens.com/product-information-api/rest-api-spec.html",
+      "baseURL": "https://product-information-hub.siemens.cloud",
+      "documentation": "https://developer.siemens.com/product-information-api/rest-api-spec.html",
+      "schemaVersion": "OpenAPI 3.0.0",
+      "version": "v2-earlyaccess",
+      "keywords": ["Product Information", "CMMS", "Maintenance", "Xcelerator", "Obsolescence"],
+      "license": {
+        "@type": "CreativeWork",
+        "name": "Siemens Inner Source License 1.1",
+        "url": "https://developer.siemens.com/product-information-api/static/license"
+      },
+      "plm:authenticationMethod": "API Key (header: Authorization)"
+    }
+  ],
+  "dateModified": "2026-06-13"
+}

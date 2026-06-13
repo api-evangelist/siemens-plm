@@ -1,0 +1,517 @@
+openapi: 3.0.0
+paths:
+  /api/products/{productNumber}/obsolescence:
+    get:
+      operationId: get-obsolescence
+      summary: ""
+      description: >-
+        This endpoint provides in-depth obsolescence information for a specific
+        product number. Utilize it to stay updated on the product's availability
+        status, discover substitute or successor options, and plan accordingly.
+      tags:
+        - "Product Information: Obsolescence"
+      parameters:
+        - name: Api-Version
+          in: header
+          description: The version of the API that shall be used.
+          schema:
+            enum:
+              - v2-earlyaccess (latest)
+            type: string
+        - name: productNumber
+          required: true
+          in: path
+          examples:
+            MLFB:
+              value: 1PH8350-7MK40-0AX0
+            MLFB with Z-Option:
+              value: 1PH8350-7MK40-0AX0-Z A72+G14+K85+X06
+            Disarranged MLFB:
+              value: 1ph83507mk400ax0
+            Disarranged MLFB with Z-Option:
+              value: 1ph83507mk400ax0za72g14k85x06
+          description: The ID of the product (MLFB).
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Obsolescence"
+        "401":
+          description: The api key was missing, malformed or did not exist in the database.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 401
+                  message: Missing or malformed api key
+                  error: Unauthorized
+        "403":
+          description: >-
+            The customer that owns the api key did not have enough credit to
+            commission the request.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 403
+                  message: Insufficient credit, please contact us
+                  error: Forbidden
+        "404":
+          description: >-
+            The product with the given product number did not exist in the
+            database.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 404
+                  message: Unknown product number or incomplete record
+                  error: Not Found
+      security:
+        - Authorization: []
+  /api/products/{productNumber}/delivery:
+    get:
+      operationId: get-delivery
+      summary: ""
+      description: >-
+        The endpoint delivers detailed information regarding the delivery of a
+        specific product. With this resource, you can easily track the delivery
+        timeline, cost, and other relevant details for the product in question.
+        Ensure that you have the correct product number handy to obtain the most
+        accurate and up-to-date information.
+      tags:
+        - "Product Information: Delivery"
+      parameters:
+        - name: Api-Version
+          in: header
+          description: The version of the API that shall be used.
+          schema:
+            enum:
+              - v2-earlyaccess (latest)
+            type: string
+        - name: productNumber
+          required: true
+          in: path
+          examples:
+            MLFB:
+              value: 1PH8350-7MK40-0AX0
+            MLFB with Z-Option:
+              value: 1PH8350-7MK40-0AX0-Z A72+G14+K85+X06
+            Disarranged MLFB:
+              value: 1ph83507mk400ax0
+            Disarranged MLFB with Z-Option:
+              value: 1ph83507mk400ax0za72g14k85x06
+          description: The ID of the product (MLFB).
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Delivery"
+        "401":
+          description: The api key was missing, malformed or did not exist in the database.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 401
+                  message: Missing or malformed api key
+                  error: Unauthorized
+        "403":
+          description: >-
+            The customer that owns the api key did not have enough credit to
+            commission the request.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 403
+                  message: Insufficient credit, please contact us
+                  error: Forbidden
+        "404":
+          description: >-
+            The product with the given product number did not exist in the
+            database.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 404
+                  message: Unknown product number or incomplete record
+                  error: Not Found
+      security:
+        - Authorization: []
+  /api/api-key-details:
+    get:
+      operationId: get-api-key-details
+      summary: ""
+      description: >-
+        Verify and monitor the status of your API key with this endpoint. It
+        provides essential information regarding your API key's validity and
+        remaining credit balance for each resource available.
+      tags:
+        - "Customer Information: API Key"
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiKeyDetails"
+        "401":
+          description: The api key was missing, malformed or did not exist in the database.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 401
+                  message: Missing or malformed api key
+                  error: Unauthorized
+      security:
+        - Authorization: []
+info:
+  title: Product Information Webservice
+  description: >-
+    Provides valuable information on products from multiple manufacturers,
+    including SIEMENS.
+  version: v2-earlyaccess
+  contact:
+    name: ""
+    url: ""
+    email: lifecycle-webservices.industry@siemens.com
+  license:
+    name: Siemens Inner Source License - 1.1
+    url: /static/license
+  termsOfService: https://new.siemens.com/global/en/general/terms-of-use.html
+tags: []
+servers:
+  - url: https://product-information-hub.siemens.cloud
+    description: Production Server
+components:
+  securitySchemes:
+    Authorization:
+      type: apiKey
+      in: header
+      name: Authorization
+  schemas:
+    ProductRef:
+      type: object
+      properties:
+        productNumber:
+          type: string
+          description: The ID of the product (MLFB, EAN, ...).
+          example: 6SN1123-1AA00-0CA1
+        name:
+          type: string
+          description: The product's name.
+          example: SIMODRIVE 611 1-Axis Power Module 50A int.cooling
+        link:
+          type: string
+          description: Relative link to the product (using this API).
+          example: /api/products/6SN1123-1AA00-0CA1/obsolescence
+      required:
+        - productNumber
+        - name
+        - link
+    Obsolescence:
+      type: object
+      properties:
+        productNumber:
+          type: string
+          description: The ID of the product (MLFB, ...).
+          example: 6SN1123-1AA00-0CA1
+        name:
+          type: string
+          description: The product's name.
+          example: SIMODRIVE 611 1-Axis Power Module 50A int.cooling
+        info:
+          type: string
+          description: Abbreviated product description.
+          example: POW.MOD.INT.50A 6SN1123-1AA00-0CA1
+        purchasabilityNote:
+          type: string
+          description: >-
+            Additional information on the product's purchasability that may
+            provide guidance if no successor or substitute was found.
+        manufacturer:
+          type: string
+          description: The company that makes the product.
+          example: Siemens AG
+        salesRelease:
+          type: string
+          description: >-
+            Product can be ordered but not delivered. Existing dates and
+            deadlines are not confirmed (PM280).
+          example: "2023-02-12T11:54:55.031Z"
+          format: date-time
+        deliveryRelease:
+          type: string
+          description: >-
+            Product can be ordered and will be delivered from the shipping
+            locations (PM300).
+          example: "2023-02-12T11:54:55.031Z"
+          format: date-time
+        phaseOutAnnouncement:
+          type: string
+          description: Product can still be ordered (PM400).
+          example: "2023-02-12T11:54:55.031Z"
+          format: date-time
+        productCancellation:
+          type: string
+          description: >-
+            Product can still be ordered and delivered in the spare part
+            business but incoming orders are rejected (PM410).
+          example: "2023-02-12T11:54:55.031Z"
+          format: date-time
+        productDiscontinuation:
+          type: string
+          description: >-
+            Product can only be ordered and delivered in the spare part business
+            in the context of warranty/repair (PM490).
+          example: "2023-02-12T11:54:55.031Z"
+          format: date-time
+        supportUrl:
+          type: string
+          description: URL of the product's support page.
+          example: >-
+            https://support.industry.siemens.com/cs/ww/en/pv/6SN1123-1AA00-0CA1/pi
+          format: url
+        purchasabilityStatus:
+          type: string
+          description: >-
+            Information on how the product can be purchased.
+
+
+            PURCHASABLE = The product can still be purchased from the
+            manufacturer.
+
+
+            SUBSTITUTE_PURCHASABLE = The original product can't be purchased
+            anymore, but a substitute exists.
+
+
+            SUCCESSOR_PURCHASABLE = The original product can't be purchased
+            anymore, but a successor exists.
+
+
+            NOT_PURCHASABLE = Neither the original product nor its successors or
+            substitutes can be purchased.
+          enum:
+            - PURCHASABLE
+            - SUBSTITUTE_PURCHASABLE
+            - SUCCESSOR_PURCHASABLE
+            - NOT_PURCHASABLE
+        obsolescenceLevel:
+          type: number
+          description: >-
+            1 = Product has been discontinued and no successor or substitute
+            exists.
+
+
+            2 = Item has been discontinued but a successor exists.
+
+
+            3 = Availability horizon of 1 year.
+
+
+            4 = Availability horizon of 1 to 2 years.
+
+
+            5 = Availability horizon of 2 to 5 years.
+
+
+            6 = Availability horizon of over 5 years.
+          example: 2
+        successor:
+          nullable: true
+          description: >-
+            The product's successor or `null` if no successor exists.
+
+            The successor is a product that is PARTIALLY compatible with the
+            original.
+          allOf:
+            - $ref: "#/components/schemas/ProductRef"
+        substitute:
+          nullable: true
+          description: >-
+            The product's substitute or `null` if no substitute exists.
+
+            The substitute is a product that is FULLY compatible with the
+            original.
+          allOf:
+            - $ref: "#/components/schemas/ProductRef"
+        relatedProducts:
+          description: Related products that may be used as successors or substitutes.
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductRef"
+      required:
+        - productNumber
+        - name
+        - info
+        - purchasabilityNote
+        - manufacturer
+        - salesRelease
+        - deliveryRelease
+        - phaseOutAnnouncement
+        - productCancellation
+        - productDiscontinuation
+        - supportUrl
+        - purchasabilityStatus
+        - obsolescenceLevel
+        - successor
+        - substitute
+        - relatedProducts
+    DeliveryTimes:
+      type: object
+      properties:
+        newPart:
+          type: integer
+          nullable: true
+          example: 20
+          minimum: 0
+          format: int32
+        sparePart:
+          type: integer
+          nullable: true
+          example: 30
+          minimum: 0
+          format: int32
+        repairPart:
+          type: integer
+          nullable: true
+          example: 10
+          minimum: 0
+          format: int32
+      required:
+        - newPart
+        - sparePart
+        - repairPart
+    Prices:
+      type: object
+      properties:
+        newPart:
+          type: string
+          nullable: true
+          example: 300 €
+        sparePart:
+          type: string
+          nullable: true
+          example: 500 €
+        repairPart:
+          type: string
+          nullable: true
+          example: 400 €
+      required:
+        - newPart
+        - sparePart
+        - repairPart
+    Delivery:
+      type: object
+      properties:
+        productNumber:
+          type: string
+          description: The ID of the product (MLFB, ...).
+          example: 6SN1123-1AA00-0CA1
+        minimumOrderQuantity:
+          type: integer
+          description: The minimum order quantity for new parts.
+          example: 1
+          minimum: 0
+          format: int32
+        countryOfOrigin:
+          type: string
+          description: The country of production or manufacture, given as country-code.
+          example: DE
+        commodityCode:
+          type: integer
+          description: >-
+            The commodity code is a numerical code used to classify the product
+            in international trade. It helps to facilitate trade, ensure the
+            correct application of tariffs and taxes, and track the movement of
+            goods for statistical purposes.
+          example: 85015394
+          minimum: 0
+          format: int32
+        eccn:
+          type: string
+          description: The Export Control Classification Number of the product.
+          example: EAR99S
+        groupCode:
+          type: string
+          description: The GroupCode of the product.
+          example: R111
+        productGroup:
+          type: integer
+          description: The ProductGroup of the product.
+          example: 4303
+          minimum: 0
+          format: int32
+        deliveryTimes:
+          description: >-
+            The standard lead time ex-works of the product.
+
+            Lead times vary for new, spare or repair parts.
+
+
+            A delivery time of `null` means that the product can only be
+            delivered on request.
+          allOf:
+            - $ref: "#/components/schemas/DeliveryTimes"
+        prices:
+          description: |-
+            The prices of the product.
+            Prices vary for new, spare or repair parts.
+          allOf:
+            - $ref: "#/components/schemas/Prices"
+      required:
+        - productNumber
+        - minimumOrderQuantity
+        - countryOfOrigin
+        - commodityCode
+        - eccn
+        - groupCode
+        - productGroup
+        - deliveryTimes
+        - prices
+    ApiKeyDetails:
+      type: object
+      properties:
+        customerId:
+          type: string
+          description: The id of the customer (owner of the api key).
+          example: 1d616354-1451-4d66-b001-1a44e6d51086
+          format: uuid
+        customerName:
+          type: string
+          description: The name of the customer.
+          example: Epic GmbH
+        apiKeyExpiryDate:
+          type: string
+          description: >-
+            The expiry date of the api key, after which it can no longer be
+            used.
+          example: "2023-02-12T11:54:55.031Z"
+          format: date-time
+        credits:
+          type: object
+          description: >-
+            An object of numerical credits that this api key owns. Each credit
+            belongs to a specific resource like `Obsolescence` or `Delivery` and
+            is decremented for each request to that specific resource.
+          example:
+            obsolescence: 1
+            delivery: 2
+      required:
+        - customerId
+        - customerName
+        - apiKeyExpiryDate
+        - credits

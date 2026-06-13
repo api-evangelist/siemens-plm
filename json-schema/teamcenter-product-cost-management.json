@@ -1,0 +1,908 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://developer.siemens.com/tcpcm/schemas/tcpcm-gateway-api.json",
+  "title": "TcPCM Gateway API Schemas",
+  "description": "JSON Schema definitions for Teamcenter Product Cost Management Gateway API",
+  "definitions": {
+    "Currency": {
+      "type": "string",
+      "description": "Currency in ISO format",
+      "pattern": "^[A-Z]{3}$",
+      "example": "EUR"
+    },
+    "MeasurementUnit": {
+      "type": "string",
+      "description": "Measurement unit"
+    },
+    "PaginationLinks": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string",
+          "description": "Link to this collection"
+        },
+        "next": {
+          "type": "string",
+          "description": "Link to the next page or null if there is none"
+        },
+        "prev": {
+          "type": "string",
+          "description": "Link to the previous page or null if there is none"
+        },
+        "first": {
+          "type": "string",
+          "description": "Link to the first page"
+        },
+        "last": {
+          "type": "string",
+          "description": "Link to the last page"
+        }
+      },
+      "required": [
+        "self",
+        "next",
+        "prev",
+        "first",
+        "last"
+      ]
+    },
+    "PaginationMeta": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "integer",
+          "description": "Current page number"
+        },
+        "totalPages": {
+          "type": "integer",
+          "description": "Total number of pages"
+        },
+        "size": {
+          "type": "integer",
+          "description": "Number of elements per page"
+        }
+      },
+      "required": [
+        "number",
+        "size",
+        "totalPages"
+      ]
+    },
+    "SelfLink": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "string",
+          "description": "Link to the current resource"
+        }
+      },
+      "required": [
+        "self"
+      ]
+    },
+    "IntArray": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "Date": {
+      "type": "string",
+      "description": "Date",
+      "format": "date"
+    },
+    "IdArray": {
+      "title": "IdArray",
+      "type": "array",
+      "description": "Array with object ids",
+      "uniqueItems": true,
+      "maxItems": 100000,
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2147483647
+      },
+      "example": [
+        1,
+        5,
+        11,
+        3,
+        2423,
+        3039,
+        4521
+      ]
+    },
+    "Guid": {
+      "title": "GUID",
+      "type": "string",
+      "format": "uuid",
+      "maxLength": 36,
+      "description": "Global unique identifier",
+      "example": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+    },
+    "DataType": {
+      "type": "string",
+      "enum": [
+        "double",
+        "integer",
+        "date",
+        "string",
+        "object",
+        "reference",
+        "bool",
+        "url"
+      ],
+      "example": "double"
+    },
+    "Column": {
+      "title": "Column",
+      "type": "object",
+      "required": [
+        "dataType"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 0,
+          "description": "Name of the data field"
+        },
+        "displayName": {
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 0,
+          "description": "Displayname of the column"
+        },
+        "dataType": {
+          "$ref": "#/components/schemas/DataType"
+        }
+      }
+    },
+    "DataSet": {
+      "title": "DataSet",
+      "type": "object",
+      "description": "Represents a two-dimensional data set with column descriptions including column data types.",
+      "required": [
+        "data",
+        "columns"
+      ],
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "Array of objects defining a two-dimensional array via the property names of the objects. See the 'columns' field for the display names and data types.",
+          "maxItems": 100000,
+          "items": {
+            "type": "object"
+          }
+        },
+        "columns": {
+          "type": "array",
+          "description": "Columns of the dataset describing the names and the datatypes",
+          "maxItems": 100000,
+          "items": {
+            "$ref": "#/components/schemas/Column"
+          }
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "Errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Error"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "detail": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "ErrorLegacy": {
+      "type": "object",
+      "properties": {
+        "Detail": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "ExportCalculationsRequestModel": {
+      "type": "object",
+      "properties": {
+        "ProjectIds": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "description": "List of requested project ids. All calculation of the projects get exported"
+        },
+        "CalculationIds": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer",
+            "example": 2056
+          },
+          "description": "List of requested calculation ids"
+        },
+        "ConfigurationGuid": {
+          "type": "string",
+          "example": "b14473ea-a58c-4d73-afa8-ba7c65613a0e",
+          "description": "Guid of the export configuration"
+        },
+        "Year": {
+          "type": "integer",
+          "description": "Year of the project assumptions which are used for the calculation  export in case of lifetime projects (4 digit year). Available since version 2512."
+        }
+      }
+    },
+    "ExportMasterDataRequestModel": {
+      "type": "object",
+      "properties": {
+        "Ids": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "example": [
+            52,
+            60
+          ],
+          "description": "Database instance specific identifiers"
+        },
+        "Guids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Guid"
+          },
+          "description": "Database instance independent identifiers"
+        },
+        "ConfigurationGuid": {
+          "type": "string",
+          "example": "e1548f26-af8d-4173-9881-7ce1de530911",
+          "description": "Export configuration Guid"
+        }
+      }
+    },
+    "ExportToolCalculationCdbRequest": {
+      "required": [
+        "ToolCalculationId",
+        "CostBreakDownConfigurationUniqueKey"
+      ],
+      "type": "object",
+      "properties": {
+        "ToolCalculationId": {
+          "format": "int32",
+          "type": "integer",
+          "example": 1015
+        },
+        "CostBreakDownConfigurationUniqueKey": {
+          "type": "string",
+          "example": "Siemens.TCPCM.CostBreakdownForTools.StandardCBDforinjecttools.WebApi"
+        }
+      }
+    },
+    "ExportToolCalculationCbdResponse": {
+      "type": "object",
+      "properties": {
+        "toolCalculationId": {
+          "format": "int32",
+          "type": "integer",
+          "readOnly": true
+        },
+        "costBreakDownConfigurationUniqueKey": {
+          "type": "string",
+          "readOnly": true
+        },
+        "toolProperties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ExportToolCalculationCbdToolProperty"
+          },
+          "readOnly": true
+        },
+        "materials": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ExportToolCalculationCbdMaterial"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "ExportToolCalculationCbdToolProperty": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "value": {
+          "type": "string",
+          "readOnly": true
+        },
+        "unit": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "ExportToolCalculationCbdMaterial": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ExportToolCalculationCbdMaterialProperty"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "ExportToolCalculationCbdMaterialProperty": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "value": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "UserResponseModel": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "readOnly": true
+        },
+        "attributes": {
+          "$ref": "#/components/schemas/UserResponseModelAttributes"
+        }
+      }
+    },
+    "UserResponseModelAttributes": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string",
+          "readOnly": true
+        },
+        "emailAddress": {
+          "type": "string",
+          "readOnly": true
+        },
+        "firstName": {
+          "type": "string",
+          "readOnly": true
+        },
+        "lastName": {
+          "type": "string",
+          "readOnly": true
+        },
+        "active": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "roleAssignments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/RoleAssignmentResponseModel"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "RoleAssignmentResponseModel": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "type": "string",
+          "readOnly": true
+        },
+        "role": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "ToggleActivationRequestModel": {
+      "required": [
+        "active"
+      ],
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "example": false
+        }
+      }
+    },
+    "ImportCalculationsRequestModel": {
+      "type": "object",
+      "properties": {
+        "Data": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "description": "Dataset to be imported.",
+          "example": [
+            {
+              "Assembly hierarchy level": 0,
+              "Quantity": 4,
+              "Quantity unit": "Pcs",
+              "Item number": "PNR 24253"
+            },
+            {
+              "Assembly hierarchy level": 1,
+              "Quantity": 7,
+              "Quantity unit": "Pcs",
+              "Item number": "PNR 53221"
+            }
+          ]
+        },
+        "PlantUniqueKey": {
+          "type": "string",
+          "description": "Plant key. Client of the given plant is used."
+        },
+        "ConfigurationGuid": {
+          "type": "string",
+          "description": "GUID of the import configuration.",
+          "format": "uuid",
+          "example": "4c43cab9-d9fa-4154-9c41-968654ac05b2"
+        },
+        "ExportConfigurationGuid": {
+          "type": "string",
+          "description": "GUID of the export configuration. If this is set then the imported data is returned using the given export configuration. Available with version 2412.",
+          "format": "uuid",
+          "example": "b14473ea-a58c-4d73-afa8-ba7c65613a0e"
+        },
+        "TargetType": {
+          "type": "string",
+          "example": "folder"
+        },
+        "TargetId": {
+          "format": "int32",
+          "type": "integer",
+          "example": 534
+        }
+      },
+      "required": [
+        "Data",
+        "ConfigurationGuid"
+      ]
+    },
+    "TcPCMResponseModel": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "ImportMasterDataRequestModel": {
+      "type": "object",
+      "properties": {
+        "Data": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "example": [
+            {
+              "Designation": "Carbon",
+              "Unique identifier": "Custom.Unique.Carbon",
+              "Type": "Cost value"
+            },
+            {
+              "Designation": "Reinvestment rate",
+              "Unique identifier": "Custom.Unique.Reinvestment",
+              "Type": "Unit"
+            }
+          ]
+        },
+        "PlantUniqueKey": {
+          "type": "string",
+          "example": "TcPCM-001"
+        },
+        "ConfigurationGuid": {
+          "type": "string",
+          "example": "9231ad11-744e-481a-b9ec-bce80979ccbd"
+        }
+      }
+    },
+    "TcPCMWebApiResponseModel_of_DataTable": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "success": {
+          "type": "boolean"
+        },
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/ExportToolCalculationCbdResponse"
+        },
+        "success": {
+          "type": "boolean"
+        },
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Response_of_UserResponseModel": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/components/schemas/UserResponseModel"
+        }
+      }
+    },
+    "ProfitabilityCalculationReportError": {
+      "title": "ProfitabilityCalculationReportError",
+      "type": "object",
+      "description": "Partial error of a profitability calculation report request.",
+      "required": [
+        "status",
+        "detail"
+      ],
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "description": "Http status code",
+          "readOnly": true
+        },
+        "detail": {
+          "type": "string",
+          "description": "Detail description of the error"
+        },
+        "profitabilityCalculationId": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "description": "Id of the requested profitability calculation",
+          "readOnly": true
+        },
+        "projectId": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "description": "Id of the requested project",
+          "readOnly": true
+        }
+      }
+    },
+    "AggregatedProfitabilityCalculationReportError": {
+      "title": "ProfitabilityCalculationReportError",
+      "type": "object",
+      "description": "Partial error of an aggregated profitability calculation report request.",
+      "required": [
+        "status",
+        "detail"
+      ],
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "description": "Http status code",
+          "readOnly": true
+        },
+        "detail": {
+          "type": "string",
+          "description": "Detail description of the error"
+        },
+        "aggregatedProfitabilityCalculationId": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "description": "Id of the requested aggregated profitability calculation",
+          "readOnly": true
+        },
+        "folderId": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "description": "Id of the requested folder",
+          "readOnly": true
+        }
+      }
+    },
+    "ProjectModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Id of the project"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the project"
+        },
+        "startOfProductionDate": {
+          "$ref": "#/components/schemas/Date",
+          "description": "Start of production date"
+        },
+        "endOfProductionDate": {
+          "$ref": "#/components/schemas/Date",
+          "description": "End of production date"
+        },
+        "yearsBeforeSOP": {
+          "type": "integer",
+          "description": "Number of years before start of production date"
+        },
+        "yearsAfterSOP": {
+          "type": "integer",
+          "description": "Number of years after start of production date"
+        },
+        "lifetimeYears": {
+          "$ref": "#/components/schemas/IntArray",
+          "description": "List of years (4 digits) of the lifetime of the project"
+        },
+        "links": {
+          "$ref": "#/components/schemas/SelfLink",
+          "description": "Link to the current project"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "lifetimeYears",
+        "startOfProductionDate",
+        "endOfProductionDate",
+        "yearsBeforeSOP",
+        "yearsAfterSOP",
+        "links"
+      ],
+      "description": "Project"
+    },
+    "ProjectAssumptionModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Id of the project assumption"
+        },
+        "materialHeaders": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the material"
+              },
+              "itemNumber": {
+                "type": "string",
+                "description": "Item number of the material"
+              },
+              "revisionNumber": {
+                "type": "string",
+                "description": "Number of the material revision"
+              },
+              "classification": {
+                "type": "string",
+                "description": "Name of the classification"
+              },
+              "listProperty1": {
+                "type": "string",
+                "description": "Name of the list property 1"
+              },
+              "listProperty2": {
+                "type": "string",
+                "description": "Name of the list property 2"
+              },
+              "listProperty3": {
+                "type": "string",
+                "description": "Name of the list property 3"
+              },
+              "validityParameters": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "currency": {
+                      "$ref": "#/components/schemas/Currency",
+                      "description": "Currency of the material prices"
+                    },
+                    "unit": {
+                      "$ref": "#/components/schemas/MeasurementUnit",
+                      "description": "Unit of the material prices"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "MasterData",
+                        "Manual"
+                      ],
+                      "description": "Mode whether the material is linked with master data or entered manually"
+                    },
+                    "supplier": {
+                      "type": "string",
+                      "description": "Supplier validity of the material prices"
+                    },
+                    "customer": {
+                      "type": "string",
+                      "description": "Customer validity of the material prices"
+                    },
+                    "region": {
+                      "type": "string",
+                      "description": "Region validity of the material prices"
+                    },
+                    "plant": {
+                      "type": "string",
+                      "description": "Plant validity of the material prices"
+                    },
+                    "procurementType": {
+                      "type": "string",
+                      "description": "Procurement type validity of the material prices"
+                    },
+                    "materialPriceTag": {
+                      "type": "string",
+                      "description": "Tag of the material price"
+                    },
+                    "listProperty1Value": {
+                      "type": "string",
+                      "description": "Value of the list property 1"
+                    },
+                    "listProperty2Value": {
+                      "type": "string",
+                      "description": "Value of the list property 2"
+                    },
+                    "listProperty3Value": {
+                      "type": "string",
+                      "description": "Value of the list property 3"
+                    },
+                    "selectedValidFrom": {
+                      "$ref": "#/components/schemas/Date",
+                      "description": "Date of the fallback master data lookup match"
+                    },
+                    "materialPrices": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "materialDetailGuid": {
+                            "$ref": "#/components/schemas/Guid",
+                            "description": "Database instance independent material detail identifier"
+                          },
+                          "year": {
+                            "type": "integer",
+                            "description": "Year of the material price (4 digit year)",
+                            "minimum": 1900,
+                            "maximum": 9999
+                          },
+                          "masterDataPrice": {
+                            "type": "number",
+                            "description": "Material price from master data",
+                            "format": "double"
+                          },
+                          "manualPrice": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "Manual price"
+                          },
+                          "increaseRate": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "Increase rate applied for that period"
+                          },
+                          "forecastedPrice": {
+                            "type": "number",
+                            "format": "double",
+                            "description": "Forecasted material price"
+                          },
+                          "priceLayering": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "calculationElement": {
+                                  "type": "string",
+                                  "description": "Calculation element of the price layering"
+                                },
+                                "masterDataValue": {
+                                  "type": "number",
+                                  "format": "double",
+                                  "description": "Master data value of the price layering"
+                                },
+                                "manualValue": {
+                                  "type": "number",
+                                  "format": "double",
+                                  "description": "Manual value of the price layering"
+                                },
+                                "forecastedValue": {
+                                  "type": "number",
+                                  "format": "double",
+                                  "description": "Forecasted value of the price layering"
+                                }
+                              },
+                              "required": [
+                                "calculationElement",
+                                "masterDataValue",
+                                "manualValue",
+                                "forecastedValue"
+                              ]
+                            },
+                            "description": "Price layering of the material price"
+                          }
+                        },
+                        "required": [
+                          "masterDataPrice",
+                          "year",
+                          "manualPrice",
+                          "increaseRate",
+                          "forecastedPrice",
+                          "priceLayering"
+                        ]
+                      },
+                      "description": "Material prices per period"
+                    }
+                  },
+                  "required": [
+                    "currency",
+                    "unit",
+                    "mode",
+                    "procurementType",
+                    "materialPrices"
+                  ]
+                },
+                "description": "List of validity parameters"
+              }
+            },
+            "required": [
+              "itemNumber",
+              "revisionNumber",
+              "name",
+              "validityParameters"
+            ]
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  }
+}

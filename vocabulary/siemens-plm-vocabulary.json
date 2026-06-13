@@ -1,0 +1,103 @@
+{
+  "@context": "https://schema.org/",
+  "title": "Siemens PLM API Vocabulary",
+  "description": "Domain vocabulary for Siemens PLM APIs covering Product Lifecycle Management, ALM, Industrial IoT, and sustainability platforms",
+  "terms": [
+    {
+      "term": "TcPCM",
+      "label": "Teamcenter Product Cost Management",
+      "definition": "Siemens solution for product cost estimation and management within the Teamcenter PLM ecosystem. Provides REST API for programmatic access to cost calculations and bulk export.",
+      "relatedTerms": ["Teamcenter", "PLM", "costEstimation", "BOM"]
+    },
+    {
+      "term": "Polarion",
+      "label": "Polarion ALM",
+      "definition": "Application Lifecycle Management platform by Siemens enabling requirements engineering, software development planning, quality management, and test management.",
+      "relatedTerms": ["ALM", "workItem", "requirement", "testCase", "document"]
+    },
+    {
+      "term": "InsightsHub",
+      "label": "Insights Hub (MindSphere)",
+      "definition": "Siemens Industrial IoT (IIoT) platform providing cloud-based access to machine and plant data for analytics, predictive maintenance, and operational intelligence.",
+      "relatedTerms": ["IIoT", "timeSeries", "assetManagement", "MindSphere"]
+    },
+    {
+      "term": "SiGREEN",
+      "label": "SiGREEN Sustainability Platform",
+      "definition": "Siemens platform for tracking and managing product carbon footprints (PCF) across global supply chains with data sovereignty preservation.",
+      "relatedTerms": ["PCF", "sustainability", "ESG", "carbonFootprint", "supplyChain"]
+    },
+    {
+      "term": "XceleratorPortal",
+      "label": "Siemens Xcelerator Developer Portal",
+      "definition": "Central developer portal at developer.siemens.com providing API documentation, OpenAPI specs, SDKs, Postman collections, and sandbox environments for Siemens industrial APIs.",
+      "relatedTerms": ["developerPortal", "API", "SDK", "sandbox"]
+    },
+    {
+      "term": "MLFB",
+      "label": "Machine-Readable Product Order Number",
+      "definition": "Siemens-specific product identification format (Maschinenlesbare Fabrikat-Bestellnummer) used as the primary product identifier in the Product Information API.",
+      "relatedTerms": ["productNumber", "SKU", "partNumber"]
+    },
+    {
+      "term": "workItem",
+      "label": "Work Item",
+      "definition": "Core Polarion ALM entity representing any trackable unit of work, requirement, defect, test case, or change request within a project.",
+      "relatedTerms": ["requirement", "defect", "testCase", "Polarion"]
+    },
+    {
+      "term": "DataSet",
+      "label": "TcPCM Data Set",
+      "definition": "A structured collection of columns and data used in Teamcenter Product Cost Management for bulk export of cost calculations and master data.",
+      "relatedTerms": ["TcPCM", "bulkExport", "costCalculation"]
+    },
+    {
+      "term": "obsolescenceLevel",
+      "label": "Product Obsolescence Level",
+      "definition": "Numeric indicator (1-6) from Siemens Product Information API indicating a product's lifecycle stage. Level 1 = discontinued with no replacement; Level 6 = availability over 5 years.",
+      "relatedTerms": ["productLifecycle", "MLFB", "purchasabilityStatus"]
+    },
+    {
+      "term": "PCF",
+      "label": "Product Carbon Footprint",
+      "definition": "Measure of greenhouse gas emissions associated with a product throughout its lifecycle, tracked via the SiGREEN API in CO2 equivalent units.",
+      "relatedTerms": ["SiGREEN", "sustainability", "ESG", "carbonEmissions"]
+    },
+    {
+      "term": "personalAccessToken",
+      "label": "Personal Access Token (PAT)",
+      "definition": "Authentication credential used with the Polarion REST API, providing user-level access to ALM resources without sharing passwords.",
+      "relatedTerms": ["authentication", "Polarion", "OAuth2", "JWT"]
+    },
+    {
+      "term": "OAuth2",
+      "label": "OAuth 2.0",
+      "definition": "Authorization framework used by TcPCM and Insights Hub APIs. TcPCM supports Resource Owner Password, Token Exchange, and TcPCM session key flows.",
+      "relatedTerms": ["authentication", "bearerToken", "TcPCM", "InsightsHub"]
+    },
+    {
+      "term": "timeSeries",
+      "label": "Time Series Data",
+      "definition": "Sequential data measurements over time from industrial equipment and sensors, managed via the Insights Hub IIoT platform APIs.",
+      "relatedTerms": ["InsightsHub", "IIoT", "assetManagement", "telemetry"]
+    },
+    {
+      "term": "BOM",
+      "label": "Bill of Materials",
+      "definition": "Hierarchical list of raw materials, components, and assemblies required to manufacture a product, managed within Teamcenter PLM.",
+      "relatedTerms": ["TcPCM", "Teamcenter", "PLM", "manufacturing"]
+    },
+    {
+      "term": "NX",
+      "label": "Siemens NX",
+      "definition": "Advanced CAD/CAM/CAE software solution for product design and manufacturing, part of the Siemens Xcelerator portfolio.",
+      "relatedTerms": ["CAD", "CAM", "CAE", "Xcelerator", "manufacturing"]
+    },
+    {
+      "term": "Simcenter",
+      "label": "Simcenter",
+      "definition": "Siemens portfolio of simulation and testing solutions for predicting product performance across mechanical, thermal, fluid, and electromagnetic domains.",
+      "relatedTerms": ["simulation", "CAE", "digitalTwin", "PLM"]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "api": "Product Information Webservice",
+  "version": "v2-earlyaccess",
+  "description": "Example requests and responses for Siemens Product Information API",
+  "baseUrl": "https://product-information-hub.siemens.cloud",
+  "examples": [
+    {
+      "path": "/api/products/{productNumber}/obsolescence",
+      "method": "GET",
+      "operationId": "get-obsolescence",
+      "description": "Get obsolescence information for a product by product number (MLFB)",
+      "requestHeaders": {
+        "Authorization": "YOUR_API_KEY",
+        "Api-Version": "v2-earlyaccess (latest)"
+      },
+      "requestExamples": {
+        "MLFB": "1PH8350-7MK40-0AX0",
+        "MLFB with Z-Option": "1PH8350-7MK40-0AX0-Z A72+G14+K85+X06"
+      },
+      "responseExample": {
+        "status": 200,
+        "body": {
+          "productNumber": "6SN1123-1AA00-0CA1",
+          "name": "SIMODRIVE 611 1-Axis Power Module 50A int.cooling",
+          "purchasabilityStatus": "SUCCESSOR_PURCHASABLE",
+          "obsolescenceLevel": 2,
+          "successor": {
+            "productNumber": "6SN1145-1AA00-0CA1",
+            "name": "SIMODRIVE 611 Successor Module",
+            "link": "/api/products/6SN1145-1AA00-0CA1/obsolescence"
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/products/{productNumber}/delivery",
+      "method": "GET",
+      "operationId": "get-delivery",
+      "description": "Get delivery information for a product by product number",
+      "requestHeaders": {
+        "Authorization": "YOUR_API_KEY",
+        "Api-Version": "v2-earlyaccess (latest)"
+      },
+      "responseExample": {
+        "status": 200,
+        "body": {
+          "productNumber": "6SN1123-1AA00-0CA1",
+          "minimumOrderQuantity": 1,
+          "countryOfOrigin": "DE",
+          "eccn": "EAR99S",
+          "deliveryTimes": {
+            "newPart": 20,
+            "sparePart": 30,
+            "repairPart": 10
+          },
+          "prices": {
+            "newPart": "300 EUR",
+            "sparePart": "500 EUR",
+            "repairPart": "400 EUR"
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/api-key-details",
+      "method": "GET",
+      "operationId": "get-api-key-details",
+      "description": "Verify API key status and remaining credits",
+      "requestHeaders": {
+        "Authorization": "YOUR_API_KEY"
+      },
+      "responseExample": {
+        "status": 200,
+        "body": {
+          "customerId": "1d616354-1451-4d66-b001-1a44e6d51086",
+          "customerName": "Example GmbH",
+          "apiKeyExpiryDate": "2025-12-31T23:59:59.000Z",
+          "credits": {
+            "obsolescence": 100,
+            "delivery": 50
+          }
+        }
+      }
+    }
+  ]
+}

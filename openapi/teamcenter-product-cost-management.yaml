@@ -1,0 +1,2085 @@
+openapi: 3.0.0
+info:
+  version: v1.5
+  title: TcPCM Gateway API
+  description: TcPCM Gateway API
+  license:
+    name: Privacy Policy
+    url: https://www.plm.automation.siemens.com/global/en/legal/privacy-policy.html
+paths:
+  /token:
+    post:
+      tags:
+        - Account
+      summary: Login to get the bearer token for protected endpoints
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                grant_type:
+                  type: string
+                  default: password
+                  description: Defines the method obtaining the access token.
+                  enum:
+                    - password
+                    - applicationSession
+                    - urn:ietf:params:oauth:grant-type:token-exchange
+                    - refresh_token
+                authenticatorId:
+                  type: string
+                  default: Siemens.TCPCM.AuthenticationMethod.TcPCM
+                  description: >-
+                    TcPCM authentication method to be used with the provided
+                    credentials.
+                  enum:
+                    - Siemens.TCPCM.AuthenticationMethod.TcPCM
+                    - Siemens.TCPCM.AuthenticationMethod.Windows
+                    - Siemens.TCPCM.AuthenticationMethod.SamAuth
+                client_id:
+                  type: string
+                  default: TcPCM
+                  description: >-
+                    Uniquely identifies the application making the request for
+                    authentication purposes.
+                client_secret:
+                  type: string
+                  default: Your_Client_Secret
+                  description: >-
+                    Confidential key used alongside the client_id to securely
+                    authenticate the application making the request.
+                username:
+                  type: string
+                  default: Administrator
+                  description: TcPCM or Windows user name depending on the authenticatorId.
+                password:
+                  type: string
+                  default: ''
+                  description: Corresponding password of the username.
+                subject_token_type:
+                  type: string
+                  description: >-
+                    Type of the token to be exchanged for the login. Only
+                    "urn:ietf:params:oauth:token-type:access_token" is
+                    supported.
+                  enum:
+                    - urn:ietf:params:oauth:token-type:access_token
+                subject_token:
+                  type: string
+                  description: Value of the exchanged token.
+                tcpcmSessionKey:
+                  type: string
+                  description: >-
+                    Session identifier that can be obtained via the TcPCM client
+                    application plugin.
+                refresh_token:
+                  type: string
+                  description: >-
+                    Refresh token that you obtained via the initial
+                    authentication.
+              required:
+                - grant_type
+                - client_id
+                - client_secret
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    description: Bearer token for authorization
+                  token_type:
+                    type: string
+                    description: Only "bearer" is supported
+                  expires_in:
+                    type: integer
+                    description: Seconds until the token expires
+                  refresh_token:
+                    type: string
+                    description: Token to be used for resetting the expiration date
+                  as:client_id:
+                    type: string
+                    description: Requested client id
+                  as:TcPCMAuthenticatorId:
+                    type: string
+                    description: Requested authenticator id
+                  .issued:
+                    type: string
+                    description: Login timestamp
+                  .expires:
+                    type: string
+                    description: Expiration date
+                required:
+                  - access_token
+                  - token_type
+                  - expires_in
+                  - refresh_token
+                  - as:client_id
+                  - as:TcPCMAuthenticatorId
+                  - .issued
+                  - .expires
+        '400':
+          description: Bad request. Login failed.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error title
+                  error_description:
+                    type: string
+                    description: Detailed error description
+                required:
+                  - error
+                  - error_description
+        '500':
+          description: Server error. Login failed.
+          content:
+            text/html:
+              schema:
+                type: string
+                description: Error description
+      description: >-
+        TcPCM supports three different login flows:
+
+        1. **Resource Owner Password flow**: Use the *username* and *password*
+        with the *grant\_type* "password" and *authenticatorId*
+        "Siemens.TCPCM.AuthenticationMethod.TcPCM" or
+        "Siemens.TCPCM.AuthenticationMethod.Windows".
+
+        2. **Token Exchange flow**: Use the *subject\_token\_type* and
+        *subject\_token* with the *grant\_type*
+        "urn:ietf:params:oauth:grant-type:token-exchange" and *authenticatorId*
+        "Siemens.TCPCM.AuthenticationMethod.SamAuth".
+
+        3. **Custom flow**: Use the *tcpcmSessionKey* with the *grant\_type*
+        "applicationSession" without *authenticatorId*.
+
+
+        Refresh token flow:
+
+        * The refresh token can be used to generate a new bearer token without
+        re-authenticating.
+
+        * The *grant\_type* must be set to "refresh\_token" and the
+        *refresh\_token* must be provided that was obtained via the initial
+        authentication.
+  /api/v1/administration/users/{userName}:
+    get:
+      tags:
+        - Administration
+      summary: Fetch a user User by {userName}. Only allowed for admins.
+      operationId: GetUser_GetUser
+      security:
+        - bearerHttpAuthentication: []
+      parameters:
+        - name: userName
+          in: path
+          description: User name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response_of_UserResponseModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Response_of_UserResponseModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Response_of_UserResponseModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/Response_of_UserResponseModel'
+        '401':
+          description: Unauthorized
+        '404':
+          description: NotFound
+      deprecated: false
+      description: ''
+    patch:
+      tags:
+        - Administration
+      summary: Activates or deactivate a user
+      operationId: ToggleUserActivation_ToggleActivation
+      security:
+        - bearerHttpAuthentication: []
+      parameters:
+        - name: userName
+          in: path
+          description: User name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToggleActivationRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ToggleActivationRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ToggleActivationRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ToggleActivationRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ToggleActivationRequestModel'
+        description: >-
+          The request represents that {userName} will be either activated or
+          deactivated.
+        required: true
+      responses:
+        '204':
+          description: NoContent
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ErrorLegacy'
+                readOnly: true
+            text/json:
+              schema:
+                type: object
+                properties:
+                  Errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ErrorLegacy'
+                readOnly: true
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  Errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ErrorLegacy'
+                readOnly: true
+            text/xml:
+              schema:
+                type: object
+                properties:
+                  Errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ErrorLegacy'
+                readOnly: true
+        '401':
+          description: Unauthorized
+        '404':
+          description: NotFound
+        '500':
+          description: InternalServerError
+      deprecated: false
+  /api/v1/administration/application-version:
+    get:
+      tags:
+        - Administration
+      summary: Gets the current version of TcPCM. Available since version 2412
+      description: Gets the current version of TcPCM
+      operationId: Administration_GetApplicationVersion
+      parameters: []
+      responses:
+        '200':
+          description: Success. Returns the current running version of TcPCM
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      version:
+                        type: string
+                        description: TcPCM version
+                    required:
+                      - version
+                description: |
+                  data
+                required:
+                  - data
+              example:
+                data:
+                  version: '2406.0001'
+        '400':
+          $ref: '#/components/responses/ErrorBadRequestLegacy'
+        '401':
+          $ref: '#/components/responses/ErrorUnauthorizedLegacy'
+        '406':
+          $ref: '#/components/responses/ErrorNotAcceptableLegacy'
+        '500':
+          $ref: '#/components/responses/ErrorInternalServerErrorLegacy'
+      security:
+        - bearerHttpAuthentication: []
+  /api/v1/Calculations/Export:
+    post:
+      tags:
+        - 'Import/Export: Calculations'
+      operationId: ExportCalculations_ExportCalculationsToResponseModel
+      summary: Export calculations using export configurations
+      security:
+        - bearerHttpAuthentication: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportCalculationsRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ExportCalculationsRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ExportCalculationsRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ExportCalculationsRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExportCalculationsRequestModel'
+        required: true
+      responses:
+        '200':
+          description: >-
+            Returns export data of given calculation IDs using given export
+            configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+        '401':
+          description: Indicates that the requested resource requires authentication.
+        '405':
+          description: >-
+            Indicates that the request method (POST or GET) is not allowed on
+            the requested resource.
+        '500':
+          description: Indicates that a generic error has occurred on the server.
+      deprecated: false
+      description: Export calculations using export configurations
+  /api/v1/Calculations/Import:
+    post:
+      tags:
+        - 'Import/Export: Calculations'
+      operationId: ImportCalculations_ImportCalculationsFromRequestModel
+      security:
+        - bearerHttpAuthentication: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportCalculationsRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ImportCalculationsRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ImportCalculationsRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ImportCalculationsRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ImportCalculationsRequestModel'
+        required: true
+      responses:
+        '200':
+          description: Successful import.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+        '401':
+          description: Indicates that the requested resource requires authentication.
+        '500':
+          description: Indicates that a generic error has occurred on the server.
+      deprecated: false
+      description: >-
+        Import calculations from the given data table using an import
+        configuration with the given GUID. It is also possible to export the
+        imported data directly (since version 2412).
+      summary: >-
+        Import calculations from the given data table using an import
+        configuration
+  /api/v1/ToolCalculations/CostBreakDown/Export:
+    post:
+      tags:
+        - 'Import/Export: Calculations'
+      operationId: ExportToolCalculationCbd_ExportCostBreakDown
+      summary: Exports cost break downs of tool calculations
+      security:
+        - bearerHttpAuthentication: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportToolCalculationCdbRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ExportToolCalculationCdbRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ExportToolCalculationCdbRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ExportToolCalculationCdbRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExportToolCalculationCdbRequest'
+        required: true
+      responses:
+        '200':
+          description: >-
+            Returns cost break down data of given tool calculation ID and export
+            configuration unique key.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse
+            text/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse
+            application/xml:
+              schema:
+                $ref: >-
+                  #/components/schemas/TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse
+            text/xml:
+              schema:
+                $ref: >-
+                  #/components/schemas/TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse
+        '401':
+          description: Indicates that the requested resource requires authentication.
+        '405':
+          description: >-
+            Indicates that the request method (POST or GET) is not allowed on
+            the requested resource.
+        '500':
+          description: Indicates that a generic error has occurred on the server.
+      deprecated: false
+  /api/v1/profitability-calculation-report:
+    get:
+      summary: >-
+        Returns the profitability calculation report. Available since version
+        2406.0001
+      security:
+        - bearerHttpAuthentication: []
+      responses:
+        '200':
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DataSet'
+                  errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProfitabilityCalculationReportError'
+                required:
+                  - data
+              examples:
+                Example:
+                  value:
+                    data:
+                      data:
+                        - Name: Profitability Calculation for car A
+                          Year: 2025
+                          Revenue: 2346825
+                        - Name: Profitability Calculation for car A
+                          Year: 2026
+                          Revenue: 4341822
+                      columns:
+                        - name: Name
+                          displayName: Profitability Calculation Name
+                          dataType: string
+                        - name: Year
+                          displayName: Year
+                          dataType: integer
+                        - name: Revenue
+                          displayName: Revenue in €
+                          dataType: double
+                    errors:
+                      - status: 404
+                        detail: Profitability calculation not found
+                        profitabilityCalculationId: 731
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DataSet'
+                  errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProfitabilityCalculationReportError'
+                required:
+                  - data
+          description: Success. Returns the requested profitability calculation report.
+        '400':
+          $ref: '#/components/responses/ErrorBadRequestLegacy'
+        '401':
+          $ref: '#/components/responses/ErrorUnauthorizedLegacy'
+        '406':
+          $ref: '#/components/responses/ErrorNotAcceptableLegacy'
+        '408':
+          $ref: '#/components/responses/ErrorRequestTimeoutLegacy'
+        '500':
+          $ref: '#/components/responses/ErrorInternalServerErrorLegacy'
+      operationId: get-ProfitabilityCalculation
+      description: >-
+        Returns the profitability calculation report. Available since version
+        2406.0001.
+      parameters:
+        - $ref: '#/components/parameters/ProfitabilityCalculationIds'
+        - $ref: '#/components/parameters/ProjectIds'
+        - $ref: '#/components/parameters/ExportConfigurationGuid'
+      tags:
+        - Profitability Calculation
+  /api/v1/aggregated-profitability-calculation-report:
+    get:
+      summary: >-
+        Returns the aggregated profitability calculation report. Available since
+        version 2512.2602
+      security:
+        - bearerHttpAuthentication: []
+      responses:
+        '200':
+          headers: {}
+          description: >-
+            Success. Returns the requested aggregated profitability calculation
+            report.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DataSet'
+                  errors:
+                    type: array
+                    items:
+                      $ref: >-
+                        #/components/schemas/AggregatedProfitabilityCalculationReportError
+                required:
+                  - data
+              examples:
+                Example:
+                  value:
+                    data:
+                      data:
+                        - Name: Aggregated Profitability Calculation for plant Munich
+                          Year: 2025
+                          Revenue: 2346825
+                        - Name: Aggregated Profitability Calculation for plant Munich
+                          Year: 2026
+                          Revenue: 4341822
+                      columns:
+                        - name: Name
+                          displayName: Aggregated Profitability Calculation Name
+                          dataType: string
+                        - name: Year
+                          displayName: Year
+                          dataType: integer
+                        - name: Revenue
+                          displayName: Revenue in €
+                          dataType: double
+                    errors:
+                      - status: 404
+                        detail: Aggregated profitability calculation not found
+                        aggregatedProfitabilityCalculationId: 731
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DataSet'
+                  errors:
+                    type: array
+                    items:
+                      $ref: >-
+                        #/components/schemas/AggregatedProfitabilityCalculationReportError
+                required:
+                  - data
+        '400':
+          $ref: '#/components/responses/ErrorBadRequest'
+        '401':
+          $ref: '#/components/responses/ErrorUnauthorized'
+        '406':
+          $ref: '#/components/responses/ErrorNotAcceptable'
+        '408':
+          $ref: '#/components/responses/ErrorRequestTimeout'
+        '500':
+          $ref: '#/components/responses/ErrorInternalServerError'
+      operationId: get-AggregatedProfitabilityCalculationReport
+      description: >-
+        Returns the aggregated profitability calculation report. Available since
+        version 2512.2602.
+      parameters:
+        - in: query
+          name: AggregatedProfitabilityCalculationIds
+          description: Ids of the aggregated profitability calculations to be exported.
+          schema:
+            type: array
+            items:
+              type: integer
+          example:
+            - 14
+            - 362
+            - 731
+        - in: query
+          name: FolderIds
+          description: >-
+            All aggregated profitability calculations of these folders are
+            exported.
+          schema:
+            type: array
+            items:
+              type: integer
+          example:
+            - 5
+            - 12
+        - $ref: '#/components/parameters/ExportConfigurationGuid'
+      tags:
+        - Profitability Calculation
+  /api/v1/MasterData/Export:
+    post:
+      tags:
+        - 'Import/Export: MasterData'
+      operationId: ExportMasterData_ExportMasterDataToResponseModel
+      summary: Exports master data using export configurations
+      security:
+        - bearerHttpAuthentication: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportMasterDataRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ExportMasterDataRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ExportMasterDataRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ExportMasterDataRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExportMasterDataRequestModel'
+        required: true
+      responses:
+        '200':
+          description: >-
+            Returns export data of given master data IDs using given export
+            configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+        '401':
+          description: Indicates that the requested resource requires authentication.
+        '405':
+          description: >-
+            Indicates that the request method (POST or GET) is not allowed on
+            the requested resource.
+        '500':
+          description: Indicates that a generic error has occurred on the server.
+      deprecated: false
+  /api/v1/MasterData/Import:
+    post:
+      tags:
+        - 'Import/Export: MasterData'
+      operationId: ImportMasterData_ImportMasterDataFromRequestModel
+      summary: Import master data using import configurations
+      security:
+        - bearerHttpAuthentication: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportMasterDataRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ImportMasterDataRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ImportMasterDataRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ImportMasterDataRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ImportMasterDataRequestModel'
+        required: true
+      responses:
+        '200':
+          description: Imports master data using a given import configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMResponseModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMResponseModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMResponseModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMResponseModel'
+        '401':
+          description: Indicates that the requested resource requires authentication.
+        '500':
+          description: Indicates that a generic error has occurred on the server.
+      deprecated: false
+  /api/v1/Account/Logout:
+    get:
+      tags:
+        - Account
+      summary: Logout and invalidate tokens
+      operationId: Account_Logout
+      security:
+        - bearerHttpAuthentication: []
+      parameters:
+        - name: refreshTokenId
+          in: query
+          description: Refresh Token Id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully logged out.
+        '401':
+          description: Indicates that the requested resource requires authentication.
+        '500':
+          description: Indicates that a generic error has occurred on the server.
+      deprecated: false
+      description: >-
+        Please note that the *refreshTokenId* needs to be transferred as a query
+        parameter.
+  /api/v1/Account/DeleteRefreshToken:
+    get:
+      tags:
+        - Account
+      summary: Delete RefreshToken
+      operationId: Account_DeleteRefreshToken
+      parameters:
+        - name: refreshTokenId
+          in: query
+          description: Refresh Token Id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: RefreshToken successfully removed.
+        '500':
+          description: Indicates that a generic error has occurred on the server.
+      deprecated: false
+  /api/v1/projects/{id}:
+    get:
+      tags:
+        - Project
+      summary: Get single project information. Available since version 2512.
+      description: ''
+      operationId: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ProjectModel'
+                    description: Requested project
+                required:
+                  - data
+              examples:
+                Example:
+                  value:
+                    data:
+                      id: 20
+                      name: "Electric Vehicle Platform"
+                      startOfProductionDate: "2025-03-01"
+                      endOfProductionDate: "2030-09-30"
+                      yearsBeforeSOP: 3
+                      yearsAfterSOP: 6
+                      lifetimeYears:
+                        - 2025
+                        - 2026
+                        - 2027
+                        - 2028
+                        - 2029
+                        - 2030
+                      links:
+                        self: "https://myServer.com/api/v1/projects/20"
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ProjectModel'
+                    description: Requested project
+                required:
+                  - data
+        '400':
+          $ref: '#/components/responses/ErrorBadRequest'
+        '401':
+          $ref: '#/components/responses/ErrorUnauthorized'
+        '404':
+          $ref: '#/components/responses/ErrorNotFound'
+        '406':
+          $ref: '#/components/responses/ErrorNotAcceptable'
+        '408':
+          $ref: '#/components/responses/ErrorRequestTimeout'
+        '500':
+          $ref: '#/components/responses/ErrorInternalServerError'
+      security:
+        - bearerHttpAuthentication: []
+    delete:
+      tags:
+        - Project
+      summary: Delete a project by Id. Available since version 2512.2602.
+      description: 'The project with the given Id will be moved to the recycle bin (including all related data).'
+      operationId: ''
+      responses:
+        '204':
+          description: No Content. Project successfully deleted.
+        '400':
+          $ref: '#/components/responses/ErrorBadRequest'
+        '401':
+          $ref: '#/components/responses/ErrorUnauthorized'
+        '403':
+          $ref: '#/components/responses/ErrorForbidden'
+        '404':
+          $ref: '#/components/responses/ErrorNotFound'
+        '409':
+          $ref: '#/components/responses/ErrorConflict'
+        '500':
+          $ref: '#/components/responses/ErrorInternalServerError'
+      security:
+        - bearerHttpAuthentication: []
+    parameters:
+      - in: path
+        name: id
+        description: Id of the project
+        schema:
+          type: integer
+        required: true
+  /api/v1/product-costing/parts/{id}:
+    delete:
+      tags:
+        - Product costing
+      summary: Delete a product costing part by id. Available since version 2512.2602.
+      description: 'All usages of the given product costing part will be deleted and the part will be moved to the recycle bin.'
+      operationId: ''
+      responses:
+        '204':
+          description: No Content. Part successfully deleted.
+        '400':
+          $ref: '#/components/responses/ErrorBadRequest'
+        '401':
+          $ref: '#/components/responses/ErrorUnauthorized'
+        '403':
+          $ref: '#/components/responses/ErrorForbidden'
+        '404':
+          $ref: '#/components/responses/ErrorNotFound'
+        '409':
+          $ref: '#/components/responses/ErrorConflict'
+        '500':
+          $ref: '#/components/responses/ErrorInternalServerError'
+      security:
+        - bearerHttpAuthentication: []
+      parameters:
+        - in: path
+          name: id
+          description: Id of the part
+          schema:
+            type: integer
+          required: true
+  /api/v1/projects/{id}/project-assumptions:
+    get:
+      tags:
+        - Project
+      summary: >-
+        Get all project assumptions of the given project. Available since
+        version 2512.
+      description: 'This endpoint supports field filtering.'
+      operationId: ''
+      parameters:
+        - in: path
+          name: id
+          description: Id of the project
+          schema:
+            type: integer
+          required: true
+        - in: query
+          name: fields
+          description: >-
+            Optional field filtering. Can be used to reduce the amount of data.
+            See the [Sparse Fieldsets](https://developer.siemens.com/guidelines/api-guidelines/rest/sparse-fieldsets.html) guidelines for more information.
+            By default, all fields will be returned.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProjectAssumptionModel'
+                  links:
+                    $ref: '#/components/schemas/SelfLink'
+                required:
+                  - links
+                  - data
+              examples:
+                Example:
+                  value:
+                    data:
+                      - id: 5001
+                        materialHeaders:
+                          - name: "Battery Cell"
+                            itemNumber: "BAT-2024-001"
+                            revisionNumber: "R1.2"
+                            classification: "Battery Components"
+                            listProperty1: "High Voltage"
+                            listProperty2: "Lithium-Ion"
+                            listProperty3: "Grade A"
+                            validityParameters:
+                              - currency: "EUR"
+                                unit: "pcs"
+                                mode: "MasterData"
+                                supplier: "BatteryTech GmbH"
+                                customer: "Auto OEM Corp"
+                                region: "Germany"
+                                plant: "Munich Plant"
+                                procurementType: "Purchase"
+                                materialPriceTag: "Siemens.TCPCM.MasterData.Tag.Material.StandardPrice"
+                                listProperty1Value: "600V"
+                                listProperty2Value: "NCM811"
+                                listProperty3Value: "Premium"
+                                selectedValidFrom: "2024-01-15"
+                                materialPrices:
+                                  - materialDetailGuid: "697a6eca-6276-4993-bfeb-53cb65ba6f08"
+                                    year: 2024
+                                    masterDataPrice: 85.5
+                                    manualPrice: 85.5
+                                    increaseRate: 0.03
+                                    forecastedPrice: 88.07
+                                    priceLayering:
+                                      - calculationElement: "Raw Material"
+                                        masterDataValue: 45.2
+                                        manualValue: 45.2
+                                        forecastedValue: 46.56
+                                      - calculationElement: "Transport Cost"
+                                        masterDataValue: 25.24
+                                        manualValue: 145.55
+                                        forecastedValue: 1.56
+                                  - materialDetailGuid: "b311cec5-6a76-4f93-5212-53cb65ba7791"
+                                    year: 2025
+                                    masterDataPrice: 65.5
+                                    manualPrice: 822.8
+                                    increaseRate: 0.02
+                                    forecastedPrice: 188.07
+                                    priceLayering:
+                                      - calculationElement: "Raw Material"
+                                        masterDataValue: 45.2
+                                        manualValue: 45.2
+                                        forecastedValue: 46.56
+                      - id: 5002
+                        materialHeaders:
+                          - name: "Electric Motor Housing"
+                            itemNumber: "MTR-HSG-2024"
+                            revisionNumber: "R2.0"
+                            classification: "Motor Components"
+                            listProperty1: "Aluminum"
+                            listProperty2: "Cast"
+                            listProperty3: "IP67"
+                            validityParameters:
+                              - currency: "USD"
+                                unit: "kg"
+                                mode: "Manual"
+                                supplier: "MetalCast Industries"
+                                customer: "EV Manufacturer"
+                                region: "North America"
+                                plant: "Detroit Plant"
+                                procurementType: "Purchase"
+                                materialPriceTag: "Siemens.TCPCM.MasterData.Tag.Material.StandardPrice"
+                                listProperty1Value: "Al6061-T6"
+                                listProperty2Value: "Die Cast"
+                                listProperty3Value: "Protected"
+                                selectedValidFrom: "2022-03-01"
+                                materialPrices:
+                                  - materialDetailGuid: "aac36eca-6ab6-4593-62b5-53cb65ba614b"
+                                    year: 2022
+                                    masterDataPrice: 17.75
+                                    manualPrice: 13.2
+                                    increaseRate: 0.025
+                                    forecastedPrice: 13.53
+                                    priceLayering:
+                                      - calculationElement: "Raw Material"
+                                        masterDataValue: 8.5
+                                        manualValue: 8.8
+                                        forecastedValue: 9.02
+                    links:
+                      self: "https://myServer.com/api/v1/projects/1001/project-assumptions"
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProjectAssumptionModel'
+                  links:
+                    $ref: '#/components/schemas/SelfLink'
+                required:
+                  - links
+                  - data
+        '400':
+          $ref: '#/components/responses/ErrorBadRequest'
+        '401':
+          $ref: '#/components/responses/ErrorUnauthorized'
+        '404':
+          $ref: '#/components/responses/ErrorNotFound'
+        '406':
+          $ref: '#/components/responses/ErrorNotAcceptable'
+        '408':
+          $ref: '#/components/responses/ErrorRequestTimeout'
+        '500':
+          $ref: '#/components/responses/ErrorInternalServerError'
+      security:
+        - bearerHttpAuthentication: []
+  /api/v1/masterData/ping:
+    get:
+      tags:
+        - Basic
+      operationId: MasterData_Ping
+      summary: Check if the service is running
+      responses:
+        '200':
+          description: Ok.
+        '500':
+          description: Indicates that a generic error has occurred on the server.
+      deprecated: false
+components:
+  schemas:
+    Currency:
+      type: string
+      description: Currency in ISO format
+      pattern: ^[A-Z]{3}$
+      example: EUR
+    MeasurementUnit:
+      type: string
+      description: Measurement unit
+    PaginationLinks:
+      type: object
+      properties:
+        self:
+          type: string
+          description: Link to this collection
+        next:
+          type: string
+          description: Link to the next page or null if there is none
+        prev:
+          type: string
+          description: Link to the previous page or null if there is none
+        first:
+          type: string
+          description: Link to the first page
+        last:
+          type: string
+          description: Link to the last page
+      required:
+        - self
+        - next
+        - prev
+        - first
+        - last
+    PaginationMeta:
+      type: object
+      properties:
+        number:
+          type: integer
+          description: Current page number
+        totalPages:
+          type: integer
+          description: Total number of pages
+        size:
+          type: integer
+          description: Number of elements per page
+      required:
+        - number
+        - size
+        - totalPages
+    SelfLink:
+      type: object
+      properties:
+        self:
+          type: string
+          description: Link to the current resource
+      required:
+        - self
+    IntArray:
+      type: array
+      items:
+        type: integer
+    Date:
+      type: string
+      description: Date
+      format: date
+    IdArray:
+      title: IdArray
+      type: array
+      description: Array with object ids
+      uniqueItems: true
+      maxItems: 100000
+      items:
+        type: integer
+        minimum: 0
+        maximum: 2147483647
+      example:
+        - 1
+        - 5
+        - 11
+        - 3
+        - 2423
+        - 3039
+        - 4521
+    Guid:
+      title: GUID
+      type: string
+      format: uuid
+      maxLength: 36
+      description: Global unique identifier
+      example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+    DataType:
+      type: string
+      enum:
+        - double
+        - integer
+        - date
+        - string
+        - object
+        - reference
+        - bool
+        - url
+      example: double
+    Column:
+      title: Column
+      type: object
+      required:
+        - dataType
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+          description: Name of the data field
+        displayName:
+          type: string
+          maxLength: 255
+          minLength: 0
+          description: Displayname of the column
+        dataType:
+          $ref: '#/components/schemas/DataType'
+    DataSet:
+      title: DataSet
+      type: object
+      description: >-
+        Represents a two-dimensional data set with column descriptions including
+        column data types.
+      required:
+        - data
+        - columns
+      properties:
+        data:
+          type: array
+          description: >-
+            Array of objects defining a two-dimensional array via the property
+            names of the objects. See the 'columns' field for the display names
+            and data types.
+          maxItems: 100000
+          items:
+            type: object
+        columns:
+          type: array
+          description: Columns of the dataset describing the names and the datatypes
+          maxItems: 100000
+          items:
+            $ref: '#/components/schemas/Column'
+    ErrorResponse:
+      type: object
+      properties:
+        Errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+          readOnly: true
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          readOnly: true
+    ErrorLegacy:
+      type: object
+      properties:
+        Detail:
+          type: string
+          readOnly: true
+    ExportCalculationsRequestModel:
+      type: object
+      properties:
+        ProjectIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+          description: >-
+            List of requested project ids. All calculation of the projects get
+            exported
+        CalculationIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+            example: 2056
+          description: List of requested calculation ids
+        ConfigurationGuid:
+          type: string
+          example: b14473ea-a58c-4d73-afa8-ba7c65613a0e
+          description: Guid of the export configuration
+        Year:
+          type: integer
+          description: >-
+            Year of the project assumptions which are used for the calculation 
+            export in case of lifetime projects (4 digit year). Available since
+            version 2512.
+    ExportMasterDataRequestModel:
+      type: object
+      properties:
+        Ids:
+          type: array
+          items:
+            format: int32
+            type: integer
+          example:
+            - 52
+            - 60
+          description: Database instance specific identifiers
+        Guids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Guid'
+          description: Database instance independent identifiers
+        ConfigurationGuid:
+          type: string
+          example: e1548f26-af8d-4173-9881-7ce1de530911
+          description: Export configuration Guid
+    ExportToolCalculationCdbRequest:
+      required:
+        - ToolCalculationId
+        - CostBreakDownConfigurationUniqueKey
+      type: object
+      properties:
+        ToolCalculationId:
+          format: int32
+          type: integer
+          example: 1015
+        CostBreakDownConfigurationUniqueKey:
+          type: string
+          example: Siemens.TCPCM.CostBreakdownForTools.StandardCBDforinjecttools.WebApi
+    ExportToolCalculationCbdResponse:
+      type: object
+      properties:
+        toolCalculationId:
+          format: int32
+          type: integer
+          readOnly: true
+        costBreakDownConfigurationUniqueKey:
+          type: string
+          readOnly: true
+        toolProperties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExportToolCalculationCbdToolProperty'
+          readOnly: true
+        materials:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExportToolCalculationCbdMaterial'
+          readOnly: true
+    ExportToolCalculationCbdToolProperty:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        value:
+          type: string
+          readOnly: true
+        unit:
+          type: string
+          readOnly: true
+    ExportToolCalculationCbdMaterial:
+      type: object
+      properties:
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExportToolCalculationCbdMaterialProperty'
+          readOnly: true
+    ExportToolCalculationCbdMaterialProperty:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        value:
+          type: string
+          readOnly: true
+    UserResponseModel:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        attributes:
+          $ref: '#/components/schemas/UserResponseModelAttributes'
+    UserResponseModelAttributes:
+      type: object
+      properties:
+        userName:
+          type: string
+          readOnly: true
+        emailAddress:
+          type: string
+          readOnly: true
+        firstName:
+          type: string
+          readOnly: true
+        lastName:
+          type: string
+          readOnly: true
+        active:
+          type: boolean
+          readOnly: true
+        roleAssignments:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleAssignmentResponseModel'
+          readOnly: true
+    RoleAssignmentResponseModel:
+      type: object
+      properties:
+        client:
+          type: string
+          readOnly: true
+        role:
+          type: string
+          readOnly: true
+    ToggleActivationRequestModel:
+      required:
+        - active
+      type: object
+      properties:
+        active:
+          type: boolean
+          example: false
+    ImportCalculationsRequestModel:
+      type: object
+      properties:
+        Data:
+          type: array
+          items:
+            type: object
+          description: Dataset to be imported.
+          example:
+            - Assembly hierarchy level: 0
+              Quantity: 4
+              Quantity unit: Pcs
+              Item number: PNR 24253
+            - Assembly hierarchy level: 1
+              Quantity: 7
+              Quantity unit: Pcs
+              Item number: PNR 53221
+        PlantUniqueKey:
+          type: string
+          description: Plant key. Client of the given plant is used.
+        ConfigurationGuid:
+          type: string
+          description: GUID of the import configuration.
+          format: uuid
+          example: 4c43cab9-d9fa-4154-9c41-968654ac05b2
+        ExportConfigurationGuid:
+          type: string
+          description: >-
+            GUID of the export configuration. If this is set then the imported
+            data is returned using the given export configuration. Available
+            with version 2412.
+          format: uuid
+          example: b14473ea-a58c-4d73-afa8-ba7c65613a0e
+        TargetType:
+          type: string
+          example: folder
+        TargetId:
+          format: int32
+          type: integer
+          example: 534
+      required:
+        - Data
+        - ConfigurationGuid
+    TcPCMResponseModel:
+      type: object
+      properties:
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
+    ImportMasterDataRequestModel:
+      type: object
+      properties:
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+            - Designation: Carbon
+              Unique identifier: Custom.Unique.Carbon
+              Type: Cost value
+            - Designation: Reinvestment rate
+              Unique identifier: Custom.Unique.Reinvestment
+              Type: Unit
+        PlantUniqueKey:
+          type: string
+          example: TcPCM-001
+        ConfigurationGuid:
+          type: string
+          example: 9231ad11-744e-481a-b9ec-bce80979ccbd
+    TcPCMWebApiResponseModel_of_DataTable:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
+    TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ExportToolCalculationCbdResponse'
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
+    Response_of_UserResponseModel:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserResponseModel'
+    ProfitabilityCalculationReportError:
+      title: ProfitabilityCalculationReportError
+      type: object
+      description: Partial error of a profitability calculation report request.
+      required:
+        - status
+        - detail
+      properties:
+        status:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Http status code
+          readOnly: true
+        detail:
+          type: string
+          description: Detail description of the error
+        profitabilityCalculationId:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Id of the requested profitability calculation
+          readOnly: true
+        projectId:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Id of the requested project
+          readOnly: true
+    AggregatedProfitabilityCalculationReportError:
+      title: ProfitabilityCalculationReportError
+      type: object
+      description: Partial error of an aggregated profitability calculation report request.
+      required:
+        - status
+        - detail
+      properties:
+        status:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Http status code
+          readOnly: true
+        detail:
+          type: string
+          description: Detail description of the error
+        aggregatedProfitabilityCalculationId:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Id of the requested aggregated profitability calculation
+          readOnly: true
+        folderId:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Id of the requested folder
+          readOnly: true
+    ProjectModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the project
+        name:
+          type: string
+          description: Name of the project
+        startOfProductionDate:
+          $ref: '#/components/schemas/Date'
+          description: Start of production date
+        endOfProductionDate:
+          $ref: '#/components/schemas/Date'
+          description: End of production date
+        yearsBeforeSOP:
+          type: integer
+          description: Number of years before start of production date
+        yearsAfterSOP:
+          type: integer
+          description: Number of years after start of production date
+        lifetimeYears:
+          $ref: '#/components/schemas/IntArray'
+          description: List of years (4 digits) of the lifetime of the project
+        links:
+          $ref: '#/components/schemas/SelfLink'
+          description: Link to the current project
+      required:
+        - id
+        - name
+        - lifetimeYears
+        - startOfProductionDate
+        - endOfProductionDate
+        - yearsBeforeSOP
+        - yearsAfterSOP
+        - links
+      description: Project
+    ProjectAssumptionModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the project assumption
+        materialHeaders:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the material
+              itemNumber:
+                type: string
+                description: Item number of the material
+              revisionNumber:
+                type: string
+                description: Number of the material revision
+              classification:
+                type: string
+                description: Name of the classification
+              listProperty1:
+                type: string
+                description: Name of the list property 1
+              listProperty2:
+                type: string
+                description: Name of the list property 2
+              listProperty3:
+                type: string
+                description: Name of the list property 3
+              validityParameters:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    currency:
+                      $ref: '#/components/schemas/Currency'
+                      description: Currency of the material prices
+                    unit:
+                      $ref: '#/components/schemas/MeasurementUnit'
+                      description: Unit of the material prices
+                    mode:
+                      type: string
+                      enum:
+                        - MasterData
+                        - Manual
+                      description: >-
+                        Mode whether the material is linked with master data or
+                        entered manually
+                    supplier:
+                      type: string
+                      description: Supplier validity of the material prices
+                    customer:
+                      type: string
+                      description: Customer validity of the material prices
+                    region:
+                      type: string
+                      description: Region validity of the material prices
+                    plant:
+                      type: string
+                      description: Plant validity of the material prices
+                    procurementType:
+                      type: string
+                      description: Procurement type validity of the material prices
+                    materialPriceTag:
+                      type: string
+                      description: Tag of the material price
+                    listProperty1Value:
+                      type: string
+                      description: Value of the list property 1
+                    listProperty2Value:
+                      type: string
+                      description: Value of the list property 2
+                    listProperty3Value:
+                      type: string
+                      description: Value of the list property 3
+                    selectedValidFrom:
+                      $ref: '#/components/schemas/Date'
+                      description: Date of the fallback master data lookup match
+                    materialPrices:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          materialDetailGuid:
+                            $ref: '#/components/schemas/Guid'
+                            description: Database instance independent material detail identifier
+                          year:
+                            type: integer
+                            description: Year of the material price (4 digit year)
+                            minimum: 1900
+                            maximum: 9999
+                          masterDataPrice:
+                            type: number
+                            description: Material price from master data
+                            format: double
+                          manualPrice:
+                            type: number
+                            format: double
+                            description: Manual price
+                          increaseRate:
+                            type: number
+                            format: double
+                            description: Increase rate applied for that period
+                          forecastedPrice:
+                            type: number
+                            format: double
+                            description: Forecasted material price
+                          priceLayering:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                calculationElement:
+                                  type: string
+                                  description: Calculation element of the price layering
+                                masterDataValue:
+                                  type: number
+                                  format: double
+                                  description: Master data value of the price layering
+                                manualValue:
+                                  type: number
+                                  format: double
+                                  description: Manual value of the price layering
+                                forecastedValue:
+                                  type: number
+                                  format: double
+                                  description: Forecasted value of the price layering
+                              required:
+                                - calculationElement
+                                - masterDataValue
+                                - manualValue
+                                - forecastedValue
+                            description: Price layering of the material price
+                        required:
+                          - masterDataPrice
+                          - year
+                          - manualPrice
+                          - increaseRate
+                          - forecastedPrice
+                          - priceLayering
+                      description: Material prices per period
+                  required:
+                    - currency
+                    - unit
+                    - mode
+                    - procurementType
+                    - materialPrices
+                description: List of validity parameters
+            required:
+              - itemNumber
+              - revisionNumber
+              - name
+              - validityParameters
+      required:
+        - id
+  requestBodies: {}
+  responses:
+    ErrorBadRequest:
+      description: >-
+        The request could not be processed by the server because the request is
+        perceived as client error (such as, malformed request syntax, invalid
+        request message framing, or deceptive request routing).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                  - detail: Invalid JSON format
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorUnauthorized:
+      description: >-
+        The client is not providing valid authentication credentials for the
+        target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                  - detail: Invalid user or password
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorForbidden:
+      description: >-
+        The client is not allowed to access the resource. The client SHOULD not
+        repeat the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                  - detail: Not allowed to access calculation with id '271'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorNotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                  - detail: Resource with id '5' was not found
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorNotAcceptable:
+      description: >-
+        The service is not able to respond using the request media-type or
+        representation asked by the client in the Accept header.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                  - detail: Media type not accepted
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorRequestTimeout:
+      description: >-
+        The request timed out because a server did not respond within the
+        expected waiting time
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                  - detail: Request timed out
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorInternalServerError:
+      description: >-
+        An unexpected error occurred and the server is not fulfilling the
+        request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                  - detail: Internal error
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorConflict:
+      description: >-
+        The request could not be completed due to a conflict with the current
+        state of the target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                  - detail: Conflict with current state of the resource
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorBadRequestLegacy:
+      description: >-
+        The request could not be processed by the server because the request is
+        perceived as client error (such as, malformed request syntax, invalid
+        request message framing, or deceptive request routing).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Invalid JSON format
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorUnauthorizedLegacy:
+      description: >-
+        The client is not providing valid authentication credentials for the
+        target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Invalid user or password
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorForbiddenLegacy:
+      description: >-
+        The client is not allowed to access the resource. The client SHOULD not
+        repeat the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Not allowed to access calculation with id '271'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorNotFoundLegacy:
+      description: The resource is not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Resource with id '5' is not found
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorNotAcceptableLegacy:
+      description: >-
+        The service is not able to respond using the request media-type or
+        representation asked by the client in the Accept header.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Media type not accepted
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorRequestTimeoutLegacy:
+      description: >-
+        The request timed out because a server did not respond within the
+        expected waiting time
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Request timed out
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorInternalServerErrorLegacy:
+      description: >-
+        An unexpected error occurred and the server is not fulfilling the
+        request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Internal error
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+  parameters:
+    ProfitabilityCalculationIds:
+      name: ProfitabilityCalculationIds
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+      description: Ids of the profitability calculations to be exported.
+      example:
+        - 3
+        - 17
+        - 732
+    ProjectIds:
+      name: ProjectIds
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+      description: All profitability calculations of these projects are exported.
+      example:
+        - 53
+        - 88
+    ExportConfigurationGuid:
+      name: ExportConfigurationGuid
+      in: query
+      required: true
+      schema:
+        type: string
+        format: uuid
+        example: cbbb4ada-3550-4939-a138-4da02757d460
+      description: GUID of the export configuration.
+  securitySchemes:
+    bearerHttpAuthentication:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
