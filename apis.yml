@@ -8,7 +8,7 @@ description: >
   The Siemens Xcelerator Developer Portal provides OpenAPI specifications, SDKs, Postman
   collections, and sandbox access for developers integrating with these industrial platforms.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/siemens-plm/refs/heads/main/apis.yml
 created: 2026-06-13
 modified: 2026-06-13
@@ -35,7 +35,7 @@ apis:
       access to cost estimation, dynamic calculations, and bulk export of cost data. Supports
       OAuth 2.0 authentication via Resource Owner Password, Token Exchange, or TcPCM session
       key flows. Bulk export endpoints require license PPC10029.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.siemens.com/tcpcm/overview.html
     baseURL: https://developer.siemens.com
     tags:
@@ -64,7 +64,7 @@ apis:
       developers programmatic control over requirements, work items, documents, test cases,
       and project structure. Supports Personal Access Token, session-based token, JWT, and
       Teamcenter SSO authentication. OpenAPI spec available for download.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.siemens.com/polarion/rest-api-spec.html
     baseURL: https://developer.siemens.com
     tags:
@@ -91,7 +91,7 @@ apis:
       platform providing access to time series data, asset management, event management,
       Opcenter Intelligence, and manufacturing performance analytics. Authentication via
       OAuth 2.0 through Siemens Xcelerator Developer Dashboard.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.siemens.com/apis.html
     baseURL: https://developer.siemens.com
     tags:
@@ -118,7 +118,7 @@ apis:
       management platform. Provides procurement, product, carbon footprint, and task
       management endpoints enabling organizations to track and manage product carbon
       footprints across global supply chains while preserving data sovereignty.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.siemens.com/sigreen/product-api/api-product.html
     baseURL: https://developer.siemens.com
     tags:
@@ -142,7 +142,7 @@ apis:
       information capabilities for functional obsolescence risk mitigation. Available via
       subscription through the Siemens Xcelerator Developer Portal. Sandbox access can be
       requested through the Developer Dashboard. OpenAPI specification available for download.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.siemens.com/product-information-api/rest-api-spec.html
     baseURL: https://developer.siemens.com
     tags:
