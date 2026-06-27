@@ -155,7 +155,7 @@ apis:
         url: https://developer.siemens.com/product-information-api/rest-api-spec.html
       - type: OpenAPI
         url: https://developer.siemens.com/product-information-api/product-information-api.spec.yaml
-      - type: Changelog
+      - type: ChangeLog
         url: https://developer.siemens.com/product-information-api/changelog.html
     contact:
       - FN: Siemens Developer Portal
