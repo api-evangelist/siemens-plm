@@ -163,6 +163,12 @@ apis:
         email: ""
 
 common:
+  - type: VulnerabilityDisclosure
+    url: security/siemens-plm-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/siemens-plm-domain-security.yml
+  - type: Authentication
+    url: authentication/siemens-plm-authentication.yml
   - type: Website
     url: https://www.plm.automation.siemens.com/global/en/
   - type: Documentation

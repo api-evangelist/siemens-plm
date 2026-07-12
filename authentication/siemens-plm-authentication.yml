@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/polarion-rest-api.json, openapi/product-information-api.yaml, openapi/teamcenter-product-cost-management.yaml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/polarion-rest-api.json
+  - openapi/teamcenter-product-cost-management.yaml
+- name: Authorization
+  type: apiKey
+  in: header
+  parameter: Authorization
+  sources:
+  - openapi/product-information-api.yaml
