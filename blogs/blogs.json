@@ -2,17 +2,17 @@
   "repo": "siemens-plm",
   "feeds": [
     {
-      "source": "https://blogs.sw.siemens.com/",
+      "source": "https://blogs.sw.siemens.com/feed/",
       "feed_url": "https://blogs.sw.siemens.com/feed/",
       "title": "",
       "saved": 0,
-      "method": "discovered"
+      "method": "feed"
     },
     {
       "source": "https://www.linkedin.com/company/siemens-plm",
       "error": "HTTPError"
     }
   ],
-  "fetched": "2026-06-27T12:03:07Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 11
 }
