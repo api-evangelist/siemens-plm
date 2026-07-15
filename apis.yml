@@ -163,6 +163,8 @@ apis:
         email: ""
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/siemens-plm-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/siemens-plm-vulnerability-disclosure.yml
   - type: DomainSecurity
