@@ -1,0 +1,950 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Polarion REST API Support
+    url: https://support.sw.siemens.com/
+  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Polarion REST Account Document Parts API
+  version: v1
+servers:
+- url: https://example.com/polarion/rest/v1
+security:
+- bearerAuth: []
+tags:
+- name: Document Parts
+paths:
+  /projects/{projectId}/spaces/{spaceId}/documents/{documentName}/parts:
+    get:
+      operationId: getDocumentParts
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: spaceId
+        in: path
+        description: The Space ID. (Use '_default' without quotes to address the default Space.)
+        required: true
+        schema:
+          type: string
+      - name: documentName
+        in: path
+        description: The Document name.
+        required: true
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        description: Limit the number of entities returned in a single response. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: integer
+          format: int32
+      - name: page[number]
+        in: query
+        description: Specify the page number to be returned. Counting starts from 1. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: integer
+          format: int32
+      - name: fields
+        in: query
+        description: Filter returned resource fields. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        style: deepObject
+        schema:
+          $ref: '#/components/schemas/sparseFields'
+      - name: include
+        in: query
+        description: Include related entities. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: string
+      - name: revision
+        in: query
+        description: The revision ID.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/document_partsListGetResponse'
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Returns a list of Document Parts.
+      tags:
+      - Document Parts
+    post:
+      operationId: postDocumentParts
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: spaceId
+        in: path
+        description: The Space ID. (Use '_default' without quotes to address the default Space.)
+        required: true
+        schema:
+          type: string
+      - name: documentName
+        in: path
+        description: The Document name.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/document_partsListPostRequest'
+        description: The Document Part(s) body.
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/document_partsListPostResponse'
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        '409':
+          description: Conflict
+        '413':
+          description: Request Entity Too Large
+        '415':
+          description: Unsupported Media Type
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Creates a list of Document Parts.
+      tags:
+      - Document Parts
+  /projects/{projectId}/spaces/{spaceId}/documents/{documentName}/parts/{partId}:
+    get:
+      operationId: getDocumentPart
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: spaceId
+        in: path
+        description: The Space ID. (Use '_default' without quotes to address the default Space.)
+        required: true
+        schema:
+          type: string
+      - name: documentName
+        in: path
+        description: The Document name.
+        required: true
+        schema:
+          type: string
+      - name: partId
+        in: path
+        description: The Document Part ID.
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Filter returned resource fields. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        style: deepObject
+        schema:
+          $ref: '#/components/schemas/sparseFields'
+      - name: include
+        in: query
+        description: Include related entities. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: string
+      - name: revision
+        in: query
+        description: The revision ID.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/document_partsSingleGetResponse'
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Returns the specified Document Part.
+      tags:
+      - Document Parts
+  /projects/{projectId}/spaces/{spaceId}/documents/{documentName}/parts/{partId}/actions/move:
+    post:
+      operationId: moveDocumentParts
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: spaceId
+        in: path
+        description: The Space ID. (Use '_default' without quotes to address the default Space.)
+        required: true
+        schema:
+          type: string
+      - name: documentName
+        in: path
+        description: The Document name.
+        required: true
+        schema:
+          type: string
+      - name: partId
+        in: path
+        description: The Document Part ID.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/moveDocumentPartRequestBody'
+        description: References for repositioning Work Item Document Part in the Document.
+        required: true
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+        '413':
+          description: Request Entity Too Large
+        '415':
+          description: Unsupported Media Type
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Moves a Work Item Document Part.
+      tags:
+      - Document Parts
+components:
+  schemas:
+    moveDocumentPartRequestBody:
+      properties:
+        after:
+          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+          type: string
+        before:
+          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+          type: string
+        parent:
+          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+          type: string
+      type: object
+    sparseFields:
+      properties:
+        categories:
+          description: Requested fields
+          example: '@all'
+          type: string
+        collections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        customfields:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_parts:
+          description: Requested fields
+          example: '@all'
+          type: string
+        documents:
+          description: Requested fields
+          example: '@all'
+          type: string
+        enumerations:
+          description: Requested fields
+          example: '@all'
+          type: string
+        externallylinkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        featureselections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        globalroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        icons:
+          description: Requested fields
+          example: '@all'
+          type: string
+        jobs:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_assignments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_slots:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_types:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedoslcresources:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        metadata:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        pages:
+          description: Requested fields
+          example: '@all'
+          type: string
+        plans:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projectroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projects:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projecttemplates:
+          description: Requested fields
+          example: '@all'
+          type: string
+        revisions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameter_definitions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameters:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecord_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testruns:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststep_results:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststepresult_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststeps:
+          description: Requested fields
+          example: '@all'
+          type: string
+        usergroups:
+          description: Requested fields
+          example: '@all'
+          type: string
+        users:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_approvals:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+      type: object
+    document_partsSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - document_parts
+              type: string
+            id:
+              example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+              type: string
+            revision:
+              example: '1234'
+              type: string
+            attributes:
+              properties:
+                content:
+                  example: <div id="polarion_wiki macro name=module-workitem;params=id=workitem_MyWorkItemId"></div>
+                  type: string
+                external:
+                  type: boolean
+                id:
+                  example: workitem_MyWorkItemId
+                  type: string
+                layout:
+                  example: 0
+                  format: int32
+                  type: integer
+                level:
+                  example: 0
+                  format: int32
+                  type: integer
+                type:
+                  example: workitem
+                  type: string
+              type: object
+            relationships:
+              properties:
+                nextPart:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - document_parts
+                          type: string
+                      type: object
+                  type: object
+                previousPart:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - document_parts
+                          type: string
+                      type: object
+                  type: object
+                workItem:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MyWorkItemId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - workitems
+                          type: string
+                      type: object
+                  type: object
+              type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts/workitem_MyWorkItemId?revision=1234
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts/workitem_MyWorkItemId?revision=1234
+              type: string
+          type: object
+      type: object
+    document_partsListGetResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - document_parts
+                type: string
+              id:
+                example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                type: string
+              revision:
+                example: '1234'
+                type: string
+              attributes:
+                properties:
+                  content:
+                    example: <div id="polarion_wiki macro name=module-workitem;params=id=workitem_MyWorkItemId"></div>
+                    type: string
+                  external:
+                    type: boolean
+                  id:
+                    example: workitem_MyWorkItemId
+                    type: string
+                  layout:
+                    example: 0
+                    format: int32
+                    type: integer
+                  level:
+                    example: 0
+                    format: int32
+                    type: integer
+                  type:
+                    example: workitem
+                    type: string
+                type: object
+              relationships:
+                properties:
+                  nextPart:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - document_parts
+                            type: string
+                        type: object
+                    type: object
+                  previousPart:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - document_parts
+                            type: string
+                        type: object
+                    type: object
+                  workItem:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyWorkItemId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - workitems
+                            type: string
+                        type: object
+                    type: object
+                type: object
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts/workitem_MyWorkItemId?revision=1234
+                    type: string
+                type: object
+              meta:
+                properties:
+                  errors:
+                    items:
+                      properties:
+                        detail:
+                          description: Human-readable explanation specific to this occurrence of the problem.
+                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                          type: string
+                        source:
+                          properties:
+                            parameter:
+                              description: String indicating which URI query parameter caused the error.
+                              example: revision
+                              type: string
+                            pointer:
+                              description: JSON Pointer to the associated entity in the request document.
+                              example: $.data
+                              type: string
+                            resource:
+                              description: Resource causing the error.
+                              properties:
+                                id:
+                                  example: MyProjectId/id
+                                  type: string
+                                type:
+                                  example: type
+                                  type: string
+                              type: object
+                          type: object
+                        status:
+                          description: HTTP status code applicable to this problem.
+                          example: '400'
+                          type: string
+                        title:
+                          description: Short, human-readable summary of the problem.
+                          example: Bad Request
+                          type: string
+                      type: object
+                    type: array
+                type: object
+            type: object
+          type: array
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            first:
+              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts?page%5Bsize%5D=10&page%5Bnumber%5D=1
+              type: string
+            last:
+              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts?page%5Bsize%5D=10&page%5Bnumber%5D=9
+              type: string
+            next:
+              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts?page%5Bsize%5D=10&page%5Bnumber%5D=6
+              type: string
+            prev:
+              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts?page%5Bsize%5D=10&page%5Bnumber%5D=4
+              type: string
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts?page%5Bsize%5D=10&page%5Bnumber%5D=5
+              type: string
+          type: object
+        meta:
+          properties:
+            totalCount:
+              format: int32
+              type: integer
+          type: object
+      type: object
+    document_partsListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - document_parts
+                type: string
+              attributes:
+                properties:
+                  layout:
+                    example: 0
+                    format: int32
+                    type: integer
+                  level:
+                    example: 0
+                    format: int32
+                    type: integer
+                  type:
+                    example: workitem
+                    type: string
+                type: object
+              relationships:
+                properties:
+                  nextPart:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                            type: string
+                          type:
+                            enum:
+                            - document_parts
+                            type: string
+                        type: object
+                    type: object
+                  previousPart:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                            type: string
+                          type:
+                            enum:
+                            - document_parts
+                            type: string
+                        type: object
+                    type: object
+                  workItem:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyWorkItemId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - workitems
+                            type: string
+                        type: object
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    document_partsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - document_parts
+                type: string
+              id:
+                example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts/workitem_MyWorkItemId?revision=1234
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

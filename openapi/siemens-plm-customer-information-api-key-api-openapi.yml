@@ -1,0 +1,79 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Polarion REST API Support
+    url: https://support.sw.siemens.com/
+  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Polarion REST Account Customer Information: API Key API'
+  version: v1
+servers:
+- url: https://example.com/polarion/rest/v1
+security:
+- bearerAuth: []
+tags:
+- name: 'Customer Information: API Key'
+paths:
+  /api/api-key-details:
+    get:
+      operationId: get-api-key-details
+      summary: ''
+      description: Verify and monitor the status of your API key with this endpoint. It provides essential information regarding your API key's validity and remaining credit balance for each resource available.
+      tags:
+      - 'Customer Information: API Key'
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKeyDetails'
+        '401':
+          description: The api key was missing, malformed or did not exist in the database.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 401
+                  message: Missing or malformed api key
+                  error: Unauthorized
+      security:
+      - Authorization: []
+components:
+  schemas:
+    ApiKeyDetails:
+      type: object
+      properties:
+        customerId:
+          type: string
+          description: The id of the customer (owner of the api key).
+          example: 1d616354-1451-4d66-b001-1a44e6d51086
+          format: uuid
+        customerName:
+          type: string
+          description: The name of the customer.
+          example: Epic GmbH
+        apiKeyExpiryDate:
+          type: string
+          description: The expiry date of the api key, after which it can no longer be used.
+          example: '2023-02-12T11:54:55.031Z'
+          format: date-time
+        credits:
+          type: object
+          description: An object of numerical credits that this api key owns. Each credit belongs to a specific resource like `Obsolescence` or `Delivery` and is decremented for each request to that specific resource.
+          example:
+            obsolescence: 1
+            delivery: 2
+      required:
+      - customerId
+      - customerName
+      - apiKeyExpiryDate
+      - credits
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

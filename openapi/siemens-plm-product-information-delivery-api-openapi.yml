@@ -1,0 +1,197 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Polarion REST API Support
+    url: https://support.sw.siemens.com/
+  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Polarion REST Account Product Information: Delivery API'
+  version: v1
+servers:
+- url: https://example.com/polarion/rest/v1
+security:
+- bearerAuth: []
+tags:
+- name: 'Product Information: Delivery'
+paths:
+  /api/products/{productNumber}/delivery:
+    get:
+      operationId: get-delivery
+      summary: ''
+      description: The endpoint delivers detailed information regarding the delivery of a specific product. With this resource, you can easily track the delivery timeline, cost, and other relevant details for the product in question. Ensure that you have the correct product number handy to obtain the most accurate and up-to-date information.
+      tags:
+      - 'Product Information: Delivery'
+      parameters:
+      - name: Api-Version
+        in: header
+        description: The version of the API that shall be used.
+        schema:
+          enum:
+          - v2-earlyaccess (latest)
+          type: string
+      - name: productNumber
+        required: true
+        in: path
+        examples:
+          MLFB:
+            value: 1PH8350-7MK40-0AX0
+          MLFB with Z-Option:
+            value: 1PH8350-7MK40-0AX0-Z A72+G14+K85+X06
+          Disarranged MLFB:
+            value: 1ph83507mk400ax0
+          Disarranged MLFB with Z-Option:
+            value: 1ph83507mk400ax0za72g14k85x06
+        description: The ID of the product (MLFB).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Delivery'
+        '401':
+          description: The api key was missing, malformed or did not exist in the database.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 401
+                  message: Missing or malformed api key
+                  error: Unauthorized
+        '403':
+          description: The customer that owns the api key did not have enough credit to commission the request.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 403
+                  message: Insufficient credit, please contact us
+                  error: Forbidden
+        '404':
+          description: The product with the given product number did not exist in the database.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 404
+                  message: Unknown product number or incomplete record
+                  error: Not Found
+      security:
+      - Authorization: []
+components:
+  schemas:
+    DeliveryTimes:
+      type: object
+      properties:
+        newPart:
+          type: integer
+          nullable: true
+          example: 20
+          minimum: 0
+          format: int32
+        sparePart:
+          type: integer
+          nullable: true
+          example: 30
+          minimum: 0
+          format: int32
+        repairPart:
+          type: integer
+          nullable: true
+          example: 10
+          minimum: 0
+          format: int32
+      required:
+      - newPart
+      - sparePart
+      - repairPart
+    Prices:
+      type: object
+      properties:
+        newPart:
+          type: string
+          nullable: true
+          example: 300 €
+        sparePart:
+          type: string
+          nullable: true
+          example: 500 €
+        repairPart:
+          type: string
+          nullable: true
+          example: 400 €
+      required:
+      - newPart
+      - sparePart
+      - repairPart
+    Delivery:
+      type: object
+      properties:
+        productNumber:
+          type: string
+          description: The ID of the product (MLFB, ...).
+          example: 6SN1123-1AA00-0CA1
+        minimumOrderQuantity:
+          type: integer
+          description: The minimum order quantity for new parts.
+          example: 1
+          minimum: 0
+          format: int32
+        countryOfOrigin:
+          type: string
+          description: The country of production or manufacture, given as country-code.
+          example: DE
+        commodityCode:
+          type: integer
+          description: The commodity code is a numerical code used to classify the product in international trade. It helps to facilitate trade, ensure the correct application of tariffs and taxes, and track the movement of goods for statistical purposes.
+          example: 85015394
+          minimum: 0
+          format: int32
+        eccn:
+          type: string
+          description: The Export Control Classification Number of the product.
+          example: EAR99S
+        groupCode:
+          type: string
+          description: The GroupCode of the product.
+          example: R111
+        productGroup:
+          type: integer
+          description: The ProductGroup of the product.
+          example: 4303
+          minimum: 0
+          format: int32
+        deliveryTimes:
+          description: 'The standard lead time ex-works of the product.
+
+            Lead times vary for new, spare or repair parts.
+
+
+            A delivery time of `null` means that the product can only be delivered on request.'
+          allOf:
+          - $ref: '#/components/schemas/DeliveryTimes'
+        prices:
+          description: 'The prices of the product.
+
+            Prices vary for new, spare or repair parts.'
+          allOf:
+          - $ref: '#/components/schemas/Prices'
+      required:
+      - productNumber
+      - minimumOrderQuantity
+      - countryOfOrigin
+      - commodityCode
+      - eccn
+      - groupCode
+      - productGroup
+      - deliveryTimes
+      - prices
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

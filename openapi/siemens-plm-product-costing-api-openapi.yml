@@ -1,0 +1,155 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Polarion REST API Support
+    url: https://support.sw.siemens.com/
+  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Polarion REST Account Product costing API
+  version: v1
+servers:
+- url: https://example.com/polarion/rest/v1
+security:
+- bearerAuth: []
+tags:
+- name: Product costing
+paths:
+  /api/v1/product-costing/parts/{id}:
+    delete:
+      tags:
+      - Product costing
+      summary: Delete a product costing part by id. Available since version 2512.2602.
+      description: All usages of the given product costing part will be deleted and the part will be moved to the recycle bin.
+      operationId: ''
+      responses:
+        '204':
+          description: No Content. Part successfully deleted.
+        '400':
+          $ref: '#/components/responses/ErrorBadRequest'
+        '401':
+          $ref: '#/components/responses/ErrorUnauthorized'
+        '403':
+          $ref: '#/components/responses/ErrorForbidden'
+        '404':
+          $ref: '#/components/responses/ErrorNotFound'
+        '409':
+          $ref: '#/components/responses/ErrorConflict'
+        '500':
+          $ref: '#/components/responses/ErrorInternalServerError'
+      security:
+      - bearerHttpAuthentication: []
+      parameters:
+      - in: path
+        name: id
+        description: Id of the part
+        schema:
+          type: integer
+        required: true
+components:
+  responses:
+    ErrorNotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Resource with id '5' was not found
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorInternalServerError:
+      description: An unexpected error occurred and the server is not fulfilling the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Internal error
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorUnauthorized:
+      description: The client is not providing valid authentication credentials for the target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Invalid user or password
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorBadRequest:
+      description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Invalid JSON format
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorConflict:
+      description: The request could not be completed due to a conflict with the current state of the target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Conflict with current state of the resource
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorForbidden:
+      description: The client is not allowed to access the resource. The client SHOULD not repeat the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Not allowed to access calculation with id '271'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        Errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+          readOnly: true
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          readOnly: true
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

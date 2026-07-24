@@ -1,0 +1,191 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Polarion REST API Support
+    url: https://support.sw.siemens.com/
+  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Polarion REST Account Import/Export: MasterData API'
+  version: v1
+servers:
+- url: https://example.com/polarion/rest/v1
+security:
+- bearerAuth: []
+tags:
+- name: 'Import/Export: MasterData'
+paths:
+  /api/v1/MasterData/Export:
+    post:
+      tags:
+      - 'Import/Export: MasterData'
+      operationId: ExportMasterData_ExportMasterDataToResponseModel
+      summary: Exports master data using export configurations
+      security:
+      - bearerHttpAuthentication: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportMasterDataRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ExportMasterDataRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ExportMasterDataRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ExportMasterDataRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExportMasterDataRequestModel'
+        required: true
+      responses:
+        '200':
+          description: Returns export data of given master data IDs using given export configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+        '401':
+          description: Indicates that the requested resource requires authentication.
+        '405':
+          description: Indicates that the request method (POST or GET) is not allowed on the requested resource.
+        '500':
+          description: Indicates that a generic error has occurred on the server.
+      deprecated: false
+  /api/v1/MasterData/Import:
+    post:
+      tags:
+      - 'Import/Export: MasterData'
+      operationId: ImportMasterData_ImportMasterDataFromRequestModel
+      summary: Import master data using import configurations
+      security:
+      - bearerHttpAuthentication: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportMasterDataRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ImportMasterDataRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ImportMasterDataRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ImportMasterDataRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ImportMasterDataRequestModel'
+        required: true
+      responses:
+        '200':
+          description: Imports master data using a given import configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMResponseModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMResponseModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMResponseModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMResponseModel'
+        '401':
+          description: Indicates that the requested resource requires authentication.
+        '500':
+          description: Indicates that a generic error has occurred on the server.
+      deprecated: false
+components:
+  schemas:
+    TcPCMResponseModel:
+      type: object
+      properties:
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
+    ImportMasterDataRequestModel:
+      type: object
+      properties:
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+          - Designation: Carbon
+            Unique identifier: Custom.Unique.Carbon
+            Type: Cost value
+          - Designation: Reinvestment rate
+            Unique identifier: Custom.Unique.Reinvestment
+            Type: Unit
+        PlantUniqueKey:
+          type: string
+          example: TcPCM-001
+        ConfigurationGuid:
+          type: string
+          example: 9231ad11-744e-481a-b9ec-bce80979ccbd
+    TcPCMWebApiResponseModel_of_DataTable:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
+    Guid:
+      title: GUID
+      type: string
+      format: uuid
+      maxLength: 36
+      description: Global unique identifier
+      example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+    ExportMasterDataRequestModel:
+      type: object
+      properties:
+        Ids:
+          type: array
+          items:
+            format: int32
+            type: integer
+          example:
+          - 52
+          - 60
+          description: Database instance specific identifiers
+        Guids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Guid'
+          description: Database instance independent identifiers
+        ConfigurationGuid:
+          type: string
+          example: e1548f26-af8d-4173-9881-7ce1de530911
+          description: Export configuration Guid
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

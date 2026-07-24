@@ -1,0 +1,299 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Polarion REST API Support
+    url: https://support.sw.siemens.com/
+  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Polarion REST Account Administration API
+  version: v1
+servers:
+- url: https://example.com/polarion/rest/v1
+security:
+- bearerAuth: []
+tags:
+- name: Administration
+paths:
+  /api/v1/administration/users/{userName}:
+    get:
+      tags:
+      - Administration
+      summary: Fetch a user User by {userName}. Only allowed for admins.
+      operationId: GetUser_GetUser
+      security:
+      - bearerHttpAuthentication: []
+      parameters:
+      - name: userName
+        in: path
+        description: User name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response_of_UserResponseModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Response_of_UserResponseModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Response_of_UserResponseModel'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/Response_of_UserResponseModel'
+        '401':
+          description: Unauthorized
+        '404':
+          description: NotFound
+      deprecated: false
+      description: ''
+    patch:
+      tags:
+      - Administration
+      summary: Activates or deactivate a user
+      operationId: ToggleUserActivation_ToggleActivation
+      security:
+      - bearerHttpAuthentication: []
+      parameters:
+      - name: userName
+        in: path
+        description: User name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToggleActivationRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ToggleActivationRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ToggleActivationRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ToggleActivationRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ToggleActivationRequestModel'
+        description: The request represents that {userName} will be either activated or deactivated.
+        required: true
+      responses:
+        '204':
+          description: NoContent
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ErrorLegacy'
+                readOnly: true
+            text/json:
+              schema:
+                type: object
+                properties:
+                  Errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ErrorLegacy'
+                readOnly: true
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  Errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ErrorLegacy'
+                readOnly: true
+            text/xml:
+              schema:
+                type: object
+                properties:
+                  Errors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ErrorLegacy'
+                readOnly: true
+        '401':
+          description: Unauthorized
+        '404':
+          description: NotFound
+        '500':
+          description: InternalServerError
+      deprecated: false
+  /api/v1/administration/application-version:
+    get:
+      tags:
+      - Administration
+      summary: Gets the current version of TcPCM. Available since version 2412
+      description: Gets the current version of TcPCM
+      operationId: Administration_GetApplicationVersion
+      parameters: []
+      responses:
+        '200':
+          description: Success. Returns the current running version of TcPCM
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      version:
+                        type: string
+                        description: TcPCM version
+                    required:
+                    - version
+                description: 'data
+
+                  '
+                required:
+                - data
+              example:
+                data:
+                  version: '2406.0001'
+        '400':
+          $ref: '#/components/responses/ErrorBadRequestLegacy'
+        '401':
+          $ref: '#/components/responses/ErrorUnauthorizedLegacy'
+        '406':
+          $ref: '#/components/responses/ErrorNotAcceptableLegacy'
+        '500':
+          $ref: '#/components/responses/ErrorInternalServerErrorLegacy'
+      security:
+      - bearerHttpAuthentication: []
+components:
+  responses:
+    ErrorInternalServerErrorLegacy:
+      description: An unexpected error occurred and the server is not fulfilling the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Internal error
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorBadRequestLegacy:
+      description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Invalid JSON format
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorNotAcceptableLegacy:
+      description: The service is not able to respond using the request media-type or representation asked by the client in the Accept header.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Media type not accepted
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorUnauthorizedLegacy:
+      description: The client is not providing valid authentication credentials for the target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Invalid user or password
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+  schemas:
+    UserResponseModelAttributes:
+      type: object
+      properties:
+        userName:
+          type: string
+          readOnly: true
+        emailAddress:
+          type: string
+          readOnly: true
+        firstName:
+          type: string
+          readOnly: true
+        lastName:
+          type: string
+          readOnly: true
+        active:
+          type: boolean
+          readOnly: true
+        roleAssignments:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleAssignmentResponseModel'
+          readOnly: true
+    ErrorLegacy:
+      type: object
+      properties:
+        Detail:
+          type: string
+          readOnly: true
+    Response_of_UserResponseModel:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserResponseModel'
+    UserResponseModel:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        attributes:
+          $ref: '#/components/schemas/UserResponseModelAttributes'
+    RoleAssignmentResponseModel:
+      type: object
+      properties:
+        client:
+          type: string
+          readOnly: true
+        role:
+          type: string
+          readOnly: true
+    ToggleActivationRequestModel:
+      required:
+      - active
+      type: object
+      properties:
+        active:
+          type: boolean
+          example: false
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

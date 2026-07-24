@@ -1,0 +1,635 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Polarion REST API Support
+    url: https://support.sw.siemens.com/
+  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Polarion REST Account Metadata API
+  version: v1
+servers:
+- url: https://example.com/polarion/rest/v1
+security:
+- bearerAuth: []
+tags:
+- name: Metadata
+paths:
+  /actions/getFieldsMetadata:
+    get:
+      description: 'Metadata support is limited to the following resource types: **Work Items**, **Documents**, **Test Runs**, and **Plans**.'
+      operationId: getGlobalFieldsMetadata
+      parameters:
+      - name: resourceType
+        in: query
+        description: 'The Resource Type. Accepted values: workitems, documents, testruns and plans.'
+        required: true
+        schema:
+          type: string
+      - name: targetType
+        in: query
+        description: The Type of the object. Use '~' without quotes to represent no target Type.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fieldsMetadataActionResponseBody'
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Returns fields for the resource type and its target type in the Global context.
+      tags:
+      - Metadata
+  /metadata:
+    get:
+      operationId: getMetadata
+      parameters:
+      - name: fields
+        in: query
+        description: Filter returned resource fields. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        style: deepObject
+        schema:
+          $ref: '#/components/schemas/sparseFields'
+      - name: include
+        in: query
+        description: Include related entities. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/metadataSingleGetResponse'
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Returns global metadata, including version, build, REST API configuration properties, etc. (Available to all REST API users.)
+      tags:
+      - Metadata
+  /projects/{projectId}/actions/getFieldsMetadata:
+    get:
+      description: 'Metadata support is limited to the following resource types: **Work Items**, **Documents**, **Test Runs**, and **Plans**.'
+      operationId: getProjectFieldsMetadata
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: resourceType
+        in: query
+        description: 'The Resource Type. Accepted values: workitems, documents, testruns and plans.'
+        required: true
+        schema:
+          type: string
+      - name: targetType
+        in: query
+        description: The Type of the object. Use '~' without quotes to represent no target Type.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fieldsMetadataActionResponseBody'
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Returns fields for the resource type and its target type in the Project context.
+      tags:
+      - Metadata
+components:
+  schemas:
+    fieldsMetadataActionResponseBody:
+      properties:
+        data:
+          properties:
+            attributes:
+              properties:
+                enumField:
+                  properties:
+                    label:
+                      example: field-label
+                      type: string
+                    type:
+                      properties:
+                        enumContext:
+                          example: enum-context
+                          type: string
+                        enumName:
+                          example: enum-name
+                          type: string
+                        kind:
+                          example: enumeration
+                          type: string
+                      type: object
+                  type: object
+                listField:
+                  properties:
+                    label:
+                      example: field-label
+                      type: string
+                    type:
+                      properties:
+                        itemType:
+                          properties:
+                            kind:
+                              properties:
+                                enum:
+                                  items:
+                                    enum:
+                                    - string
+                                    - text
+                                    - text/html
+                                    - integer
+                                    - float
+                                    - currency
+                                    - time
+                                    - date
+                                    - date-time
+                                    - boolean
+                                    - structure
+                                    - relationship
+                                    type: string
+                                  type: array
+                              type: object
+                          type: object
+                        kind:
+                          example: list
+                          type: string
+                      type: object
+                  type: object
+                primitiveField:
+                  properties:
+                    label:
+                      example: field-label
+                      type: string
+                    type:
+                      properties:
+                        kind:
+                          properties:
+                            enum:
+                              items:
+                                enum:
+                                - string
+                                - text
+                                - text/html
+                                - integer
+                                - float
+                                - currency
+                                - time
+                                - date
+                                - date-time
+                                - boolean
+                                type: string
+                              type: array
+                          type: object
+                      type: object
+                  type: object
+                structField:
+                  properties:
+                    label:
+                      example: field-label
+                      type: string
+                    type:
+                      properties:
+                        kind:
+                          example: structure
+                          type: string
+                        structureName:
+                          example: structureId
+                          type: string
+                      type: object
+                  type: object
+              type: object
+            relationships:
+              properties:
+                relationshipField:
+                  properties:
+                    label:
+                      example: field-label
+                      type: string
+                    type:
+                      properties:
+                        kind:
+                          example: relationship
+                          type: string
+                        multi:
+                          example: true
+                          type: boolean
+                        targetResourceTypes:
+                          items:
+                            example: resource-type
+                            type: string
+                          type: array
+                      type: object
+                  type: object
+              type: object
+          type: object
+        links:
+          properties:
+            self:
+              example: https://example.com/polarion/rest/v1/projects/MyProjectId/actions/getFieldsMetadata?resourceType=MyResourceType&targetType=MyTargetType
+              type: string
+          type: object
+      type: object
+    metadataSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - metadata
+              type: string
+            id:
+              example: metadata
+              type: string
+            attributes:
+              properties:
+                apiProperties:
+                  properties:
+                    bodySizeLimit:
+                      example: 2097152
+                      type: integer
+                    defaultPageSize:
+                      example: 100
+                      type: integer
+                    maxIncludedSize:
+                      example: 500
+                      type: integer
+                    maxPageSize:
+                      example: 200
+                      type: integer
+                    maxRelationshipSize:
+                      example: 100
+                      type: integer
+                  type: object
+                build:
+                  example: 20250613-1404-master-e594c717
+                  type: string
+                cluster:
+                  example: cluster1
+                  type: string
+                logoUrl:
+                  example: /images/logos/repo_login_logo.png
+                  type: string
+                node:
+                  example: node2
+                  type: string
+                timezone:
+                  example: +05:30
+                  type: string
+                version:
+                  example: 3.25.12
+                  type: string
+              type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/metadata
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/metadata
+              type: string
+          type: object
+      type: object
+    sparseFields:
+      properties:
+        categories:
+          description: Requested fields
+          example: '@all'
+          type: string
+        collections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        customfields:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_parts:
+          description: Requested fields
+          example: '@all'
+          type: string
+        documents:
+          description: Requested fields
+          example: '@all'
+          type: string
+        enumerations:
+          description: Requested fields
+          example: '@all'
+          type: string
+        externallylinkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        featureselections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        globalroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        icons:
+          description: Requested fields
+          example: '@all'
+          type: string
+        jobs:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_assignments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_slots:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_types:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedoslcresources:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        metadata:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        pages:
+          description: Requested fields
+          example: '@all'
+          type: string
+        plans:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projectroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projects:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projecttemplates:
+          description: Requested fields
+          example: '@all'
+          type: string
+        revisions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameter_definitions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameters:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecord_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testruns:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststep_results:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststepresult_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststeps:
+          description: Requested fields
+          example: '@all'
+          type: string
+        usergroups:
+          description: Requested fields
+          example: '@all'
+          type: string
+        users:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_approvals:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

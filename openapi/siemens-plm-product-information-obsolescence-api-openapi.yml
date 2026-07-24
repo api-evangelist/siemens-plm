@@ -1,0 +1,237 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Polarion REST API Support
+    url: https://support.sw.siemens.com/
+  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Polarion REST Account Product Information: Obsolescence API'
+  version: v1
+servers:
+- url: https://example.com/polarion/rest/v1
+security:
+- bearerAuth: []
+tags:
+- name: 'Product Information: Obsolescence'
+paths:
+  /api/products/{productNumber}/obsolescence:
+    get:
+      operationId: get-obsolescence
+      summary: ''
+      description: This endpoint provides in-depth obsolescence information for a specific product number. Utilize it to stay updated on the product's availability status, discover substitute or successor options, and plan accordingly.
+      tags:
+      - 'Product Information: Obsolescence'
+      parameters:
+      - name: Api-Version
+        in: header
+        description: The version of the API that shall be used.
+        schema:
+          enum:
+          - v2-earlyaccess (latest)
+          type: string
+      - name: productNumber
+        required: true
+        in: path
+        examples:
+          MLFB:
+            value: 1PH8350-7MK40-0AX0
+          MLFB with Z-Option:
+            value: 1PH8350-7MK40-0AX0-Z A72+G14+K85+X06
+          Disarranged MLFB:
+            value: 1ph83507mk400ax0
+          Disarranged MLFB with Z-Option:
+            value: 1ph83507mk400ax0za72g14k85x06
+        description: The ID of the product (MLFB).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Obsolescence'
+        '401':
+          description: The api key was missing, malformed or did not exist in the database.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 401
+                  message: Missing or malformed api key
+                  error: Unauthorized
+        '403':
+          description: The customer that owns the api key did not have enough credit to commission the request.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 403
+                  message: Insufficient credit, please contact us
+                  error: Forbidden
+        '404':
+          description: The product with the given product number did not exist in the database.
+          content:
+            application/json:
+              schema:
+                example:
+                  statusCode: 404
+                  message: Unknown product number or incomplete record
+                  error: Not Found
+      security:
+      - Authorization: []
+components:
+  schemas:
+    Obsolescence:
+      type: object
+      properties:
+        productNumber:
+          type: string
+          description: The ID of the product (MLFB, ...).
+          example: 6SN1123-1AA00-0CA1
+        name:
+          type: string
+          description: The product's name.
+          example: SIMODRIVE 611 1-Axis Power Module 50A int.cooling
+        info:
+          type: string
+          description: Abbreviated product description.
+          example: POW.MOD.INT.50A 6SN1123-1AA00-0CA1
+        purchasabilityNote:
+          type: string
+          description: Additional information on the product's purchasability that may provide guidance if no successor or substitute was found.
+        manufacturer:
+          type: string
+          description: The company that makes the product.
+          example: Siemens AG
+        salesRelease:
+          type: string
+          description: Product can be ordered but not delivered. Existing dates and deadlines are not confirmed (PM280).
+          example: '2023-02-12T11:54:55.031Z'
+          format: date-time
+        deliveryRelease:
+          type: string
+          description: Product can be ordered and will be delivered from the shipping locations (PM300).
+          example: '2023-02-12T11:54:55.031Z'
+          format: date-time
+        phaseOutAnnouncement:
+          type: string
+          description: Product can still be ordered (PM400).
+          example: '2023-02-12T11:54:55.031Z'
+          format: date-time
+        productCancellation:
+          type: string
+          description: Product can still be ordered and delivered in the spare part business but incoming orders are rejected (PM410).
+          example: '2023-02-12T11:54:55.031Z'
+          format: date-time
+        productDiscontinuation:
+          type: string
+          description: Product can only be ordered and delivered in the spare part business in the context of warranty/repair (PM490).
+          example: '2023-02-12T11:54:55.031Z'
+          format: date-time
+        supportUrl:
+          type: string
+          description: URL of the product's support page.
+          example: https://support.industry.siemens.com/cs/ww/en/pv/6SN1123-1AA00-0CA1/pi
+          format: url
+        purchasabilityStatus:
+          type: string
+          description: 'Information on how the product can be purchased.
+
+
+            PURCHASABLE = The product can still be purchased from the manufacturer.
+
+
+            SUBSTITUTE_PURCHASABLE = The original product can''t be purchased anymore, but a substitute exists.
+
+
+            SUCCESSOR_PURCHASABLE = The original product can''t be purchased anymore, but a successor exists.
+
+
+            NOT_PURCHASABLE = Neither the original product nor its successors or substitutes can be purchased.'
+          enum:
+          - PURCHASABLE
+          - SUBSTITUTE_PURCHASABLE
+          - SUCCESSOR_PURCHASABLE
+          - NOT_PURCHASABLE
+        obsolescenceLevel:
+          type: number
+          description: '1 = Product has been discontinued and no successor or substitute exists.
+
+
+            2 = Item has been discontinued but a successor exists.
+
+
+            3 = Availability horizon of 1 year.
+
+
+            4 = Availability horizon of 1 to 2 years.
+
+
+            5 = Availability horizon of 2 to 5 years.
+
+
+            6 = Availability horizon of over 5 years.'
+          example: 2
+        successor:
+          nullable: true
+          description: 'The product''s successor or `null` if no successor exists.
+
+            The successor is a product that is PARTIALLY compatible with the original.'
+          allOf:
+          - $ref: '#/components/schemas/ProductRef'
+        substitute:
+          nullable: true
+          description: 'The product''s substitute or `null` if no substitute exists.
+
+            The substitute is a product that is FULLY compatible with the original.'
+          allOf:
+          - $ref: '#/components/schemas/ProductRef'
+        relatedProducts:
+          description: Related products that may be used as successors or substitutes.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductRef'
+      required:
+      - productNumber
+      - name
+      - info
+      - purchasabilityNote
+      - manufacturer
+      - salesRelease
+      - deliveryRelease
+      - phaseOutAnnouncement
+      - productCancellation
+      - productDiscontinuation
+      - supportUrl
+      - purchasabilityStatus
+      - obsolescenceLevel
+      - successor
+      - substitute
+      - relatedProducts
+    ProductRef:
+      type: object
+      properties:
+        productNumber:
+          type: string
+          description: The ID of the product (MLFB, EAN, ...).
+          example: 6SN1123-1AA00-0CA1
+        name:
+          type: string
+          description: The product's name.
+          example: SIMODRIVE 611 1-Axis Power Module 50A int.cooling
+        link:
+          type: string
+          description: Relative link to the product (using this API).
+          example: /api/products/6SN1123-1AA00-0CA1/obsolescence
+      required:
+      - productNumber
+      - name
+      - link
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

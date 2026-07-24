@@ -1,0 +1,1811 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Polarion REST API Support
+    url: https://support.sw.siemens.com/
+  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Polarion REST Account Test Records API
+  version: v1
+servers:
+- url: https://example.com/polarion/rest/v1
+security:
+- bearerAuth: []
+tags:
+- name: Test Records
+paths:
+  /projects/{projectId}/testruns/{testRunId}/testrecords:
+    get:
+      operationId: getTestRecords
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testRunId
+        in: path
+        description: The Test Run ID.
+        required: true
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        description: Limit the number of entities returned in a single response. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: integer
+          format: int32
+      - name: page[number]
+        in: query
+        description: Specify the page number to be returned. Counting starts from 1. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: integer
+          format: int32
+      - name: fields
+        in: query
+        description: Filter returned resource fields. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        style: deepObject
+        schema:
+          $ref: '#/components/schemas/sparseFields'
+      - name: include
+        in: query
+        description: Include related entities. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: string
+      - name: revision
+        in: query
+        description: The revision ID.
+        schema:
+          type: string
+      - name: testCaseProjectId
+        in: query
+        description: testCaseProjectId
+        schema:
+          type: string
+      - name: testCaseId
+        in: query
+        description: testCaseId
+        schema:
+          type: string
+      - name: testResultId
+        in: query
+        description: testResultId
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/testrecordsListGetResponse'
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Returns a list of Test Records.
+      tags:
+      - Test Records
+    patch:
+      operationId: patchTestRecords
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testRunId
+        in: path
+        description: The Test Run ID.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/testrecordsListPatchRequest'
+        description: The Test Record(s) body.
+        required: true
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+        '413':
+          description: Request Entity Too Large
+        '415':
+          description: Unsupported Media Type
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Updates a list of Test Records.
+      tags:
+      - Test Records
+    post:
+      operationId: postTestRecords
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testRunId
+        in: path
+        description: The Test Run ID.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/testrecordsListPostRequest'
+        description: The Test Record(s) body.
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/testrecordsListPostResponse'
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        '409':
+          description: Conflict
+        '413':
+          description: Request Entity Too Large
+        '415':
+          description: Unsupported Media Type
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Creates a list of Test Records.
+      tags:
+      - Test Records
+  /projects/{projectId}/testruns/{testRunId}/testrecords/{testCaseProjectId}/{testCaseId}/{iteration}:
+    delete:
+      operationId: deleteTestRecord
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testRunId
+        in: path
+        description: The Test Run ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseProjectId
+        in: path
+        description: The Testcase Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseId
+        in: path
+        description: The Testcase ID.
+        required: true
+        schema:
+          type: string
+      - name: iteration
+        in: path
+        description: The Iteration Number.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Deletes the specified Test Record.
+      tags:
+      - Test Records
+    get:
+      operationId: getTestRecord
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testRunId
+        in: path
+        description: The Test Run ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseProjectId
+        in: path
+        description: The Testcase Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseId
+        in: path
+        description: The Testcase ID.
+        required: true
+        schema:
+          type: string
+      - name: iteration
+        in: path
+        description: The Iteration Number.
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Filter returned resource fields. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        style: deepObject
+        schema:
+          $ref: '#/components/schemas/sparseFields'
+      - name: include
+        in: query
+        description: Include related entities. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: string
+      - name: revision
+        in: query
+        description: The revision ID.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/testrecordsSingleGetResponse'
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Returns the specified Test Record.
+      tags:
+      - Test Records
+    patch:
+      operationId: patchTestRecord
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testRunId
+        in: path
+        description: The Test Run ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseProjectId
+        in: path
+        description: The Testcase Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseId
+        in: path
+        description: The Testcase ID.
+        required: true
+        schema:
+          type: string
+      - name: iteration
+        in: path
+        description: The Iteration Number.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/testrecordsSinglePatchRequest'
+        description: The Test Record(s) body.
+        required: true
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+        '413':
+          description: Request Entity Too Large
+        '415':
+          description: Unsupported Media Type
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Updates the specified Test Record.
+      tags:
+      - Test Records
+  /projects/{projectId}/testruns/{testRunId}/testrecords/{testCaseProjectId}/{testCaseId}/{iteration}/testparameters:
+    get:
+      operationId: getTestRecordTestParameters
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testRunId
+        in: path
+        description: The Test Run ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseProjectId
+        in: path
+        description: The Testcase Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseId
+        in: path
+        description: The Testcase ID.
+        required: true
+        schema:
+          type: string
+      - name: iteration
+        in: path
+        description: The Iteration Number.
+        required: true
+        schema:
+          type: string
+      - name: page[size]
+        in: query
+        description: Limit the number of entities returned in a single response. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: integer
+          format: int32
+      - name: page[number]
+        in: query
+        description: Specify the page number to be returned. Counting starts from 1. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: integer
+          format: int32
+      - name: fields
+        in: query
+        description: Filter returned resource fields. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        style: deepObject
+        schema:
+          $ref: '#/components/schemas/sparseFields'
+      - name: include
+        in: query
+        description: Include related entities. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: string
+      - name: revision
+        in: query
+        description: The revision ID.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/testparametersListGetResponse'
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Returns a list of Test Parameters for the specified Test Record.
+      tags:
+      - Test Records
+    post:
+      operationId: postTestRecordTestParameters
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testRunId
+        in: path
+        description: The Test Run ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseProjectId
+        in: path
+        description: The Testcase Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseId
+        in: path
+        description: The Testcase ID.
+        required: true
+        schema:
+          type: string
+      - name: iteration
+        in: path
+        description: The Iteration Number.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/testparametersListPostRequest'
+        description: The Test Parameter(s) body.
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/testparametersListPostResponse'
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        '409':
+          description: Conflict
+        '413':
+          description: Request Entity Too Large
+        '415':
+          description: Unsupported Media Type
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Creates a list of Test Parameters for the specified Test Record.
+      tags:
+      - Test Records
+  ? /projects/{projectId}/testruns/{testRunId}/testrecords/{testCaseProjectId}/{testCaseId}/{iteration}/testparameters/{testParamId}
+  : delete:
+      operationId: deleteTestRecordTestParameter
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testRunId
+        in: path
+        description: The Test Run ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseProjectId
+        in: path
+        description: The Testcase Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseId
+        in: path
+        description: The Testcase ID.
+        required: true
+        schema:
+          type: string
+      - name: iteration
+        in: path
+        description: The Iteration Number.
+        required: true
+        schema:
+          type: string
+      - name: testParamId
+        in: path
+        description: The Test Parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Deletes the specified Test Parameter for the specified Test Record.
+      tags:
+      - Test Records
+    get:
+      operationId: getTestRecordTestParameter
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testRunId
+        in: path
+        description: The Test Run ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseProjectId
+        in: path
+        description: The Testcase Project ID.
+        required: true
+        schema:
+          type: string
+      - name: testCaseId
+        in: path
+        description: The Testcase ID.
+        required: true
+        schema:
+          type: string
+      - name: iteration
+        in: path
+        description: The Iteration Number.
+        required: true
+        schema:
+          type: string
+      - name: testParamId
+        in: path
+        description: The Test Parameter.
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Filter returned resource fields. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        style: deepObject
+        schema:
+          $ref: '#/components/schemas/sparseFields'
+      - name: include
+        in: query
+        description: Include related entities. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: string
+      - name: revision
+        in: query
+        description: The revision ID.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/testparametersSingleGetResponse'
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Returns the specified Test Parameter for the specified Test Record.
+      tags:
+      - Test Records
+components:
+  schemas:
+    testparametersListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testparameters
+                type: string
+              attributes:
+                properties:
+                  name:
+                    example: Example Test Parameter value
+                    type: string
+                  value:
+                    example: Example Test Parameter value
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    testparametersListGetResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testparameters
+                type: string
+              id:
+                example: MyProjectId/MyTestRunId/MyTestParameter
+                type: string
+              revision:
+                example: '1234'
+                type: string
+              attributes:
+                properties:
+                  name:
+                    example: Example Test Parameter value
+                    type: string
+                  value:
+                    example: Example Test Parameter value
+                    type: string
+                type: object
+              relationships:
+                properties:
+                  definition:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyTestParamDefinition
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - testparameter_definitions
+                            type: string
+                        type: object
+                    type: object
+                type: object
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters/MyTestParameter
+                    type: string
+                type: object
+              meta:
+                properties:
+                  errors:
+                    items:
+                      properties:
+                        detail:
+                          description: Human-readable explanation specific to this occurrence of the problem.
+                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                          type: string
+                        source:
+                          properties:
+                            parameter:
+                              description: String indicating which URI query parameter caused the error.
+                              example: revision
+                              type: string
+                            pointer:
+                              description: JSON Pointer to the associated entity in the request document.
+                              example: $.data
+                              type: string
+                            resource:
+                              description: Resource causing the error.
+                              properties:
+                                id:
+                                  example: MyProjectId/id
+                                  type: string
+                                type:
+                                  example: type
+                                  type: string
+                              type: object
+                          type: object
+                        status:
+                          description: HTTP status code applicable to this problem.
+                          example: '400'
+                          type: string
+                        title:
+                          description: Short, human-readable summary of the problem.
+                          example: Bad Request
+                          type: string
+                      type: object
+                    type: array
+                type: object
+            type: object
+          type: array
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            first:
+              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=1
+              type: string
+            last:
+              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=9
+              type: string
+            next:
+              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=6
+              type: string
+            prev:
+              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=4
+              type: string
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=5
+              type: string
+          type: object
+        meta:
+          properties:
+            totalCount:
+              format: int32
+              type: integer
+          type: object
+      type: object
+    testrecordsListPatchRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testrecords
+                type: string
+              id:
+                example: elibrary/MyTestRunId/MyProjectId/MyTestcaseId/0
+                type: string
+              attributes:
+                properties:
+                  comment:
+                    properties:
+                      type:
+                        enum:
+                        - text/html
+                        - text/plain
+                        type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  duration:
+                    type: number
+                  executed:
+                    example: '1970-01-01T00:00:00Z'
+                    format: date-time
+                    type: string
+                  result:
+                    example: passed
+                    type: string
+                  testCaseRevision:
+                    example: Test Case Revision
+                    type: string
+                type: object
+              relationships:
+                properties:
+                  defect:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyWorkItemId
+                            type: string
+                          type:
+                            enum:
+                            - workitems
+                            type: string
+                        type: object
+                    type: object
+                  executedBy:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyUserId
+                            type: string
+                          type:
+                            enum:
+                            - users
+                            type: string
+                        type: object
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    testrecordsSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - testrecords
+              type: string
+            id:
+              example: elibrary/MyTestRunId/MyProjectId/MyTestcaseId/0
+              type: string
+            revision:
+              example: '1234'
+              type: string
+            attributes:
+              properties:
+                comment:
+                  properties:
+                    type:
+                      enum:
+                      - text/html
+                      - text/plain
+                      type: string
+                    value:
+                      example: My text value
+                      type: string
+                  type: object
+                duration:
+                  type: number
+                executed:
+                  example: '1970-01-01T00:00:00Z'
+                  format: date-time
+                  type: string
+                iteration:
+                  example: 0
+                  format: int32
+                  type: integer
+                result:
+                  example: passed
+                  type: string
+                testCaseRevision:
+                  example: Test Case Revision
+                  type: string
+              type: object
+            relationships:
+              properties:
+                defect:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MyWorkItemId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - workitems
+                          type: string
+                      type: object
+                  type: object
+                executedBy:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyUserId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - users
+                          type: string
+                      type: object
+                  type: object
+                testCase:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MyWorkItemId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - workitems
+                          type: string
+                      type: object
+                  type: object
+              type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/projects/elibrary/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId/0
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/projects/elibrary/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId/0
+              type: string
+          type: object
+      type: object
+    sparseFields:
+      properties:
+        categories:
+          description: Requested fields
+          example: '@all'
+          type: string
+        collections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        customfields:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_parts:
+          description: Requested fields
+          example: '@all'
+          type: string
+        documents:
+          description: Requested fields
+          example: '@all'
+          type: string
+        enumerations:
+          description: Requested fields
+          example: '@all'
+          type: string
+        externallylinkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        featureselections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        globalroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        icons:
+          description: Requested fields
+          example: '@all'
+          type: string
+        jobs:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_assignments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_slots:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_types:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedoslcresources:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        metadata:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        pages:
+          description: Requested fields
+          example: '@all'
+          type: string
+        plans:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projectroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projects:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projecttemplates:
+          description: Requested fields
+          example: '@all'
+          type: string
+        revisions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameter_definitions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameters:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecord_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testruns:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststep_results:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststepresult_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststeps:
+          description: Requested fields
+          example: '@all'
+          type: string
+        usergroups:
+          description: Requested fields
+          example: '@all'
+          type: string
+        users:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_approvals:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+      type: object
+    testrecordsListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testrecords
+                type: string
+              attributes:
+                properties:
+                  comment:
+                    properties:
+                      type:
+                        enum:
+                        - text/html
+                        - text/plain
+                        type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  duration:
+                    type: number
+                  executed:
+                    example: '1970-01-01T00:00:00Z'
+                    format: date-time
+                    type: string
+                  result:
+                    example: passed
+                    type: string
+                  testCaseRevision:
+                    example: Test Case Revision
+                    type: string
+                type: object
+              relationships:
+                properties:
+                  defect:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyWorkItemId
+                            type: string
+                          type:
+                            enum:
+                            - workitems
+                            type: string
+                        type: object
+                    type: object
+                  executedBy:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyUserId
+                            type: string
+                          type:
+                            enum:
+                            - users
+                            type: string
+                        type: object
+                    type: object
+                  testCase:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyWorkItemId
+                            type: string
+                          type:
+                            enum:
+                            - workitems
+                            type: string
+                        type: object
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    testparametersSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - testparameters
+              type: string
+            id:
+              example: MyProjectId/MyTestRunId/MyTestParameter
+              type: string
+            revision:
+              example: '1234'
+              type: string
+            attributes:
+              properties:
+                name:
+                  example: Example Test Parameter value
+                  type: string
+                value:
+                  example: Example Test Parameter value
+                  type: string
+              type: object
+            relationships:
+              properties:
+                definition:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MyTestParamDefinition
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - testparameter_definitions
+                          type: string
+                      type: object
+                  type: object
+              type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters/MyTestParameter
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters/MyTestParameter
+              type: string
+          type: object
+      type: object
+    testrecordsSinglePatchRequest:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - testrecords
+              type: string
+            id:
+              example: elibrary/MyTestRunId/MyProjectId/MyTestcaseId/0
+              type: string
+            attributes:
+              properties:
+                comment:
+                  properties:
+                    type:
+                      enum:
+                      - text/html
+                      - text/plain
+                      type: string
+                    value:
+                      example: My text value
+                      type: string
+                  type: object
+                duration:
+                  type: number
+                executed:
+                  example: '1970-01-01T00:00:00Z'
+                  format: date-time
+                  type: string
+                result:
+                  example: passed
+                  type: string
+                testCaseRevision:
+                  example: Test Case Revision
+                  type: string
+              type: object
+            relationships:
+              properties:
+                defect:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MyWorkItemId
+                          type: string
+                        type:
+                          enum:
+                          - workitems
+                          type: string
+                      type: object
+                  type: object
+                executedBy:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyUserId
+                          type: string
+                        type:
+                          enum:
+                          - users
+                          type: string
+                      type: object
+                  type: object
+              type: object
+          type: object
+      type: object
+    testparametersListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testparameters
+                type: string
+              id:
+                example: MyProjectId/MyTestRunId/MyTestParameter
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters/MyTestParameter
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    testrecordsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testrecords
+                type: string
+              id:
+                example: elibrary/MyTestRunId/MyProjectId/MyTestcaseId/0
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/elibrary/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId/0
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    testrecordsListGetResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testrecords
+                type: string
+              id:
+                example: elibrary/MyTestRunId/MyProjectId/MyTestcaseId/0
+                type: string
+              revision:
+                example: '1234'
+                type: string
+              attributes:
+                properties:
+                  comment:
+                    properties:
+                      type:
+                        enum:
+                        - text/html
+                        - text/plain
+                        type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  duration:
+                    type: number
+                  executed:
+                    example: '1970-01-01T00:00:00Z'
+                    format: date-time
+                    type: string
+                  iteration:
+                    example: 0
+                    format: int32
+                    type: integer
+                  result:
+                    example: passed
+                    type: string
+                  testCaseRevision:
+                    example: Test Case Revision
+                    type: string
+                type: object
+              relationships:
+                properties:
+                  defect:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyWorkItemId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - workitems
+                            type: string
+                        type: object
+                    type: object
+                  executedBy:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyUserId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - users
+                            type: string
+                        type: object
+                    type: object
+                  testCase:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyWorkItemId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - workitems
+                            type: string
+                        type: object
+                    type: object
+                type: object
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/elibrary/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId/0
+                    type: string
+                type: object
+              meta:
+                properties:
+                  errors:
+                    items:
+                      properties:
+                        detail:
+                          description: Human-readable explanation specific to this occurrence of the problem.
+                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                          type: string
+                        source:
+                          properties:
+                            parameter:
+                              description: String indicating which URI query parameter caused the error.
+                              example: revision
+                              type: string
+                            pointer:
+                              description: JSON Pointer to the associated entity in the request document.
+                              example: $.data
+                              type: string
+                            resource:
+                              description: Resource causing the error.
+                              properties:
+                                id:
+                                  example: MyProjectId/id
+                                  type: string
+                                type:
+                                  example: type
+                                  type: string
+                              type: object
+                          type: object
+                        status:
+                          description: HTTP status code applicable to this problem.
+                          example: '400'
+                          type: string
+                        title:
+                          description: Short, human-readable summary of the problem.
+                          example: Bad Request
+                          type: string
+                      type: object
+                    type: array
+                type: object
+            type: object
+          type: array
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            first:
+              example: server-host-name/application-path/projects/elibrary/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId?page%5Bsize%5D=10&page%5Bnumber%5D=1
+              type: string
+            last:
+              example: server-host-name/application-path/projects/elibrary/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId?page%5Bsize%5D=10&page%5Bnumber%5D=9
+              type: string
+            next:
+              example: server-host-name/application-path/projects/elibrary/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId?page%5Bsize%5D=10&page%5Bnumber%5D=6
+              type: string
+            prev:
+              example: server-host-name/application-path/projects/elibrary/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId?page%5Bsize%5D=10&page%5Bnumber%5D=4
+              type: string
+            self:
+              example: server-host-name/application-path/projects/elibrary/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId?page%5Bsize%5D=10&page%5Bnumber%5D=5
+              type: string
+          type: object
+        meta:
+          properties:
+            totalCount:
+              format: int32
+              type: integer
+          type: object
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

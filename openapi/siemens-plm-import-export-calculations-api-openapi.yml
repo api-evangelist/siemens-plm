@@ -1,0 +1,321 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Polarion REST API Support
+    url: https://support.sw.siemens.com/
+  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Polarion REST Account Import/Export: Calculations API'
+  version: v1
+servers:
+- url: https://example.com/polarion/rest/v1
+security:
+- bearerAuth: []
+tags:
+- name: 'Import/Export: Calculations'
+paths:
+  /api/v1/Calculations/Export:
+    post:
+      tags:
+      - 'Import/Export: Calculations'
+      operationId: ExportCalculations_ExportCalculationsToResponseModel
+      summary: Export calculations using export configurations
+      security:
+      - bearerHttpAuthentication: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportCalculationsRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ExportCalculationsRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ExportCalculationsRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ExportCalculationsRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExportCalculationsRequestModel'
+        required: true
+      responses:
+        '200':
+          description: Returns export data of given calculation IDs using given export configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+        '401':
+          description: Indicates that the requested resource requires authentication.
+        '405':
+          description: Indicates that the request method (POST or GET) is not allowed on the requested resource.
+        '500':
+          description: Indicates that a generic error has occurred on the server.
+      deprecated: false
+      description: Export calculations using export configurations
+  /api/v1/Calculations/Import:
+    post:
+      tags:
+      - 'Import/Export: Calculations'
+      operationId: ImportCalculations_ImportCalculationsFromRequestModel
+      security:
+      - bearerHttpAuthentication: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportCalculationsRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ImportCalculationsRequestModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ImportCalculationsRequestModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ImportCalculationsRequestModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ImportCalculationsRequestModel'
+        required: true
+      responses:
+        '200':
+          description: Successful import.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_DataTable'
+        '401':
+          description: Indicates that the requested resource requires authentication.
+        '500':
+          description: Indicates that a generic error has occurred on the server.
+      deprecated: false
+      description: Import calculations from the given data table using an import configuration with the given GUID. It is also possible to export the imported data directly (since version 2412).
+      summary: Import calculations from the given data table using an import configuration
+  /api/v1/ToolCalculations/CostBreakDown/Export:
+    post:
+      tags:
+      - 'Import/Export: Calculations'
+      operationId: ExportToolCalculationCbd_ExportCostBreakDown
+      summary: Exports cost break downs of tool calculations
+      security:
+      - bearerHttpAuthentication: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportToolCalculationCdbRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ExportToolCalculationCdbRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ExportToolCalculationCdbRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ExportToolCalculationCdbRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExportToolCalculationCdbRequest'
+        required: true
+      responses:
+        '200':
+          description: Returns cost break down data of given tool calculation ID and export configuration unique key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse'
+        '401':
+          description: Indicates that the requested resource requires authentication.
+        '405':
+          description: Indicates that the request method (POST or GET) is not allowed on the requested resource.
+        '500':
+          description: Indicates that a generic error has occurred on the server.
+      deprecated: false
+components:
+  schemas:
+    ImportCalculationsRequestModel:
+      type: object
+      properties:
+        Data:
+          type: array
+          items:
+            type: object
+          description: Dataset to be imported.
+          example:
+          - Assembly hierarchy level: 0
+            Quantity: 4
+            Quantity unit: Pcs
+            Item number: PNR 24253
+          - Assembly hierarchy level: 1
+            Quantity: 7
+            Quantity unit: Pcs
+            Item number: PNR 53221
+        PlantUniqueKey:
+          type: string
+          description: Plant key. Client of the given plant is used.
+        ConfigurationGuid:
+          type: string
+          description: GUID of the import configuration.
+          format: uuid
+          example: 4c43cab9-d9fa-4154-9c41-968654ac05b2
+        ExportConfigurationGuid:
+          type: string
+          description: GUID of the export configuration. If this is set then the imported data is returned using the given export configuration. Available with version 2412.
+          format: uuid
+          example: b14473ea-a58c-4d73-afa8-ba7c65613a0e
+        TargetType:
+          type: string
+          example: folder
+        TargetId:
+          format: int32
+          type: integer
+          example: 534
+      required:
+      - Data
+      - ConfigurationGuid
+    ExportToolCalculationCbdResponse:
+      type: object
+      properties:
+        toolCalculationId:
+          format: int32
+          type: integer
+          readOnly: true
+        costBreakDownConfigurationUniqueKey:
+          type: string
+          readOnly: true
+        toolProperties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExportToolCalculationCbdToolProperty'
+          readOnly: true
+        materials:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExportToolCalculationCbdMaterial'
+          readOnly: true
+    ExportToolCalculationCbdToolProperty:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        value:
+          type: string
+          readOnly: true
+        unit:
+          type: string
+          readOnly: true
+    TcPCMWebApiResponseModel_of_DataTable:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
+    ExportCalculationsRequestModel:
+      type: object
+      properties:
+        ProjectIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+          description: List of requested project ids. All calculation of the projects get exported
+        CalculationIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+            example: 2056
+          description: List of requested calculation ids
+        ConfigurationGuid:
+          type: string
+          example: b14473ea-a58c-4d73-afa8-ba7c65613a0e
+          description: Guid of the export configuration
+        Year:
+          type: integer
+          description: Year of the project assumptions which are used for the calculation  export in case of lifetime projects (4 digit year). Available since version 2512.
+    TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ExportToolCalculationCbdResponse'
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
+    ExportToolCalculationCbdMaterialProperty:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        value:
+          type: string
+          readOnly: true
+    ExportToolCalculationCbdMaterial:
+      type: object
+      properties:
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExportToolCalculationCbdMaterialProperty'
+          readOnly: true
+    ExportToolCalculationCdbRequest:
+      required:
+      - ToolCalculationId
+      - CostBreakDownConfigurationUniqueKey
+      type: object
+      properties:
+        ToolCalculationId:
+          format: int32
+          type: integer
+          example: 1015
+        CostBreakDownConfigurationUniqueKey:
+          type: string
+          example: Siemens.TCPCM.CostBreakdownForTools.StandardCBDforinjecttools.WebApi
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

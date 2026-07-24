@@ -1,0 +1,915 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Polarion REST API Support
+    url: https://support.sw.siemens.com/
+  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Polarion REST Account Custom Fields API
+  version: v1
+servers:
+- url: https://example.com/polarion/rest/v1
+security:
+- bearerAuth: []
+tags:
+- name: Custom Fields
+paths:
+  /customfields:
+    post:
+      operationId: postGlobalCustomFields
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customfieldsListPostRequest'
+        description: Custom Fields Body
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customfieldsListPostResponse'
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        '409':
+          description: Conflict
+        '413':
+          description: Request Entity Too Large
+        '415':
+          description: Unsupported Media Type
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Creates a list of Custom Fields in the Global context.
+      tags:
+      - Custom Fields
+  /customfields/{resourceType}/{targetType}:
+    delete:
+      operationId: deleteGlobalCustomFields
+      parameters:
+      - name: resourceType
+        in: path
+        description: The Resource Type.
+        required: true
+        schema:
+          type: string
+      - name: targetType
+        in: path
+        description: The Type of the object. Use '~' without quotes to represent no target Type.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Deletes the specified Custom Field configuration from the Global context.
+      tags:
+      - Custom Fields
+    get:
+      operationId: getGlobalCustomFields
+      parameters:
+      - name: resourceType
+        in: path
+        description: The Resource Type.
+        required: true
+        schema:
+          type: string
+      - name: targetType
+        in: path
+        description: The Type of the object. Use '~' without quotes to represent no target Type.
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Filter returned resource fields. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        style: deepObject
+        schema:
+          $ref: '#/components/schemas/sparseFields'
+      - name: include
+        in: query
+        description: Include related entities. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customfieldsSingleGetResponse'
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Returns the defined Custom Fields for the resource type and target type in the Global context.
+      tags:
+      - Custom Fields
+    patch:
+      operationId: patchGlobalCustomFields
+      parameters:
+      - name: resourceType
+        in: path
+        description: The Resource Type.
+        required: true
+        schema:
+          type: string
+      - name: targetType
+        in: path
+        description: The Custom Field target type. (Use '~' when there is no specific type for the Prototype.)
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customfieldsSinglePatchRequest'
+        description: Custom Fields Body
+        required: true
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+        '413':
+          description: Request Entity Too Large
+        '415':
+          description: Unsupported Media Type
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Updates the specified Custom Fields in the Global context.
+      tags:
+      - Custom Fields
+  /projects/{projectId}/customfields:
+    post:
+      operationId: postProjectCustomFields
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customfieldsListPostRequest'
+        description: Custom Fields Body
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customfieldsListPostResponse'
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        '409':
+          description: Conflict
+        '413':
+          description: Request Entity Too Large
+        '415':
+          description: Unsupported Media Type
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Creates a list of Custom Fields in the Project context.
+      tags:
+      - Custom Fields
+  /projects/{projectId}/customfields/{resourceType}/{targetType}:
+    delete:
+      operationId: deleteProjectCustomFields
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: resourceType
+        in: path
+        description: The Resource Type.
+        required: true
+        schema:
+          type: string
+      - name: targetType
+        in: path
+        description: The Type of the object. Use '~' without quotes to represent no target Type.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Deletes the specified Custom Field configuration from the Project context.
+      tags:
+      - Custom Fields
+    get:
+      operationId: getProjectCustomFields
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: resourceType
+        in: path
+        description: The Resource Type.
+        required: true
+        schema:
+          type: string
+      - name: targetType
+        in: path
+        description: The Type of the object. Use '~' without quotes to represent no target Type.
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Filter returned resource fields. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        style: deepObject
+        schema:
+          $ref: '#/components/schemas/sparseFields'
+      - name: include
+        in: query
+        description: Include related entities. See <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> for details.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customfieldsSingleGetResponse'
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '406':
+          description: Not Acceptable
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Returns the defined Custom Fields for the resource type and target type in the Project context.
+      tags:
+      - Custom Fields
+    patch:
+      operationId: patchCustomField
+      parameters:
+      - name: projectId
+        in: path
+        description: The Project ID.
+        required: true
+        schema:
+          type: string
+      - name: resourceType
+        in: path
+        description: The Resource Type.
+        required: true
+        schema:
+          type: string
+      - name: targetType
+        in: path
+        description: The Custom Field target type. (Use '~' when there is no specific type for the Prototype.)
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customfieldsSinglePatchRequest'
+        description: Custom Fields Body
+        required: true
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+        '413':
+          description: Request Entity Too Large
+        '415':
+          description: Unsupported Media Type
+        4XX-5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors'
+          description: 'Error responses have the following structure:'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+      summary: Updates the specified Custom Fields in the Project context.
+      tags:
+      - Custom Fields
+components:
+  schemas:
+    customfieldsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - customfields
+                type: string
+              id:
+                example: MyProjectId/workitems/epic
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/customfields/workitems/epic
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    customfieldsSinglePatchRequest:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - customfields
+              type: string
+            id:
+              example: MyProjectId/workitems/epic
+              type: string
+            attributes:
+              properties:
+                fields:
+                  items:
+                    properties:
+                      defaultValue:
+                        type: string
+                      dependsOn:
+                        type: string
+                      description:
+                        type: string
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      parameters:
+                        items:
+                          properties:
+                            key:
+                              example: parameter1
+                              type: string
+                            name:
+                              example: parameter1
+                              type: string
+                            title:
+                              example: MyParameter
+                              type: string
+                          type: object
+                        type: array
+                      required:
+                        type: boolean
+                      type:
+                        properties:
+                          kind:
+                            example: string
+                            type: string
+                        type: object
+                    type: object
+                  type: array
+              type: object
+          type: object
+      type: object
+    sparseFields:
+      properties:
+        categories:
+          description: Requested fields
+          example: '@all'
+          type: string
+        collections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        customfields:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_parts:
+          description: Requested fields
+          example: '@all'
+          type: string
+        documents:
+          description: Requested fields
+          example: '@all'
+          type: string
+        enumerations:
+          description: Requested fields
+          example: '@all'
+          type: string
+        externallylinkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        featureselections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        globalroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        icons:
+          description: Requested fields
+          example: '@all'
+          type: string
+        jobs:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_assignments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_slots:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_types:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedoslcresources:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        metadata:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        pages:
+          description: Requested fields
+          example: '@all'
+          type: string
+        plans:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projectroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projects:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projecttemplates:
+          description: Requested fields
+          example: '@all'
+          type: string
+        revisions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameter_definitions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameters:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecord_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testruns:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststep_results:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststepresult_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststeps:
+          description: Requested fields
+          example: '@all'
+          type: string
+        usergroups:
+          description: Requested fields
+          example: '@all'
+          type: string
+        users:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_approvals:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+      type: object
+    customfieldsListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - customfields
+                type: string
+              attributes:
+                properties:
+                  fields:
+                    items:
+                      properties:
+                        defaultValue:
+                          type: string
+                        dependsOn:
+                          type: string
+                        description:
+                          type: string
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        parameters:
+                          items:
+                            properties:
+                              key:
+                                example: parameter1
+                                type: string
+                              name:
+                                example: parameter1
+                                type: string
+                              title:
+                                example: MyParameter
+                                type: string
+                            type: object
+                          type: array
+                        required:
+                          type: boolean
+                        type:
+                          properties:
+                            kind:
+                              example: string
+                              type: string
+                          type: object
+                      type: object
+                    type: array
+                  resourceType:
+                    example: id
+                    type: string
+                  targetType:
+                    example: id
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    customfieldsSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - customfields
+              type: string
+            id:
+              example: MyProjectId/workitems/epic
+              type: string
+            attributes:
+              properties:
+                fields:
+                  items:
+                    properties:
+                      defaultValue:
+                        type: string
+                      dependsOn:
+                        type: string
+                      description:
+                        type: string
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      parameters:
+                        items:
+                          properties:
+                            key:
+                              example: parameter1
+                              type: string
+                            name:
+                              example: parameter1
+                              type: string
+                            title:
+                              example: MyParameter
+                              type: string
+                          type: object
+                        type: array
+                      required:
+                        type: boolean
+                      type:
+                        properties:
+                          kind:
+                            example: string
+                            type: string
+                        type: object
+                    type: object
+                  type: array
+                resourceType:
+                  example: id
+                  type: string
+                targetType:
+                  example: id
+                  type: string
+              type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/projects/MyProjectId/customfields/workitems/epic
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/customfields/workitems/epic
+              type: string
+          type: object
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
