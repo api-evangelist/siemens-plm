@@ -8,7 +8,20 @@ description: >
   The Siemens Xcelerator Developer Portal provides OpenAPI specifications, SDKs, Postman
   collections, and sandbox access for developers integrating with these industrial platforms.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/siemens-plm.png
 url: https://raw.githubusercontent.com/api-evangelist/siemens-plm/refs/heads/main/apis.yml
 created: 2026-06-13
 modified: 2026-06-13
@@ -28,140 +41,1246 @@ tags:
   - Sustainability
   - ALM
 apis:
-  - aid: siemens-plm:teamcenter-product-cost-management
-    name: Teamcenter Product Cost Management REST API
-    description: >
-      REST API for Teamcenter (X) Product Cost Management (TcPCM) enabling programmatic
-      access to cost estimation, dynamic calculations, and bulk export of cost data. Supports
-      OAuth 2.0 authentication via Resource Owner Password, Token Exchange, or TcPCM session
-      key flows. Bulk export endpoints require license PPC10029.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.siemens.com/tcpcm/overview.html
-    baseURL: https://developer.siemens.com
-    tags:
-      - PLM
-      - Product Cost Management
-      - Teamcenter
-      - Manufacturing
-    properties:
-      - type: Documentation
-        url: https://developer.siemens.com/tcpcm/overview.html
-      - type: OpenAPI
-        url: https://developer.siemens.com/tcpcm/tcpcm-api-spec.yaml
-      - type: GettingStarted
-        url: https://developer.siemens.com/tcpcm/getting-started.html
-      - type: Authentication
-        url: https://developer.siemens.com/tcpcm/getting-started.html
-    contact:
-      - FN: Siemens PLM Support
-        url: https://developer.siemens.com/tcpcm/contact.html
-        email: ""
-
-  - aid: siemens-plm:polarion-rest-api
-    name: Polarion REST API
-    description: >
-      Integration layer REST API for Polarion ALM (Application Lifecycle Management) giving
-      developers programmatic control over requirements, work items, documents, test cases,
-      and project structure. Supports Personal Access Token, session-based token, JWT, and
-      Teamcenter SSO authentication. OpenAPI spec available for download.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.siemens.com/polarion/rest-api-spec.html
-    baseURL: https://developer.siemens.com
-    tags:
-      - ALM
-      - Application Lifecycle Management
-      - Polarion
-      - Requirements Management
-    properties:
-      - type: Documentation
-        url: https://developer.siemens.com/polarion/rest-api-spec.html
-      - type: OpenAPI
-        url: https://developer.siemens.com/polarion/polarion-rest-apispec.json
-      - type: Authentication
-        url: https://developer.siemens.com/polarion/authentication.html
-    contact:
-      - FN: Siemens PLM Support
-        url: https://support.sw.siemens.com
-        email: ""
-
-  - aid: siemens-plm:insights-hub-industrial-iot
-    name: Insights Hub and Industrial IoT APIs
-    description: >
-      Suite of APIs for the Siemens Insights Hub (formerly MindSphere) Industrial IoT
-      platform providing access to time series data, asset management, event management,
-      Opcenter Intelligence, and manufacturing performance analytics. Authentication via
-      OAuth 2.0 through Siemens Xcelerator Developer Dashboard.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.siemens.com/apis.html
-    baseURL: https://developer.siemens.com
-    tags:
-      - Industrial IoT
-      - IIoT
-      - Time Series
-      - Asset Management
-      - Manufacturing
-      - Insights Hub
-    properties:
-      - type: Documentation
-        url: https://developer.siemens.com/insights-hub/docs/apis/advanced-assetmanagement/api-assetmanagement-api.html
-      - type: Documentation
-        url: https://developer.siemens.com/insights-hub/docs/apis/advanced-opcenter-intelligence/api-opcenter-intelligence-api.html
-    contact:
-      - FN: Siemens Developer Portal
-        url: https://developer.siemens.com
-        email: ""
-
-  - aid: siemens-plm:sigreen-api
-    name: SiGREEN API
-    description: >
-      REST APIs for SiGREEN, Siemens' supply chain sustainability and carbon footprint
-      management platform. Provides procurement, product, carbon footprint, and task
-      management endpoints enabling organizations to track and manage product carbon
-      footprints across global supply chains while preserving data sovereignty.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.siemens.com/sigreen/product-api/api-product.html
-    baseURL: https://developer.siemens.com
-    tags:
-      - Sustainability
-      - Carbon Footprint
-      - Supply Chain
-      - ESG
-      - SiGREEN
-    properties:
-      - type: Documentation
-        url: https://developer.siemens.com/sigreen/product-api/api-product.html
-    contact:
-      - FN: Siemens Developer Portal
-        url: https://developer.siemens.com
-        email: ""
-
-  - aid: siemens-plm:product-information-api
-    name: Product Information API
-    description: >
-      REST API empowering CMMS (Computerized Maintenance Management Systems) with product
-      information capabilities for functional obsolescence risk mitigation. Available via
-      subscription through the Siemens Xcelerator Developer Portal. Sandbox access can be
-      requested through the Developer Dashboard. OpenAPI specification available for download.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.siemens.com/product-information-api/rest-api-spec.html
-    baseURL: https://developer.siemens.com
-    tags:
-      - Product Information
-      - CMMS
-      - Maintenance
-      - Xcelerator
-    properties:
-      - type: Documentation
-        url: https://developer.siemens.com/product-information-api/rest-api-spec.html
-      - type: OpenAPI
-        url: https://developer.siemens.com/product-information-api/product-information-api.spec.yaml
-      - type: ChangeLog
-        url: https://developer.siemens.com/product-information-api/changelog.html
-    contact:
-      - FN: Siemens Developer Portal
-        url: https://developer.siemens.com
-        email: ""
-
+- aid: siemens-plm:insights-hub-industrial-iot
+  name: Insights Hub and Industrial IoT APIs
+  description: >
+    Suite of APIs for the Siemens Insights Hub (formerly MindSphere) Industrial IoT platform providing
+    access to time series data, asset management, event management, Opcenter Intelligence, and manufacturing
+    performance analytics. Authentication via OAuth 2.0 through Siemens Xcelerator Developer Dashboard.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.siemens.com/apis.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Industrial IoT
+  - IIoT
+  - Time Series
+  - Asset Management
+  - Manufacturing
+  - Insights Hub
+  properties:
+  - type: Documentation
+    url: >-
+      https://developer.siemens.com/insights-hub/docs/apis/advanced-assetmanagement/api-assetmanagement-api.html
+  - type: Documentation
+    url: >-
+      https://developer.siemens.com/insights-hub/docs/apis/advanced-opcenter-intelligence/api-opcenter-intelligence-api.html
+  contact:
+  - FN: Siemens Developer Portal
+    url: https://developer.siemens.com
+    email: ''
+- aid: siemens-plm:sigreen-api
+  name: SiGREEN API
+  description: >
+    REST APIs for SiGREEN, Siemens' supply chain sustainability and carbon footprint management platform.
+    Provides procurement, product, carbon footprint, and task management endpoints enabling organizations
+    to track and manage product carbon footprints across global supply chains while preserving data sovereignty.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.siemens.com/sigreen/product-api/api-product.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Sustainability
+  - Carbon Footprint
+  - Supply Chain
+  - ESG
+  - SiGREEN
+  properties:
+  - type: Documentation
+    url: https://developer.siemens.com/sigreen/product-api/api-product.html
+  contact:
+  - FN: Siemens Developer Portal
+    url: https://developer.siemens.com
+    email: ''
+- aid: siemens-plm:siemens-plm-account-api
+  name: Siemens PLM Account API
+  description: The Account API from Siemens PLM — 3 operation(s) for account.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-account-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-administration-api
+  name: Siemens PLM Administration API
+  description: The Administration API from Siemens PLM — 2 operation(s) for administration.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Administration
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-administration-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-basic-api
+  name: Siemens PLM Basic API
+  description: The Basic API from Siemens PLM — 1 operation(s) for basic.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Basic
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-basic-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-collections-api
+  name: Siemens PLM Collections API
+  description: The Collections API from Siemens PLM — 6 operation(s) for collections.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-collections-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-custom-fields-api
+  name: Siemens PLM Custom Fields API
+  description: The Custom Fields API from Siemens PLM — 4 operation(s) for custom fields.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Custom Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-custom-fields-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-customer-information-api-key-api
+  name: 'Siemens PLM Customer Information: API Key API'
+  description: >-
+    The Customer Information: API Key API from Siemens PLM — 1 operation(s) for customer information:
+    api key.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - 'Customer Information: API Key'
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-customer-information-api-key-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-document-attachments-api
+  name: Siemens PLM Document Attachments API
+  description: The Document Attachments API from Siemens PLM — 3 operation(s) for document attachments.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Document Attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-document-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-document-comments-api
+  name: Siemens PLM Document Comments API
+  description: The Document Comments API from Siemens PLM — 2 operation(s) for document comments.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Document Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-document-comments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-document-parts-api
+  name: Siemens PLM Document Parts API
+  description: The Document Parts API from Siemens PLM — 3 operation(s) for document parts.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Document Parts
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-document-parts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-documents-api
+  name: Siemens PLM Documents API
+  description: The Documents API from Siemens PLM — 12 operation(s) for documents.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-documents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-enumerations-api
+  name: Siemens PLM Enumerations API
+  description: The Enumerations API from Siemens PLM — 4 operation(s) for enumerations.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Enumerations
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-enumerations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-externally-linked-work-items-api
+  name: Siemens PLM Externally Linked Work Items API
+  description: >-
+    The Externally Linked Work Items API from Siemens PLM — 2 operation(s) for externally linked work
+    items.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Externally Linked Work Items
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-externally-linked-work-items-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-feature-selections-api
+  name: Siemens PLM Feature Selections API
+  description: The Feature Selections API from Siemens PLM — 2 operation(s) for feature selections.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Feature Selections
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-feature-selections-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-icons-api
+  name: Siemens PLM Icons API
+  description: The Icons API from Siemens PLM — 6 operation(s) for icons.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Icons
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-icons-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-import-export-calculations-api
+  name: 'Siemens PLM Import/Export: Calculations API'
+  description: >-
+    The Import/Export: Calculations API from Siemens PLM — 3 operation(s) for import/export: calculations.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - 'Import/Export: Calculations'
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-import-export-calculations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-import-export-masterdata-api
+  name: 'Siemens PLM Import/Export: MasterData API'
+  description: >-
+    The Import/Export: MasterData API from Siemens PLM — 2 operation(s) for import/export: masterdata.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - 'Import/Export: MasterData'
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-import-export-masterdata-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-jobs-api
+  name: Siemens PLM Jobs API
+  description: The Jobs API from Siemens PLM — 5 operation(s) for jobs.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-license-api
+  name: Siemens PLM License API
+  description: The License API from Siemens PLM — 5 operation(s) for license.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - License
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-license-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-linked-oslc-resources-api
+  name: Siemens PLM Linked Oslc Resources API
+  description: >-
+    The Linked Oslc Resources API from Siemens PLM — 1 operation(s) for linked oslc resources.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Linked Oslc Resources
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-linked-oslc-resources-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-linked-work-items-api
+  name: Siemens PLM Linked Work Items API
+  description: The Linked Work Items API from Siemens PLM — 3 operation(s) for linked work items.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Linked Work Items
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-linked-work-items-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-metadata-api
+  name: Siemens PLM Metadata API
+  description: The Metadata API from Siemens PLM — 3 operation(s) for metadata.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-metadata-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-page-attachments-api
+  name: Siemens PLM Page Attachments API
+  description: The Page Attachments API from Siemens PLM — 3 operation(s) for page attachments.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Page Attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-page-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-page-comments-api
+  name: Siemens PLM Page Comments API
+  description: The Page Comments API from Siemens PLM — 2 operation(s) for page comments.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Page Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-page-comments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-pages-api
+  name: Siemens PLM Pages API
+  description: The Pages API from Siemens PLM — 7 operation(s) for pages.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-pages-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-plans-api
+  name: Siemens PLM Plans API
+  description: The Plans API from Siemens PLM — 3 operation(s) for plans.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-plans-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-product-costing-api
+  name: Siemens PLM Product costing API
+  description: The Product costing API from Siemens PLM — 1 operation(s) for product costing.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Product costing
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-product-costing-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-product-information-delivery-api
+  name: 'Siemens PLM Product Information: Delivery API'
+  description: >-
+    The Product Information: Delivery API from Siemens PLM — 1 operation(s) for product information: delivery.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - 'Product Information: Delivery'
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-product-information-delivery-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-product-information-obsolescence-api
+  name: 'Siemens PLM Product Information: Obsolescence API'
+  description: >-
+    The Product Information: Obsolescence API from Siemens PLM — 1 operation(s) for product information:
+    obsolescence.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - 'Product Information: Obsolescence'
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-product-information-obsolescence-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-profitability-calculation-api
+  name: Siemens PLM Profitability Calculation API
+  description: >-
+    The Profitability Calculation API from Siemens PLM — 2 operation(s) for profitability calculation.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Profitability Calculation
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-profitability-calculation-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-project-api
+  name: Siemens PLM Project API
+  description: The Project API from Siemens PLM — 2 operation(s) for project.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Project
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-project-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-project-templates-api
+  name: Siemens PLM Project Templates API
+  description: The Project Templates API from Siemens PLM — 1 operation(s) for project templates.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Project Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-project-templates-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-projects-api
+  name: Siemens PLM Projects API
+  description: The Projects API from Siemens PLM — 8 operation(s) for projects.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-projects-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-revisions-api
+  name: Siemens PLM Revisions API
+  description: The Revisions API from Siemens PLM — 2 operation(s) for revisions.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Revisions
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-revisions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-roles-api
+  name: Siemens PLM Roles API
+  description: The Roles API from Siemens PLM — 1 operation(s) for roles.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-roles-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-test-record-attachments-api
+  name: Siemens PLM Test Record Attachments API
+  description: >-
+    The Test Record Attachments API from Siemens PLM — 3 operation(s) for test record attachments.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Test Record Attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-test-record-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-test-records-api
+  name: Siemens PLM Test Records API
+  description: The Test Records API from Siemens PLM — 4 operation(s) for test records.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Test Records
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-test-records-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-test-run-attachments-api
+  name: Siemens PLM Test Run Attachments API
+  description: The Test Run Attachments API from Siemens PLM — 3 operation(s) for test run attachments.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Test Run Attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-test-run-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-test-run-comments-api
+  name: Siemens PLM Test Run Comments API
+  description: The Test Run Comments API from Siemens PLM — 2 operation(s) for test run comments.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Test Run Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-test-run-comments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-test-runs-api
+  name: Siemens PLM Test Runs API
+  description: The Test Runs API from Siemens PLM — 10 operation(s) for test runs.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Test Runs
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-test-runs-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-test-step-result-attachments-api
+  name: Siemens PLM Test Step Result Attachments API
+  description: >-
+    The Test Step Result Attachments API from Siemens PLM — 3 operation(s) for test step result attachments.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Test Step Result Attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-test-step-result-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-test-step-results-api
+  name: Siemens PLM Test Step Results API
+  description: The Test Step Results API from Siemens PLM — 2 operation(s) for test step results.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Test Step Results
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-test-step-results-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-test-steps-api
+  name: Siemens PLM Test Steps API
+  description: The Test Steps API from Siemens PLM — 2 operation(s) for test steps.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Test Steps
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-test-steps-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-user-groups-api
+  name: Siemens PLM User Groups API
+  description: The User Groups API from Siemens PLM — 1 operation(s) for user groups.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - User Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-user-groups-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-users-api
+  name: Siemens PLM Users API
+  description: The Users API from Siemens PLM — 6 operation(s) for users.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-users-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-work-item-approvals-api
+  name: Siemens PLM Work Item Approvals API
+  description: The Work Item Approvals API from Siemens PLM — 2 operation(s) for work item approvals.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Work Item Approvals
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-work-item-approvals-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-work-item-attachments-api
+  name: Siemens PLM Work Item Attachments API
+  description: >-
+    The Work Item Attachments API from Siemens PLM — 3 operation(s) for work item attachments.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Work Item Attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-work-item-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-work-item-comments-api
+  name: Siemens PLM Work Item Comments API
+  description: The Work Item Comments API from Siemens PLM — 2 operation(s) for work item comments.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Work Item Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-work-item-comments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-work-item-work-records-api
+  name: Siemens PLM Work Item Work Records API
+  description: >-
+    The Work Item Work Records API from Siemens PLM — 2 operation(s) for work item work records.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Work Item Work Records
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-work-item-work-records-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
+- aid: siemens-plm:siemens-plm-work-items-api
+  name: Siemens PLM Work Items API
+  description: The Work Items API from Siemens PLM — 12 operation(s) for work items.
+  humanURL: https://developer.siemens.com/tcpcm/overview.html
+  baseURL: https://developer.siemens.com
+  tags:
+  - Work Items
+  properties:
+  - type: OpenAPI
+    url: openapi/siemens-plm-work-items-api-openapi.yml
+  - type: Documentation
+    url: https://developer.siemens.com/tcpcm/overview.html
+  - type: GettingStarted
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Authentication
+    url: https://developer.siemens.com/tcpcm/getting-started.html
+  - type: Documentation
+    url: https://developer.siemens.com/polarion/rest-api-spec.html
+  - type: Authentication
+    url: https://developer.siemens.com/polarion/authentication.html
+  - type: Documentation
+    url: https://developer.siemens.com/product-information-api/rest-api-spec.html
+  - type: ChangeLog
+    url: https://developer.siemens.com/product-information-api/changelog.html
 common:
   - type: AgenticAccess
     url: agentic-access/siemens-plm-agentic-access.yml
