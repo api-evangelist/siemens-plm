@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Product costing API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product costing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete a product costing part by id. Available since version 2512.2602.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/api/v1/product-costing/parts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the part"
+              }
+            ]
+          },
+          "docs": "All usages of the given product costing part will be deleted and the part will be moved to the recycle bin."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

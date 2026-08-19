@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Basic API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Basic",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check if the service is running",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/api/v1/masterData/ping"
+          },
+          "docs": "Check if the service is running"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

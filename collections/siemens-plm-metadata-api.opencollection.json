@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Metadata API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns fields for the resource type and its target type in the Global context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/actions/getFieldsMetadata",
+            "params": [
+              {
+                "name": "resourceType",
+                "value": "",
+                "type": "query",
+                "description": "The Resource Type. Accepted values: workitems, documents, testruns and plans."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "query",
+                "description": "The Type of the object. Use '~' without quotes to represent no target Type."
+              }
+            ]
+          },
+          "docs": "Metadata support is limited to the following resource types: **Work Items**, **Documents**, **Test Runs**, and **Plans**."
+        },
+        {
+          "info": {
+            "name": "Returns global metadata, including version, build, REST API configuration properties, etc. (Available to all REST API users.)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/metadata",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              }
+            ]
+          },
+          "docs": "Returns global metadata, including version, build, REST API configuration properties, etc. (Available to all REST API users.)"
+        },
+        {
+          "info": {
+            "name": "Returns fields for the resource type and its target type in the Project context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/actions/getFieldsMetadata",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "resourceType",
+                "value": "",
+                "type": "query",
+                "description": "The Resource Type. Accepted values: workitems, documents, testruns and plans."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "query",
+                "description": "The Type of the object. Use '~' without quotes to represent no target Type."
+              }
+            ]
+          },
+          "docs": "Metadata support is limited to the following resource types: **Work Items**, **Documents**, **Test Runs**, and **Plans**."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

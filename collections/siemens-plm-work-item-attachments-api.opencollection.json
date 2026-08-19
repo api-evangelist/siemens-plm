@@ -1,0 +1,253 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Work Item Attachments API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Work Item Attachments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of  Work Item Attachments.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/attachments",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns a list of  Work Item Attachments."
+        },
+        {
+          "info": {
+            "name": "Creates a list of Work Item Attachments.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/attachments",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Files are identified by order or optionally by the 'lid' attribute. See more in the <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a>."
+        },
+        {
+          "info": {
+            "name": "Returns the specified Work Item Attachment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/attachments/:attachmentId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Work Item ID."
+              },
+              {
+                "name": "attachmentId",
+                "value": "",
+                "type": "path",
+                "description": "The Attachment ID."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns the specified Work Item Attachment."
+        },
+        {
+          "info": {
+            "name": "Updates the specified Work Item Attachment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/attachments/:attachmentId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "attachmentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "See more in the <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a>."
+        },
+        {
+          "info": {
+            "name": "Deletes the specified Work Item Attachment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/attachments/:attachmentId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Work Item ID."
+              },
+              {
+                "name": "attachmentId",
+                "value": "",
+                "type": "path",
+                "description": "The Attachment ID."
+              }
+            ]
+          },
+          "docs": "Deletes the specified Work Item Attachment."
+        },
+        {
+          "info": {
+            "name": "Downloads the file content for a specified Work Item Attachment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/attachments/:attachmentId/content",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Work Item ID."
+              },
+              {
+                "name": "attachmentId",
+                "value": "",
+                "type": "path",
+                "description": "The Attachment ID."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Downloads the file content for a specified Work Item Attachment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

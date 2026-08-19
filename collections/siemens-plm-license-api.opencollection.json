@@ -1,0 +1,285 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account License API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "License",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns information on the available License Limits.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/license",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              }
+            ]
+          },
+          "docs": "Returns information on the available License Limits."
+        },
+        {
+          "info": {
+            "name": "Updates the product License.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/license",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the product License."
+        },
+        {
+          "info": {
+            "name": "Returns a list of License Assignments.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/license/assignments",
+            "params": [
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "activeOnly",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, only active (with status LOGGED_IN or EXPIRING) license assigments will be returned, otherwise all the license assignments will be returned."
+              }
+            ]
+          },
+          "docs": "Returns a list of License Assignments."
+        },
+        {
+          "info": {
+            "name": "Updates the License Assignments of multiple users.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/license/assignments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the License Assignments of multiple users."
+        },
+        {
+          "info": {
+            "name": "Returns the specified License Assignment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/license/assignments/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              }
+            ]
+          },
+          "docs": "Returns the specified License Assignment."
+        },
+        {
+          "info": {
+            "name": "Returns information on the available License Slots.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/license/types/:typeId/slots",
+            "params": [
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns information on the available License Slots."
+        },
+        {
+          "info": {
+            "name": "Creates a list of group License Slots.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/license/types/:typeId/slots",
+            "params": [
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a list of group License Slots."
+        },
+        {
+          "info": {
+            "name": "Deletes a list of Group license slots.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/license/types/:typeId/slots",
+            "params": [
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "path",
+                "description": "License type."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes a list of Group license slots."
+        },
+        {
+          "info": {
+            "name": "Returns the specified License Slot.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/license/types/:typeId/slots/:model/:group",
+            "params": [
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "model",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              }
+            ]
+          },
+          "docs": "Returns the specified License Slot."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

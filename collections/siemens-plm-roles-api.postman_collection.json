@@ -1,0 +1,2464 @@
+{
+  "item": [
+    {
+      "id": "118cbf11-a154-441a-b35d-9f48f2987477",
+      "name": "Roles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "33e1d6a0-adac-48c5-ba88-cffb48b9687d",
+          "name": "Returns the specified Global Role.",
+          "request": {
+            "name": "Returns the specified Global Role.",
+            "description": {},
+            "url": {
+              "path": [
+                "roles",
+                ":roleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields[categories]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[collections]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[customfields]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[document_attachments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[document_comments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[document_parts]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[documents]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[enumerations]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[externallylinkedworkitems]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[featureselections]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[globalroles]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[icons]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[jobs]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[license]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[license_assignments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[license_slots]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[license_types]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[linkedoslcresources]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[linkedworkitems]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[metadata]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[page_attachments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[page_comments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[pages]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[plans]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[projectroles]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[projects]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[projecttemplates]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[revisions]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testparameter_definitions]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testparameters]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testrecord_attachments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testrecords]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testrun_attachments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testrun_comments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testruns]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[teststep_results]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[teststepresult_attachments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[teststeps]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[usergroups]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[users]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[workitem_approvals]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[workitem_attachments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[workitem_comments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[workitems]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[workrecords]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "roleId",
+                  "description": "(Required) The Role ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "649288ff-12f2-4946-b9cb-5078f436e76b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) The Role ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"type\": \"globalroles\",\n    \"id\": \"MyRoleId\",\n    \"relationships\": {\n      \"users\": {\n        \"data\": [\n          {\n            \"id\": \"MyUserId\",\n            \"type\": \"users\"\n          },\n          {\n            \"id\": \"MyUserId\",\n            \"type\": \"users\"\n          }\n        ],\n        \"meta\": {\n          \"totalCount\": 9589\n        }\n      }\n    },\n    \"links\": {\n      \"self\": \"server-host-name/application-path/roles/MyRoleId\"\n    },\n    \"meta\": {\n      \"errors\": [\n        {\n          \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n          \"source\": {\n            \"parameter\": \"revision\",\n            \"pointer\": \"$.data\",\n            \"resource\": {\n              \"id\": \"MyProjectId/id\",\n              \"type\": \"type\"\n            }\n          },\n          \"status\": \"400\",\n          \"title\": \"Bad Request\"\n        },\n        {\n          \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n          \"source\": {\n            \"parameter\": \"revision\",\n            \"pointer\": \"$.data\",\n            \"resource\": {\n              \"id\": \"MyProjectId/id\",\n              \"type\": \"type\"\n            }\n          },\n          \"status\": \"400\",\n          \"title\": \"Bad Request\"\n        }\n      ]\n    }\n  },\n  \"links\": {\n    \"self\": \"server-host-name/application-path/roles/MyRoleId\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36cbad41-644a-4089-b75b-58bb6bbe1394",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) The Role ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6236cc9e-1d20-4a56-8c2c-e51f9357c2ab",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) The Role ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f3e5370-00f6-4dd9-836e-4efd37d776f9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) The Role ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "21779cc8-a136-4b61-961e-efbb76b9dc96",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) The Role ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5fa31af8-3828-48da-b39b-5a078c81af12",
+              "name": "Not Acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) The Role ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c0c1750-07e5-41e6-bcd9-c447a0eb352d",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) The Role ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "98c1861a-3d65-4bb5-8932-e9e8f2ab420c",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) The Role ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf553e45-b7c3-4e20-93b9-293c5c0095ea",
+              "name": "Error responses have the following structure:",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roles",
+                    ":roleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "roleId",
+                      "description": "(Required) The Role ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"400\",\n      \"title\": \"Bad Request\",\n      \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n      \"source\": {\n        \"parameter\": \"revision\",\n        \"pointer\": \"$.data\",\n        \"resource\": {\n          \"id\": \"MyProjectId/id\",\n          \"type\": \"type\"\n        }\n      }\n    },\n    {\n      \"status\": \"400\",\n      \"title\": \"Bad Request\",\n      \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n      \"source\": {\n        \"parameter\": \"revision\",\n        \"pointer\": \"$.data\",\n        \"resource\": {\n          \"id\": \"MyProjectId/id\",\n          \"type\": \"type\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://example.com/polarion/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cc8907d9-d3aa-4d79-938e-e340358ba46a",
+    "name": "Polarion REST Account Roles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> (available on Support Center).\n\nContact Support:\n Name: Polarion REST API Support",
+      "type": "text/plain"
+    }
+  }
+}

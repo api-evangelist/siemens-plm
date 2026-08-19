@@ -1,0 +1,372 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Linked Work Items API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Linked Work Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of Backlinked Work Items.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/backlinkedworkitems",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Work Item ID."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns the incoming links from other Work Items (also known as backlinks). Does not pertain to External links."
+        },
+        {
+          "info": {
+            "name": "Creates a list of Backlinked Work Items.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/backlinkedworkitems",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Work Item ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates incoming links from other Work Items (backlinks). Does not pertain to External links."
+        },
+        {
+          "info": {
+            "name": "Returns a list of Linked Work Items.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/linkedworkitems",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Work Item ID."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns the direct outgoing links to other Work Items. (The same as the corresponding Java API method.)  Does not pertain to external links or backlinks."
+        },
+        {
+          "info": {
+            "name": "Creates a list of Linked Work Items.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/linkedworkitems",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Work Item ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates the direct outgoing links to other Work Items. (The same as the corresponding Java API method.)  Does not pertain to external links or backlinks."
+        },
+        {
+          "info": {
+            "name": "Deletes a list of Linked Work Items.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/linkedworkitems",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Work Item ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes the direct outgoing links to other Work Items. (The same as the corresponding Java API method.)  Does not pertain to external links or backlinks."
+        },
+        {
+          "info": {
+            "name": "Returns the specified Linked Work Item.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/linkedworkitems/:roleId/:targetProjectId/:linkedWorkItemId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Work Item ID."
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path",
+                "description": "The Role ID."
+              },
+              {
+                "name": "targetProjectId",
+                "value": "",
+                "type": "path",
+                "description": "The Target Project ID."
+              },
+              {
+                "name": "linkedWorkItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Linked Work Item ID."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns the direct outgoing links to other Work Items. (The same as the corresponding Java API method.)  Does not pertain to external links or backlinks."
+        },
+        {
+          "info": {
+            "name": "Updates the specified Linked Work Item.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/linkedworkitems/:roleId/:targetProjectId/:linkedWorkItemId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Work Item ID."
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path",
+                "description": "The Role ID."
+              },
+              {
+                "name": "targetProjectId",
+                "value": "",
+                "type": "path",
+                "description": "The Target Project ID."
+              },
+              {
+                "name": "linkedWorkItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Linked Work Item ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the direct outgoing links to other Work Items. (The same as the corresponding Java API method.)  Does not pertain to external links or backlinks."
+        },
+        {
+          "info": {
+            "name": "Deletes the specified Linked Work Item.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/workitems/:workItemId/linkedworkitems/:roleId/:targetProjectId/:linkedWorkItemId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "workItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Work Item ID."
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path",
+                "description": "The Role ID."
+              },
+              {
+                "name": "targetProjectId",
+                "value": "",
+                "type": "path",
+                "description": "The Target Project ID."
+              },
+              {
+                "name": "linkedWorkItemId",
+                "value": "",
+                "type": "path",
+                "description": "The Linked Work Item ID."
+              }
+            ]
+          },
+          "docs": "Deletes the direct outgoing links to other Work Items. (The same as the corresponding Java API method.)  Does not pertain to external links or backlinks."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

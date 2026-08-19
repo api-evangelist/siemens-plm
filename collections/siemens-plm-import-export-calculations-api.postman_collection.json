@@ -1,0 +1,1240 @@
+{
+  "item": [
+    {
+      "id": "be034197-d180-4d11-9670-16256db96926",
+      "name": "Import/Export: Calculations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "38efa6c8-4ea3-4600-8cf1-57095da0f14b",
+          "name": "Export calculations using export configurations",
+          "request": {
+            "name": "Export calculations using export configurations",
+            "description": {
+              "content": "Export calculations using export configurations",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "Calculations",
+                "Export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "ProjectIds",
+                  "value": "<integer>",
+                  "description": "List of requested project ids. All calculation of the projects get exported"
+                },
+                {
+                  "disabled": false,
+                  "key": "ProjectIds",
+                  "value": "<integer>",
+                  "description": "List of requested project ids. All calculation of the projects get exported"
+                },
+                {
+                  "disabled": false,
+                  "key": "CalculationIds",
+                  "value": "<integer>",
+                  "description": "List of requested calculation ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "CalculationIds",
+                  "value": "<integer>",
+                  "description": "List of requested calculation ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "ConfigurationGuid",
+                  "value": "<string>",
+                  "description": "Guid of the export configuration"
+                },
+                {
+                  "disabled": false,
+                  "key": "Year",
+                  "value": "<integer>",
+                  "description": "Year of the project assumptions which are used for the calculation  export in case of lifetime projects (4 digit year). Available since version 2512."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "50d4f009-ae5f-4dc4-8b8c-324f15e9e51a",
+              "name": "Returns export data of given calculation IDs using given export configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Calculations",
+                    "Export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested project ids. All calculation of the projects get exported",
+                        "type": "text/plain"
+                      },
+                      "key": "ProjectIds",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested project ids. All calculation of the projects get exported",
+                        "type": "text/plain"
+                      },
+                      "key": "ProjectIds",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested calculation ids",
+                        "type": "text/plain"
+                      },
+                      "key": "CalculationIds",
+                      "value": "2056"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested calculation ids",
+                        "type": "text/plain"
+                      },
+                      "key": "CalculationIds",
+                      "value": "2056"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Guid of the export configuration",
+                        "type": "text/plain"
+                      },
+                      "key": "ConfigurationGuid",
+                      "value": "b14473ea-a58c-4d73-afa8-ba7c65613a0e"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Year of the project assumptions which are used for the calculation  export in case of lifetime projects (4 digit year). Available since version 2512.",
+                        "type": "text/plain"
+                      },
+                      "key": "Year",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8271a19a-6fda-429b-bdcc-23ec9cb3921b",
+              "name": "Indicates that the requested resource requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Calculations",
+                    "Export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested project ids. All calculation of the projects get exported",
+                        "type": "text/plain"
+                      },
+                      "key": "ProjectIds",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested project ids. All calculation of the projects get exported",
+                        "type": "text/plain"
+                      },
+                      "key": "ProjectIds",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested calculation ids",
+                        "type": "text/plain"
+                      },
+                      "key": "CalculationIds",
+                      "value": "2056"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested calculation ids",
+                        "type": "text/plain"
+                      },
+                      "key": "CalculationIds",
+                      "value": "2056"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Guid of the export configuration",
+                        "type": "text/plain"
+                      },
+                      "key": "ConfigurationGuid",
+                      "value": "b14473ea-a58c-4d73-afa8-ba7c65613a0e"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Year of the project assumptions which are used for the calculation  export in case of lifetime projects (4 digit year). Available since version 2512.",
+                        "type": "text/plain"
+                      },
+                      "key": "Year",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "190bd37d-7e11-425a-9b3f-aadc5196c9c3",
+              "name": "Indicates that the request method (POST or GET) is not allowed on the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Calculations",
+                    "Export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested project ids. All calculation of the projects get exported",
+                        "type": "text/plain"
+                      },
+                      "key": "ProjectIds",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested project ids. All calculation of the projects get exported",
+                        "type": "text/plain"
+                      },
+                      "key": "ProjectIds",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested calculation ids",
+                        "type": "text/plain"
+                      },
+                      "key": "CalculationIds",
+                      "value": "2056"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested calculation ids",
+                        "type": "text/plain"
+                      },
+                      "key": "CalculationIds",
+                      "value": "2056"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Guid of the export configuration",
+                        "type": "text/plain"
+                      },
+                      "key": "ConfigurationGuid",
+                      "value": "b14473ea-a58c-4d73-afa8-ba7c65613a0e"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Year of the project assumptions which are used for the calculation  export in case of lifetime projects (4 digit year). Available since version 2512.",
+                        "type": "text/plain"
+                      },
+                      "key": "Year",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "afe23b33-5365-4898-8862-63fca338bd1e",
+              "name": "Indicates that a generic error has occurred on the server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Calculations",
+                    "Export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested project ids. All calculation of the projects get exported",
+                        "type": "text/plain"
+                      },
+                      "key": "ProjectIds",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested project ids. All calculation of the projects get exported",
+                        "type": "text/plain"
+                      },
+                      "key": "ProjectIds",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested calculation ids",
+                        "type": "text/plain"
+                      },
+                      "key": "CalculationIds",
+                      "value": "2056"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of requested calculation ids",
+                        "type": "text/plain"
+                      },
+                      "key": "CalculationIds",
+                      "value": "2056"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Guid of the export configuration",
+                        "type": "text/plain"
+                      },
+                      "key": "ConfigurationGuid",
+                      "value": "b14473ea-a58c-4d73-afa8-ba7c65613a0e"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Year of the project assumptions which are used for the calculation  export in case of lifetime projects (4 digit year). Available since version 2512.",
+                        "type": "text/plain"
+                      },
+                      "key": "Year",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbd94038-a0da-42ab-8863-c7ca01f6c10c",
+          "name": "Import calculations from the given data table using an import configuration",
+          "request": {
+            "name": "Import calculations from the given data table using an import configuration",
+            "description": {
+              "content": "Import calculations from the given data table using an import configuration with the given GUID. It is also possible to export the imported data directly (since version 2412).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "Calculations",
+                "Import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "Data",
+                  "value": "<object>",
+                  "description": "(Required) Dataset to be imported."
+                },
+                {
+                  "disabled": false,
+                  "key": "Data",
+                  "value": "<object>",
+                  "description": "(Required) Dataset to be imported."
+                },
+                {
+                  "disabled": false,
+                  "key": "ConfigurationGuid",
+                  "value": "<uuid>",
+                  "description": "(Required) GUID of the import configuration."
+                },
+                {
+                  "disabled": false,
+                  "key": "PlantUniqueKey",
+                  "value": "<string>",
+                  "description": "Plant key. Client of the given plant is used."
+                },
+                {
+                  "disabled": false,
+                  "key": "ExportConfigurationGuid",
+                  "value": "<uuid>",
+                  "description": "GUID of the export configuration. If this is set then the imported data is returned using the given export configuration. Available with version 2412."
+                },
+                {
+                  "disabled": false,
+                  "key": "TargetType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "TargetId",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2d575115-987f-4126-865c-0fbedb3e8a3a",
+              "name": "Successful import.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Calculations",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Dataset to be imported.",
+                        "type": "text/plain"
+                      },
+                      "key": "Data",
+                      "value": "{\"Assembly hierarchy level\":0,\"Quantity\":4,\"Quantity unit\":\"Pcs\",\"Item number\":\"PNR 24253\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Dataset to be imported.",
+                        "type": "text/plain"
+                      },
+                      "key": "Data",
+                      "value": "{\"Assembly hierarchy level\":1,\"Quantity\":7,\"Quantity unit\":\"Pcs\",\"Item number\":\"PNR 53221\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) GUID of the import configuration.",
+                        "type": "text/plain"
+                      },
+                      "key": "ConfigurationGuid",
+                      "value": "4c43cab9-d9fa-4154-9c41-968654ac05b2"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Plant key. Client of the given plant is used.",
+                        "type": "text/plain"
+                      },
+                      "key": "PlantUniqueKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "GUID of the export configuration. If this is set then the imported data is returned using the given export configuration. Available with version 2412.",
+                        "type": "text/plain"
+                      },
+                      "key": "ExportConfigurationGuid",
+                      "value": "b14473ea-a58c-4d73-afa8-ba7c65613a0e"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "TargetType",
+                      "value": "folder"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "TargetId",
+                      "value": "534"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a273c20a-874a-43dc-a3bd-8c55993f88fe",
+              "name": "Indicates that the requested resource requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Calculations",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Dataset to be imported.",
+                        "type": "text/plain"
+                      },
+                      "key": "Data",
+                      "value": "{\"Assembly hierarchy level\":0,\"Quantity\":4,\"Quantity unit\":\"Pcs\",\"Item number\":\"PNR 24253\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Dataset to be imported.",
+                        "type": "text/plain"
+                      },
+                      "key": "Data",
+                      "value": "{\"Assembly hierarchy level\":1,\"Quantity\":7,\"Quantity unit\":\"Pcs\",\"Item number\":\"PNR 53221\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) GUID of the import configuration.",
+                        "type": "text/plain"
+                      },
+                      "key": "ConfigurationGuid",
+                      "value": "4c43cab9-d9fa-4154-9c41-968654ac05b2"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Plant key. Client of the given plant is used.",
+                        "type": "text/plain"
+                      },
+                      "key": "PlantUniqueKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "GUID of the export configuration. If this is set then the imported data is returned using the given export configuration. Available with version 2412.",
+                        "type": "text/plain"
+                      },
+                      "key": "ExportConfigurationGuid",
+                      "value": "b14473ea-a58c-4d73-afa8-ba7c65613a0e"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "TargetType",
+                      "value": "folder"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "TargetId",
+                      "value": "534"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d502eda-f124-443d-a3fe-13e67066f8d8",
+              "name": "Indicates that a generic error has occurred on the server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Calculations",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Dataset to be imported.",
+                        "type": "text/plain"
+                      },
+                      "key": "Data",
+                      "value": "{\"Assembly hierarchy level\":0,\"Quantity\":4,\"Quantity unit\":\"Pcs\",\"Item number\":\"PNR 24253\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Dataset to be imported.",
+                        "type": "text/plain"
+                      },
+                      "key": "Data",
+                      "value": "{\"Assembly hierarchy level\":1,\"Quantity\":7,\"Quantity unit\":\"Pcs\",\"Item number\":\"PNR 53221\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) GUID of the import configuration.",
+                        "type": "text/plain"
+                      },
+                      "key": "ConfigurationGuid",
+                      "value": "4c43cab9-d9fa-4154-9c41-968654ac05b2"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Plant key. Client of the given plant is used.",
+                        "type": "text/plain"
+                      },
+                      "key": "PlantUniqueKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "GUID of the export configuration. If this is set then the imported data is returned using the given export configuration. Available with version 2412.",
+                        "type": "text/plain"
+                      },
+                      "key": "ExportConfigurationGuid",
+                      "value": "b14473ea-a58c-4d73-afa8-ba7c65613a0e"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "TargetType",
+                      "value": "folder"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "TargetId",
+                      "value": "534"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a062612-dbdb-4ec7-a019-adc38dcc50d4",
+          "name": "Exports cost break downs of tool calculations",
+          "request": {
+            "name": "Exports cost break downs of tool calculations",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "ToolCalculations",
+                "CostBreakDown",
+                "Export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "ToolCalculationId",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "CostBreakDownConfigurationUniqueKey",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eab31926-0a1a-48da-9899-fb5a3081bc48",
+              "name": "Returns cost break down data of given tool calculation ID and export configuration unique key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ToolCalculations",
+                    "CostBreakDown",
+                    "Export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "ToolCalculationId",
+                      "value": "1015"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CostBreakDownConfigurationUniqueKey",
+                      "value": "Siemens.TCPCM.CostBreakdownForTools.StandardCBDforinjecttools.WebApi"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"toolCalculationId\": 6070,\n    \"costBreakDownConfigurationUniqueKey\": \"string\",\n    \"toolProperties\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\",\n        \"unit\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"value\": \"string\",\n        \"unit\": \"string\"\n      }\n    ],\n    \"materials\": [\n      {\n        \"properties\": [\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"properties\": [\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    ]\n  },\n  \"success\": false,\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16207928-fed8-4958-b9ac-3adf7cc6918d",
+              "name": "Indicates that the requested resource requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ToolCalculations",
+                    "CostBreakDown",
+                    "Export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "ToolCalculationId",
+                      "value": "1015"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CostBreakDownConfigurationUniqueKey",
+                      "value": "Siemens.TCPCM.CostBreakdownForTools.StandardCBDforinjecttools.WebApi"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a7f049dd-be56-4c36-9f5e-5e1119ced280",
+              "name": "Indicates that the request method (POST or GET) is not allowed on the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ToolCalculations",
+                    "CostBreakDown",
+                    "Export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "ToolCalculationId",
+                      "value": "1015"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CostBreakDownConfigurationUniqueKey",
+                      "value": "Siemens.TCPCM.CostBreakdownForTools.StandardCBDforinjecttools.WebApi"
+                    }
+                  ]
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c795d490-e1f3-4297-a456-02d720803f4f",
+              "name": "Indicates that a generic error has occurred on the server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ToolCalculations",
+                    "CostBreakDown",
+                    "Export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "ToolCalculationId",
+                      "value": "1015"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CostBreakDownConfigurationUniqueKey",
+                      "value": "Siemens.TCPCM.CostBreakdownForTools.StandardCBDforinjecttools.WebApi"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://example.com/polarion/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4fb6b5cd-bd51-4589-8130-62e3c3214920",
+    "name": "Polarion REST Account Import/Export: Calculations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> (available on Support Center).\n\nContact Support:\n Name: Polarion REST API Support",
+      "type": "text/plain"
+    }
+  }
+}

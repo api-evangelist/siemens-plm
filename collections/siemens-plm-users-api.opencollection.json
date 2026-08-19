@@ -1,0 +1,250 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Users API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns the current User.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/user",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns the current User."
+        },
+        {
+          "info": {
+            "name": "Returns a list of Users.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/users",
+            "params": [
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The query string."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The sort string."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns a list of Users."
+        },
+        {
+          "info": {
+            "name": "Creates a list of Users.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a list of Users."
+        },
+        {
+          "info": {
+            "name": "Returns the specified User.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The User ID."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns the specified User."
+        },
+        {
+          "info": {
+            "name": "Updates the specified User.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The User ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified User."
+        },
+        {
+          "info": {
+            "name": "Returns the specified User Avatar.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/users/:userId/actions/getAvatar",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The User ID."
+              }
+            ]
+          },
+          "docs": "Returns the specified User Avatar."
+        },
+        {
+          "info": {
+            "name": "Sets the User's license.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/users/:userId/actions/setLicense",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The User ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the User's license."
+        },
+        {
+          "info": {
+            "name": "Updates the specified User Avatar.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/users/:userId/actions/updateAvatar",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The User ID."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Updates the specified User Avatar."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

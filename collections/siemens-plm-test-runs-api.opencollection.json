@@ -1,0 +1,754 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Test Runs API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Test Runs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of Test Runs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The query string."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The sort string."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              },
+              {
+                "name": "templates",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, only templates will be returned, otherwise only actual instances will be returned."
+              }
+            ]
+          },
+          "docs": "Returns a list of Test Runs."
+        },
+        {
+          "info": {
+            "name": "Creates a list of Test Runs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a list of Test Runs."
+        },
+        {
+          "info": {
+            "name": "Updates a list of Test Runs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a list of Test Runs."
+        },
+        {
+          "info": {
+            "name": "Deletes a list of Test Runs.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes a list of Test Runs."
+        },
+        {
+          "info": {
+            "name": "Returns the specified Test Run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns the specified Test Run."
+        },
+        {
+          "info": {
+            "name": "Updates the specified Test Run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified Test Run."
+        },
+        {
+          "info": {
+            "name": "Deletes the specified Test Run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              }
+            ]
+          },
+          "docs": "Deletes the specified Test Run."
+        },
+        {
+          "info": {
+            "name": "Exports tests to Excel.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/actions/exportTestsToExcel",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The query string."
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "The property to sort the test results."
+              },
+              {
+                "name": "template",
+                "value": "",
+                "type": "query",
+                "description": "The export template string."
+              }
+            ]
+          },
+          "docs": "Exports tests to Excel."
+        },
+        {
+          "info": {
+            "name": "Returns a list of Workflow Actions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/actions/getWorkflowActions",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns a list of Workflow Actions."
+        },
+        {
+          "info": {
+            "name": "Imports Excel test results.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/actions/importExcelTestResults",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Imports Excel test results."
+        },
+        {
+          "info": {
+            "name": "Imports XUnit test results.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/actions/importXUnitTestResults",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              }
+            ]
+          },
+          "docs": "Imports XUnit test results."
+        },
+        {
+          "info": {
+            "name": "Returns a list of Test Parameter Definitions for the specified Test Run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testparameterdefinitions",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns a list of Test Parameter Definitions for the specified Test Run."
+        },
+        {
+          "info": {
+            "name": "Creates a list of Test Parameter Definitions for the specified Test Run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testparameterdefinitions",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a list of Test Parameter Definitions for the specified Test Run."
+        },
+        {
+          "info": {
+            "name": "Returns the specified Test Parameter Definition for the specified Test Run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testparameterdefinitions/:testParamId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "testParamId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Parameter."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns the specified Test Parameter Definition for the specified Test Run."
+        },
+        {
+          "info": {
+            "name": "Deletes the specified Test Parameter Definition for the specified Test Run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testparameterdefinitions/:testParamId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "testParamId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Parameter."
+              }
+            ]
+          },
+          "docs": "Deletes the specified Test Parameter Definition for the specified Test Run."
+        },
+        {
+          "info": {
+            "name": "Returns a list of Test Parameters for the specified Test Run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testparameters",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns a list of Test Parameters for the specified Test Run."
+        },
+        {
+          "info": {
+            "name": "Creates a list of Test Parameters for the specified Test Run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testparameters",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a list of Test Parameters for the specified Test Run."
+        },
+        {
+          "info": {
+            "name": "Deletes a list of Test Parameters for the specified Test Run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testparameters",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes a list of Test Parameters for the specified Test Run."
+        },
+        {
+          "info": {
+            "name": "Returns the specified Test Parameter for the specified Test Run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testparameters/:testParamId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "testParamId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Parameter."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns the specified Test Parameter for the specified Test Run."
+        },
+        {
+          "info": {
+            "name": "Deletes the specified Test Parameter for the specified Test Run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testparameters/:testParamId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "testParamId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Parameter."
+              }
+            ]
+          },
+          "docs": "Deletes the specified Test Parameter for the specified Test Run."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Customer Information: API Key API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Information: API Key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get-api-key-details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/api/api-key-details"
+          },
+          "docs": "Verify and monitor the status of your API key with this endpoint. It provides essential information regarding your API key's validity and remaining credit balance for each resource available."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Import/Export: MasterData API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Import/Export: MasterData",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Exports master data using export configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/api/v1/MasterData/Export",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exports master data using export configurations"
+        },
+        {
+          "info": {
+            "name": "Import master data using import configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/api/v1/MasterData/Import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Import master data using import configurations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

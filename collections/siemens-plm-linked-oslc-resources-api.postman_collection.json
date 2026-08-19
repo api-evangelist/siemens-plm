@@ -1,0 +1,4432 @@
+{
+  "item": [
+    {
+      "id": "a7715e5e-c3d7-42ef-9dc0-a1b1cb9379ca",
+      "name": "Linked Oslc Resources",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b4236995-15d4-41be-abdb-72808d98b6ab",
+          "name": "Deletes a list of instances.",
+          "request": {
+            "name": "Deletes a list of instances.",
+            "description": {},
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "workitems",
+                ":workItemId",
+                "linkedoslcresources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) The Project ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workItemId",
+                  "description": "(Required) The Work Item ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6283bcee-8a18-4607-b0f5-68c191c0aa1f",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3fed507e-5ca0-4444-bb1e-dce32991f3c6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc63bf17-23e0-4a0a-bf49-bcb59ab38a2c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e2e70b8c-8f46-4d64-a709-46bdc8aa22d1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eade6049-7559-44b8-84d2-cceb98632005",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "15f61da6-bfc3-418d-82da-d5e106b6d45a",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a2b4ecee-7520-40ad-8793-19c5a40f566e",
+              "name": "Request Entity Too Large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "80dd6cdf-b621-4642-9059-2834d4db88d3",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2ac16ab1-6e18-449a-ba35-847d7aecee9b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18f1e93b-293d-41aa-905a-ae61c4fc321a",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a27e5f07-c0d2-4686-974c-ea86c17296d6",
+              "name": "Error responses have the following structure:",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"400\",\n      \"title\": \"Bad Request\",\n      \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n      \"source\": {\n        \"parameter\": \"revision\",\n        \"pointer\": \"$.data\",\n        \"resource\": {\n          \"id\": \"MyProjectId/id\",\n          \"type\": \"type\"\n        }\n      }\n    },\n    {\n      \"status\": \"400\",\n      \"title\": \"Bad Request\",\n      \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n      \"source\": {\n        \"parameter\": \"revision\",\n        \"pointer\": \"$.data\",\n        \"resource\": {\n          \"id\": \"MyProjectId/id\",\n          \"type\": \"type\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1ccb758-a654-434a-9ba1-870a97d716b1",
+          "name": "Returns a list of instances.",
+          "request": {
+            "name": "Returns a list of instances.",
+            "description": {},
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "workitems",
+                ":workItemId",
+                "linkedoslcresources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[size]",
+                  "value": "<integer>",
+                  "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "page[number]",
+                  "value": "<integer>",
+                  "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[categories]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[collections]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[customfields]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[document_attachments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[document_comments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[document_parts]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[documents]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[enumerations]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[externallylinkedworkitems]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[featureselections]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[globalroles]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[icons]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[jobs]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[license]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[license_assignments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[license_slots]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[license_types]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[linkedoslcresources]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[linkedworkitems]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[metadata]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[page_attachments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[page_comments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[pages]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[plans]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[projectroles]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[projects]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[projecttemplates]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[revisions]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testparameter_definitions]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testparameters]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testrecord_attachments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testrecords]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testrun_attachments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testrun_comments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[testruns]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[teststep_results]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[teststepresult_attachments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[teststeps]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[usergroups]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[users]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[workitem_approvals]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[workitem_attachments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[workitem_comments]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[workitems]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[workrecords]",
+                  "value": "<string>",
+                  "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "The query string."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "The sort string."
+                },
+                {
+                  "disabled": false,
+                  "key": "revision",
+                  "value": "<string>",
+                  "description": "The revision ID."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) The Project ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workItemId",
+                  "description": "(Required) The Work Item ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "794657f4-5d17-4c50-bf7e-c513dfccdd50",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "revision",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"linkedoslcresources\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\",\n      \"revision\": \"1234\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      },\n      \"links\": {},\n      \"meta\": {\n        \"errors\": [\n          {\n            \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n            \"source\": {\n              \"parameter\": \"revision\",\n              \"pointer\": \"$.data\",\n              \"resource\": {\n                \"id\": \"MyProjectId/id\",\n                \"type\": \"type\"\n              }\n            },\n            \"status\": \"400\",\n            \"title\": \"Bad Request\"\n          },\n          {\n            \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n            \"source\": {\n              \"parameter\": \"revision\",\n              \"pointer\": \"$.data\",\n              \"resource\": {\n                \"id\": \"MyProjectId/id\",\n                \"type\": \"type\"\n              }\n            },\n            \"status\": \"400\",\n            \"title\": \"Bad Request\"\n          }\n        ]\n      }\n    },\n    {\n      \"type\": \"linkedoslcresources\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\",\n      \"revision\": \"1234\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      },\n      \"links\": {},\n      \"meta\": {\n        \"errors\": [\n          {\n            \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n            \"source\": {\n              \"parameter\": \"revision\",\n              \"pointer\": \"$.data\",\n              \"resource\": {\n                \"id\": \"MyProjectId/id\",\n                \"type\": \"type\"\n              }\n            },\n            \"status\": \"400\",\n            \"title\": \"Bad Request\"\n          },\n          {\n            \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n            \"source\": {\n              \"parameter\": \"revision\",\n              \"pointer\": \"$.data\",\n              \"resource\": {\n                \"id\": \"MyProjectId/id\",\n                \"type\": \"type\"\n              }\n            },\n            \"status\": \"400\",\n            \"title\": \"Bad Request\"\n          }\n        ]\n      }\n    }\n  ],\n  \"meta\": {\n    \"totalCount\": 2082\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55a4464c-eaf0-4446-8646-3d35a551559b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "revision",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "25c4fc9b-6ca7-4e38-ad07-c1be0261bc21",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "revision",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8595e6cf-ef4a-4df3-94b7-602ebe879854",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "revision",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "371378dd-04be-4724-97f9-c09ed9040b42",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "revision",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aab33509-7718-4e54-9bb8-c4750b4541c6",
+              "name": "Not Acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "revision",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "889bb00c-31bf-472c-ac57-90ce10a2a005",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "revision",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc6f1662-77dc-428b-9ebd-24b5d15527c5",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "revision",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2324ff2c-1083-4854-ba3f-899a2cda426c",
+              "name": "Error responses have the following structure:",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[size]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[number]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields[categories]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[collections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[customfields]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[document_parts]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[documents]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[enumerations]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[externallylinkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[featureselections]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[globalroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[icons]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[jobs]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_assignments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_slots]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[license_types]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedoslcresources]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[linkedworkitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[metadata]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[page_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[pages]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[plans]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projectroles]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projects]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[projecttemplates]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[revisions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameter_definitions]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testparameters]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecord_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testrun_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[testruns]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststep_results]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststepresult_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[teststeps]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[usergroups]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[users]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_approvals]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_attachments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitem_comments]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workitems]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "fields[workrecords]",
+                      "value": "@all"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "revision",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"400\",\n      \"title\": \"Bad Request\",\n      \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n      \"source\": {\n        \"parameter\": \"revision\",\n        \"pointer\": \"$.data\",\n        \"resource\": {\n          \"id\": \"MyProjectId/id\",\n          \"type\": \"type\"\n        }\n      }\n    },\n    {\n      \"status\": \"400\",\n      \"title\": \"Bad Request\",\n      \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n      \"source\": {\n        \"parameter\": \"revision\",\n        \"pointer\": \"$.data\",\n        \"resource\": {\n          \"id\": \"MyProjectId/id\",\n          \"type\": \"type\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74b73db4-2a18-41e1-b185-755f59c2d8d6",
+          "name": "Creates a list of instances.",
+          "request": {
+            "name": "Creates a list of instances.",
+            "description": {},
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "workitems",
+                ":workItemId",
+                "linkedoslcresources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) The Project ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workItemId",
+                  "description": "(Required) The Work Item ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"<string>\",\n        \"role\": \"<string>\",\n        \"uri\": \"<string>\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"<string>\",\n        \"role\": \"<string>\",\n        \"uri\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fad4d4ff-ac6a-407d-b385-1d46b5c098f9",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"linkedoslcresources\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\",\n      \"links\": {}\n    },\n    {\n      \"type\": \"linkedoslcresources\",\n      \"id\": \"MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId\",\n      \"links\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "192d3ec6-1f00-46f1-9805-57e49887cc57",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "802af60a-7208-49d6-a243-18d0f1a1a216",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "acf5d753-effb-4042-aed8-b2e690d6f684",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec2dedb5-44ed-42cb-baa1-e22ee01f41c0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e81f2264-2256-422a-9a37-aff516894308",
+              "name": "Not Acceptable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f0fd0d10-4386-4457-8129-b2a53f86e2af",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f927e35a-375e-41ab-b3f3-32b6dbba33ec",
+              "name": "Request Entity Too Large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fe3c3507-f78a-4177-9c68-8073decfa0a1",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "122b4d18-5631-4b1e-b441-044703780da1",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e0cc634-8af2-4be7-80ad-e3be1d3a9c7f",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b9ad6ec-4355-4968-b7b5-d52d6b76395a",
+              "name": "Error responses have the following structure:",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "workitems",
+                    ":workItemId",
+                    "linkedoslcresources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) The Project ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workItemId",
+                      "description": "(Required) The Work Item ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"label\": \"Label\",\n        \"role\": \"http://open-services.net/ns/cm#relatedChangeRequest\",\n        \"uri\": \"Uri\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"400\",\n      \"title\": \"Bad Request\",\n      \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n      \"source\": {\n        \"parameter\": \"revision\",\n        \"pointer\": \"$.data\",\n        \"resource\": {\n          \"id\": \"MyProjectId/id\",\n          \"type\": \"type\"\n        }\n      }\n    },\n    {\n      \"status\": \"400\",\n      \"title\": \"Bad Request\",\n      \"detail\": \"Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)\",\n      \"source\": {\n        \"parameter\": \"revision\",\n        \"pointer\": \"$.data\",\n        \"resource\": {\n          \"id\": \"MyProjectId/id\",\n          \"type\": \"type\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://example.com/polarion/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "405ed8f1-2f38-4f26-955c-288571dd7de3",
+    "name": "Polarion REST Account Linked Oslc Resources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> (available on Support Center).\n\nContact Support:\n Name: Polarion REST API Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Import/Export: Calculations API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Import/Export: Calculations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export calculations using export configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/api/v1/Calculations/Export",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Export calculations using export configurations"
+        },
+        {
+          "info": {
+            "name": "Import calculations from the given data table using an import configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/api/v1/Calculations/Import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Import calculations from the given data table using an import configuration with the given GUID. It is also possible to export the imported data directly (since version 2412)."
+        },
+        {
+          "info": {
+            "name": "Exports cost break downs of tool calculations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/api/v1/ToolCalculations/CostBreakDown/Export",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exports cost break downs of tool calculations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

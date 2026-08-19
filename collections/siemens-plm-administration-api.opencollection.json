@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Administration API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Administration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch a user User by {userName}. Only allowed for admins.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/api/v1/administration/users/:userName",
+            "params": [
+              {
+                "name": "userName",
+                "value": "",
+                "type": "path",
+                "description": "User name"
+              }
+            ]
+          },
+          "docs": "Fetch a user User by {userName}. Only allowed for admins."
+        },
+        {
+          "info": {
+            "name": "Activates or deactivate a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/api/v1/administration/users/:userName",
+            "params": [
+              {
+                "name": "userName",
+                "value": "",
+                "type": "path",
+                "description": "User name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activates or deactivate a user"
+        },
+        {
+          "info": {
+            "name": "Gets the current version of TcPCM. Available since version 2412",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/api/v1/administration/application-version"
+          },
+          "docs": "Gets the current version of TcPCM"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

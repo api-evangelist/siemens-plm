@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Project API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Project",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get single project information. Available since version 2512.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/api/v1/projects/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the project"
+              }
+            ]
+          },
+          "docs": "Get single project information. Available since version 2512."
+        },
+        {
+          "info": {
+            "name": "Delete a project by Id. Available since version 2512.2602.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/api/v1/projects/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the project"
+              }
+            ]
+          },
+          "docs": "The project with the given Id will be moved to the recycle bin (including all related data)."
+        },
+        {
+          "info": {
+            "name": "Get all project assumptions of the given project. Available since version 2512.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/api/v1/projects/:id/project-assumptions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the project"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional field filtering. Can be used to reduce the amount of data. See the [Sparse Fieldsets](https://developer.siemens.com/guidelines/api-guidelines/rest/sparse-fieldsets.html) guidelines for more information. By default, all fields will be returned."
+              }
+            ]
+          },
+          "docs": "This endpoint supports field filtering."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

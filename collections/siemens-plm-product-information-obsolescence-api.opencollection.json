@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Product Information: Obsolescence API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product Information: Obsolescence",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get-obsolescence",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/api/products/:productNumber/obsolescence",
+            "headers": [
+              {
+                "name": "Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "productNumber",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the product (MLFB)."
+              }
+            ]
+          },
+          "docs": "This endpoint provides in-depth obsolescence information for a specific product number. Utilize it to stay updated on the product's availability status, discover substitute or successor options, and plan accordingly."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

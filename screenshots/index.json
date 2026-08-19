@@ -1,0 +1,11 @@
+[
+  {
+    "repo": "siemens-plm",
+    "captured_at": "2026-08-17T125316",
+    "source_url": "https://siemens.com",
+    "source_type": "root-domain",
+    "file": "siemens-plm-2026-08-17T125316.png",
+    "bytes": 280540,
+    "capture": "playwright-local"
+  }
+]

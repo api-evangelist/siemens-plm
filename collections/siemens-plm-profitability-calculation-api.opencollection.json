@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Profitability Calculation API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Profitability Calculation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns the profitability calculation report. Available since version 2406.0001",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/api/v1/profitability-calculation-report",
+            "params": [
+              {
+                "name": "ProfitabilityCalculationIds",
+                "value": "3,17,732",
+                "type": "query",
+                "description": "Ids of the profitability calculations to be exported."
+              },
+              {
+                "name": "ProjectIds",
+                "value": "53,88",
+                "type": "query",
+                "description": "All profitability calculations of these projects are exported."
+              },
+              {
+                "name": "ExportConfigurationGuid",
+                "value": "",
+                "type": "query",
+                "description": "GUID of the export configuration."
+              }
+            ]
+          },
+          "docs": "Returns the profitability calculation report. Available since version 2406.0001."
+        },
+        {
+          "info": {
+            "name": "Returns the aggregated profitability calculation report. Available since version 2512.2602",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/api/v1/aggregated-profitability-calculation-report",
+            "params": [
+              {
+                "name": "AggregatedProfitabilityCalculationIds",
+                "value": "14,362,731",
+                "type": "query",
+                "description": "Ids of the aggregated profitability calculations to be exported."
+              },
+              {
+                "name": "FolderIds",
+                "value": "5,12",
+                "type": "query",
+                "description": "All aggregated profitability calculations of these folders are exported."
+              },
+              {
+                "name": "ExportConfigurationGuid",
+                "value": "",
+                "type": "query",
+                "description": "GUID of the export configuration."
+              }
+            ]
+          },
+          "docs": "Returns the aggregated profitability calculation report. Available since version 2512.2602."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

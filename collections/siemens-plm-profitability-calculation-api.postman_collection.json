@@ -1,0 +1,1015 @@
+{
+  "item": [
+    {
+      "id": "d1e63023-b062-44f4-a43e-187c2ca3ddb0",
+      "name": "Profitability Calculation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "22eae983-ed42-47eb-bfa5-71d0daa3db06",
+          "name": "Returns the profitability calculation report. Available since version 2406.0001",
+          "request": {
+            "name": "Returns the profitability calculation report. Available since version 2406.0001",
+            "description": {
+              "content": "Returns the profitability calculation report. Available since version 2406.0001.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "profitability-calculation-report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ProfitabilityCalculationIds",
+                  "value": "<integer>",
+                  "description": "Ids of the profitability calculations to be exported."
+                },
+                {
+                  "disabled": false,
+                  "key": "ProfitabilityCalculationIds",
+                  "value": "<integer>",
+                  "description": "Ids of the profitability calculations to be exported."
+                },
+                {
+                  "disabled": false,
+                  "key": "ProjectIds",
+                  "value": "<integer>",
+                  "description": "All profitability calculations of these projects are exported."
+                },
+                {
+                  "disabled": false,
+                  "key": "ProjectIds",
+                  "value": "<integer>",
+                  "description": "All profitability calculations of these projects are exported."
+                },
+                {
+                  "disabled": false,
+                  "key": "ExportConfigurationGuid",
+                  "value": "<uuid>",
+                  "description": "(Required) GUID of the export configuration."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "840ad73e-4e4e-4b53-b745-4c89d9de4751",
+              "name": "Success. Returns the requested profitability calculation report.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "profitability-calculation-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "3"
+                    },
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "17"
+                    },
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "732"
+                    },
+                    {
+                      "key": "ProjectIds",
+                      "value": "53"
+                    },
+                    {
+                      "key": "ProjectIds",
+                      "value": "88"
+                    },
+                    {
+                      "key": "ExportConfigurationGuid",
+                      "value": "cbbb4ada-3550-4939-a138-4da02757d460"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"data\": [\n      {\n        \"Name\": \"Profitability Calculation for car A\",\n        \"Year\": 2025,\n        \"Revenue\": 2346825\n      },\n      {\n        \"Name\": \"Profitability Calculation for car A\",\n        \"Year\": 2026,\n        \"Revenue\": 4341822\n      }\n    ],\n    \"columns\": [\n      {\n        \"name\": \"Name\",\n        \"displayName\": \"Profitability Calculation Name\",\n        \"dataType\": \"string\"\n      },\n      {\n        \"name\": \"Year\",\n        \"displayName\": \"Year\",\n        \"dataType\": \"integer\"\n      },\n      {\n        \"name\": \"Revenue\",\n        \"displayName\": \"Revenue in €\",\n        \"dataType\": \"double\"\n      }\n    ]\n  },\n  \"errors\": [\n    {\n      \"status\": 404,\n      \"detail\": \"Profitability calculation not found\",\n      \"profitabilityCalculationId\": 731\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3bb6c858-4f39-434c-8569-2a38e43ce98a",
+              "name": "The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "profitability-calculation-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "3"
+                    },
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "17"
+                    },
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "732"
+                    },
+                    {
+                      "key": "ProjectIds",
+                      "value": "53"
+                    },
+                    {
+                      "key": "ProjectIds",
+                      "value": "88"
+                    },
+                    {
+                      "key": "ExportConfigurationGuid",
+                      "value": "cbbb4ada-3550-4939-a138-4da02757d460"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Detail\": \"Invalid JSON format\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eaa22508-fc1c-4135-a4b4-34972cc9d064",
+              "name": "The client is not providing valid authentication credentials for the target resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "profitability-calculation-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "3"
+                    },
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "17"
+                    },
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "732"
+                    },
+                    {
+                      "key": "ProjectIds",
+                      "value": "53"
+                    },
+                    {
+                      "key": "ProjectIds",
+                      "value": "88"
+                    },
+                    {
+                      "key": "ExportConfigurationGuid",
+                      "value": "cbbb4ada-3550-4939-a138-4da02757d460"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Detail\": \"Invalid user or password\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4681623-b5b5-411f-88a8-877a88acc944",
+              "name": "The service is not able to respond using the request media-type or representation asked by the client in the Accept header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "profitability-calculation-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "3"
+                    },
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "17"
+                    },
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "732"
+                    },
+                    {
+                      "key": "ProjectIds",
+                      "value": "53"
+                    },
+                    {
+                      "key": "ProjectIds",
+                      "value": "88"
+                    },
+                    {
+                      "key": "ExportConfigurationGuid",
+                      "value": "cbbb4ada-3550-4939-a138-4da02757d460"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Detail\": \"Media type not accepted\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96f90345-e33b-4341-99cc-55e81f53f329",
+              "name": "The request timed out because a server did not respond within the expected waiting time",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "profitability-calculation-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "3"
+                    },
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "17"
+                    },
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "732"
+                    },
+                    {
+                      "key": "ProjectIds",
+                      "value": "53"
+                    },
+                    {
+                      "key": "ProjectIds",
+                      "value": "88"
+                    },
+                    {
+                      "key": "ExportConfigurationGuid",
+                      "value": "cbbb4ada-3550-4939-a138-4da02757d460"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Detail\": \"Request timed out\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a443e09f-b6f9-42f7-80a0-ce4d5ed09eaa",
+              "name": "An unexpected error occurred and the server is not fulfilling the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "profitability-calculation-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "3"
+                    },
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "17"
+                    },
+                    {
+                      "key": "ProfitabilityCalculationIds",
+                      "value": "732"
+                    },
+                    {
+                      "key": "ProjectIds",
+                      "value": "53"
+                    },
+                    {
+                      "key": "ProjectIds",
+                      "value": "88"
+                    },
+                    {
+                      "key": "ExportConfigurationGuid",
+                      "value": "cbbb4ada-3550-4939-a138-4da02757d460"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Detail\": \"Internal error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4961bd0-1459-4819-b724-c13759d9be4e",
+          "name": "Returns the aggregated profitability calculation report. Available since version 2512.2602",
+          "request": {
+            "name": "Returns the aggregated profitability calculation report. Available since version 2512.2602",
+            "description": {
+              "content": "Returns the aggregated profitability calculation report. Available since version 2512.2602.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "aggregated-profitability-calculation-report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AggregatedProfitabilityCalculationIds",
+                  "value": "<integer>",
+                  "description": "Ids of the aggregated profitability calculations to be exported."
+                },
+                {
+                  "disabled": false,
+                  "key": "AggregatedProfitabilityCalculationIds",
+                  "value": "<integer>",
+                  "description": "Ids of the aggregated profitability calculations to be exported."
+                },
+                {
+                  "disabled": false,
+                  "key": "FolderIds",
+                  "value": "<integer>",
+                  "description": "All aggregated profitability calculations of these folders are exported."
+                },
+                {
+                  "disabled": false,
+                  "key": "FolderIds",
+                  "value": "<integer>",
+                  "description": "All aggregated profitability calculations of these folders are exported."
+                },
+                {
+                  "disabled": false,
+                  "key": "ExportConfigurationGuid",
+                  "value": "<uuid>",
+                  "description": "(Required) GUID of the export configuration."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "7976c11f-1595-4ee2-aa57-25d65de811cf",
+              "name": "Success. Returns the requested aggregated profitability calculation report.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "aggregated-profitability-calculation-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "14"
+                    },
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "362"
+                    },
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "731"
+                    },
+                    {
+                      "key": "FolderIds",
+                      "value": "5"
+                    },
+                    {
+                      "key": "FolderIds",
+                      "value": "12"
+                    },
+                    {
+                      "key": "ExportConfigurationGuid",
+                      "value": "cbbb4ada-3550-4939-a138-4da02757d460"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"data\": [\n      {\n        \"Name\": \"Aggregated Profitability Calculation for plant Munich\",\n        \"Year\": 2025,\n        \"Revenue\": 2346825\n      },\n      {\n        \"Name\": \"Aggregated Profitability Calculation for plant Munich\",\n        \"Year\": 2026,\n        \"Revenue\": 4341822\n      }\n    ],\n    \"columns\": [\n      {\n        \"name\": \"Name\",\n        \"displayName\": \"Aggregated Profitability Calculation Name\",\n        \"dataType\": \"string\"\n      },\n      {\n        \"name\": \"Year\",\n        \"displayName\": \"Year\",\n        \"dataType\": \"integer\"\n      },\n      {\n        \"name\": \"Revenue\",\n        \"displayName\": \"Revenue in €\",\n        \"dataType\": \"double\"\n      }\n    ]\n  },\n  \"errors\": [\n    {\n      \"status\": 404,\n      \"detail\": \"Aggregated profitability calculation not found\",\n      \"aggregatedProfitabilityCalculationId\": 731\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcab829c-2065-41cf-ac23-e0292fade3ef",
+              "name": "The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "aggregated-profitability-calculation-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "14"
+                    },
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "362"
+                    },
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "731"
+                    },
+                    {
+                      "key": "FolderIds",
+                      "value": "5"
+                    },
+                    {
+                      "key": "FolderIds",
+                      "value": "12"
+                    },
+                    {
+                      "key": "ExportConfigurationGuid",
+                      "value": "cbbb4ada-3550-4939-a138-4da02757d460"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"Invalid JSON format\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b859cd6-cdb8-47a2-bca0-72671593398d",
+              "name": "The client is not providing valid authentication credentials for the target resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "aggregated-profitability-calculation-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "14"
+                    },
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "362"
+                    },
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "731"
+                    },
+                    {
+                      "key": "FolderIds",
+                      "value": "5"
+                    },
+                    {
+                      "key": "FolderIds",
+                      "value": "12"
+                    },
+                    {
+                      "key": "ExportConfigurationGuid",
+                      "value": "cbbb4ada-3550-4939-a138-4da02757d460"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"Invalid user or password\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b996b0e-2bb7-4d07-8234-9c1aa171a054",
+              "name": "The service is not able to respond using the request media-type or representation asked by the client in the Accept header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "aggregated-profitability-calculation-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "14"
+                    },
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "362"
+                    },
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "731"
+                    },
+                    {
+                      "key": "FolderIds",
+                      "value": "5"
+                    },
+                    {
+                      "key": "FolderIds",
+                      "value": "12"
+                    },
+                    {
+                      "key": "ExportConfigurationGuid",
+                      "value": "cbbb4ada-3550-4939-a138-4da02757d460"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"Media type not accepted\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38aeee49-6e8f-40cb-85b9-c3b50ebacf95",
+              "name": "The request timed out because a server did not respond within the expected waiting time",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "aggregated-profitability-calculation-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "14"
+                    },
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "362"
+                    },
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "731"
+                    },
+                    {
+                      "key": "FolderIds",
+                      "value": "5"
+                    },
+                    {
+                      "key": "FolderIds",
+                      "value": "12"
+                    },
+                    {
+                      "key": "ExportConfigurationGuid",
+                      "value": "cbbb4ada-3550-4939-a138-4da02757d460"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"Request timed out\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "115a57bb-6092-46d4-9d6e-4ce6c6972b12",
+              "name": "An unexpected error occurred and the server is not fulfilling the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "aggregated-profitability-calculation-report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "14"
+                    },
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "362"
+                    },
+                    {
+                      "key": "AggregatedProfitabilityCalculationIds",
+                      "value": "731"
+                    },
+                    {
+                      "key": "FolderIds",
+                      "value": "5"
+                    },
+                    {
+                      "key": "FolderIds",
+                      "value": "12"
+                    },
+                    {
+                      "key": "ExportConfigurationGuid",
+                      "value": "cbbb4ada-3550-4939-a138-4da02757d460"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"Internal error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://example.com/polarion/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "445ef436-0608-4c49-aa5e-360880be3ccc",
+    "name": "Polarion REST Account Profitability Calculation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> (available on Support Center).\n\nContact Support:\n Name: Polarion REST API Support",
+      "type": "text/plain"
+    }
+  }
+}

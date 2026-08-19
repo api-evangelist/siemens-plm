@@ -1,0 +1,865 @@
+{
+  "item": [
+    {
+      "id": "3e3709a0-3bc9-4fed-9d7a-f23fdbb08866",
+      "name": "Account",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7fa170cf-a428-4395-9f24-c8bce425ce83",
+          "name": "Login to get the bearer token for protected endpoints",
+          "request": {
+            "name": "Login to get the bearer token for protected endpoints",
+            "description": {
+              "content": "TcPCM supports three different login flows:\n1. **Resource Owner Password flow**: Use the *username* and *password* with the *grant\\_type* \"password\" and *authenticatorId* \"Siemens.TCPCM.AuthenticationMethod.TcPCM\" or \"Siemens.TCPCM.AuthenticationMethod.Windows\".\n2. **Token Exchange flow**: Use the *subject\\_token\\_type* and *subject\\_token* with the *grant\\_type* \"urn:ietf:params:oauth:grant-type:token-exchange\" and *authenticatorId* \"Siemens.TCPCM.AuthenticationMethod.SamAuth\".\n3. **Custom flow**: Use the *tcpcmSessionKey* with the *grant\\_type* \"applicationSession\" without *authenticatorId*.\n\nRefresh token flow:\n* The refresh token can be used to generate a new bearer token without re-authenticating.\n* The *grant\\_type* must be set to \"refresh\\_token\" and the *refresh\\_token* must be provided that was obtained via the initial authentication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "grant_type",
+                  "value": "password",
+                  "description": "(Required) Defines the method obtaining the access token."
+                },
+                {
+                  "disabled": false,
+                  "key": "client_id",
+                  "value": "TcPCM",
+                  "description": "(Required) Uniquely identifies the application making the request for authentication purposes."
+                },
+                {
+                  "disabled": false,
+                  "key": "client_secret",
+                  "value": "Your_Client_Secret",
+                  "description": "(Required) Confidential key used alongside the client_id to securely authenticate the application making the request."
+                },
+                {
+                  "disabled": false,
+                  "key": "authenticatorId",
+                  "value": "Siemens.TCPCM.AuthenticationMethod.TcPCM",
+                  "description": "TcPCM authentication method to be used with the provided credentials."
+                },
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "Administrator",
+                  "description": "TcPCM or Windows user name depending on the authenticatorId."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "",
+                  "description": "Corresponding password of the username."
+                },
+                {
+                  "disabled": false,
+                  "key": "subject_token_type",
+                  "value": "<string>",
+                  "description": "Type of the token to be exchanged for the login. Only \"urn:ietf:params:oauth:token-type:access_token\" is supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "subject_token",
+                  "value": "<string>",
+                  "description": "Value of the exchanged token."
+                },
+                {
+                  "disabled": false,
+                  "key": "tcpcmSessionKey",
+                  "value": "<string>",
+                  "description": "Session identifier that can be obtained via the TcPCM client application plugin."
+                },
+                {
+                  "disabled": false,
+                  "key": "refresh_token",
+                  "value": "<string>",
+                  "description": "Refresh token that you obtained via the initial authentication."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3a56753b-0819-4d48-8f68-f93122b22163",
+              "name": "Successful login",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Defines the method obtaining the access token.",
+                        "type": "text/plain"
+                      },
+                      "key": "grant_type",
+                      "value": "password"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Uniquely identifies the application making the request for authentication purposes.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_id",
+                      "value": "TcPCM"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Confidential key used alongside the client_id to securely authenticate the application making the request.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_secret",
+                      "value": "Your_Client_Secret"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "TcPCM authentication method to be used with the provided credentials.",
+                        "type": "text/plain"
+                      },
+                      "key": "authenticatorId",
+                      "value": "Siemens.TCPCM.AuthenticationMethod.TcPCM"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "TcPCM or Windows user name depending on the authenticatorId.",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "Administrator"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Corresponding password of the username.",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Type of the token to be exchanged for the login. Only \"urn:ietf:params:oauth:token-type:access_token\" is supported.",
+                        "type": "text/plain"
+                      },
+                      "key": "subject_token_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Value of the exchanged token.",
+                        "type": "text/plain"
+                      },
+                      "key": "subject_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Session identifier that can be obtained via the TcPCM client application plugin.",
+                        "type": "text/plain"
+                      },
+                      "key": "tcpcmSessionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Refresh token that you obtained via the initial authentication.",
+                        "type": "text/plain"
+                      },
+                      "key": "refresh_token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"string\",\n  \"token_type\": \"string\",\n  \"expires_in\": 8246,\n  \"refresh_token\": \"string\",\n  \"as:client_id\": \"string\",\n  \"as:TcPCMAuthenticatorId\": \"string\",\n  \".issued\": \"string\",\n  \".expires\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8360d6c1-744c-4031-bc90-63c7d847420e",
+              "name": "Bad request. Login failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Defines the method obtaining the access token.",
+                        "type": "text/plain"
+                      },
+                      "key": "grant_type",
+                      "value": "password"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Uniquely identifies the application making the request for authentication purposes.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_id",
+                      "value": "TcPCM"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Confidential key used alongside the client_id to securely authenticate the application making the request.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_secret",
+                      "value": "Your_Client_Secret"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "TcPCM authentication method to be used with the provided credentials.",
+                        "type": "text/plain"
+                      },
+                      "key": "authenticatorId",
+                      "value": "Siemens.TCPCM.AuthenticationMethod.TcPCM"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "TcPCM or Windows user name depending on the authenticatorId.",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "Administrator"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Corresponding password of the username.",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Type of the token to be exchanged for the login. Only \"urn:ietf:params:oauth:token-type:access_token\" is supported.",
+                        "type": "text/plain"
+                      },
+                      "key": "subject_token_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Value of the exchanged token.",
+                        "type": "text/plain"
+                      },
+                      "key": "subject_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Session identifier that can be obtained via the TcPCM client application plugin.",
+                        "type": "text/plain"
+                      },
+                      "key": "tcpcmSessionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Refresh token that you obtained via the initial authentication.",
+                        "type": "text/plain"
+                      },
+                      "key": "refresh_token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21c58ea6-a2b2-4dfe-b532-3f796c779549",
+              "name": "Server error. Login failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Defines the method obtaining the access token.",
+                        "type": "text/plain"
+                      },
+                      "key": "grant_type",
+                      "value": "password"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Uniquely identifies the application making the request for authentication purposes.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_id",
+                      "value": "TcPCM"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Confidential key used alongside the client_id to securely authenticate the application making the request.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_secret",
+                      "value": "Your_Client_Secret"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "TcPCM authentication method to be used with the provided credentials.",
+                        "type": "text/plain"
+                      },
+                      "key": "authenticatorId",
+                      "value": "Siemens.TCPCM.AuthenticationMethod.TcPCM"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "TcPCM or Windows user name depending on the authenticatorId.",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "Administrator"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Corresponding password of the username.",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Type of the token to be exchanged for the login. Only \"urn:ietf:params:oauth:token-type:access_token\" is supported.",
+                        "type": "text/plain"
+                      },
+                      "key": "subject_token_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Value of the exchanged token.",
+                        "type": "text/plain"
+                      },
+                      "key": "subject_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Session identifier that can be obtained via the TcPCM client application plugin.",
+                        "type": "text/plain"
+                      },
+                      "key": "tcpcmSessionKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Refresh token that you obtained via the initial authentication.",
+                        "type": "text/plain"
+                      },
+                      "key": "refresh_token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bad958b8-e387-4663-81dc-12af3e5f0823",
+          "name": "Logout and invalidate tokens",
+          "request": {
+            "name": "Logout and invalidate tokens",
+            "description": {
+              "content": "Please note that the *refreshTokenId* needs to be transferred as a query parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "Account",
+                "Logout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "refreshTokenId",
+                  "value": "<string>",
+                  "description": "(Required) Refresh Token Id"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "ba741e2c-2a52-43db-89e2-eff0af613566",
+              "name": "Successfully logged out.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Account",
+                    "Logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refreshTokenId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "01445aad-fb90-4f2a-a105-c0acf5792e3b",
+              "name": "Indicates that the requested resource requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Account",
+                    "Logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refreshTokenId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "702ac0d8-33d0-41a4-bc2d-7ab50873c5ab",
+              "name": "Indicates that a generic error has occurred on the server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Account",
+                    "Logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refreshTokenId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9edbb085-6db9-4580-8c13-eb7e65766609",
+          "name": "Delete RefreshToken",
+          "request": {
+            "name": "Delete RefreshToken",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "Account",
+                "DeleteRefreshToken"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "refreshTokenId",
+                  "value": "<string>",
+                  "description": "(Required) Refresh Token Id"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f33b873c-149d-49a9-93ec-8c700ab80929",
+              "name": "RefreshToken successfully removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Account",
+                    "DeleteRefreshToken"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refreshTokenId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b5412626-71e8-4dc7-9b58-6027a09018b9",
+              "name": "Indicates that a generic error has occurred on the server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Account",
+                    "DeleteRefreshToken"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "refreshTokenId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://example.com/polarion/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a656676a-8802-46fb-909b-522f49fc963b",
+    "name": "Polarion REST Account API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> (available on Support Center).\n\nContact Support:\n Name: Polarion REST API Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Test Step Results API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Test Step Results",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of Test Step Results.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testrecords/:testCaseProjectId/:testCaseId/:iteration/teststepresults",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "testCaseProjectId",
+                "value": "",
+                "type": "path",
+                "description": "The Testcase Project ID."
+              },
+              {
+                "name": "testCaseId",
+                "value": "",
+                "type": "path",
+                "description": "The Testcase ID."
+              },
+              {
+                "name": "iteration",
+                "value": "",
+                "type": "path",
+                "description": "The Iteration Number."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns a list of Test Step Results."
+        },
+        {
+          "info": {
+            "name": "Creates a list of Test Step Results.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testrecords/:testCaseProjectId/:testCaseId/:iteration/teststepresults",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "testCaseProjectId",
+                "value": "",
+                "type": "path",
+                "description": "The Testcase Project ID."
+              },
+              {
+                "name": "testCaseId",
+                "value": "",
+                "type": "path",
+                "description": "The Testcase ID."
+              },
+              {
+                "name": "iteration",
+                "value": "",
+                "type": "path",
+                "description": "The Iteration Number."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a list of Test Step Results."
+        },
+        {
+          "info": {
+            "name": "Updates a list of Test Step Results.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testrecords/:testCaseProjectId/:testCaseId/:iteration/teststepresults",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "testCaseProjectId",
+                "value": "",
+                "type": "path",
+                "description": "The Testcase Project ID."
+              },
+              {
+                "name": "testCaseId",
+                "value": "",
+                "type": "path",
+                "description": "The Testcase ID."
+              },
+              {
+                "name": "iteration",
+                "value": "",
+                "type": "path",
+                "description": "The Iteration Number."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a list of Test Step Results."
+        },
+        {
+          "info": {
+            "name": "Returns the specified Test Step Result.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testrecords/:testCaseProjectId/:testCaseId/:iteration/teststepresults/:testStepIndex",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "testCaseProjectId",
+                "value": "",
+                "type": "path",
+                "description": "The Testcase Project ID."
+              },
+              {
+                "name": "testCaseId",
+                "value": "",
+                "type": "path",
+                "description": "The Testcase ID."
+              },
+              {
+                "name": "iteration",
+                "value": "",
+                "type": "path",
+                "description": "The Iteration Number."
+              },
+              {
+                "name": "testStepIndex",
+                "value": "",
+                "type": "path",
+                "description": "The Test Step index."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "revision",
+                "value": "",
+                "type": "query",
+                "description": "The revision ID."
+              }
+            ]
+          },
+          "docs": "Returns the specified Test Step Result."
+        },
+        {
+          "info": {
+            "name": "Updates the specified Test Step Result.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/testruns/:testRunId/testrecords/:testCaseProjectId/:testCaseId/:iteration/teststepresults/:testStepIndex",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "testRunId",
+                "value": "",
+                "type": "path",
+                "description": "The Test Run ID."
+              },
+              {
+                "name": "testCaseProjectId",
+                "value": "",
+                "type": "path",
+                "description": "The Testcase Project ID."
+              },
+              {
+                "name": "testCaseId",
+                "value": "",
+                "type": "path",
+                "description": "The Testcase ID."
+              },
+              {
+                "name": "iteration",
+                "value": "",
+                "type": "path",
+                "description": "The Iteration Number."
+              },
+              {
+                "name": "testStepIndex",
+                "value": "",
+                "type": "path",
+                "description": "The Test Step index."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified Test Step Result."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

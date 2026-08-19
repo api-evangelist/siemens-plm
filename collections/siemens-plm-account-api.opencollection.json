@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Login to get the bearer token for protected endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "authenticatorId",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                },
+                {
+                  "name": "username",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                },
+                {
+                  "name": "subject_token_type",
+                  "value": ""
+                },
+                {
+                  "name": "subject_token",
+                  "value": ""
+                },
+                {
+                  "name": "tcpcmSessionKey",
+                  "value": ""
+                },
+                {
+                  "name": "refresh_token",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "TcPCM supports three different login flows:\n1. **Resource Owner Password flow**: Use the *username* and *password* with the *grant\\_type* \"password\" and *authenticatorId* \"Siemens.TCPCM.AuthenticationMethod.TcPCM\" or \"Siemens.TCPCM.AuthenticationMethod.Windows\".\n2. **Token Exchange flow**: Use the *subject\\_token\\_type* and *subject\\_token* with the *grant\\_type* \"urn:ietf:params:oauth:grant-type:token-exchange\" and *authenticatorId* \"Siemens.TCPCM.AuthenticationMethod.SamAuth\".\n3. **Custom flow"
+        },
+        {
+          "info": {
+            "name": "Logout and invalidate tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/api/v1/Account/Logout",
+            "params": [
+              {
+                "name": "refreshTokenId",
+                "value": "",
+                "type": "query",
+                "description": "Refresh Token Id"
+              }
+            ]
+          },
+          "docs": "Please note that the *refreshTokenId* needs to be transferred as a query parameter."
+        },
+        {
+          "info": {
+            "name": "Delete RefreshToken",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/api/v1/Account/DeleteRefreshToken",
+            "params": [
+              {
+                "name": "refreshTokenId",
+                "value": "",
+                "type": "query",
+                "description": "Refresh Token Id"
+              }
+            ]
+          },
+          "docs": "Delete RefreshToken"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

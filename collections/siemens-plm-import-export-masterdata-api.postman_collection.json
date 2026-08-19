@@ -1,0 +1,747 @@
+{
+  "item": [
+    {
+      "id": "9d7feb00-aec0-49d1-8a2f-f88ecbad4584",
+      "name": "Import/Export: MasterData",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f6619da2-464a-49ff-bf5d-86bef26ec2ae",
+          "name": "Exports master data using export configurations",
+          "request": {
+            "name": "Exports master data using export configurations",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "MasterData",
+                "Export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "Ids",
+                  "value": "<integer>",
+                  "description": "Database instance specific identifiers"
+                },
+                {
+                  "disabled": false,
+                  "key": "Ids",
+                  "value": "<integer>",
+                  "description": "Database instance specific identifiers"
+                },
+                {
+                  "disabled": false,
+                  "key": "Guids",
+                  "value": "<uuid>",
+                  "description": "Database instance independent identifiers"
+                },
+                {
+                  "disabled": false,
+                  "key": "Guids",
+                  "value": "<uuid>",
+                  "description": "Database instance independent identifiers"
+                },
+                {
+                  "disabled": false,
+                  "key": "ConfigurationGuid",
+                  "value": "<string>",
+                  "description": "Export configuration Guid"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5e4edfbc-f81a-4193-b187-2221e54d3cc4",
+              "name": "Returns export data of given master data IDs using given export configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "MasterData",
+                    "Export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance specific identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Ids",
+                      "value": "52"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance specific identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Ids",
+                      "value": "60"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance independent identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Guids",
+                      "value": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance independent identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Guids",
+                      "value": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Export configuration Guid",
+                        "type": "text/plain"
+                      },
+                      "key": "ConfigurationGuid",
+                      "value": "e1548f26-af8d-4173-9881-7ce1de530911"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3c104eb-1336-4f40-8b33-a6eafad6471e",
+              "name": "Indicates that the requested resource requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "MasterData",
+                    "Export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance specific identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Ids",
+                      "value": "52"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance specific identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Ids",
+                      "value": "60"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance independent identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Guids",
+                      "value": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance independent identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Guids",
+                      "value": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Export configuration Guid",
+                        "type": "text/plain"
+                      },
+                      "key": "ConfigurationGuid",
+                      "value": "e1548f26-af8d-4173-9881-7ce1de530911"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8df0d59e-82fe-4091-81fd-11ca6bc361e3",
+              "name": "Indicates that the request method (POST or GET) is not allowed on the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "MasterData",
+                    "Export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance specific identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Ids",
+                      "value": "52"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance specific identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Ids",
+                      "value": "60"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance independent identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Guids",
+                      "value": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance independent identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Guids",
+                      "value": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Export configuration Guid",
+                        "type": "text/plain"
+                      },
+                      "key": "ConfigurationGuid",
+                      "value": "e1548f26-af8d-4173-9881-7ce1de530911"
+                    }
+                  ]
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b5072030-eaf1-48fa-9c4d-e9a802789316",
+              "name": "Indicates that a generic error has occurred on the server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "MasterData",
+                    "Export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance specific identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Ids",
+                      "value": "52"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance specific identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Ids",
+                      "value": "60"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance independent identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Guids",
+                      "value": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Database instance independent identifiers",
+                        "type": "text/plain"
+                      },
+                      "key": "Guids",
+                      "value": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Export configuration Guid",
+                        "type": "text/plain"
+                      },
+                      "key": "ConfigurationGuid",
+                      "value": "e1548f26-af8d-4173-9881-7ce1de530911"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f140e10-29eb-46d1-bd9c-a45f3c7d66d6",
+          "name": "Import master data using import configurations",
+          "request": {
+            "name": "Import master data using import configurations",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "MasterData",
+                "Import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "Data",
+                  "value": "<object>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Data",
+                  "value": "<object>"
+                },
+                {
+                  "disabled": false,
+                  "key": "PlantUniqueKey",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ConfigurationGuid",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4741cb0c-d26a-4baf-a2bc-e108e37bab4a",
+              "name": "Imports master data using a given import configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "MasterData",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "Data",
+                      "value": "{\"Designation\":\"Carbon\",\"Unique identifier\":\"Custom.Unique.Carbon\",\"Type\":\"Cost value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Data",
+                      "value": "{\"Designation\":\"Reinvestment rate\",\"Unique identifier\":\"Custom.Unique.Reinvestment\",\"Type\":\"Unit\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PlantUniqueKey",
+                      "value": "TcPCM-001"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ConfigurationGuid",
+                      "value": "9231ad11-744e-481a-b9ec-bce80979ccbd"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dabf4797-d2b1-411a-9480-fc4c2ea064cc",
+              "name": "Indicates that the requested resource requires authentication.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "MasterData",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "Data",
+                      "value": "{\"Designation\":\"Carbon\",\"Unique identifier\":\"Custom.Unique.Carbon\",\"Type\":\"Cost value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Data",
+                      "value": "{\"Designation\":\"Reinvestment rate\",\"Unique identifier\":\"Custom.Unique.Reinvestment\",\"Type\":\"Unit\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PlantUniqueKey",
+                      "value": "TcPCM-001"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ConfigurationGuid",
+                      "value": "9231ad11-744e-481a-b9ec-bce80979ccbd"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a0c3a331-6784-4b8a-a571-f79bbf952388",
+              "name": "Indicates that a generic error has occurred on the server.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "MasterData",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "Data",
+                      "value": "{\"Designation\":\"Carbon\",\"Unique identifier\":\"Custom.Unique.Carbon\",\"Type\":\"Cost value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Data",
+                      "value": "{\"Designation\":\"Reinvestment rate\",\"Unique identifier\":\"Custom.Unique.Reinvestment\",\"Type\":\"Unit\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PlantUniqueKey",
+                      "value": "TcPCM-001"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ConfigurationGuid",
+                      "value": "9231ad11-744e-481a-b9ec-bce80979ccbd"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://example.com/polarion/rest/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8a54f41e-ccb9-40c6-a5fd-2037f5cc0d0e",
+    "name": "Polarion REST Account Import/Export: MasterData API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> (available on Support Center).\n\nContact Support:\n Name: Polarion REST API Support",
+      "type": "text/plain"
+    }
+  }
+}

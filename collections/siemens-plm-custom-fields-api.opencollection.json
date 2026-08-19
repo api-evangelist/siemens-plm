@@ -1,0 +1,262 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Custom Fields API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates a list of Custom Fields in the Global context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/customfields",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a list of Custom Fields in the Global context."
+        },
+        {
+          "info": {
+            "name": "Returns the defined Custom Fields for the resource type and target type in the Global context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/customfields/:resourceType/:targetType",
+            "params": [
+              {
+                "name": "resourceType",
+                "value": "",
+                "type": "path",
+                "description": "The Resource Type."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "path",
+                "description": "The Type of the object. Use '~' without quotes to represent no target Type."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              }
+            ]
+          },
+          "docs": "Returns the defined Custom Fields for the resource type and target type in the Global context."
+        },
+        {
+          "info": {
+            "name": "Updates the specified Custom Fields in the Global context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/customfields/:resourceType/:targetType",
+            "params": [
+              {
+                "name": "resourceType",
+                "value": "",
+                "type": "path",
+                "description": "The Resource Type."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "path",
+                "description": "The Custom Field target type. (Use '~' when there is no specific type for the Prototype.)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified Custom Fields in the Global context."
+        },
+        {
+          "info": {
+            "name": "Deletes the specified Custom Field configuration from the Global context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/customfields/:resourceType/:targetType",
+            "params": [
+              {
+                "name": "resourceType",
+                "value": "",
+                "type": "path",
+                "description": "The Resource Type."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "path",
+                "description": "The Type of the object. Use '~' without quotes to represent no target Type."
+              }
+            ]
+          },
+          "docs": "Deletes the specified Custom Field configuration from the Global context."
+        },
+        {
+          "info": {
+            "name": "Creates a list of Custom Fields in the Project context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/customfields",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a list of Custom Fields in the Project context."
+        },
+        {
+          "info": {
+            "name": "Returns the defined Custom Fields for the resource type and target type in the Project context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/customfields/:resourceType/:targetType",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "resourceType",
+                "value": "",
+                "type": "path",
+                "description": "The Resource Type."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "path",
+                "description": "The Type of the object. Use '~' without quotes to represent no target Type."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              }
+            ]
+          },
+          "docs": "Returns the defined Custom Fields for the resource type and target type in the Project context."
+        },
+        {
+          "info": {
+            "name": "Updates the specified Custom Fields in the Project context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/customfields/:resourceType/:targetType",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "resourceType",
+                "value": "",
+                "type": "path",
+                "description": "The Resource Type."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "path",
+                "description": "The Custom Field target type. (Use '~' when there is no specific type for the Prototype.)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified Custom Fields in the Project context."
+        },
+        {
+          "info": {
+            "name": "Deletes the specified Custom Field configuration from the Project context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/customfields/:resourceType/:targetType",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "resourceType",
+                "value": "",
+                "type": "path",
+                "description": "The Resource Type."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "path",
+                "description": "The Type of the object. Use '~' without quotes to represent no target Type."
+              }
+            ]
+          },
+          "docs": "Deletes the specified Custom Field configuration from the Project context."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

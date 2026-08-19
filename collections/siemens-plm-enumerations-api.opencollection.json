@@ -1,0 +1,366 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Polarion REST Account Enumerations API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Enumerations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of Enumerations from the Global context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/enumerations",
+            "params": [
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              }
+            ]
+          },
+          "docs": "Returns a list of Enumerations from the Global context."
+        },
+        {
+          "info": {
+            "name": "Creates a list of Enumerations in the Global context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/enumerations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a list of Enumerations in the Global context."
+        },
+        {
+          "info": {
+            "name": "Returns the specified Enumeration from the Global context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/enumerations/:enumContext/:enumName/:targetType",
+            "params": [
+              {
+                "name": "enumContext",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration context. (Allowed values are '~', 'plans', 'testing' and 'documents'. Use '~' for Work Item or general enumerations.)"
+              },
+              {
+                "name": "enumName",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration Name."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration target type. (Use '~' when there is no specific type for the enumeration.)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              }
+            ]
+          },
+          "docs": "Returns the specified Enumeration from the Global context."
+        },
+        {
+          "info": {
+            "name": "Updates the specified Enumeration in the Global context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/enumerations/:enumContext/:enumName/:targetType",
+            "params": [
+              {
+                "name": "enumContext",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration context. (Allowed values are '~', 'plans', 'testing' and 'documents'. Use '~' for Work Item or general enumerations.)"
+              },
+              {
+                "name": "enumName",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration Name."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration target type. (Use '~' when there is no specific type for the enumeration.)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified Enumeration in the Global context."
+        },
+        {
+          "info": {
+            "name": "Deletes the specified Enumeration from the Global context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/enumerations/:enumContext/:enumName/:targetType",
+            "params": [
+              {
+                "name": "enumContext",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration context. (Allowed values are '~', 'plans', 'testing' and 'documents'. Use '~' for Work Item or general enumerations.)"
+              },
+              {
+                "name": "enumName",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration Name."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration target type. (Use '~' when there is no specific type for the enumeration.)"
+              }
+            ]
+          },
+          "docs": "Deletes the specified Enumeration from the Global context."
+        },
+        {
+          "info": {
+            "name": "Returns a list of Enumerations from the Project context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/enumerations",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Limit the number of entities returned in a single response. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "Specify the page number to be returned. Counting starts from 1. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              }
+            ]
+          },
+          "docs": "Returns a list of Enumerations from the Project context."
+        },
+        {
+          "info": {
+            "name": "Creates a list of Enumerations in the Project context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/enumerations",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a list of Enumerations in the Project context."
+        },
+        {
+          "info": {
+            "name": "Returns the specified Enumeration from the Project context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/enumerations/:enumContext/:enumName/:targetType",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "enumContext",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration context. (Allowed values are '~', 'plans', 'testing' and 'documents'. Use '~' for Work Item or general enumerations.)"
+              },
+              {
+                "name": "enumName",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration Name."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration target type. (Use '~' when there is no specific type for the enumeration.)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned resource fields. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Include related entities. See <a href=\"https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871\" target=\"_blank\">REST API User Guide</a> for details."
+              }
+            ]
+          },
+          "docs": "Returns the specified Enumeration from the Project context."
+        },
+        {
+          "info": {
+            "name": "Updates the specified Enumeration in the Project context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/enumerations/:enumContext/:enumName/:targetType",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "enumContext",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration context. (Allowed values are '~', 'plans', 'testing' and 'documents'. Use '~' for Work Item or general enumerations.)"
+              },
+              {
+                "name": "enumName",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration Name."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration target type. (Use '~' when there is no specific type for the enumeration.)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified Enumeration in the Project context."
+        },
+        {
+          "info": {
+            "name": "Deletes the specified Enumeration from the Project context.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://example.com/polarion/rest/v1/projects/:projectId/enumerations/:enumContext/:enumName/:targetType",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "The Project ID."
+              },
+              {
+                "name": "enumContext",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration context. (Allowed values are '~', 'plans', 'testing' and 'documents'. Use '~' for Work Item or general enumerations.)"
+              },
+              {
+                "name": "enumName",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration Name."
+              },
+              {
+                "name": "targetType",
+                "value": "",
+                "type": "path",
+                "description": "The Enumeration target type. (Use '~' when there is no specific type for the enumeration.)"
+              }
+            ]
+          },
+          "docs": "Deletes the specified Enumeration from the Project context."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
