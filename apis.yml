@@ -168,6 +168,8 @@ apis:
   humanURL: https://developer.siemens.com/tcpcm/overview.html
   baseURL: https://developer.siemens.com
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -338,6 +340,8 @@ apis:
   humanURL: https://developer.siemens.com/tcpcm/overview.html
   baseURL: https://developer.siemens.com
   tags:
+  - enumerations
+  tags_raw:
   - Enumerations
   properties:
   - type: OpenAPI
@@ -486,6 +490,8 @@ apis:
   humanURL: https://developer.siemens.com/tcpcm/overview.html
   baseURL: https://developer.siemens.com
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -851,6 +857,8 @@ apis:
   humanURL: https://developer.siemens.com/tcpcm/overview.html
   baseURL: https://developer.siemens.com
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -1141,6 +1149,8 @@ apis:
   humanURL: https://developer.siemens.com/tcpcm/overview.html
   baseURL: https://developer.siemens.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
