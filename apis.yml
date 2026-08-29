@@ -8,6 +8,18 @@ description: >
   The Siemens Xcelerator Developer Portal provides OpenAPI specifications, SDKs, Postman
   collections, and sandbox access for developers integrating with these industrial platforms.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
@@ -1292,6 +1304,9 @@ apis:
   - type: ChangeLog
     url: https://developer.siemens.com/product-information-api/changelog.html
 common:
+  - type: CapabilityMap
+    url: capabilities/siemens-plm-capability-edges.yml
+    name: Siemens PLM Business Capability Map
   - type: AgenticAccess
     url: agentic-access/siemens-plm-agentic-access.yml
   - type: VulnerabilityDisclosure
