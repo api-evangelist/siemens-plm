@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Polarion REST API Support
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account Test Step Results API
+  title: Polarion REST Test Step Results API
   version: v1
 servers:
 - url: https://example.com/polarion/rest/v1
@@ -418,27 +418,6 @@ paths:
       - Test Step Results
 components:
   schemas:
-    teststep_resultsListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - teststep_results
-                type: string
-              id:
-                example: MyProjectId/MyTestRunId/MyProjectId/MyTestcaseId/0/1
-                type: string
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId/0/teststepresults/1
-                    type: string
-                type: object
-            type: object
-          type: array
-      type: object
     teststep_resultsSingleGetResponse:
       properties:
         data:
@@ -549,7 +528,37 @@ components:
               type: string
           type: object
       type: object
-    teststep_resultsListPostRequest:
+    teststep_resultsSinglePatchRequest:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - teststep_results
+              type: string
+            id:
+              example: MyProjectId/MyTestRunId/MyProjectId/MyTestcaseId/0/1
+              type: string
+            attributes:
+              properties:
+                comment:
+                  properties:
+                    type:
+                      enum:
+                      - text/html
+                      - text/plain
+                      type: string
+                    value:
+                      example: My text value
+                      type: string
+                  type: object
+                result:
+                  example: passed
+                  type: string
+              type: object
+          type: object
+      type: object
+    teststep_resultsListPostResponse:
       properties:
         data:
           items:
@@ -558,21 +567,13 @@ components:
                 enum:
                 - teststep_results
                 type: string
-              attributes:
+              id:
+                example: MyProjectId/MyTestRunId/MyProjectId/MyTestcaseId/0/1
+                type: string
+              links:
                 properties:
-                  comment:
-                    properties:
-                      type:
-                        enum:
-                        - text/html
-                        - text/plain
-                        type: string
-                      value:
-                        example: My text value
-                        type: string
-                    type: object
-                  result:
-                    example: passed
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId/0/teststepresults/1
                     type: string
                 type: object
             type: object
@@ -761,35 +762,107 @@ components:
           example: '@all'
           type: string
       type: object
-    teststep_resultsSinglePatchRequest:
+    teststep_resultsListPostRequest:
       properties:
         data:
-          properties:
-            type:
-              enum:
-              - teststep_results
-              type: string
-            id:
-              example: MyProjectId/MyTestRunId/MyProjectId/MyTestcaseId/0/1
-              type: string
-            attributes:
-              properties:
-                comment:
-                  properties:
-                    type:
-                      enum:
-                      - text/html
-                      - text/plain
-                      type: string
-                    value:
-                      example: My text value
-                      type: string
-                  type: object
-                result:
-                  example: passed
-                  type: string
-              type: object
-          type: object
+          items:
+            properties:
+              type:
+                enum:
+                - teststep_results
+                type: string
+              attributes:
+                properties:
+                  comment:
+                    properties:
+                      type:
+                        enum:
+                        - text/html
+                        - text/plain
+                        type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  result:
+                    example: passed
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    teststep_resultsListPatchRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - teststep_results
+                type: string
+              id:
+                example: MyProjectId/MyTestRunId/MyProjectId/MyTestcaseId/0/1
+                type: string
+              attributes:
+                properties:
+                  comment:
+                    properties:
+                      type:
+                        enum:
+                        - text/html
+                        - text/plain
+                        type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  result:
+                    example: passed
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
       type: object
     teststep_resultsListGetResponse:
       properties:
@@ -920,79 +993,6 @@ components:
               format: int32
               type: integer
           type: object
-      type: object
-    teststep_resultsListPatchRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - teststep_results
-                type: string
-              id:
-                example: MyProjectId/MyTestRunId/MyProjectId/MyTestcaseId/0/1
-                type: string
-              attributes:
-                properties:
-                  comment:
-                    properties:
-                      type:
-                        enum:
-                        - text/html
-                        - text/plain
-                        type: string
-                      value:
-                        example: My text value
-                        type: string
-                    type: object
-                  result:
-                    example: passed
-                    type: string
-                type: object
-            type: object
-          type: array
-      type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
-                type: object
-            type: object
-          type: array
       type: object
   securitySchemes:
     bearerAuth:

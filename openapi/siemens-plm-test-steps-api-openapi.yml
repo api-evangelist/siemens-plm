@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Polarion REST API Support
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account Test Steps API
+  title: Polarion REST Test Steps API
   version: v1
 servers:
 - url: https://example.com/polarion/rest/v1
@@ -427,22 +427,7 @@ paths:
       - Test Steps
 components:
   schemas:
-    teststepsListDeleteRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - teststeps
-                type: string
-              id:
-                example: MyProjectId/MyWorkItemId/MyTestStepIndex
-                type: string
-            type: object
-          type: array
-      type: object
-    teststepsSinglePatchRequest:
+    teststepsSingleGetResponse:
       properties:
         data:
           properties:
@@ -453,8 +438,13 @@ components:
             id:
               example: MyProjectId/MyWorkItemId/MyTestStepIndex
               type: string
+            revision:
+              example: '1234'
+              type: string
             attributes:
               properties:
+                index:
+                  type: string
                 keys:
                   items:
                     type: string
@@ -473,44 +463,67 @@ components:
                     type: object
                   type: array
               type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/teststeps/MyTestStepIndex?revision=1234
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
           type: object
-      type: object
-    teststepsListPatchRequest:
-      properties:
-        data:
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
           items:
-            properties:
-              type:
-                enum:
-                - teststeps
-                type: string
-              id:
-                example: MyProjectId/MyWorkItemId/MyTestStepIndex
-                type: string
-              attributes:
-                properties:
-                  keys:
-                    items:
-                      type: string
-                    type: array
-                  values:
-                    items:
-                      properties:
-                        type:
-                          enum:
-                          - text/html
-                          - text/plain
-                          type: string
-                        value:
-                          example: My text value
-                          type: string
-                      type: object
-                    type: array
-                type: object
             type: object
           type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/teststeps/MyTestStepIndex?revision=1234
+              type: string
+          type: object
       type: object
-    teststepsListPostResponse:
+    teststepsListDeleteRequest:
       properties:
         data:
           items:
@@ -522,12 +535,6 @@ components:
               id:
                 example: MyProjectId/MyWorkItemId/MyTestStepIndex
                 type: string
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/teststeps/MyTestStepIndex?revision=1234
-                    type: string
-                type: object
             type: object
           type: array
       type: object
@@ -714,6 +721,38 @@ components:
           example: '@all'
           type: string
       type: object
+    teststepsListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - teststeps
+                type: string
+              attributes:
+                properties:
+                  keys:
+                    items:
+                      type: string
+                    type: array
+                  values:
+                    items:
+                      properties:
+                        type:
+                          enum:
+                          - text/html
+                          - text/plain
+                          type: string
+                        value:
+                          example: My text value
+                          type: string
+                      type: object
+                    type: array
+                type: object
+            type: object
+          type: array
+      type: object
     teststepsListGetResponse:
       properties:
         data:
@@ -830,103 +869,7 @@ components:
               type: integer
           type: object
       type: object
-    teststepsSingleGetResponse:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - teststeps
-              type: string
-            id:
-              example: MyProjectId/MyWorkItemId/MyTestStepIndex
-              type: string
-            revision:
-              example: '1234'
-              type: string
-            attributes:
-              properties:
-                index:
-                  type: string
-                keys:
-                  items:
-                    type: string
-                  type: array
-                values:
-                  items:
-                    properties:
-                      type:
-                        enum:
-                        - text/html
-                        - text/plain
-                        type: string
-                      value:
-                        example: My text value
-                        type: string
-                    type: object
-                  type: array
-              type: object
-            links:
-              properties:
-                self:
-                  example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/teststeps/MyTestStepIndex?revision=1234
-                  type: string
-              type: object
-            meta:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      detail:
-                        description: Human-readable explanation specific to this occurrence of the problem.
-                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                        type: string
-                      source:
-                        properties:
-                          parameter:
-                            description: String indicating which URI query parameter caused the error.
-                            example: revision
-                            type: string
-                          pointer:
-                            description: JSON Pointer to the associated entity in the request document.
-                            example: $.data
-                            type: string
-                          resource:
-                            description: Resource causing the error.
-                            properties:
-                              id:
-                                example: MyProjectId/id
-                                type: string
-                              type:
-                                example: type
-                                type: string
-                            type: object
-                        type: object
-                      status:
-                        description: HTTP status code applicable to this problem.
-                        example: '400'
-                        type: string
-                      title:
-                        description: Short, human-readable summary of the problem.
-                        example: Bad Request
-                        type: string
-                    type: object
-                  type: array
-              type: object
-          type: object
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            self:
-              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/teststeps/MyTestStepIndex?revision=1234
-              type: string
-          type: object
-      type: object
-    teststepsListPostRequest:
+    teststepsListPatchRequest:
       properties:
         data:
           items:
@@ -934,6 +877,9 @@ components:
               type:
                 enum:
                 - teststeps
+                type: string
+              id:
+                example: MyProjectId/MyWorkItemId/MyTestStepIndex
                 type: string
               attributes:
                 properties:
@@ -954,6 +900,27 @@ components:
                           type: string
                       type: object
                     type: array
+                type: object
+            type: object
+          type: array
+      type: object
+    teststepsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - teststeps
+                type: string
+              id:
+                example: MyProjectId/MyWorkItemId/MyTestStepIndex
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/teststeps/MyTestStepIndex?revision=1234
+                    type: string
                 type: object
             type: object
           type: array
@@ -998,6 +965,39 @@ components:
                 type: object
             type: object
           type: array
+      type: object
+    teststepsSinglePatchRequest:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - teststeps
+              type: string
+            id:
+              example: MyProjectId/MyWorkItemId/MyTestStepIndex
+              type: string
+            attributes:
+              properties:
+                keys:
+                  items:
+                    type: string
+                  type: array
+                values:
+                  items:
+                    properties:
+                      type:
+                        enum:
+                        - text/html
+                        - text/plain
+                        type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
       type: object
   securitySchemes:
     bearerAuth:

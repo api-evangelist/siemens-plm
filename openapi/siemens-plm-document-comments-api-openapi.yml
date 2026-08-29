@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Polarion REST API Support
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account Document Comments API
+  title: Polarion REST Document Comments API
   version: v1
 servers:
 - url: https://example.com/polarion/rest/v1
@@ -300,6 +300,228 @@ paths:
       - Document Comments
 components:
   schemas:
+    document_commentsSinglePatchRequest:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - document_comments
+              type: string
+            id:
+              example: MyProjectId/MySpaceId/MyDocumentId/MyCommentId
+              type: string
+            attributes:
+              properties:
+                resolved:
+                  type: boolean
+              type: object
+          type: object
+      type: object
+    document_commentsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - document_comments
+                type: string
+              id:
+                example: MyProjectId/MySpaceId/MyDocumentId/MyCommentId
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/comments/MyCommentId?revision=1234
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    sparseFields:
+      properties:
+        categories:
+          description: Requested fields
+          example: '@all'
+          type: string
+        collections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        customfields:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_parts:
+          description: Requested fields
+          example: '@all'
+          type: string
+        documents:
+          description: Requested fields
+          example: '@all'
+          type: string
+        enumerations:
+          description: Requested fields
+          example: '@all'
+          type: string
+        externallylinkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        featureselections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        globalroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        icons:
+          description: Requested fields
+          example: '@all'
+          type: string
+        jobs:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_assignments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_slots:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_types:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedoslcresources:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        metadata:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        pages:
+          description: Requested fields
+          example: '@all'
+          type: string
+        plans:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projectroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projects:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projecttemplates:
+          description: Requested fields
+          example: '@all'
+          type: string
+        revisions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameter_definitions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameters:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecord_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testruns:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststep_results:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststepresult_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststeps:
+          description: Requested fields
+          example: '@all'
+          type: string
+        usergroups:
+          description: Requested fields
+          example: '@all'
+          type: string
+        users:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_approvals:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+      type: object
     document_commentsSingleGetResponse:
       properties:
         data:
@@ -663,228 +885,6 @@ components:
               format: int32
               type: integer
           type: object
-      type: object
-    document_commentsSinglePatchRequest:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - document_comments
-              type: string
-            id:
-              example: MyProjectId/MySpaceId/MyDocumentId/MyCommentId
-              type: string
-            attributes:
-              properties:
-                resolved:
-                  type: boolean
-              type: object
-          type: object
-      type: object
-    sparseFields:
-      properties:
-        categories:
-          description: Requested fields
-          example: '@all'
-          type: string
-        collections:
-          description: Requested fields
-          example: '@all'
-          type: string
-        customfields:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_parts:
-          description: Requested fields
-          example: '@all'
-          type: string
-        documents:
-          description: Requested fields
-          example: '@all'
-          type: string
-        enumerations:
-          description: Requested fields
-          example: '@all'
-          type: string
-        externallylinkedworkitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        featureselections:
-          description: Requested fields
-          example: '@all'
-          type: string
-        globalroles:
-          description: Requested fields
-          example: '@all'
-          type: string
-        icons:
-          description: Requested fields
-          example: '@all'
-          type: string
-        jobs:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_assignments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_slots:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_types:
-          description: Requested fields
-          example: '@all'
-          type: string
-        linkedoslcresources:
-          description: Requested fields
-          example: '@all'
-          type: string
-        linkedworkitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        metadata:
-          description: Requested fields
-          example: '@all'
-          type: string
-        page_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        page_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        pages:
-          description: Requested fields
-          example: '@all'
-          type: string
-        plans:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projectroles:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projects:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projecttemplates:
-          description: Requested fields
-          example: '@all'
-          type: string
-        revisions:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testparameter_definitions:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testparameters:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrecord_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrecords:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrun_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrun_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testruns:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststep_results:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststepresult_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststeps:
-          description: Requested fields
-          example: '@all'
-          type: string
-        usergroups:
-          description: Requested fields
-          example: '@all'
-          type: string
-        users:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_approvals:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workrecords:
-          description: Requested fields
-          example: '@all'
-          type: string
-      type: object
-    document_commentsListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - document_comments
-                type: string
-              id:
-                example: MyProjectId/MySpaceId/MyDocumentId/MyCommentId
-                type: string
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/comments/MyCommentId?revision=1234
-                    type: string
-                type: object
-            type: object
-          type: array
       type: object
     document_commentsListPostRequest:
       properties:

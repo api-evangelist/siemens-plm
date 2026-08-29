@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Polarion REST API Support
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account Custom Fields API
+  title: Polarion REST Custom Fields API
   version: v1
 servers:
 - url: https://example.com/polarion/rest/v1
@@ -435,28 +435,7 @@ paths:
       - Custom Fields
 components:
   schemas:
-    customfieldsListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - customfields
-                type: string
-              id:
-                example: MyProjectId/workitems/epic
-                type: string
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/customfields/workitems/epic
-                    type: string
-                type: object
-            type: object
-          type: array
-      type: object
-    customfieldsSinglePatchRequest:
+    customfieldsSingleGetResponse:
       properties:
         data:
           properties:
@@ -506,7 +485,71 @@ components:
                         type: object
                     type: object
                   type: array
+                resourceType:
+                  example: id
+                  type: string
+                targetType:
+                  example: id
+                  type: string
               type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/projects/MyProjectId/customfields/workitems/epic
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/customfields/workitems/epic
+              type: string
           type: object
       type: object
     sparseFields:
@@ -692,6 +735,121 @@ components:
           example: '@all'
           type: string
       type: object
+    customfieldsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - customfields
+                type: string
+              id:
+                example: MyProjectId/workitems/epic
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/customfields/workitems/epic
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    customfieldsSinglePatchRequest:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - customfields
+              type: string
+            id:
+              example: MyProjectId/workitems/epic
+              type: string
+            attributes:
+              properties:
+                fields:
+                  items:
+                    properties:
+                      defaultValue:
+                        type: string
+                      dependsOn:
+                        type: string
+                      description:
+                        type: string
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      parameters:
+                        items:
+                          properties:
+                            key:
+                              example: parameter1
+                              type: string
+                            name:
+                              example: parameter1
+                              type: string
+                            title:
+                              example: MyParameter
+                              type: string
+                          type: object
+                        type: array
+                      required:
+                        type: boolean
+                      type:
+                        properties:
+                          kind:
+                            example: string
+                            type: string
+                        type: object
+                    type: object
+                  type: array
+              type: object
+          type: object
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
     customfieldsListPostRequest:
       properties:
         data:
@@ -746,164 +904,6 @@ components:
                   targetType:
                     example: id
                     type: string
-                type: object
-            type: object
-          type: array
-      type: object
-    customfieldsSingleGetResponse:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - customfields
-              type: string
-            id:
-              example: MyProjectId/workitems/epic
-              type: string
-            attributes:
-              properties:
-                fields:
-                  items:
-                    properties:
-                      defaultValue:
-                        type: string
-                      dependsOn:
-                        type: string
-                      description:
-                        type: string
-                      id:
-                        type: string
-                      name:
-                        type: string
-                      parameters:
-                        items:
-                          properties:
-                            key:
-                              example: parameter1
-                              type: string
-                            name:
-                              example: parameter1
-                              type: string
-                            title:
-                              example: MyParameter
-                              type: string
-                          type: object
-                        type: array
-                      required:
-                        type: boolean
-                      type:
-                        properties:
-                          kind:
-                            example: string
-                            type: string
-                        type: object
-                    type: object
-                  type: array
-                resourceType:
-                  example: id
-                  type: string
-                targetType:
-                  example: id
-                  type: string
-              type: object
-            links:
-              properties:
-                self:
-                  example: server-host-name/application-path/projects/MyProjectId/customfields/workitems/epic
-                  type: string
-              type: object
-            meta:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      detail:
-                        description: Human-readable explanation specific to this occurrence of the problem.
-                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                        type: string
-                      source:
-                        properties:
-                          parameter:
-                            description: String indicating which URI query parameter caused the error.
-                            example: revision
-                            type: string
-                          pointer:
-                            description: JSON Pointer to the associated entity in the request document.
-                            example: $.data
-                            type: string
-                          resource:
-                            description: Resource causing the error.
-                            properties:
-                              id:
-                                example: MyProjectId/id
-                                type: string
-                              type:
-                                example: type
-                                type: string
-                            type: object
-                        type: object
-                      status:
-                        description: HTTP status code applicable to this problem.
-                        example: '400'
-                        type: string
-                      title:
-                        description: Short, human-readable summary of the problem.
-                        example: Bad Request
-                        type: string
-                    type: object
-                  type: array
-              type: object
-          type: object
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            self:
-              example: server-host-name/application-path/projects/MyProjectId/customfields/workitems/epic
-              type: string
-          type: object
-      type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
                 type: object
             type: object
           type: array

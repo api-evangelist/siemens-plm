@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Polarion REST API Support
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account Document Parts API
+  title: Polarion REST Document Parts API
   version: v1
 servers:
 - url: https://example.com/polarion/rest/v1
@@ -301,18 +301,6 @@ paths:
       - Document Parts
 components:
   schemas:
-    moveDocumentPartRequestBody:
-      properties:
-        after:
-          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
-          type: string
-        before:
-          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
-          type: string
-        parent:
-          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
-          type: string
-      type: object
     sparseFields:
       properties:
         categories:
@@ -496,152 +484,17 @@ components:
           example: '@all'
           type: string
       type: object
-    document_partsSingleGetResponse:
+    moveDocumentPartRequestBody:
       properties:
-        data:
-          properties:
-            type:
-              enum:
-              - document_parts
-              type: string
-            id:
-              example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
-              type: string
-            revision:
-              example: '1234'
-              type: string
-            attributes:
-              properties:
-                content:
-                  example: <div id="polarion_wiki macro name=module-workitem;params=id=workitem_MyWorkItemId"></div>
-                  type: string
-                external:
-                  type: boolean
-                id:
-                  example: workitem_MyWorkItemId
-                  type: string
-                layout:
-                  example: 0
-                  format: int32
-                  type: integer
-                level:
-                  example: 0
-                  format: int32
-                  type: integer
-                type:
-                  example: workitem
-                  type: string
-              type: object
-            relationships:
-              properties:
-                nextPart:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
-                          type: string
-                        revision:
-                          example: '1234'
-                          type: string
-                        type:
-                          enum:
-                          - document_parts
-                          type: string
-                      type: object
-                  type: object
-                previousPart:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
-                          type: string
-                        revision:
-                          example: '1234'
-                          type: string
-                        type:
-                          enum:
-                          - document_parts
-                          type: string
-                      type: object
-                  type: object
-                workItem:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId/MyWorkItemId
-                          type: string
-                        revision:
-                          example: '1234'
-                          type: string
-                        type:
-                          enum:
-                          - workitems
-                          type: string
-                      type: object
-                  type: object
-              type: object
-            links:
-              properties:
-                self:
-                  example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts/workitem_MyWorkItemId?revision=1234
-                  type: string
-              type: object
-            meta:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      detail:
-                        description: Human-readable explanation specific to this occurrence of the problem.
-                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                        type: string
-                      source:
-                        properties:
-                          parameter:
-                            description: String indicating which URI query parameter caused the error.
-                            example: revision
-                            type: string
-                          pointer:
-                            description: JSON Pointer to the associated entity in the request document.
-                            example: $.data
-                            type: string
-                          resource:
-                            description: Resource causing the error.
-                            properties:
-                              id:
-                                example: MyProjectId/id
-                                type: string
-                              type:
-                                example: type
-                                type: string
-                            type: object
-                        type: object
-                      status:
-                        description: HTTP status code applicable to this problem.
-                        example: '400'
-                        type: string
-                      title:
-                        description: Short, human-readable summary of the problem.
-                        example: Bad Request
-                        type: string
-                    type: object
-                  type: array
-              type: object
-          type: object
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            self:
-              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts/workitem_MyWorkItemId?revision=1234
-              type: string
-          type: object
+        after:
+          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+          type: string
+        before:
+          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+          type: string
+        parent:
+          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+          type: string
       type: object
     document_partsListGetResponse:
       properties:
@@ -810,6 +663,174 @@ components:
               type: integer
           type: object
       type: object
+    document_partsSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - document_parts
+              type: string
+            id:
+              example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+              type: string
+            revision:
+              example: '1234'
+              type: string
+            attributes:
+              properties:
+                content:
+                  example: <div id="polarion_wiki macro name=module-workitem;params=id=workitem_MyWorkItemId"></div>
+                  type: string
+                external:
+                  type: boolean
+                id:
+                  example: workitem_MyWorkItemId
+                  type: string
+                layout:
+                  example: 0
+                  format: int32
+                  type: integer
+                level:
+                  example: 0
+                  format: int32
+                  type: integer
+                type:
+                  example: workitem
+                  type: string
+              type: object
+            relationships:
+              properties:
+                nextPart:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - document_parts
+                          type: string
+                      type: object
+                  type: object
+                previousPart:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - document_parts
+                          type: string
+                      type: object
+                  type: object
+                workItem:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MyWorkItemId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - workitems
+                          type: string
+                      type: object
+                  type: object
+              type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts/workitem_MyWorkItemId?revision=1234
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts/workitem_MyWorkItemId?revision=1234
+              type: string
+          type: object
+      type: object
+    document_partsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - document_parts
+                type: string
+              id:
+                example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts/workitem_MyWorkItemId?revision=1234
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
     document_partsListPostRequest:
       properties:
         data:
@@ -918,27 +939,6 @@ components:
                         example: type
                         type: string
                     type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    document_partsListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - document_parts
-                type: string
-              id:
-                example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
-                type: string
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts/workitem_MyWorkItemId?revision=1234
-                    type: string
                 type: object
             type: object
           type: array

@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Polarion REST API Support
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account Work Item Approvals API
+  title: Polarion REST Work Item Approvals API
   version: v1
 servers:
 - url: https://example.com/polarion/rest/v1
@@ -427,110 +427,7 @@ paths:
       - Work Item Approvals
 components:
   schemas:
-    workitem_approvalsSingleGetResponse:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - workitem_approvals
-              type: string
-            id:
-              example: MyProjectId/MyWorkItemId/MyUserId
-              type: string
-            revision:
-              example: '1234'
-              type: string
-            attributes:
-              properties:
-                status:
-                  enum:
-                  - waiting
-                  - approved
-                  - disapproved
-                  example: waiting
-                  type: string
-              type: object
-            relationships:
-              properties:
-                user:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyUserId
-                          type: string
-                        revision:
-                          example: '1234'
-                          type: string
-                        type:
-                          enum:
-                          - users
-                          type: string
-                      type: object
-                  type: object
-              type: object
-            links:
-              properties:
-                self:
-                  example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/approvals/MyUserId?revision=1234
-                  type: string
-              type: object
-            meta:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      detail:
-                        description: Human-readable explanation specific to this occurrence of the problem.
-                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                        type: string
-                      source:
-                        properties:
-                          parameter:
-                            description: String indicating which URI query parameter caused the error.
-                            example: revision
-                            type: string
-                          pointer:
-                            description: JSON Pointer to the associated entity in the request document.
-                            example: $.data
-                            type: string
-                          resource:
-                            description: Resource causing the error.
-                            properties:
-                              id:
-                                example: MyProjectId/id
-                                type: string
-                              type:
-                                example: type
-                                type: string
-                            type: object
-                        type: object
-                      status:
-                        description: HTTP status code applicable to this problem.
-                        example: '400'
-                        type: string
-                      title:
-                        description: Short, human-readable summary of the problem.
-                        example: Bad Request
-                        type: string
-                    type: object
-                  type: array
-              type: object
-          type: object
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            self:
-              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/approvals/MyUserId?revision=1234
-              type: string
-          type: object
-      type: object
-    workitem_approvalsListPostResponse:
+    workitem_approvalsListPostRequest:
       properties:
         data:
           items:
@@ -538,53 +435,6 @@ components:
               type:
                 enum:
                 - workitem_approvals
-                type: string
-              id:
-                example: MyProjectId/MyWorkItemId/MyUserId
-                type: string
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/approvals/MyUserId?revision=1234
-                    type: string
-                type: object
-            type: object
-          type: array
-      type: object
-    workitem_approvalsSinglePatchRequest:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - workitem_approvals
-              type: string
-            id:
-              example: MyProjectId/MyWorkItemId/MyUserId
-              type: string
-            attributes:
-              properties:
-                status:
-                  enum:
-                  - waiting
-                  - approved
-                  - disapproved
-                  example: waiting
-                  type: string
-              type: object
-          type: object
-      type: object
-    workitem_approvalsListPatchRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - workitem_approvals
-                type: string
-              id:
-                example: MyProjectId/MyWorkItemId/MyUserId
                 type: string
               attributes:
                 properties:
@@ -596,21 +446,22 @@ components:
                     example: waiting
                     type: string
                 type: object
-            type: object
-          type: array
-      type: object
-    workitem_approvalsListDeleteRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - workitem_approvals
-                type: string
-              id:
-                example: MyProjectId/MyWorkItemId/MyUserId
-                type: string
+              relationships:
+                properties:
+                  user:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyUserId
+                            type: string
+                          type:
+                            enum:
+                            - users
+                            type: string
+                        type: object
+                    type: object
+                type: object
             type: object
           type: array
       type: object
@@ -797,6 +648,31 @@ components:
           example: '@all'
           type: string
       type: object
+    workitem_approvalsListPatchRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - workitem_approvals
+                type: string
+              id:
+                example: MyProjectId/MyWorkItemId/MyUserId
+                type: string
+              attributes:
+                properties:
+                  status:
+                    enum:
+                    - waiting
+                    - approved
+                    - disapproved
+                    example: waiting
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
     workitem_approvalsListGetResponse:
       properties:
         data:
@@ -920,43 +796,28 @@ components:
               type: integer
           type: object
       type: object
-    workitem_approvalsListPostRequest:
+    workitem_approvalsSinglePatchRequest:
       properties:
         data:
-          items:
-            properties:
-              type:
-                enum:
-                - workitem_approvals
-                type: string
-              attributes:
-                properties:
-                  status:
-                    enum:
-                    - waiting
-                    - approved
-                    - disapproved
-                    example: waiting
-                    type: string
-                type: object
-              relationships:
-                properties:
-                  user:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyUserId
-                            type: string
-                          type:
-                            enum:
-                            - users
-                            type: string
-                        type: object
-                    type: object
-                type: object
-            type: object
-          type: array
+          properties:
+            type:
+              enum:
+              - workitem_approvals
+              type: string
+            id:
+              example: MyProjectId/MyWorkItemId/MyUserId
+              type: string
+            attributes:
+              properties:
+                status:
+                  enum:
+                  - waiting
+                  - approved
+                  - disapproved
+                  example: waiting
+                  type: string
+              type: object
+          type: object
       type: object
     errors:
       properties:
@@ -996,6 +857,145 @@ components:
                         type: string
                     type: object
                 type: object
+            type: object
+          type: array
+      type: object
+    workitem_approvalsSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - workitem_approvals
+              type: string
+            id:
+              example: MyProjectId/MyWorkItemId/MyUserId
+              type: string
+            revision:
+              example: '1234'
+              type: string
+            attributes:
+              properties:
+                status:
+                  enum:
+                  - waiting
+                  - approved
+                  - disapproved
+                  example: waiting
+                  type: string
+              type: object
+            relationships:
+              properties:
+                user:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyUserId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - users
+                          type: string
+                      type: object
+                  type: object
+              type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/approvals/MyUserId?revision=1234
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/approvals/MyUserId?revision=1234
+              type: string
+          type: object
+      type: object
+    workitem_approvalsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - workitem_approvals
+                type: string
+              id:
+                example: MyProjectId/MyWorkItemId/MyUserId
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/approvals/MyUserId?revision=1234
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    workitem_approvalsListDeleteRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - workitem_approvals
+                type: string
+              id:
+                example: MyProjectId/MyWorkItemId/MyUserId
+                type: string
             type: object
           type: array
       type: object

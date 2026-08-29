@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Polarion REST API Support
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account Document Attachments API
+  title: Polarion REST Document Attachments API
   version: v1
 servers:
 - url: https://example.com/polarion/rest/v1
@@ -362,169 +362,6 @@ paths:
       - Document Attachments
 components:
   schemas:
-    document_attachmentsListGetResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - document_attachments
-                type: string
-              id:
-                example: MyProjectId/MySpaceId/MyDocumentId/MyAttachmentId
-                type: string
-              revision:
-                example: '1234'
-                type: string
-              attributes:
-                properties:
-                  fileName:
-                    example: File Name
-                    type: string
-                  id:
-                    example: MyAttachmentId
-                    type: string
-                  length:
-                    format: int32
-                    type: integer
-                  title:
-                    example: Title
-                    type: string
-                  updated:
-                    example: '1970-01-01T00:00:00Z'
-                    format: date-time
-                    type: string
-                type: object
-              relationships:
-                properties:
-                  author:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyUserId
-                            type: string
-                          revision:
-                            example: '1234'
-                            type: string
-                          type:
-                            enum:
-                            - users
-                            type: string
-                        type: object
-                    type: object
-                  project:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyProjectId
-                            type: string
-                          revision:
-                            example: '1234'
-                            type: string
-                          type:
-                            enum:
-                            - projects
-                            type: string
-                        type: object
-                    type: object
-                type: object
-              links:
-                properties:
-                  content:
-                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments/MyAttachmentId/content?revision=1234
-                    type: string
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments/MyAttachmentId?revision=1234
-                    type: string
-                type: object
-              meta:
-                properties:
-                  errors:
-                    items:
-                      properties:
-                        detail:
-                          description: Human-readable explanation specific to this occurrence of the problem.
-                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                          type: string
-                        source:
-                          properties:
-                            parameter:
-                              description: String indicating which URI query parameter caused the error.
-                              example: revision
-                              type: string
-                            pointer:
-                              description: JSON Pointer to the associated entity in the request document.
-                              example: $.data
-                              type: string
-                            resource:
-                              description: Resource causing the error.
-                              properties:
-                                id:
-                                  example: MyProjectId/id
-                                  type: string
-                                type:
-                                  example: type
-                                  type: string
-                              type: object
-                          type: object
-                        status:
-                          description: HTTP status code applicable to this problem.
-                          example: '400'
-                          type: string
-                        title:
-                          description: Short, human-readable summary of the problem.
-                          example: Bad Request
-                          type: string
-                      type: object
-                    type: array
-                type: object
-            type: object
-          type: array
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            first:
-              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments?page%5Bsize%5D=10&page%5Bnumber%5D=1
-              type: string
-            last:
-              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments?page%5Bsize%5D=10&page%5Bnumber%5D=9
-              type: string
-            next:
-              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments?page%5Bsize%5D=10&page%5Bnumber%5D=6
-              type: string
-            prev:
-              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments?page%5Bsize%5D=10&page%5Bnumber%5D=4
-              type: string
-            self:
-              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments?page%5Bsize%5D=10&page%5Bnumber%5D=5
-              type: string
-          type: object
-        meta:
-          properties:
-            totalCount:
-              format: int32
-              type: integer
-          type: object
-      type: object
-    PatchDocumentAttachmentsRequestBody:
-      properties:
-        content:
-          description: attachments content
-          format: binary
-          type: string
-        resource:
-          $ref: '#/components/schemas/document_attachmentsSinglePatchRequest'
-      required:
-      - resource
-      title: PatchDocumentAttachmentsRequestBody
-      type: object
     sparseFields:
       properties:
         categories:
@@ -708,7 +545,7 @@ components:
           example: '@all'
           type: string
       type: object
-    document_attachmentsListPostResponse:
+    document_attachmentsListGetResponse:
       properties:
         data:
           items:
@@ -720,6 +557,63 @@ components:
               id:
                 example: MyProjectId/MySpaceId/MyDocumentId/MyAttachmentId
                 type: string
+              revision:
+                example: '1234'
+                type: string
+              attributes:
+                properties:
+                  fileName:
+                    example: File Name
+                    type: string
+                  id:
+                    example: MyAttachmentId
+                    type: string
+                  length:
+                    format: int32
+                    type: integer
+                  title:
+                    example: Title
+                    type: string
+                  updated:
+                    example: '1970-01-01T00:00:00Z'
+                    format: date-time
+                    type: string
+                type: object
+              relationships:
+                properties:
+                  author:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyUserId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - users
+                            type: string
+                        type: object
+                    type: object
+                  project:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - projects
+                            type: string
+                        type: object
+                    type: object
+                type: object
               links:
                 properties:
                   content:
@@ -729,8 +623,78 @@ components:
                     example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments/MyAttachmentId?revision=1234
                     type: string
                 type: object
+              meta:
+                properties:
+                  errors:
+                    items:
+                      properties:
+                        detail:
+                          description: Human-readable explanation specific to this occurrence of the problem.
+                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                          type: string
+                        source:
+                          properties:
+                            parameter:
+                              description: String indicating which URI query parameter caused the error.
+                              example: revision
+                              type: string
+                            pointer:
+                              description: JSON Pointer to the associated entity in the request document.
+                              example: $.data
+                              type: string
+                            resource:
+                              description: Resource causing the error.
+                              properties:
+                                id:
+                                  example: MyProjectId/id
+                                  type: string
+                                type:
+                                  example: type
+                                  type: string
+                              type: object
+                          type: object
+                        status:
+                          description: HTTP status code applicable to this problem.
+                          example: '400'
+                          type: string
+                        title:
+                          description: Short, human-readable summary of the problem.
+                          example: Bad Request
+                          type: string
+                      type: object
+                    type: array
+                type: object
             type: object
           type: array
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            first:
+              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments?page%5Bsize%5D=10&page%5Bnumber%5D=1
+              type: string
+            last:
+              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments?page%5Bsize%5D=10&page%5Bnumber%5D=9
+              type: string
+            next:
+              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments?page%5Bsize%5D=10&page%5Bnumber%5D=6
+              type: string
+            prev:
+              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments?page%5Bsize%5D=10&page%5Bnumber%5D=4
+              type: string
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments?page%5Bsize%5D=10&page%5Bnumber%5D=5
+              type: string
+          type: object
+        meta:
+          properties:
+            totalCount:
+              format: int32
+              type: integer
+          type: object
       type: object
     PostDocumentAttachmentsRequestBody:
       properties:
@@ -762,6 +726,106 @@ components:
                   type: string
               type: object
           type: object
+      type: object
+    document_attachmentsListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - document_attachments
+                type: string
+              attributes:
+                properties:
+                  fileName:
+                    example: File Name
+                    type: string
+                  title:
+                    example: Title
+                    type: string
+                type: object
+              lid:
+                type: string
+            type: object
+          type: array
+      type: object
+    PatchDocumentAttachmentsRequestBody:
+      properties:
+        content:
+          description: attachments content
+          format: binary
+          type: string
+        resource:
+          $ref: '#/components/schemas/document_attachmentsSinglePatchRequest'
+      required:
+      - resource
+      title: PatchDocumentAttachmentsRequestBody
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    document_attachmentsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - document_attachments
+                type: string
+              id:
+                example: MyProjectId/MySpaceId/MyDocumentId/MyAttachmentId
+                type: string
+              links:
+                properties:
+                  content:
+                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments/MyAttachmentId/content?revision=1234
+                    type: string
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments/MyAttachmentId?revision=1234
+                    type: string
+                type: object
+            type: object
+          type: array
       type: object
     document_attachmentsSingleGetResponse:
       properties:
@@ -893,70 +957,6 @@ components:
               example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/attachments/MyAttachmentId?revision=1234
               type: string
           type: object
-      type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    document_attachmentsListPostRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - document_attachments
-                type: string
-              attributes:
-                properties:
-                  fileName:
-                    example: File Name
-                    type: string
-                  title:
-                    example: Title
-                    type: string
-                type: object
-              lid:
-                type: string
-            type: object
-          type: array
       type: object
   securitySchemes:
     bearerAuth:

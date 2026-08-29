@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Polarion REST API Support
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account Jobs API
+  title: Polarion REST Jobs API
   version: v1
 servers:
 - url: https://example.com/polarion/rest/v1
@@ -253,255 +253,38 @@ paths:
       - Jobs
 components:
   schemas:
-    jobsSinglePostResponse:
+    executeJobRequestBody:
       properties:
-        data:
+        jobId:
+          description: Id of job factory, e.g. jobs.cleanup
+          example: MyJobId
+          type: string
+        name:
+          example: My Job
+          type: string
+        nodeId:
+          example: MyNodeId
+          type:
+          - string
+          - 'null'
+        params:
+          description: Parameters of Job to be executed.
           properties:
-            type:
-              enum:
-              - jobs
+            param1:
+              example: value1
               type: string
-            id:
-              example: MyJobId
+            param2:
+              example: value2
               type: string
-            attributes:
-              properties:
-                jobId:
-                  example: example
-                  type: string
-                name:
-                  example: example
-                  type: string
-                state:
-                  example: example
-                  type: string
-                status:
-                  properties:
-                    message:
-                      example: message
-                      type: string
-                    type:
-                      enum:
-                      - OK
-                      - CANCELLED
-                      - FAILED
-                      - UNKNOWN
-                      type: string
-                  type: object
-              type: object
-            relationships:
-              properties:
-                document:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId/MySpaceId/MyDocumentId
-                          type: string
-                        type:
-                          enum:
-                          - documents
-                          type: string
-                      type: object
-                  type: object
-                documents:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyProjectId/MySpaceId/MyDocumentId
-                            type: string
-                          type:
-                            enum:
-                            - documents
-                            type: string
-                        type: object
-                      type: array
-                  type: object
-                project:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId
-                          type: string
-                        type:
-                          enum:
-                          - projects
-                          type: string
-                      type: object
-                  type: object
-              type: object
-            links:
-              properties:
-                downloads:
-                  example:
-                  - https://example.com/polarion/download/filename1
-                  - https://example.com/polarion/download/filename2
-                  type: array
-                log:
-                  example: server-host-name/application-path/polarion/job-report?jobId=MyJobId
-                  type: string
-                self:
-                  example: server-host-name/application-path/jobs/MyJobId
-                  type: string
-              type: object
-          type: object
-      type: object
-    jobsSingleGetResponse:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - jobs
-              type: string
-            id:
-              example: MyJobId
-              type: string
-            attributes:
-              properties:
-                jobId:
-                  example: example
-                  type: string
-                name:
-                  example: example
-                  type: string
-                state:
-                  example: example
-                  type: string
-                status:
-                  properties:
-                    message:
-                      example: message
-                      type: string
-                    type:
-                      enum:
-                      - OK
-                      - CANCELLED
-                      - FAILED
-                      - UNKNOWN
-                      type: string
-                  type: object
-              type: object
-            relationships:
-              properties:
-                document:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId/MySpaceId/MyDocumentId
-                          type: string
-                        type:
-                          enum:
-                          - documents
-                          type: string
-                      type: object
-                  type: object
-                documents:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyProjectId/MySpaceId/MyDocumentId
-                            type: string
-                          type:
-                            enum:
-                            - documents
-                            type: string
-                        type: object
-                      type: array
-                    meta:
-                      properties:
-                        totalCount:
-                          format: int32
-                          type: integer
-                      type: object
-                  type: object
-                project:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId
-                          type: string
-                        type:
-                          enum:
-                          - projects
-                          type: string
-                      type: object
-                  type: object
-              type: object
-            links:
-              properties:
-                downloads:
-                  example:
-                  - https://example.com/polarion/download/filename1
-                  - https://example.com/polarion/download/filename2
-                  type: array
-                log:
-                  example: server-host-name/application-path/polarion/job-report?jobId=MyJobId
-                  type: string
-                self:
-                  example: server-host-name/application-path/jobs/MyJobId
-                  type: string
-              type: object
-            meta:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      detail:
-                        description: Human-readable explanation specific to this occurrence of the problem.
-                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                        type: string
-                      source:
-                        properties:
-                          parameter:
-                            description: String indicating which URI query parameter caused the error.
-                            example: revision
-                            type: string
-                          pointer:
-                            description: JSON Pointer to the associated entity in the request document.
-                            example: $.data
-                            type: string
-                          resource:
-                            description: Resource causing the error.
-                            properties:
-                              id:
-                                example: MyProjectId/id
-                                type: string
-                              type:
-                                example: type
-                                type: string
-                            type: object
-                        type: object
-                      status:
-                        description: HTTP status code applicable to this problem.
-                        example: '400'
-                        type: string
-                      title:
-                        description: Short, human-readable summary of the problem.
-                        example: Bad Request
-                        type: string
-                    type: object
-                  type: array
-              type: object
-          type: object
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            self:
-              example: server-host-name/application-path/jobs/MyJobId
-              type: string
-          type: object
+          type:
+          - object
+          - 'null'
+        scope:
+          description: 'Scope of the job. Accepted formats: ''system'', ''project:{projectId}'', or ''path:/{path}''.'
+          example: system
+          type:
+          - string
+          - 'null'
       type: object
     sparseFields:
       properties:
@@ -686,6 +469,160 @@ components:
           example: '@all'
           type: string
       type: object
+    jobsSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - jobs
+              type: string
+            id:
+              example: MyJobId
+              type: string
+            attributes:
+              properties:
+                jobId:
+                  example: example
+                  type: string
+                name:
+                  example: example
+                  type: string
+                state:
+                  example: example
+                  type: string
+                status:
+                  properties:
+                    message:
+                      example: message
+                      type: string
+                    type:
+                      enum:
+                      - OK
+                      - CANCELLED
+                      - FAILED
+                      - UNKNOWN
+                      type: string
+                  type: object
+              type: object
+            relationships:
+              properties:
+                document:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MySpaceId/MyDocumentId
+                          type: string
+                        type:
+                          enum:
+                          - documents
+                          type: string
+                      type: object
+                  type: object
+                documents:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId/MySpaceId/MyDocumentId
+                            type: string
+                          type:
+                            enum:
+                            - documents
+                            type: string
+                        type: object
+                      type: array
+                    meta:
+                      properties:
+                        totalCount:
+                          format: int32
+                          type: integer
+                      type: object
+                  type: object
+                project:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId
+                          type: string
+                        type:
+                          enum:
+                          - projects
+                          type: string
+                      type: object
+                  type: object
+              type: object
+            links:
+              properties:
+                downloads:
+                  example:
+                  - https://example.com/polarion/download/filename1
+                  - https://example.com/polarion/download/filename2
+                  type: array
+                log:
+                  example: server-host-name/application-path/polarion/job-report?jobId=MyJobId
+                  type: string
+                self:
+                  example: server-host-name/application-path/jobs/MyJobId
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/jobs/MyJobId
+              type: string
+          type: object
+      type: object
     jobsListGetResponse:
       properties:
         data:
@@ -860,38 +797,6 @@ components:
               type: integer
           type: object
       type: object
-    executeJobRequestBody:
-      properties:
-        jobId:
-          description: Id of job factory, e.g. jobs.cleanup
-          example: MyJobId
-          nullable: false
-          type: string
-        name:
-          example: My Job
-          nullable: false
-          type: string
-        nodeId:
-          example: MyNodeId
-          nullable: true
-          type: string
-        params:
-          description: Parameters of Job to be executed.
-          nullable: true
-          properties:
-            param1:
-              example: value1
-              type: string
-            param2:
-              example: value2
-              type: string
-          type: object
-        scope:
-          description: 'Scope of the job. Accepted formats: ''system'', ''project:{projectId}'', or ''path:/{path}''.'
-          example: system
-          nullable: true
-          type: string
-      type: object
     errors:
       properties:
         errors:
@@ -932,6 +837,102 @@ components:
                 type: object
             type: object
           type: array
+      type: object
+    jobsSinglePostResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - jobs
+              type: string
+            id:
+              example: MyJobId
+              type: string
+            attributes:
+              properties:
+                jobId:
+                  example: example
+                  type: string
+                name:
+                  example: example
+                  type: string
+                state:
+                  example: example
+                  type: string
+                status:
+                  properties:
+                    message:
+                      example: message
+                      type: string
+                    type:
+                      enum:
+                      - OK
+                      - CANCELLED
+                      - FAILED
+                      - UNKNOWN
+                      type: string
+                  type: object
+              type: object
+            relationships:
+              properties:
+                document:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MySpaceId/MyDocumentId
+                          type: string
+                        type:
+                          enum:
+                          - documents
+                          type: string
+                      type: object
+                  type: object
+                documents:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId/MySpaceId/MyDocumentId
+                            type: string
+                          type:
+                            enum:
+                            - documents
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+                project:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId
+                          type: string
+                        type:
+                          enum:
+                          - projects
+                          type: string
+                      type: object
+                  type: object
+              type: object
+            links:
+              properties:
+                downloads:
+                  example:
+                  - https://example.com/polarion/download/filename1
+                  - https://example.com/polarion/download/filename2
+                  type: array
+                log:
+                  example: server-host-name/application-path/polarion/job-report?jobId=MyJobId
+                  type: string
+                self:
+                  example: server-host-name/application-path/jobs/MyJobId
+                  type: string
+              type: object
+          type: object
       type: object
   securitySchemes:
     bearerAuth:

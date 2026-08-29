@@ -1,18 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  contact:
-    name: Polarion REST API Support
-    url: https://support.sw.siemens.com/
-  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  version: v1.5
+  title: 'TcPCM Gateway Import/Export: Calculations API'
+  description: TcPCM Gateway API
   license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Polarion REST Account Import/Export: Calculations API'
-  version: v1
-servers:
-- url: https://example.com/polarion/rest/v1
-security:
-- bearerAuth: []
+    name: Privacy Policy
+    url: https://www.plm.automation.siemens.com/global/en/legal/privacy-policy.html
 tags:
 - name: 'Import/Export: Calculations'
 paths:
@@ -205,36 +198,13 @@ components:
       required:
       - Data
       - ConfigurationGuid
-    ExportToolCalculationCbdResponse:
-      type: object
-      properties:
-        toolCalculationId:
-          format: int32
-          type: integer
-          readOnly: true
-        costBreakDownConfigurationUniqueKey:
-          type: string
-          readOnly: true
-        toolProperties:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExportToolCalculationCbdToolProperty'
-          readOnly: true
-        materials:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExportToolCalculationCbdMaterial'
-          readOnly: true
-    ExportToolCalculationCbdToolProperty:
+    ExportToolCalculationCbdMaterialProperty:
       type: object
       properties:
         name:
           type: string
           readOnly: true
         value:
-          type: string
-          readOnly: true
-        unit:
           type: string
           readOnly: true
     TcPCMWebApiResponseModel_of_DataTable:
@@ -250,6 +220,42 @@ components:
           type: string
         message:
           type: string
+    ExportToolCalculationCdbRequest:
+      required:
+      - ToolCalculationId
+      - CostBreakDownConfigurationUniqueKey
+      type: object
+      properties:
+        ToolCalculationId:
+          format: int32
+          type: integer
+          example: 1015
+        CostBreakDownConfigurationUniqueKey:
+          type: string
+          example: Siemens.TCPCM.CostBreakdownForTools.StandardCBDforinjecttools.WebApi
+    TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ExportToolCalculationCbdResponse'
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
+    ExportToolCalculationCbdToolProperty:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        value:
+          type: string
+          readOnly: true
+        unit:
+          type: string
+          readOnly: true
     ExportCalculationsRequestModel:
       type: object
       properties:
@@ -273,25 +279,25 @@ components:
         Year:
           type: integer
           description: Year of the project assumptions which are used for the calculation  export in case of lifetime projects (4 digit year). Available since version 2512.
-    TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse:
+    ExportToolCalculationCbdResponse:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/ExportToolCalculationCbdResponse'
-        success:
-          type: boolean
-        code:
-          type: string
-        message:
-          type: string
-    ExportToolCalculationCbdMaterialProperty:
-      type: object
-      properties:
-        name:
+        toolCalculationId:
+          format: int32
+          type: integer
+          readOnly: true
+        costBreakDownConfigurationUniqueKey:
           type: string
           readOnly: true
-        value:
-          type: string
+        toolProperties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExportToolCalculationCbdToolProperty'
+          readOnly: true
+        materials:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExportToolCalculationCbdMaterial'
           readOnly: true
     ExportToolCalculationCbdMaterial:
       type: object
@@ -301,21 +307,8 @@ components:
           items:
             $ref: '#/components/schemas/ExportToolCalculationCbdMaterialProperty'
           readOnly: true
-    ExportToolCalculationCdbRequest:
-      required:
-      - ToolCalculationId
-      - CostBreakDownConfigurationUniqueKey
-      type: object
-      properties:
-        ToolCalculationId:
-          format: int32
-          type: integer
-          example: 1015
-        CostBreakDownConfigurationUniqueKey:
-          type: string
-          example: Siemens.TCPCM.CostBreakdownForTools.StandardCBDforinjecttools.WebApi
   securitySchemes:
-    bearerAuth:
-      bearerFormat: JWT
-      scheme: bearer
+    bearerHttpAuthentication:
       type: http
+      scheme: bearer
+      bearerFormat: JWT

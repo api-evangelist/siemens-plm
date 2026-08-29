@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Polarion REST API Support
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account Metadata API
+  title: Polarion REST Metadata API
   version: v1
 servers:
 - url: https://example.com/polarion/rest/v1
@@ -161,6 +161,116 @@ paths:
       - Metadata
 components:
   schemas:
+    metadataSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - metadata
+              type: string
+            id:
+              example: metadata
+              type: string
+            attributes:
+              properties:
+                apiProperties:
+                  properties:
+                    bodySizeLimit:
+                      example: 2097152
+                      type: integer
+                    defaultPageSize:
+                      example: 100
+                      type: integer
+                    maxIncludedSize:
+                      example: 500
+                      type: integer
+                    maxPageSize:
+                      example: 200
+                      type: integer
+                    maxRelationshipSize:
+                      example: 100
+                      type: integer
+                  type: object
+                build:
+                  example: 20250613-1404-master-e594c717
+                  type: string
+                cluster:
+                  example: cluster1
+                  type: string
+                logoUrl:
+                  example: /images/logos/repo_login_logo.png
+                  type: string
+                node:
+                  example: node2
+                  type: string
+                timezone:
+                  example: +05:30
+                  type: string
+                version:
+                  example: 3.25.12
+                  type: string
+              type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/metadata
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/metadata
+              type: string
+          type: object
+      type: object
     fieldsMetadataActionResponseBody:
       properties:
         data:
@@ -291,116 +401,6 @@ components:
           properties:
             self:
               example: https://example.com/polarion/rest/v1/projects/MyProjectId/actions/getFieldsMetadata?resourceType=MyResourceType&targetType=MyTargetType
-              type: string
-          type: object
-      type: object
-    metadataSingleGetResponse:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - metadata
-              type: string
-            id:
-              example: metadata
-              type: string
-            attributes:
-              properties:
-                apiProperties:
-                  properties:
-                    bodySizeLimit:
-                      example: 2097152
-                      type: integer
-                    defaultPageSize:
-                      example: 100
-                      type: integer
-                    maxIncludedSize:
-                      example: 500
-                      type: integer
-                    maxPageSize:
-                      example: 200
-                      type: integer
-                    maxRelationshipSize:
-                      example: 100
-                      type: integer
-                  type: object
-                build:
-                  example: 20250613-1404-master-e594c717
-                  type: string
-                cluster:
-                  example: cluster1
-                  type: string
-                logoUrl:
-                  example: /images/logos/repo_login_logo.png
-                  type: string
-                node:
-                  example: node2
-                  type: string
-                timezone:
-                  example: +05:30
-                  type: string
-                version:
-                  example: 3.25.12
-                  type: string
-              type: object
-            links:
-              properties:
-                self:
-                  example: server-host-name/application-path/metadata
-                  type: string
-              type: object
-            meta:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      detail:
-                        description: Human-readable explanation specific to this occurrence of the problem.
-                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                        type: string
-                      source:
-                        properties:
-                          parameter:
-                            description: String indicating which URI query parameter caused the error.
-                            example: revision
-                            type: string
-                          pointer:
-                            description: JSON Pointer to the associated entity in the request document.
-                            example: $.data
-                            type: string
-                          resource:
-                            description: Resource causing the error.
-                            properties:
-                              id:
-                                example: MyProjectId/id
-                                type: string
-                              type:
-                                example: type
-                                type: string
-                            type: object
-                        type: object
-                      status:
-                        description: HTTP status code applicable to this problem.
-                        example: '400'
-                        type: string
-                      title:
-                        description: Short, human-readable summary of the problem.
-                        example: Bad Request
-                        type: string
-                    type: object
-                  type: array
-              type: object
-          type: object
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            self:
-              example: server-host-name/application-path/metadata
               type: string
           type: object
       type: object

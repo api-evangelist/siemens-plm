@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Polarion REST API Support
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account Users API
+  title: Polarion REST Users API
   version: v1
 servers:
 - url: https://example.com/polarion/rest/v1
@@ -418,121 +418,6 @@ paths:
       - Users
 components:
   schemas:
-    usersSinglePatchRequest:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - users
-              type: string
-            id:
-              example: MyUserId
-              type: string
-            attributes:
-              properties:
-                description:
-                  properties:
-                    type:
-                      enum:
-                      - text/plain
-                      type: string
-                    value:
-                      example: My text value
-                      type: string
-                  type: object
-                disabledNotifications:
-                  type: boolean
-                email:
-                  example: Email
-                  type: string
-                initials:
-                  example: Initials
-                  type: string
-                name:
-                  example: Name
-                  type: string
-              type: object
-            relationships:
-              properties:
-                globalRoles:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyRoleId
-                            type: string
-                          type:
-                            enum:
-                            - globalroles
-                            type: string
-                        type: object
-                      type: array
-                  type: object
-                projectRoles:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyProjectId/MyRoleId
-                            type: string
-                          type:
-                            enum:
-                            - projectroles
-                            type: string
-                        type: object
-                      type: array
-                  type: object
-                userGroups:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyUserGroupId
-                            type: string
-                          type:
-                            enum:
-                            - usergroups
-                            type: string
-                        type: object
-                      type: array
-                  type: object
-              type: object
-          type: object
-      type: object
-    setLicenseRequestBody:
-      properties:
-        concurrent:
-          description: Is concurrent user
-          example: true
-          type: boolean
-        group:
-          description: License group
-          example: Department
-          type: string
-        license:
-          description: User's license type
-          enum:
-          - REVIEWER
-          - XReviewer
-          - XBase
-          - XEssentials
-          - XPro
-          - XStandard
-          - XEnterprise
-          - XAdvanced
-          - XExtended
-          - XPremium
-          - XAutomotive
-          - PRO
-          - REQUIREMENTS
-          - QA
-          - ALM
-          type: string
-      type: object
     usersListGetResponse:
       properties:
         data:
@@ -760,6 +645,103 @@ components:
               type: integer
           type: object
       type: object
+    usersListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - users
+                type: string
+              attributes:
+                properties:
+                  description:
+                    properties:
+                      type:
+                        enum:
+                        - text/plain
+                        type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  disabledNotifications:
+                    type: boolean
+                  email:
+                    example: Email
+                    type: string
+                  id:
+                    example: MyUserId
+                    type: string
+                  initials:
+                    example: Initials
+                    type: string
+                  name:
+                    example: Name
+                    type: string
+                required:
+                - id
+                type: object
+              relationships:
+                properties:
+                  globalRoles:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyRoleId
+                              type: string
+                            type:
+                              enum:
+                              - globalroles
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  projectRoles:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyProjectId/MyRoleId
+                              type: string
+                            type:
+                              enum:
+                              - projectroles
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  userGroups:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyUserGroupId
+                              type: string
+                            type:
+                              enum:
+                              - usergroups
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    updateAvatarRequestBody:
+      properties:
+        content:
+          description: avatar content
+          format: binary
+          type: string
+      title: UpdateAvatarRequestBody
+      type: object
     sparseFields:
       properties:
         categories:
@@ -943,103 +925,6 @@ components:
           example: '@all'
           type: string
       type: object
-    updateAvatarRequestBody:
-      properties:
-        content:
-          description: avatar content
-          format: binary
-          type: string
-      title: UpdateAvatarRequestBody
-      type: object
-    usersListPostRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - users
-                type: string
-              attributes:
-                properties:
-                  description:
-                    properties:
-                      type:
-                        enum:
-                        - text/plain
-                        type: string
-                      value:
-                        example: My text value
-                        type: string
-                    type: object
-                  disabledNotifications:
-                    type: boolean
-                  email:
-                    example: Email
-                    type: string
-                  id:
-                    example: MyUserId
-                    type: string
-                  initials:
-                    example: Initials
-                    type: string
-                  name:
-                    example: Name
-                    type: string
-                required:
-                - id
-                type: object
-              relationships:
-                properties:
-                  globalRoles:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyRoleId
-                              type: string
-                            type:
-                              enum:
-                              - globalroles
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  projectRoles:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyProjectId/MyRoleId
-                              type: string
-                            type:
-                              enum:
-                              - projectroles
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  userGroups:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyUserGroupId
-                              type: string
-                            type:
-                              enum:
-                              - usergroups
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
     usersListPostResponse:
       properties:
         data:
@@ -1060,6 +945,36 @@ components:
                 type: object
             type: object
           type: array
+      type: object
+    setLicenseRequestBody:
+      properties:
+        concurrent:
+          description: Is concurrent user
+          example: true
+          type: boolean
+        group:
+          description: License group
+          example: Department
+          type: string
+        license:
+          description: User's license type
+          enum:
+          - REVIEWER
+          - XReviewer
+          - XBase
+          - XEssentials
+          - XPro
+          - XStandard
+          - XEnterprise
+          - XAdvanced
+          - XExtended
+          - XPremium
+          - XAutomotive
+          - PRO
+          - REQUIREMENTS
+          - QA
+          - ALM
+          type: string
       type: object
     usersSingleGetResponse:
       properties:
@@ -1308,6 +1223,91 @@ components:
                 type: object
             type: object
           type: array
+      type: object
+    usersSinglePatchRequest:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - users
+              type: string
+            id:
+              example: MyUserId
+              type: string
+            attributes:
+              properties:
+                description:
+                  properties:
+                    type:
+                      enum:
+                      - text/plain
+                      type: string
+                    value:
+                      example: My text value
+                      type: string
+                  type: object
+                disabledNotifications:
+                  type: boolean
+                email:
+                  example: Email
+                  type: string
+                initials:
+                  example: Initials
+                  type: string
+                name:
+                  example: Name
+                  type: string
+              type: object
+            relationships:
+              properties:
+                globalRoles:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyRoleId
+                            type: string
+                          type:
+                            enum:
+                            - globalroles
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+                projectRoles:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId/MyRoleId
+                            type: string
+                          type:
+                            enum:
+                            - projectroles
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+                userGroups:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyUserGroupId
+                            type: string
+                          type:
+                            enum:
+                            - usergroups
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+              type: object
+          type: object
       type: object
   securitySchemes:
     bearerAuth:

@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Polarion REST API Support
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account License API
+  title: Polarion REST License API
   version: v1
 servers:
 - url: https://example.com/polarion/rest/v1
@@ -592,20 +592,29 @@ components:
               type: integer
           type: object
       type: object
-    licenseSinglePatchRequest:
+    license_assignmentsSingleGetResponse:
       properties:
         data:
           properties:
             type:
               enum:
-              - license
+              - license_assignments
               type: string
             id:
-              example: license
+              example: MyUserId
               type: string
+            attributes:
+              properties:
+                status:
+                  enum:
+                  - LOGGED_IN
+                  - EXPIRING
+                  - INACTIVE
+                  type: string
+              type: object
             relationships:
               properties:
-                defaultAddOnLicenseSlots:
+                addOnSlots:
                   properties:
                     data:
                       items:
@@ -619,8 +628,14 @@ components:
                             type: string
                         type: object
                       type: array
+                    meta:
+                      properties:
+                        totalCount:
+                          format: int32
+                          type: integer
+                      type: object
                   type: object
-                defaultBaseLicenseSlot:
+                baseSlot:
                   properties:
                     data:
                       properties:
@@ -633,7 +648,78 @@ components:
                           type: string
                       type: object
                   type: object
+                user:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyUserId
+                          type: string
+                        type:
+                          enum:
+                          - users
+                          type: string
+                      type: object
+                  type: object
               type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/license/assignments/MyUserId
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/license/assignments/MyUserId
+              type: string
           type: object
       type: object
     licenseSingleGetResponse:
@@ -969,48 +1055,6 @@ components:
             type: object
           type: array
       type: object
-    license_slotsListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - license_slots
-                type: string
-              id:
-                example: LicenseType/ModelType/GroupId
-                type: string
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/license/types/LicenseType/slots/ModelType/GroupId
-                    type: string
-                type: object
-            type: object
-          type: array
-      type: object
-    license_slotsListPostRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - license_slots
-                type: string
-              attributes:
-                properties:
-                  group:
-                    example: groupName
-                    type: string
-                  total:
-                    format: int32
-                    type: integer
-                type: object
-            type: object
-          type: array
-      type: object
     license_slotsSingleGetResponse:
       properties:
         data:
@@ -1105,6 +1149,158 @@ components:
               example: server-host-name/application-path/license/types/LicenseType/slots/ModelType/GroupId
               type: string
           type: object
+      type: object
+    license_assignmentsListPatchRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - license_assignments
+                type: string
+              id:
+                example: MyUserId
+                type: string
+              relationships:
+                properties:
+                  addOnSlots:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: LicenseType/ModelType/GroupId
+                              type: string
+                            type:
+                              enum:
+                              - license_slots
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  baseSlot:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: LicenseType/ModelType/GroupId
+                            type: string
+                          type:
+                            enum:
+                            - license_slots
+                            type: string
+                        type: object
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    licenseSinglePatchRequest:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - license
+              type: string
+            id:
+              example: license
+              type: string
+            relationships:
+              properties:
+                defaultAddOnLicenseSlots:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: LicenseType/ModelType/GroupId
+                            type: string
+                          type:
+                            enum:
+                            - license_slots
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+                defaultBaseLicenseSlot:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: LicenseType/ModelType/GroupId
+                          type: string
+                        type:
+                          enum:
+                          - license_slots
+                          type: string
+                      type: object
+                  type: object
+              type: object
+          type: object
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    license_slotsListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - license_slots
+                type: string
+              attributes:
+                properties:
+                  group:
+                    example: groupName
+                    type: string
+                  total:
+                    format: int32
+                    type: integer
+                type: object
+            type: object
+          type: array
       type: object
     license_assignmentsListGetResponse:
       properties:
@@ -1256,219 +1452,23 @@ components:
               type: integer
           type: object
       type: object
-    license_assignmentsListPatchRequest:
+    license_slotsListPostResponse:
       properties:
         data:
           items:
             properties:
               type:
                 enum:
-                - license_assignments
+                - license_slots
                 type: string
               id:
-                example: MyUserId
+                example: LicenseType/ModelType/GroupId
                 type: string
-              relationships:
+              links:
                 properties:
-                  addOnSlots:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: LicenseType/ModelType/GroupId
-                              type: string
-                            type:
-                              enum:
-                              - license_slots
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  baseSlot:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: LicenseType/ModelType/GroupId
-                            type: string
-                          type:
-                            enum:
-                            - license_slots
-                            type: string
-                        type: object
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    license_assignmentsSingleGetResponse:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - license_assignments
-              type: string
-            id:
-              example: MyUserId
-              type: string
-            attributes:
-              properties:
-                status:
-                  enum:
-                  - LOGGED_IN
-                  - EXPIRING
-                  - INACTIVE
-                  type: string
-              type: object
-            relationships:
-              properties:
-                addOnSlots:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: LicenseType/ModelType/GroupId
-                            type: string
-                          type:
-                            enum:
-                            - license_slots
-                            type: string
-                        type: object
-                      type: array
-                    meta:
-                      properties:
-                        totalCount:
-                          format: int32
-                          type: integer
-                      type: object
-                  type: object
-                baseSlot:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: LicenseType/ModelType/GroupId
-                          type: string
-                        type:
-                          enum:
-                          - license_slots
-                          type: string
-                      type: object
-                  type: object
-                user:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyUserId
-                          type: string
-                        type:
-                          enum:
-                          - users
-                          type: string
-                      type: object
-                  type: object
-              type: object
-            links:
-              properties:
-                self:
-                  example: server-host-name/application-path/license/assignments/MyUserId
-                  type: string
-              type: object
-            meta:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      detail:
-                        description: Human-readable explanation specific to this occurrence of the problem.
-                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                        type: string
-                      source:
-                        properties:
-                          parameter:
-                            description: String indicating which URI query parameter caused the error.
-                            example: revision
-                            type: string
-                          pointer:
-                            description: JSON Pointer to the associated entity in the request document.
-                            example: $.data
-                            type: string
-                          resource:
-                            description: Resource causing the error.
-                            properties:
-                              id:
-                                example: MyProjectId/id
-                                type: string
-                              type:
-                                example: type
-                                type: string
-                            type: object
-                        type: object
-                      status:
-                        description: HTTP status code applicable to this problem.
-                        example: '400'
-                        type: string
-                      title:
-                        description: Short, human-readable summary of the problem.
-                        example: Bad Request
-                        type: string
-                    type: object
-                  type: array
-              type: object
-          type: object
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            self:
-              example: server-host-name/application-path/license/assignments/MyUserId
-              type: string
-          type: object
-      type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
+                  self:
+                    example: server-host-name/application-path/license/types/LicenseType/slots/ModelType/GroupId
                     type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
                 type: object
             type: object
           type: array

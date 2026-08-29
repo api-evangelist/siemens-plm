@@ -1,18 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
+  title: 'Product Information Webservice Product Information: Obsolescence API'
+  description: Provides valuable information on products from multiple manufacturers, including SIEMENS.
+  version: v2-earlyaccess
   contact:
-    name: Polarion REST API Support
-    url: https://support.sw.siemens.com/
-  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+    name: ''
+    url: ''
+    email: lifecycle-webservices.industry@siemens.com
   license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Polarion REST Account Product Information: Obsolescence API'
-  version: v1
+    name: Siemens Inner Source License - 1.1
+    url: /static/license
+  termsOfService: https://new.siemens.com/global/en/general/terms-of-use.html
 servers:
-- url: https://example.com/polarion/rest/v1
-security:
-- bearerAuth: []
+- url: https://product-information-hub.siemens.cloud
+  description: Production Server
 tags:
 - name: 'Product Information: Obsolescence'
 paths:
@@ -84,6 +85,25 @@ paths:
       - Authorization: []
 components:
   schemas:
+    ProductRef:
+      type: object
+      properties:
+        productNumber:
+          type: string
+          description: The ID of the product (MLFB, EAN, ...).
+          example: 6SN1123-1AA00-0CA1
+        name:
+          type: string
+          description: The product's name.
+          example: SIMODRIVE 611 1-Axis Power Module 50A int.cooling
+        link:
+          type: string
+          description: Relative link to the product (using this API).
+          example: /api/products/6SN1123-1AA00-0CA1/obsolescence
+      required:
+      - productNumber
+      - name
+      - link
     Obsolescence:
       type: object
       properties:
@@ -176,14 +196,12 @@ components:
             6 = Availability horizon of over 5 years.'
           example: 2
         successor:
-          nullable: true
           description: 'The product''s successor or `null` if no successor exists.
 
             The successor is a product that is PARTIALLY compatible with the original.'
           allOf:
           - $ref: '#/components/schemas/ProductRef'
         substitute:
-          nullable: true
           description: 'The product''s substitute or `null` if no substitute exists.
 
             The substitute is a product that is FULLY compatible with the original.'
@@ -211,27 +229,8 @@ components:
       - successor
       - substitute
       - relatedProducts
-    ProductRef:
-      type: object
-      properties:
-        productNumber:
-          type: string
-          description: The ID of the product (MLFB, EAN, ...).
-          example: 6SN1123-1AA00-0CA1
-        name:
-          type: string
-          description: The product's name.
-          example: SIMODRIVE 611 1-Axis Power Module 50A int.cooling
-        link:
-          type: string
-          description: Relative link to the product (using this API).
-          example: /api/products/6SN1123-1AA00-0CA1/obsolescence
-      required:
-      - productNumber
-      - name
-      - link
   securitySchemes:
-    bearerAuth:
-      bearerFormat: JWT
-      scheme: bearer
-      type: http
+    Authorization:
+      type: apiKey
+      in: header
+      name: Authorization

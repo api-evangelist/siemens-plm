@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Polarion REST API Support
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account Externally Linked Work Items API
+  title: Polarion REST Externally Linked Work Items API
   version: v1
 servers:
 - url: https://example.com/polarion/rest/v1
@@ -355,6 +355,21 @@ paths:
       - Externally Linked Work Items
 components:
   schemas:
+    externallylinkedworkitemsListDeleteRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - externallylinkedworkitems
+                type: string
+              id:
+                example: MyProjectId/MyWorkItemId/parent/hostname/MyProjectId/MyLinkedWorkItemId
+                type: string
+            type: object
+          type: array
+      type: object
     sparseFields:
       properties:
         categories:
@@ -538,7 +553,7 @@ components:
           example: '@all'
           type: string
       type: object
-    externallylinkedworkitemsListPostResponse:
+    externallylinkedworkitemsListPostRequest:
       properties:
         data:
           items:
@@ -547,30 +562,14 @@ components:
                 enum:
                 - externallylinkedworkitems
                 type: string
-              id:
-                example: MyProjectId/MyWorkItemId/parent/hostname/MyProjectId/MyLinkedWorkItemId
-                type: string
-              links:
+              attributes:
                 properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/externallylinkedworkitems/parent/hostname/MyProjectId/MyLinkedWorkItemId?revision=1234
+                  role:
+                    example: relates_to
+                    type: string
+                  workItemURI:
                     type: string
                 type: object
-            type: object
-          type: array
-      type: object
-    externallylinkedworkitemsListDeleteRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - externallylinkedworkitems
-                type: string
-              id:
-                example: MyProjectId/MyWorkItemId/parent/hostname/MyProjectId/MyLinkedWorkItemId
-                type: string
             type: object
           type: array
       type: object
@@ -656,7 +655,7 @@ components:
               type: string
           type: object
       type: object
-    externallylinkedworkitemsListPostRequest:
+    externallylinkedworkitemsListPostResponse:
       properties:
         data:
           items:
@@ -665,12 +664,13 @@ components:
                 enum:
                 - externallylinkedworkitems
                 type: string
-              attributes:
+              id:
+                example: MyProjectId/MyWorkItemId/parent/hostname/MyProjectId/MyLinkedWorkItemId
+                type: string
+              links:
                 properties:
-                  role:
-                    example: relates_to
-                    type: string
-                  workItemURI:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/externallylinkedworkitems/parent/hostname/MyProjectId/MyLinkedWorkItemId?revision=1234
                     type: string
                 type: object
             type: object

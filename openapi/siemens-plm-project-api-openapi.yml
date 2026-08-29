@@ -1,18 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  contact:
-    name: Polarion REST API Support
-    url: https://support.sw.siemens.com/
-  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  version: v1.5
+  title: TcPCM Gateway Project API
+  description: TcPCM Gateway API
   license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account Project API
-  version: v1
-servers:
-- url: https://example.com/polarion/rest/v1
-security:
-- bearerAuth: []
+    name: Privacy Policy
+    url: https://www.plm.automation.siemens.com/global/en/legal/privacy-policy.html
 tags:
 - name: Project
 paths:
@@ -278,34 +271,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ErrorInternalServerError:
-      description: An unexpected error occurred and the server is not fulfilling the request.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Internal error
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ErrorUnauthorized:
-      description: The client is not providing valid authentication credentials for the target resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Invalid user or password
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     ErrorBadRequest:
       description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
       content:
@@ -320,8 +285,8 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ErrorRequestTimeout:
-      description: The request timed out because a server did not respond within the expected waiting time
+    ErrorInternalServerError:
+      description: An unexpected error occurred and the server is not fulfilling the request.
       content:
         application/json:
           schema:
@@ -330,35 +295,7 @@ components:
             Example:
               value:
                 errors:
-                - detail: Request timed out
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ErrorConflict:
-      description: The request could not be completed due to a conflict with the current state of the target resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Conflict with current state of the resource
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ErrorNotAcceptable:
-      description: The service is not able to respond using the request media-type or representation asked by the client in the Accept header.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Media type not accepted
+                - detail: Internal error
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
@@ -376,7 +313,78 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    ErrorUnauthorized:
+      description: The client is not providing valid authentication credentials for the target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Invalid user or password
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorRequestTimeout:
+      description: The request timed out because a server did not respond within the expected waiting time
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Request timed out
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorNotAcceptable:
+      description: The service is not able to respond using the request media-type or representation asked by the client in the Accept header.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Media type not accepted
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorConflict:
+      description: The request could not be completed due to a conflict with the current state of the target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Conflict with current state of the resource
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        Errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+          readOnly: true
+    Date:
+      type: string
+      description: Date
+      format: date
+    MeasurementUnit:
+      type: string
+      description: Measurement unit
     ProjectAssumptionModel:
       type: object
       properties:
@@ -533,22 +541,6 @@ components:
             - validityParameters
       required:
       - id
-    Date:
-      type: string
-      description: Date
-      format: date
-    IntArray:
-      type: array
-      items:
-        type: integer
-    SelfLink:
-      type: object
-      properties:
-        self:
-          type: string
-          description: Link to the current resource
-      required:
-      - self
     Currency:
       type: string
       description: Currency in ISO format
@@ -561,14 +553,6 @@ components:
       maxLength: 36
       description: Global unique identifier
       example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
-    ErrorResponse:
-      type: object
-      properties:
-        Errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-          readOnly: true
     ProjectModel:
       type: object
       properties:
@@ -612,11 +596,20 @@ components:
         detail:
           type: string
           readOnly: true
-    MeasurementUnit:
-      type: string
-      description: Measurement unit
+    IntArray:
+      type: array
+      items:
+        type: integer
+    SelfLink:
+      type: object
+      properties:
+        self:
+          type: string
+          description: Link to the current resource
+      required:
+      - self
   securitySchemes:
-    bearerAuth:
-      bearerFormat: JWT
-      scheme: bearer
+    bearerHttpAuthentication:
       type: http
+      scheme: bearer
+      bearerFormat: JWT

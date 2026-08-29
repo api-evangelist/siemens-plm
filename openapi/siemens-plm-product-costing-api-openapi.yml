@@ -1,18 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  contact:
-    name: Polarion REST API Support
-    url: https://support.sw.siemens.com/
-  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  version: v1.5
+  title: TcPCM Gateway Product costing API
+  description: TcPCM Gateway API
   license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Polarion REST Account Product costing API
-  version: v1
-servers:
-- url: https://example.com/polarion/rest/v1
-security:
-- bearerAuth: []
+    name: Privacy Policy
+    url: https://www.plm.automation.siemens.com/global/en/legal/privacy-policy.html
 tags:
 - name: Product costing
 paths:
@@ -63,6 +56,20 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    ErrorBadRequest:
+      description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Invalid JSON format
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     ErrorInternalServerError:
       description: An unexpected error occurred and the server is not fulfilling the request.
       content:
@@ -91,8 +98,8 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ErrorBadRequest:
-      description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
+    ErrorForbidden:
+      description: The client is not allowed to access the resource. The client SHOULD not repeat the request.
       content:
         application/json:
           schema:
@@ -101,7 +108,7 @@ components:
             Example:
               value:
                 errors:
-                - detail: Invalid JSON format
+                - detail: Not allowed to access calculation with id '271'
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
@@ -116,20 +123,6 @@ components:
               value:
                 errors:
                 - detail: Conflict with current state of the resource
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ErrorForbidden:
-      description: The client is not allowed to access the resource. The client SHOULD not repeat the request.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Not allowed to access calculation with id '271'
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
@@ -149,7 +142,7 @@ components:
           type: string
           readOnly: true
   securitySchemes:
-    bearerAuth:
-      bearerFormat: JWT
-      scheme: bearer
+    bearerHttpAuthentication:
       type: http
+      scheme: bearer
+      bearerFormat: JWT
