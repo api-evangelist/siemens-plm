@@ -352,7 +352,7 @@ apis:
   humanURL: https://developer.siemens.com/tcpcm/overview.html
   baseURL: https://developer.siemens.com
   tags:
-  - Enumerations
+  - enumerations
   tags_raw:
   - Enumerations
   properties:
