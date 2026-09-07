@@ -1346,3 +1346,5 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-parent: siemens
+x-relationship: product

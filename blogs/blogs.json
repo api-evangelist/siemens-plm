@@ -2,21 +2,21 @@
   "repo": "siemens-plm",
   "feeds": [
     {
-      "source": "https://blogs.sw.siemens.com/feed/",
-      "feed_url": "https://blogs.sw.siemens.com/feed/",
-      "title": "",
-      "saved": 0,
-      "method": "feed"
-    },
-    {
       "source": "https://www.linkedin.com/company/siemens-plm",
       "feed_url": "https://www.linkedin.com/company/siemens-plm",
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://blogs.sw.siemens.com/feed/",
+      "feed_url": "https://blogs.sw.siemens.com/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     }
   ],
-  "fetched": "2026-08-30T22:33:40Z",
+  "fetched": "2026-09-06T19:17:18Z",
   "post_count": 11,
   "feed_nature": "undetermined",
   "feed_nature_basis": null,
