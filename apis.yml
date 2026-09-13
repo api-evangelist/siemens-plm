@@ -41,6 +41,19 @@ modified: 2026-06-13
 specificationVersion: '0.23'
 tags:
   - PLM
+  - Teamcenter
+  - NX
+  - Solid Edge
+  - Simcenter
+  - Xcelerator
+  - Digital Manufacturing
+  - Industrial IoT
+  - CAD
+  - CAM
+  - Sustainability
+  - ALM
+tags_raw:
+  - PLM
   - Product Lifecycle Management
   - Teamcenter
   - NX
