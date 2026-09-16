@@ -10,13 +10,10 @@
     },
     {
       "source": "https://blogs.sw.siemens.com/feed/",
-      "feed_url": "https://blogs.sw.siemens.com/feed/",
-      "title": "",
-      "saved": 0,
-      "method": "feed"
+      "error": "URLError"
     }
   ],
-  "fetched": "2026-09-06T19:17:18Z",
+  "fetched": "2026-09-13T13:00:00Z",
   "post_count": 11,
   "feed_nature": "undetermined",
   "feed_nature_basis": null,
