@@ -1,0 +1,86 @@
+slug: siemens-plm
+provider: Siemens PLM
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 7
+edges:
+- tag: Test Runs
+  spec_file: siemens-plm-test-runs-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.9
+  evidence: POST /projects/{projectId}/testruns postTestRuns "Creates a list of Test Runs."; POST .../actions/importXUnitTestResults
+    "Imports XUnit test results."
+  reason: Creation and management of test runs plus import of XUnit/Excel test results is unambiguously
+    test execution and result stewardship — software quality engineering.
+- tag: Test Records
+  spec_file: siemens-plm-test-records-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.85
+  evidence: POST /projects/{projectId}/testruns/{testRunId}/testrecords postTestRecords "Creates a list
+    of Test Records."; getTestRecordTestParameters "Returns a list of Test Parameters for the specified
+    Test Record."
+  reason: Test records capture per-test-case execution results within a test run, i.e. test execution
+    and result management in an ALM tool — software quality engineering.
+- tag: Test Step Results
+  spec_file: siemens-plm-test-step-results-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.75
+  evidence: GET /projects/{projectId}/testruns/{testRunId}/testrecords/.../teststepresults — 'Returns
+    a list of Test Step Results.'
+  reason: 'Polarion ALM test execution: recording pass/fail results of test steps within test runs. This
+    is test suite stewardship / quality engineering for software (and systems) products, not a business-domain
+    capability.'
+- tag: Test Steps
+  spec_file: siemens-plm-test-steps-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.75
+  evidence: POST /projects/{projectId}/workitems/{workItemId}/teststeps  postTestSteps  'Creates a list
+    of Test Steps.'
+  reason: Authoring and maintaining test case steps attached to ALM work items — test asset management,
+    i.e. software quality engineering.
+- tag: Administration
+  spec_file: siemens-plm-administration-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: PATCH /api/v1/administration/users/{userName}  ToggleUserActivation_ToggleActivation  Activates
+    or deactivate a user
+  reason: Admin-only user fetch and activation/deactivation plus RoleAssignmentResponseModel schema —
+    user account and role administration, i.e. identity & access management. Application-version read
+    is incidental.
+- tag: 'Product Information: Obsolescence'
+  spec_file: siemens-plm-product-information-obsolescence-api-openapi.yml
+  capability_id: BC-820.70
+  capability_id_l1: BC-820
+  capability_name: Product End-of-Life Management
+  confidence: 0.7
+  evidence: 'GET /api/products/{productNumber}/obsolescence get-obsolescence; schemas: ProductRef, Obsolescence'
+  reason: Exposes obsolescence status for a catalogue product, i.e. end-of-life/discontinuation information
+    about products — Product End-of-Life Management. Confidence limited by the single undocumented operation.
+- tag: Roles
+  spec_file: siemens-plm-roles-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: GET /roles/{roleId} getRole "Returns the specified Global Role."; schema globalrolesSingleGetResponse
+  reason: Global roles are authorisation constructs, mapping to identity and access management. Only one
+    read operation is exposed, so confidence is tempered.
