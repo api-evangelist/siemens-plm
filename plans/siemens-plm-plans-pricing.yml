@@ -1,64 +1,29 @@
-name: Siemens PLM Plans and Pricing
-description: >
-  Siemens PLM products are offered through tiered subscription plans. Teamcenter X cloud PLM
-  provides four preconfigured tiers. API access is included with product subscriptions; specific
-  API entitlements depend on tier and licensed modules. Pricing is available on request.
-url: https://www.siemens.com/en-us/products/teamcenter/teamcenter-x-cloud-plm/teamcenter-x-plans-and-pricing/
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.siemens.com/en-us/products/teamcenter/teamcenter-x-cloud-plm/teamcenter-x-plans-and-pricing/
+sources:
+- https://www.siemens.com/en-us/products/teamcenter/teamcenter-x-cloud-plm/teamcenter-x-plans-and-pricing/
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: negotiated
+published: false
+note: No numeric price is published on the pricing page; Tiered feature comparison for Teamcenter X with
+  no numeric prices; page directs users to request a quote. Mentions '30-day Teamcenter X trials'.
+plan_count: 4
 plans:
-  - name: Essentials
-    description: >
-      Entry-level Teamcenter X cloud PLM tier. Includes MCAD data management, structure
-      management with CAD revisions, where-used indication, check-in/check-out, document
-      upload, and 3D view and markup.
-    pricing: Contact Siemens for a quote
-    features:
-      - MCAD data management
-      - Structure management with CAD revisions
-      - Where-used indication
-      - Check in / Check out
-      - Document creation and upload
-      - 3D view and markup
-  - name: Standard
-    description: >
-      Mid-range Teamcenter X tier. Includes all Essentials features plus simple change
-      management, project scheduling, and requirements linking.
-    pricing: Contact Siemens for a quote
-    features:
-      - All Essentials features
-      - Simple change management
-      - Project scheduling
-      - Requirements linking
-  - name: Advanced
-    description: >
-      Higher-capability Teamcenter X tier. Adds electrical and electronic data management
-      and effectivity management plus all Standard features.
-    pricing: Contact Siemens for a quote
-    features:
-      - All Standard features
-      - Electrical and electronic data management
-      - Effectivity management
-      - Classification
-  - name: Premium
-    description: >
-      Full-featured Teamcenter X tier with the complete PLM portfolio including digital mockup,
-      technical publications, enterprise BOM, systems engineering, manufacturing planning,
-      quality management, cost management, service lifecycle management, multi-cloud choice,
-      customization, and industry-specific solutions.
-    pricing: Contact Siemens for a quote
-    features:
-      - All Advanced features
-      - Digital Mockup / Reality
-      - Technical publications
-      - Enterprise BOM
-      - Systems engineering
-      - Manufacturing planning
-      - Quality management
-      - Cost management (TcPCM REST API)
-      - Service lifecycle management
-      - Multi-cloud provider choice
-      - Customization
-      - Industry-specific solutions
-notes: >
-  Bulk Export API of Dynamic Calculations in TcPCM requires additional license PPC10029.
-  All other TcPCM REST API endpoints are included with standard subscriptions. Contact
-  Siemens sales for exact per-user or per-module pricing.
+- name: Essentials
+  price_text: Request a quote
+  period: none
+- name: Standard
+  price_text: Request a quote
+  period: none
+- name: Advanced
+  price_text: Request a quote
+  period: none
+- name: Premium
+  price_text: Request a quote
+  period: none
