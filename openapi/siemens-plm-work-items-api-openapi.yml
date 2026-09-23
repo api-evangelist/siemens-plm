@@ -3,7 +3,12 @@ info:
   contact:
     name: Polarion REST API Support
     url: https://support.sw.siemens.com/
-  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  description: 'About
+
+    The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses.
+
+
+    For a detailed description of the REST API and how to use it, see the REST API User Guide (available on Support Center).'
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -51,7 +56,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Deletes a list of Work Items from the Global context.
+      summary: Deletes a list of Work Items from the Global context
       tags:
       - Work Items
     get:
@@ -122,7 +127,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of Work Items from all Projects.
+      summary: Returns a list of Work Items from all Projects
       tags:
       - Work Items
     patch:
@@ -165,7 +170,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Updates a list of Work Items in the Global context.
+      summary: Updates a list of Work Items in the Global context
       tags:
       - Work Items
   /projects/{projectId}/workitems:
@@ -212,7 +217,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Deletes a list of Work Items.
+      summary: Deletes a list of Work Items
       tags:
       - Work Items
     get:
@@ -289,7 +294,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of Work Items.
+      summary: Returns a list of Work Items
       tags:
       - Work Items
     patch:
@@ -345,7 +350,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Updates a list of Work Items.
+      summary: Updates a list of Work Items
       tags:
       - Work Items
     post:
@@ -397,7 +402,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Creates a list of Work Items.
+      summary: Creates a list of Work Items
       tags:
       - Work Items
   /projects/{projectId}/workitems/{workItemId}:
@@ -459,7 +464,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns the specified Work Item.
+      summary: Returns the specified Work Item
       tags:
       - Work Items
     patch:
@@ -521,7 +526,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Updates the specified Work Item.
+      summary: Updates the specified Work Item
       tags:
       - Work Items
   /projects/{projectId}/workitems/{workItemId}/actions/getWorkflowActions:
@@ -584,7 +589,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of Workflow Actions.
+      summary: Returns a list of Workflow Actions
       tags:
       - Work Items
   /projects/{projectId}/workitems/{workItemId}/actions/moveFromDocument:
@@ -624,7 +629,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Moves the specified Work Item from the Document.
+      summary: Moves the specified Work Item from the Document
       tags:
       - Work Items
   /projects/{projectId}/workitems/{workItemId}/actions/moveToDocument:
@@ -677,7 +682,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Moves the specified Work Item to the Document.
+      summary: Moves the specified Work Item to the Document
       tags:
       - Work Items
   /projects/{projectId}/workitems/{workItemId}/fields/{fieldId}/actions/getAvailableOptions:
@@ -741,7 +746,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of available options for the requested field for the specified Work Item.
+      summary: Returns a list of available options for the requested field for the specified…
       tags:
       - Work Items
   /projects/{projectId}/workitems/{workItemId}/fields/{fieldId}/actions/getCurrentOptions:
@@ -810,7 +815,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of selected options for the requested field for specific Work Item.
+      summary: Returns a list of selected options for the requested field for specific Work…
       tags:
       - Work Items
   /projects/{projectId}/workitems/{workItemId}/relationships/{relationshipId}:
@@ -871,7 +876,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Deletes a list of Work Item Relationships.
+      summary: Deletes a list of Work Item Relationships
       tags:
       - Work Items
     get:
@@ -950,7 +955,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of Work Item Relationships.
+      summary: Returns a list of Work Item Relationships
       tags:
       - Work Items
     patch:
@@ -1008,7 +1013,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Updates a list of Work Item Relationships.
+      summary: Updates a list of Work Item Relationships
       tags:
       - Work Items
     post:
@@ -1066,7 +1071,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Creates a list of Work Item Relationships.
+      summary: Creates a list of Work Item Relationships
       tags:
       - Work Items
   /projects/{projectId}/workitems/{workItemId}/testparameterdefinitions:
@@ -1140,7 +1145,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of Test Parameter Definitions for the specified Work Item.
+      summary: Returns a list of Test Parameter Definitions for the specified Work Item
       tags:
       - Work Items
   /projects/{projectId}/workitems/{workItemId}/testparameterdefinitions/{testParamId}:
@@ -1208,7 +1213,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns the specified Test Parameter Definition for the specified Work Item.
+      summary: Returns the specified Test Parameter Definition for the specified Work Item
       tags:
       - Work Items
   /projects/{projectId}/workitems/fields/{fieldId}/actions/getAvailableOptions:
@@ -1271,11 +1276,224 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of available options for the requested field for the specified Work Item Type.
+      summary: Returns a list of available options for the requested field for the specified…
       tags:
       - Work Items
 components:
   schemas:
+    RelationshipsRequestBody:
+      description: List of generic contents
+      example:
+        data:
+        - type: MyResourceType
+          id: MyProjectId/MyResourceId
+      oneOf:
+      - $ref: '#/components/schemas/RelationshipDataSingleRequest'
+      - $ref: '#/components/schemas/RelationshipDataListRequest'
+      type: object
+    RelationshipDataListRequest:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RelationshipDataBody'
+          type: array
+      type: object
+    RelationshipDataSingleRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/RelationshipDataBody'
+      type: object
+    enumOptionsActionResponseBody:
+      properties:
+        data:
+          items:
+            properties:
+              id:
+                example: open
+                type: string
+              color:
+                example: '#F9FF4D'
+                type: string
+              columnWidth:
+                example: 90%
+                type: string
+              createDefect:
+                example: true
+                type: boolean
+              default:
+                example: true
+                type: boolean
+              description:
+                example: Description
+                type: string
+              hidden:
+                example: false
+                type: boolean
+              iconURL:
+                example: /polarion/icons/default/enums/status_open.gif
+                type: string
+              limited:
+                example: true
+                type: boolean
+              minValue:
+                example: 30.0
+                type: number
+              name:
+                example: Open
+                type: string
+              oppositeName:
+                example: Opposite Name
+                type: string
+              parent:
+                example: true
+                type: boolean
+              requiresSignatureForTestCaseExecution:
+                example: true
+                type: boolean
+              templateWorkItem:
+                example: exampleTemplate
+                type: string
+              terminal:
+                example: true
+                type: boolean
+            type: object
+          type: array
+        links:
+          properties:
+            first:
+              example: server-host-name/application-path/projects/MyProjectId/.../fields/MyField/actions/actionName?page%5Bnumber%5D=1
+              type: string
+            last:
+              example: server-host-name/application-path/projects/MyProjectId/.../fields/MyField/actions/actionName?page%5Bnumber%5D=9
+              type: string
+            next:
+              example: server-host-name/application-path/projects/MyProjectId/.../fields/MyField/actions/actionName?page%5Bnumber%5D=6
+              type: string
+            prev:
+              example: server-host-name/application-path/projects/MyProjectId/.../fields/MyField/actions/actionName?page%5Bnumber%5D=4
+              type: string
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/.../fields/MyField/actions/actionName?page%5Bsize%5D=10&page%5Bnumber%5D=5
+              type: string
+          type: object
+        meta:
+          properties:
+            totalCount:
+              format: int32
+              type: integer
+          type: object
+      type: object
+    RelationshipDataListResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RelationshipDataBody'
+          type: array
+      type: object
+    testparameter_definitionsSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - testparameter_definitions
+              type: string
+            id:
+              example: MyProjectId/MyTestParamDefinition
+              type: string
+            revision:
+              example: '1234'
+              type: string
+            attributes:
+              properties:
+                name:
+                  example: Test Parameter Definition example
+                  type: string
+              type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions/MyTestParamDefinition
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions/MyTestParamDefinition
+              type: string
+          type: object
+      type: object
+    workitemsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - workitems
+                type: string
+              id:
+                example: MyProjectId/MyWorkItemId
+                type: string
+              links:
+                properties:
+                  portal:
+                    example: server-host-name/application-path/polarion/redirect/project/MyProjectId/workitem?id=MyWorkItemId&revision=1234
+                    type: string
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId?revision=1234
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
     workitemsListDeleteRequest:
       properties:
         data:
@@ -1291,200 +1509,71 @@ components:
             type: object
           type: array
       type: object
-    sparseFields:
+    relationshipsListDeleteRequest:
       properties:
-        categories:
-          description: Requested fields
-          example: '@all'
-          type: string
-        collections:
-          description: Requested fields
-          example: '@all'
-          type: string
-        customfields:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_parts:
-          description: Requested fields
-          example: '@all'
-          type: string
-        documents:
-          description: Requested fields
-          example: '@all'
-          type: string
-        enumerations:
-          description: Requested fields
-          example: '@all'
-          type: string
-        externallylinkedworkitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        featureselections:
-          description: Requested fields
-          example: '@all'
-          type: string
-        globalroles:
-          description: Requested fields
-          example: '@all'
-          type: string
-        icons:
-          description: Requested fields
-          example: '@all'
-          type: string
-        jobs:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_assignments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_slots:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_types:
-          description: Requested fields
-          example: '@all'
-          type: string
-        linkedoslcresources:
-          description: Requested fields
-          example: '@all'
-          type: string
-        linkedworkitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        metadata:
-          description: Requested fields
-          example: '@all'
-          type: string
-        page_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        page_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        pages:
-          description: Requested fields
-          example: '@all'
-          type: string
-        plans:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projectroles:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projects:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projecttemplates:
-          description: Requested fields
-          example: '@all'
-          type: string
-        revisions:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testparameter_definitions:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testparameters:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrecord_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrecords:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrun_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrun_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testruns:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststep_results:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststepresult_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststeps:
-          description: Requested fields
-          example: '@all'
-          type: string
-        usergroups:
-          description: Requested fields
-          example: '@all'
-          type: string
-        users:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_approvals:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workrecords:
-          description: Requested fields
-          example: '@all'
-          type: string
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - collections
+                - categories
+                - documents
+                - document_attachments
+                - document_comments
+                - document_parts
+                - enumerations
+                - globalroles
+                - icons
+                - jobs
+                - linkedworkitems
+                - externallylinkedworkitems
+                - linkedoslcresources
+                - pages
+                - page_attachments
+                - page_comments
+                - plans
+                - projectroles
+                - projectgroups
+                - projects
+                - projecttemplates
+                - spaces
+                - testparameters
+                - testparameter_definitions
+                - testrecords
+                - teststep_results
+                - testruns
+                - testrun_attachments
+                - teststepresult_attachments
+                - testrun_comments
+                - usergroups
+                - users
+                - workitems
+                - workitem_attachments
+                - workitem_approvals
+                - workitem_comments
+                - featureselections
+                - teststeps
+                - workrecords
+                - revisions
+                - testrecord_attachments
+                - license_slots
+                - license_types
+                - license
+                - metadata
+                - license_assignments
+                - customfields
+                type: string
+              id:
+                example: MyProjectId/MyResourceId
+                type: string
+            type: object
+          type: array
       type: object
-    moveWorkItemToDocumentRequestBody:
+    RelationshipDataSingleResponse:
       properties:
-        nextPart:
-          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
-          type: string
-        previousPart:
-          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
-          type: string
-        targetDocument:
-          example: MyProjectId/MySpaceId/MyDocumentId
-          type: string
+        data:
+          $ref: '#/components/schemas/RelationshipDataBody'
       type: object
     workitemsSingleGetResponse:
       properties:
@@ -2077,389 +2166,58 @@ components:
               type: string
           type: object
       type: object
-    enumOptionsActionResponseBody:
+    errors:
       properties:
-        data:
+        errors:
           items:
             properties:
-              id:
-                example: open
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
                 type: string
-              color:
-                example: '#F9FF4D'
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
                 type: string
-              columnWidth:
-                example: 90%
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
                 type: string
-              createDefect:
-                example: true
-                type: boolean
-              default:
-                example: true
-                type: boolean
-              description:
-                example: Description
-                type: string
-              hidden:
-                example: false
-                type: boolean
-              iconURL:
-                example: /polarion/icons/default/enums/status_open.gif
-                type: string
-              limited:
-                example: true
-                type: boolean
-              minValue:
-                example: 30.0
-                type: number
-              name:
-                example: Open
-                type: string
-              oppositeName:
-                example: Opposite Name
-                type: string
-              parent:
-                example: true
-                type: boolean
-              requiresSignatureForTestCaseExecution:
-                example: true
-                type: boolean
-              templateWorkItem:
-                example: exampleTemplate
-                type: string
-              terminal:
-                example: true
-                type: boolean
-            type: object
-          type: array
-        links:
-          properties:
-            first:
-              example: server-host-name/application-path/projects/MyProjectId/.../fields/MyField/actions/actionName?page%5Bnumber%5D=1
-              type: string
-            last:
-              example: server-host-name/application-path/projects/MyProjectId/.../fields/MyField/actions/actionName?page%5Bnumber%5D=9
-              type: string
-            next:
-              example: server-host-name/application-path/projects/MyProjectId/.../fields/MyField/actions/actionName?page%5Bnumber%5D=6
-              type: string
-            prev:
-              example: server-host-name/application-path/projects/MyProjectId/.../fields/MyField/actions/actionName?page%5Bnumber%5D=4
-              type: string
-            self:
-              example: server-host-name/application-path/projects/MyProjectId/.../fields/MyField/actions/actionName?page%5Bsize%5D=10&page%5Bnumber%5D=5
-              type: string
-          type: object
-        meta:
-          properties:
-            totalCount:
-              format: int32
-              type: integer
-          type: object
-      type: object
-    workitemsListPatchRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - workitems
-                type: string
-              id:
-                example: MyProjectId/MyWorkItemId
-                type: string
-              attributes:
+              source:
                 properties:
-                  description:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
                     properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
                       type:
-                        enum:
-                        - text/html
-                        - text/plain
+                        example: type
                         type: string
-                      value:
-                        example: My text value
-                        type: string
-                    type: object
-                  dueDate:
-                    example: '1970-01-01'
-                    format: date
-                    type: string
-                  hyperlinks:
-                    items:
-                      properties:
-                        role:
-                          example: ref_ext
-                          type: string
-                        title:
-                          example: Title
-                          type: string
-                        uri:
-                          example: https://polarion.plm.automation.siemens.com
-                          type: string
-                      type: object
-                    type: array
-                  initialEstimate:
-                    example: 5 1/2d
-                    type: string
-                  priority:
-                    example: '90.0'
-                    type: string
-                  remainingEstimate:
-                    example: 5 1/2d
-                    type: string
-                  resolution:
-                    example: done
-                    type: string
-                  resolvedOn:
-                    example: '1970-01-01T00:00:00Z'
-                    format: date-time
-                    type: string
-                  severity:
-                    example: blocker
-                    type: string
-                  status:
-                    example: open
-                    type: string
-                  timeSpent:
-                    example: 5 1/2d
-                    type: string
-                  title:
-                    example: Title
-                    type: string
-                type: object
-              relationships:
-                properties:
-                  assignee:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyUserId
-                              type: string
-                            type:
-                              enum:
-                              - users
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  categories:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyProjectId/MyCategoryId
-                              type: string
-                            type:
-                              enum:
-                              - categories
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  linkedRevisions:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: default/1234
-                              type: string
-                            type:
-                              enum:
-                              - revisions
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  votes:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyUserId
-                              type: string
-                            type:
-                              enum:
-                              - users
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  watches:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyUserId
-                              type: string
-                            type:
-                              enum:
-                              - users
-                              type: string
-                          type: object
-                        type: array
                     type: object
                 type: object
             type: object
           type: array
       type: object
-    workitemsListPostRequest:
+    moveWorkItemToDocumentRequestBody:
       properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - workitems
-                type: string
-              attributes:
-                properties:
-                  description:
-                    properties:
-                      type:
-                        enum:
-                        - text/html
-                        - text/plain
-                        type: string
-                      value:
-                        example: My text value
-                        type: string
-                    type: object
-                  dueDate:
-                    example: '1970-01-01'
-                    format: date
-                    type: string
-                  hyperlinks:
-                    items:
-                      properties:
-                        role:
-                          example: ref_ext
-                          type: string
-                        title:
-                          example: Title
-                          type: string
-                        uri:
-                          example: https://polarion.plm.automation.siemens.com
-                          type: string
-                      type: object
-                    type: array
-                  initialEstimate:
-                    example: 5 1/2d
-                    type: string
-                  priority:
-                    example: '90.0'
-                    type: string
-                  remainingEstimate:
-                    example: 5 1/2d
-                    type: string
-                  resolution:
-                    example: done
-                    type: string
-                  resolvedOn:
-                    example: '1970-01-01T00:00:00Z'
-                    format: date-time
-                    type: string
-                  severity:
-                    example: blocker
-                    type: string
-                  status:
-                    example: open
-                    type: string
-                  timeSpent:
-                    example: 5 1/2d
-                    type: string
-                  title:
-                    example: Title
-                    type: string
-                  type:
-                    example: task
-                    type: string
-                required:
-                - type
-                type: object
-              relationships:
-                properties:
-                  assignee:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyUserId
-                              type: string
-                            type:
-                              enum:
-                              - users
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  author:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyUserId
-                            type: string
-                          type:
-                            enum:
-                            - users
-                            type: string
-                        type: object
-                    type: object
-                  categories:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyProjectId/MyCategoryId
-                              type: string
-                            type:
-                              enum:
-                              - categories
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  linkedRevisions:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: default/1234
-                              type: string
-                            type:
-                              enum:
-                              - revisions
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  module:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyProjectId/MySpaceId/MyDocumentId
-                            type: string
-                          type:
-                            enum:
-                            - documents
-                            type: string
-                        type: object
-                    type: object
-                type: object
-            type: object
-          type: array
+        nextPart:
+          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+          type: string
+        previousPart:
+          example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+          type: string
+        targetDocument:
+          example: MyProjectId/MySpaceId/MyDocumentId
+          type: string
       type: object
     RelationshipResponseBody:
       description: The Relationship's response body. Can return a single or a list of instances
@@ -2470,133 +2228,6 @@ components:
       oneOf:
       - $ref: '#/components/schemas/RelationshipDataSingleResponse'
       - $ref: '#/components/schemas/RelationshipDataListResponse'
-      type: object
-    RelationshipDataListRequest:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/RelationshipDataBody'
-          type: array
-      type: object
-    RelationshipDataSingleResponse:
-      properties:
-        data:
-          $ref: '#/components/schemas/RelationshipDataBody'
-      type: object
-    RelationshipsRequestBody:
-      description: List of generic contents
-      example:
-        data:
-        - type: MyResourceType
-          id: MyProjectId/MyResourceId
-      oneOf:
-      - $ref: '#/components/schemas/RelationshipDataSingleRequest'
-      - $ref: '#/components/schemas/RelationshipDataListRequest'
-      type: object
-    RelationshipDataSingleRequest:
-      properties:
-        data:
-          $ref: '#/components/schemas/RelationshipDataBody'
-      type: object
-    testparameter_definitionsListGetResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - testparameter_definitions
-                type: string
-              id:
-                example: MyProjectId/MyTestParamDefinition
-                type: string
-              revision:
-                example: '1234'
-                type: string
-              attributes:
-                properties:
-                  name:
-                    example: Test Parameter Definition example
-                    type: string
-                type: object
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions/MyTestParamDefinition
-                    type: string
-                type: object
-              meta:
-                properties:
-                  errors:
-                    items:
-                      properties:
-                        detail:
-                          description: Human-readable explanation specific to this occurrence of the problem.
-                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                          type: string
-                        source:
-                          properties:
-                            parameter:
-                              description: String indicating which URI query parameter caused the error.
-                              example: revision
-                              type: string
-                            pointer:
-                              description: JSON Pointer to the associated entity in the request document.
-                              example: $.data
-                              type: string
-                            resource:
-                              description: Resource causing the error.
-                              properties:
-                                id:
-                                  example: MyProjectId/id
-                                  type: string
-                                type:
-                                  example: type
-                                  type: string
-                              type: object
-                          type: object
-                        status:
-                          description: HTTP status code applicable to this problem.
-                          example: '400'
-                          type: string
-                        title:
-                          description: Short, human-readable summary of the problem.
-                          example: Bad Request
-                          type: string
-                      type: object
-                    type: array
-                type: object
-            type: object
-          type: array
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            first:
-              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=1
-              type: string
-            last:
-              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=9
-              type: string
-            next:
-              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=6
-              type: string
-            prev:
-              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=4
-              type: string
-            self:
-              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=5
-              type: string
-          type: object
-        meta:
-          properties:
-            totalCount:
-              format: int32
-              type: integer
-          type: object
       type: object
     workitemsListGetResponse:
       properties:
@@ -3212,107 +2843,341 @@ components:
               type: integer
           type: object
       type: object
-    relationshipsListDeleteRequest:
+    workitemsListPatchRequest:
       properties:
         data:
           items:
             properties:
               type:
                 enum:
-                - collections
-                - categories
-                - documents
-                - document_attachments
-                - document_comments
-                - document_parts
-                - enumerations
-                - globalroles
-                - icons
-                - jobs
-                - linkedworkitems
-                - externallylinkedworkitems
-                - linkedoslcresources
-                - pages
-                - page_attachments
-                - page_comments
-                - plans
-                - projectroles
-                - projectgroups
-                - projects
-                - projecttemplates
-                - spaces
-                - testparameters
-                - testparameter_definitions
-                - testrecords
-                - teststep_results
-                - testruns
-                - testrun_attachments
-                - teststepresult_attachments
-                - testrun_comments
-                - usergroups
-                - users
                 - workitems
-                - workitem_attachments
-                - workitem_approvals
-                - workitem_comments
-                - featureselections
-                - teststeps
-                - workrecords
-                - revisions
-                - testrecord_attachments
-                - license_slots
-                - license_types
-                - license
-                - metadata
-                - license_assignments
-                - customfields
                 type: string
               id:
-                example: MyProjectId/MyResourceId
+                example: MyProjectId/MyWorkItemId
                 type: string
-            type: object
-          type: array
-      type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
+              attributes:
                 properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
+                  description:
                     properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
                       type:
-                        example: type
+                        enum:
+                        - text/html
+                        - text/plain
                         type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  dueDate:
+                    example: '1970-01-01'
+                    format: date
+                    type: string
+                  hyperlinks:
+                    items:
+                      properties:
+                        role:
+                          example: ref_ext
+                          type: string
+                        title:
+                          example: Title
+                          type: string
+                        uri:
+                          example: https://polarion.plm.automation.siemens.com
+                          type: string
+                      type: object
+                    type: array
+                  initialEstimate:
+                    example: 5 1/2d
+                    type: string
+                  priority:
+                    example: '90.0'
+                    type: string
+                  remainingEstimate:
+                    example: 5 1/2d
+                    type: string
+                  resolution:
+                    example: done
+                    type: string
+                  resolvedOn:
+                    example: '1970-01-01T00:00:00Z'
+                    format: date-time
+                    type: string
+                  severity:
+                    example: blocker
+                    type: string
+                  status:
+                    example: open
+                    type: string
+                  timeSpent:
+                    example: 5 1/2d
+                    type: string
+                  title:
+                    example: Title
+                    type: string
+                type: object
+              relationships:
+                properties:
+                  assignee:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyUserId
+                              type: string
+                            type:
+                              enum:
+                              - users
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  categories:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyProjectId/MyCategoryId
+                              type: string
+                            type:
+                              enum:
+                              - categories
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  linkedRevisions:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: default/1234
+                              type: string
+                            type:
+                              enum:
+                              - revisions
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  votes:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyUserId
+                              type: string
+                            type:
+                              enum:
+                              - users
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  watches:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyUserId
+                              type: string
+                            type:
+                              enum:
+                              - users
+                              type: string
+                          type: object
+                        type: array
                     type: object
                 type: object
             type: object
           type: array
+      type: object
+    sparseFields:
+      properties:
+        categories:
+          description: Requested fields
+          example: '@all'
+          type: string
+        collections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        customfields:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_parts:
+          description: Requested fields
+          example: '@all'
+          type: string
+        documents:
+          description: Requested fields
+          example: '@all'
+          type: string
+        enumerations:
+          description: Requested fields
+          example: '@all'
+          type: string
+        externallylinkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        featureselections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        globalroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        icons:
+          description: Requested fields
+          example: '@all'
+          type: string
+        jobs:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_assignments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_slots:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_types:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedoslcresources:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        metadata:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        pages:
+          description: Requested fields
+          example: '@all'
+          type: string
+        plans:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projectroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projects:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projecttemplates:
+          description: Requested fields
+          example: '@all'
+          type: string
+        revisions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameter_definitions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameters:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecord_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testruns:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststep_results:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststepresult_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststeps:
+          description: Requested fields
+          example: '@all'
+          type: string
+        usergroups:
+          description: Requested fields
+          example: '@all'
+          type: string
+        users:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_approvals:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
       type: object
     workflowActionsActionResponseBody:
       properties:
@@ -3378,37 +3243,6 @@ components:
               type: integer
           type: object
       type: object
-    workitemsListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - workitems
-                type: string
-              id:
-                example: MyProjectId/MyWorkItemId
-                type: string
-              links:
-                properties:
-                  portal:
-                    example: server-host-name/application-path/polarion/redirect/project/MyProjectId/workitem?id=MyWorkItemId&revision=1234
-                    type: string
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId?revision=1234
-                    type: string
-                type: object
-            type: object
-          type: array
-      type: object
-    RelationshipDataListResponse:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/RelationshipDataBody'
-          type: array
-      type: object
     RelationshipDataBody:
       properties:
         id:
@@ -3464,86 +3298,6 @@ components:
           - license_assignments
           - customfields
           type: string
-      type: object
-    testparameter_definitionsSingleGetResponse:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - testparameter_definitions
-              type: string
-            id:
-              example: MyProjectId/MyTestParamDefinition
-              type: string
-            revision:
-              example: '1234'
-              type: string
-            attributes:
-              properties:
-                name:
-                  example: Test Parameter Definition example
-                  type: string
-              type: object
-            links:
-              properties:
-                self:
-                  example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions/MyTestParamDefinition
-                  type: string
-              type: object
-            meta:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      detail:
-                        description: Human-readable explanation specific to this occurrence of the problem.
-                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                        type: string
-                      source:
-                        properties:
-                          parameter:
-                            description: String indicating which URI query parameter caused the error.
-                            example: revision
-                            type: string
-                          pointer:
-                            description: JSON Pointer to the associated entity in the request document.
-                            example: $.data
-                            type: string
-                          resource:
-                            description: Resource causing the error.
-                            properties:
-                              id:
-                                example: MyProjectId/id
-                                type: string
-                              type:
-                                example: type
-                                type: string
-                            type: object
-                        type: object
-                      status:
-                        description: HTTP status code applicable to this problem.
-                        example: '400'
-                        type: string
-                      title:
-                        description: Short, human-readable summary of the problem.
-                        example: Bad Request
-                        type: string
-                    type: object
-                  type: array
-              type: object
-          type: object
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            self:
-              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions/MyTestParamDefinition
-              type: string
-          type: object
       type: object
     workitemsSinglePatchRequest:
       properties:
@@ -3695,6 +3449,257 @@ components:
                   type: object
               type: object
           type: object
+      type: object
+    testparameter_definitionsListGetResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testparameter_definitions
+                type: string
+              id:
+                example: MyProjectId/MyTestParamDefinition
+                type: string
+              revision:
+                example: '1234'
+                type: string
+              attributes:
+                properties:
+                  name:
+                    example: Test Parameter Definition example
+                    type: string
+                type: object
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions/MyTestParamDefinition
+                    type: string
+                type: object
+              meta:
+                properties:
+                  errors:
+                    items:
+                      properties:
+                        detail:
+                          description: Human-readable explanation specific to this occurrence of the problem.
+                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                          type: string
+                        source:
+                          properties:
+                            parameter:
+                              description: String indicating which URI query parameter caused the error.
+                              example: revision
+                              type: string
+                            pointer:
+                              description: JSON Pointer to the associated entity in the request document.
+                              example: $.data
+                              type: string
+                            resource:
+                              description: Resource causing the error.
+                              properties:
+                                id:
+                                  example: MyProjectId/id
+                                  type: string
+                                type:
+                                  example: type
+                                  type: string
+                              type: object
+                          type: object
+                        status:
+                          description: HTTP status code applicable to this problem.
+                          example: '400'
+                          type: string
+                        title:
+                          description: Short, human-readable summary of the problem.
+                          example: Bad Request
+                          type: string
+                      type: object
+                    type: array
+                type: object
+            type: object
+          type: array
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            first:
+              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=1
+              type: string
+            last:
+              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=9
+              type: string
+            next:
+              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=6
+              type: string
+            prev:
+              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=4
+              type: string
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=5
+              type: string
+          type: object
+        meta:
+          properties:
+            totalCount:
+              format: int32
+              type: integer
+          type: object
+      type: object
+    workitemsListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - workitems
+                type: string
+              attributes:
+                properties:
+                  description:
+                    properties:
+                      type:
+                        enum:
+                        - text/html
+                        - text/plain
+                        type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  dueDate:
+                    example: '1970-01-01'
+                    format: date
+                    type: string
+                  hyperlinks:
+                    items:
+                      properties:
+                        role:
+                          example: ref_ext
+                          type: string
+                        title:
+                          example: Title
+                          type: string
+                        uri:
+                          example: https://polarion.plm.automation.siemens.com
+                          type: string
+                      type: object
+                    type: array
+                  initialEstimate:
+                    example: 5 1/2d
+                    type: string
+                  priority:
+                    example: '90.0'
+                    type: string
+                  remainingEstimate:
+                    example: 5 1/2d
+                    type: string
+                  resolution:
+                    example: done
+                    type: string
+                  resolvedOn:
+                    example: '1970-01-01T00:00:00Z'
+                    format: date-time
+                    type: string
+                  severity:
+                    example: blocker
+                    type: string
+                  status:
+                    example: open
+                    type: string
+                  timeSpent:
+                    example: 5 1/2d
+                    type: string
+                  title:
+                    example: Title
+                    type: string
+                  type:
+                    example: task
+                    type: string
+                required:
+                - type
+                type: object
+              relationships:
+                properties:
+                  assignee:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyUserId
+                              type: string
+                            type:
+                              enum:
+                              - users
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  author:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyUserId
+                            type: string
+                          type:
+                            enum:
+                            - users
+                            type: string
+                        type: object
+                    type: object
+                  categories:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyProjectId/MyCategoryId
+                              type: string
+                            type:
+                              enum:
+                              - categories
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  linkedRevisions:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: default/1234
+                              type: string
+                            type:
+                              enum:
+                              - revisions
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  module:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MySpaceId/MyDocumentId
+                            type: string
+                          type:
+                            enum:
+                            - documents
+                            type: string
+                        type: object
+                    type: object
+                type: object
+            type: object
+          type: array
       type: object
   securitySchemes:
     bearerAuth:

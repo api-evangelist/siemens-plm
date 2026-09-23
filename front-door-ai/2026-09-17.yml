@@ -1,0 +1,31 @@
+# Front Door AI Index — siemens-plm — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: siemens-plm
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.plm.automation.siemens.com
+  final_host: www.siemens.com
+  ownership: inherited
+  owner: siemens-plm
+  shares_host_with: null
+  inherited_from: www.siemens.com
+  verdict: scored
+  score: null
+  host_score: 17
+  density: null
+  words: 998
+  tiers:
+    agentic: 1
+    core: 16
+    model: 0
+  ambiguous: 11
+  top_terms:
+    AI: 15
+    automation: 4
+    agent: 3
+    intelligence: 2
+    smart: 2
+    agentic: 1
+    artificial intelligence: 1

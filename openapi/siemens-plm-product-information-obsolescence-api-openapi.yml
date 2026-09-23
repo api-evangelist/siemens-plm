@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: 'Product Information Webservice Product Information: Obsolescence API'
+  title: Product Information Webservice Product Information…
   description: Provides valuable information on products from multiple manufacturers, including SIEMENS.
   version: v2-earlyaccess
   contact:
@@ -20,7 +20,7 @@ paths:
   /api/products/{productNumber}/obsolescence:
     get:
       operationId: get-obsolescence
-      summary: ''
+      summary: Get obsolescence
       description: This endpoint provides in-depth obsolescence information for a specific product number. Utilize it to stay updated on the product's availability status, discover substitute or successor options, and plan accordingly.
       tags:
       - 'Product Information: Obsolescence'
@@ -83,27 +83,9 @@ paths:
                   error: Not Found
       security:
       - Authorization: []
+      x-summary-source: derived
 components:
   schemas:
-    ProductRef:
-      type: object
-      properties:
-        productNumber:
-          type: string
-          description: The ID of the product (MLFB, EAN, ...).
-          example: 6SN1123-1AA00-0CA1
-        name:
-          type: string
-          description: The product's name.
-          example: SIMODRIVE 611 1-Axis Power Module 50A int.cooling
-        link:
-          type: string
-          description: Relative link to the product (using this API).
-          example: /api/products/6SN1123-1AA00-0CA1/obsolescence
-      required:
-      - productNumber
-      - name
-      - link
     Obsolescence:
       type: object
       properties:
@@ -229,6 +211,25 @@ components:
       - successor
       - substitute
       - relatedProducts
+    ProductRef:
+      type: object
+      properties:
+        productNumber:
+          type: string
+          description: The ID of the product (MLFB, EAN, ...).
+          example: 6SN1123-1AA00-0CA1
+        name:
+          type: string
+          description: The product's name.
+          example: SIMODRIVE 611 1-Axis Power Module 50A int.cooling
+        link:
+          type: string
+          description: Relative link to the product (using this API).
+          example: /api/products/6SN1123-1AA00-0CA1/obsolescence
+      required:
+      - productNumber
+      - name
+      - link
   securitySchemes:
     Authorization:
       type: apiKey

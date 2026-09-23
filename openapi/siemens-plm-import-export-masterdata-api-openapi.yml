@@ -107,6 +107,35 @@ paths:
       deprecated: false
 components:
   schemas:
+    TcPCMResponseModel:
+      type: object
+      properties:
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
+    Guid:
+      title: GUID
+      type: string
+      format: uuid
+      maxLength: 36
+      description: Global unique identifier
+      example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+    TcPCMWebApiResponseModel_of_DataTable:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
     ExportMasterDataRequestModel:
       type: object
       properties:
@@ -128,35 +157,6 @@ components:
           type: string
           example: e1548f26-af8d-4173-9881-7ce1de530911
           description: Export configuration Guid
-    TcPCMWebApiResponseModel_of_DataTable:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-        success:
-          type: boolean
-        code:
-          type: string
-        message:
-          type: string
-    TcPCMResponseModel:
-      type: object
-      properties:
-        success:
-          type: boolean
-        code:
-          type: string
-        message:
-          type: string
-    Guid:
-      title: GUID
-      type: string
-      format: uuid
-      maxLength: 36
-      description: Global unique identifier
-      example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
     ImportMasterDataRequestModel:
       type: object
       properties:

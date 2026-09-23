@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: 'Product Information Webservice Customer Information: API Key API'
+  title: 'Product Information Webservice Customer Information: API…'
   description: Provides valuable information on products from multiple manufacturers, including SIEMENS.
   version: v2-earlyaccess
   contact:
@@ -20,7 +20,7 @@ paths:
   /api/api-key-details:
     get:
       operationId: get-api-key-details
-      summary: ''
+      summary: Get api key details
       description: Verify and monitor the status of your API key with this endpoint. It provides essential information regarding your API key's validity and remaining credit balance for each resource available.
       tags:
       - 'Customer Information: API Key'
@@ -43,6 +43,7 @@ paths:
                   error: Unauthorized
       security:
       - Authorization: []
+      x-summary-source: derived
 components:
   schemas:
     ApiKeyDetails:

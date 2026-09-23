@@ -112,7 +112,8 @@
     "teamcenter-product-cost-management.yaml: declared missing tag: Import/Export: MasterData",
     "teamcenter-product-cost-management.yaml: declared missing tag: Product costing",
     "teamcenter-product-cost-management.yaml: declared missing tag: Profitability Calculation",
-    "teamcenter-product-cost-management.yaml: declared missing tag: Project"
+    "teamcenter-product-cost-management.yaml: declared missing tag: Project",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "siemens-plm-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",

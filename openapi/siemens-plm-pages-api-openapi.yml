@@ -3,7 +3,12 @@ info:
   contact:
     name: Polarion REST API Support
     url: https://support.sw.siemens.com/
-  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  description: 'About
+
+    The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses.
+
+
+    For a detailed description of the REST API and how to use it, see the REST API User Guide (available on Support Center).'
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -85,7 +90,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of Pages from all Projects and Pages on the Repository level.
+      summary: Returns a list of Pages from all Projects and Pages on the Repository level
       tags:
       - Pages
   /pages:
@@ -152,7 +157,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of all Pages on the Repository level.
+      summary: Returns a list of all Pages on the Repository level
       tags:
       - Pages
   /projects/{projectId}/pages:
@@ -230,7 +235,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of Pages from the Project context.
+      summary: Returns a list of Pages from the Project context
       tags:
       - Pages
   /projects/{projectId}/spaces/{spaceId}/pages:
@@ -309,7 +314,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of Pages from a given Project Space.
+      summary: Returns a list of Pages from a given Project Space
       tags:
       - Pages
     post:
@@ -367,7 +372,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Creates a list of Pages.
+      summary: Creates a list of Pages
       tags:
       - Pages
   /projects/{projectId}/spaces/{spaceId}/pages/{pageName}:
@@ -415,7 +420,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Deletes the specified Page.
+      summary: Deletes the specified Page
       tags:
       - Pages
     get:
@@ -482,7 +487,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns the specified Page.
+      summary: Returns the specified Page
       tags:
       - Pages
     patch:
@@ -540,7 +545,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Updates the specified Page.
+      summary: Updates the specified Page
       tags:
       - Pages
   /projects/{projectId}/spaces/{spaceId}/pages/{pageName}/relationships/{relationshipId}:
@@ -607,7 +612,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Deletes a list of Page Relationships.
+      summary: Deletes a list of Page Relationships
       tags:
       - Pages
     get:
@@ -692,7 +697,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of Page Relationships.
+      summary: Returns a list of Page Relationships
       tags:
       - Pages
     patch:
@@ -756,7 +761,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Updates a list of Page Relationships.
+      summary: Updates a list of Page Relationships
       tags:
       - Pages
     post:
@@ -822,7 +827,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Creates a list of Rich Page Relationships.
+      summary: Creates a list of Rich Page Relationships
       tags:
       - Pages
   /spaces/{spaceId}/pages:
@@ -900,11 +905,138 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of Pages in a given Space on the Repository level.
+      summary: Returns a list of Pages in a given Space on the Repository level
       tags:
       - Pages
 components:
   schemas:
+    RelationshipDataListResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RelationshipDataBody'
+          type: array
+      type: object
+    RelationshipsRequestBody:
+      description: List of generic contents
+      example:
+        data:
+        - type: MyResourceType
+          id: MyProjectId/MyResourceId
+      oneOf:
+      - $ref: '#/components/schemas/RelationshipDataSingleRequest'
+      - $ref: '#/components/schemas/RelationshipDataListRequest'
+      type: object
+    pagesListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - pages
+                type: string
+              id:
+                example: MyProjectId/MySpaceId/MyRichPageId
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/pages/MyRichPageId?revision=1234
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    pagesSinglePatchRequest:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - pages
+              type: string
+            id:
+              example: MyProjectId/MySpaceId/MyRichPageId
+              type: string
+            attributes:
+              properties:
+                homePageContent:
+                  properties:
+                    type:
+                      enum:
+                      - text/html
+                      - text/plain
+                      type: string
+                    value:
+                      example: My text value
+                      type: string
+                  type: object
+                title:
+                  example: Title
+                  type: string
+              type: object
+            relationships:
+              properties:
+                watches:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyUserId
+                            type: string
+                          type:
+                            enum:
+                            - users
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+              type: object
+          type: object
+      type: object
     RelationshipDataBody:
       properties:
         id:
@@ -961,226 +1093,15 @@ components:
           - customfields
           type: string
       type: object
-    RelationshipDataListResponse:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/RelationshipDataBody'
-          type: array
-      type: object
-    sparseFields:
-      properties:
-        categories:
-          description: Requested fields
-          example: '@all'
-          type: string
-        collections:
-          description: Requested fields
-          example: '@all'
-          type: string
-        customfields:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_parts:
-          description: Requested fields
-          example: '@all'
-          type: string
-        documents:
-          description: Requested fields
-          example: '@all'
-          type: string
-        enumerations:
-          description: Requested fields
-          example: '@all'
-          type: string
-        externallylinkedworkitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        featureselections:
-          description: Requested fields
-          example: '@all'
-          type: string
-        globalroles:
-          description: Requested fields
-          example: '@all'
-          type: string
-        icons:
-          description: Requested fields
-          example: '@all'
-          type: string
-        jobs:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_assignments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_slots:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_types:
-          description: Requested fields
-          example: '@all'
-          type: string
-        linkedoslcresources:
-          description: Requested fields
-          example: '@all'
-          type: string
-        linkedworkitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        metadata:
-          description: Requested fields
-          example: '@all'
-          type: string
-        page_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        page_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        pages:
-          description: Requested fields
-          example: '@all'
-          type: string
-        plans:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projectroles:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projects:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projecttemplates:
-          description: Requested fields
-          example: '@all'
-          type: string
-        revisions:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testparameter_definitions:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testparameters:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrecord_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrecords:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrun_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrun_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testruns:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststep_results:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststepresult_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststeps:
-          description: Requested fields
-          example: '@all'
-          type: string
-        usergroups:
-          description: Requested fields
-          example: '@all'
-          type: string
-        users:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_approvals:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workrecords:
-          description: Requested fields
-          example: '@all'
-          type: string
-      type: object
-    RelationshipsRequestBody:
-      description: List of generic contents
+    RelationshipResponseBody:
+      description: The Relationship's response body. Can return a single or a list of instances
       example:
         data:
         - type: MyResourceType
           id: MyProjectId/MyResourceId
       oneOf:
-      - $ref: '#/components/schemas/RelationshipDataSingleRequest'
-      - $ref: '#/components/schemas/RelationshipDataListRequest'
-      type: object
-    pagesListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - pages
-                type: string
-              id:
-                example: MyProjectId/MySpaceId/MyRichPageId
-                type: string
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/pages/MyRichPageId?revision=1234
-                    type: string
-                type: object
-            type: object
-          type: array
+      - $ref: '#/components/schemas/RelationshipDataSingleResponse'
+      - $ref: '#/components/schemas/RelationshipDataListResponse'
       type: object
     pagesSingleGetResponse:
       properties:
@@ -1393,15 +1314,119 @@ components:
             $ref: '#/components/schemas/RelationshipDataBody'
           type: array
       type: object
-    RelationshipResponseBody:
-      description: The Relationship's response body. Can return a single or a list of instances
-      example:
+    RelationshipDataSingleRequest:
+      properties:
         data:
-        - type: MyResourceType
-          id: MyProjectId/MyResourceId
-      oneOf:
-      - $ref: '#/components/schemas/RelationshipDataSingleResponse'
-      - $ref: '#/components/schemas/RelationshipDataListResponse'
+          $ref: '#/components/schemas/RelationshipDataBody'
+      type: object
+    pagesListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - pages
+                type: string
+              attributes:
+                properties:
+                  homePageContent:
+                    properties:
+                      type:
+                        enum:
+                        - text/html
+                        - text/plain
+                        type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  pageName:
+                    example: MyRichPageId
+                    type: string
+                  title:
+                    example: Title
+                    type: string
+                type: object
+              relationships:
+                properties:
+                  author:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyUserId
+                            type: string
+                          type:
+                            enum:
+                            - users
+                            type: string
+                        type: object
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    relationshipsListDeleteRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - collections
+                - categories
+                - documents
+                - document_attachments
+                - document_comments
+                - document_parts
+                - enumerations
+                - globalroles
+                - icons
+                - jobs
+                - linkedworkitems
+                - externallylinkedworkitems
+                - linkedoslcresources
+                - pages
+                - page_attachments
+                - page_comments
+                - plans
+                - projectroles
+                - projectgroups
+                - projects
+                - projecttemplates
+                - spaces
+                - testparameters
+                - testparameter_definitions
+                - testrecords
+                - teststep_results
+                - testruns
+                - testrun_attachments
+                - teststepresult_attachments
+                - testrun_comments
+                - usergroups
+                - users
+                - workitems
+                - workitem_attachments
+                - workitem_approvals
+                - workitem_comments
+                - featureselections
+                - teststeps
+                - workrecords
+                - revisions
+                - testrecord_attachments
+                - license_slots
+                - license_types
+                - license
+                - metadata
+                - license_assignments
+                - customfields
+                type: string
+              id:
+                example: MyProjectId/MyResourceId
+                type: string
+            type: object
+          type: array
       type: object
     pagesListGetResponse:
       properties:
@@ -1627,213 +1652,193 @@ components:
               type: integer
           type: object
       type: object
-    RelationshipDataSingleRequest:
+    sparseFields:
       properties:
-        data:
-          $ref: '#/components/schemas/RelationshipDataBody'
+        categories:
+          description: Requested fields
+          example: '@all'
+          type: string
+        collections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        customfields:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_parts:
+          description: Requested fields
+          example: '@all'
+          type: string
+        documents:
+          description: Requested fields
+          example: '@all'
+          type: string
+        enumerations:
+          description: Requested fields
+          example: '@all'
+          type: string
+        externallylinkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        featureselections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        globalroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        icons:
+          description: Requested fields
+          example: '@all'
+          type: string
+        jobs:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_assignments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_slots:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_types:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedoslcresources:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        metadata:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        pages:
+          description: Requested fields
+          example: '@all'
+          type: string
+        plans:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projectroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projects:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projecttemplates:
+          description: Requested fields
+          example: '@all'
+          type: string
+        revisions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameter_definitions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameters:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecord_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testruns:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststep_results:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststepresult_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststeps:
+          description: Requested fields
+          example: '@all'
+          type: string
+        usergroups:
+          description: Requested fields
+          example: '@all'
+          type: string
+        users:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_approvals:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
       type: object
     RelationshipDataSingleResponse:
       properties:
         data:
           $ref: '#/components/schemas/RelationshipDataBody'
-      type: object
-    relationshipsListDeleteRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - collections
-                - categories
-                - documents
-                - document_attachments
-                - document_comments
-                - document_parts
-                - enumerations
-                - globalroles
-                - icons
-                - jobs
-                - linkedworkitems
-                - externallylinkedworkitems
-                - linkedoslcresources
-                - pages
-                - page_attachments
-                - page_comments
-                - plans
-                - projectroles
-                - projectgroups
-                - projects
-                - projecttemplates
-                - spaces
-                - testparameters
-                - testparameter_definitions
-                - testrecords
-                - teststep_results
-                - testruns
-                - testrun_attachments
-                - teststepresult_attachments
-                - testrun_comments
-                - usergroups
-                - users
-                - workitems
-                - workitem_attachments
-                - workitem_approvals
-                - workitem_comments
-                - featureselections
-                - teststeps
-                - workrecords
-                - revisions
-                - testrecord_attachments
-                - license_slots
-                - license_types
-                - license
-                - metadata
-                - license_assignments
-                - customfields
-                type: string
-              id:
-                example: MyProjectId/MyResourceId
-                type: string
-            type: object
-          type: array
-      type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    pagesListPostRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - pages
-                type: string
-              attributes:
-                properties:
-                  homePageContent:
-                    properties:
-                      type:
-                        enum:
-                        - text/html
-                        - text/plain
-                        type: string
-                      value:
-                        example: My text value
-                        type: string
-                    type: object
-                  pageName:
-                    example: MyRichPageId
-                    type: string
-                  title:
-                    example: Title
-                    type: string
-                type: object
-              relationships:
-                properties:
-                  author:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyUserId
-                            type: string
-                          type:
-                            enum:
-                            - users
-                            type: string
-                        type: object
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    pagesSinglePatchRequest:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - pages
-              type: string
-            id:
-              example: MyProjectId/MySpaceId/MyRichPageId
-              type: string
-            attributes:
-              properties:
-                homePageContent:
-                  properties:
-                    type:
-                      enum:
-                      - text/html
-                      - text/plain
-                      type: string
-                    value:
-                      example: My text value
-                      type: string
-                  type: object
-                title:
-                  example: Title
-                  type: string
-              type: object
-            relationships:
-              properties:
-                watches:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyUserId
-                            type: string
-                          type:
-                            enum:
-                            - users
-                            type: string
-                        type: object
-                      type: array
-                  type: object
-              type: object
-          type: object
       type: object
   securitySchemes:
     bearerAuth:

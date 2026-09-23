@@ -13,9 +13,9 @@ paths:
     delete:
       tags:
       - Product costing
-      summary: Delete a product costing part by id. Available since version 2512.2602.
+      summary: Delete a product costing part by id. Available since version 2512.2602
       description: All usages of the given product costing part will be deleted and the part will be moved to the recycle bin.
-      operationId: ''
+      operationId: deleteApiV1ProductCostingPartsById
       responses:
         '204':
           description: No Content. Part successfully deleted.
@@ -40,8 +40,66 @@ paths:
         schema:
           type: integer
         required: true
+      x-operation-id-source: derived
 components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          readOnly: true
+    ErrorResponse:
+      type: object
+      properties:
+        Errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+          readOnly: true
   responses:
+    ErrorConflict:
+      description: The request could not be completed due to a conflict with the current state of the target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Conflict with current state of the resource
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorUnauthorized:
+      description: The client is not providing valid authentication credentials for the target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Invalid user or password
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorInternalServerError:
+      description: An unexpected error occurred and the server is not fulfilling the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Internal error
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     ErrorNotFound:
       description: The requested resource was not found.
       content:
@@ -70,34 +128,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ErrorInternalServerError:
-      description: An unexpected error occurred and the server is not fulfilling the request.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Internal error
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ErrorUnauthorized:
-      description: The client is not providing valid authentication credentials for the target resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Invalid user or password
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     ErrorForbidden:
       description: The client is not allowed to access the resource. The client SHOULD not repeat the request.
       content:
@@ -112,35 +142,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ErrorConflict:
-      description: The request could not be completed due to a conflict with the current state of the target resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Conflict with current state of the resource
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-  schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        Errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-          readOnly: true
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-          readOnly: true
   securitySchemes:
     bearerHttpAuthentication:
       type: http

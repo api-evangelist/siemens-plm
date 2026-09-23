@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: 'Product Information Webservice Product Information: Delivery API'
+  title: Product Information Webservice Product Information…
   description: Provides valuable information on products from multiple manufacturers, including SIEMENS.
   version: v2-earlyaccess
   contact:
@@ -20,7 +20,7 @@ paths:
   /api/products/{productNumber}/delivery:
     get:
       operationId: get-delivery
-      summary: ''
+      summary: Get delivery
       description: The endpoint delivers detailed information regarding the delivery of a specific product. With this resource, you can easily track the delivery timeline, cost, and other relevant details for the product in question. Ensure that you have the correct product number handy to obtain the most accurate and up-to-date information.
       tags:
       - 'Product Information: Delivery'
@@ -83,6 +83,7 @@ paths:
                   error: Not Found
       security:
       - Authorization: []
+      x-summary-source: derived
 components:
   schemas:
     Prices:
@@ -103,34 +104,6 @@ components:
           - string
           - 'null'
           example: 400 €
-      required:
-      - newPart
-      - sparePart
-      - repairPart
-    DeliveryTimes:
-      type: object
-      properties:
-        newPart:
-          type:
-          - integer
-          - 'null'
-          example: 20
-          minimum: 0
-          format: int32
-        sparePart:
-          type:
-          - integer
-          - 'null'
-          example: 30
-          minimum: 0
-          format: int32
-        repairPart:
-          type:
-          - integer
-          - 'null'
-          example: 10
-          minimum: 0
-          format: int32
       required:
       - newPart
       - sparePart
@@ -197,6 +170,34 @@ components:
       - productGroup
       - deliveryTimes
       - prices
+    DeliveryTimes:
+      type: object
+      properties:
+        newPart:
+          type:
+          - integer
+          - 'null'
+          example: 20
+          minimum: 0
+          format: int32
+        sparePart:
+          type:
+          - integer
+          - 'null'
+          example: 30
+          minimum: 0
+          format: int32
+        repairPart:
+          type:
+          - integer
+          - 'null'
+          example: 10
+          minimum: 0
+          format: int32
+      required:
+      - newPart
+      - sparePart
+      - repairPart
   securitySchemes:
     Authorization:
       type: apiKey

@@ -3,7 +3,12 @@ info:
   contact:
     name: Polarion REST API Support
     url: https://support.sw.siemens.com/
-  description: <h5>About</h5>The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses. <br/><br/>For a detailed description of the REST API and how to use it, see the <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a> (available on Support Center).
+  description: 'About
+
+    The Polarion REST API lets you interact with Polarion programmatically. Use this API to integrate Polarion with your applications. This page documents the REST resources, including the HTTP response codes and example requests and responses.
+
+
+    For a detailed description of the REST API and how to use it, see the REST API User Guide (available on Support Center).'
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -60,7 +65,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Deletes a list of Plans.
+      summary: Deletes a list of Plans
       tags:
       - Plans
     get:
@@ -142,7 +147,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of Plans.
+      summary: Returns a list of Plans
       tags:
       - Plans
     post:
@@ -194,7 +199,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Creates a list of Plans.
+      summary: Creates a list of Plans
       tags:
       - Plans
   /projects/{projectId}/plans/{planId}:
@@ -236,7 +241,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Deletes the specified Plan.
+      summary: Deletes the specified Plan
       tags:
       - Plans
     get:
@@ -297,7 +302,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns the specified Plan.
+      summary: Returns the specified Plan
       tags:
       - Plans
     patch:
@@ -349,7 +354,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Updates the specified Plan.
+      summary: Updates the specified Plan
       tags:
       - Plans
   /projects/{projectId}/plans/{planId}/relationships/{relationshipId}:
@@ -410,7 +415,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Removes the specific Relationship from the Plan.
+      summary: Removes the specific Relationship from the Plan
       tags:
       - Plans
     get:
@@ -489,7 +494,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Returns a list of Plan Relationships.
+      summary: Returns a list of Plan Relationships
       tags:
       - Plans
     patch:
@@ -547,7 +552,7 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Updates a list of Plan Relationships.
+      summary: Updates a list of Plan Relationships
       tags:
       - Plans
     post:
@@ -607,11 +612,18 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-      summary: Creates the specific Relationships for the Plan.
+      summary: Creates the specific Relationships for the Plan
       tags:
       - Plans
 components:
   schemas:
+    RelationshipDataListResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RelationshipDataBody'
+          type: array
+      type: object
     plansListPostResponse:
       properties:
         data:
@@ -635,6 +647,347 @@ components:
                 type: object
             type: object
           type: array
+      type: object
+    RelationshipsRequestBody:
+      description: List of generic contents
+      example:
+        data:
+        - type: MyResourceType
+          id: MyProjectId/MyResourceId
+      oneOf:
+      - $ref: '#/components/schemas/RelationshipDataSingleRequest'
+      - $ref: '#/components/schemas/RelationshipDataListRequest'
+      type: object
+    RelationshipDataListRequest:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RelationshipDataBody'
+          type: array
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    plansSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - plans
+              type: string
+            id:
+              example: MyProjectId/MyPlanId
+              type: string
+            revision:
+              example: '1234'
+              type: string
+            attributes:
+              properties:
+                allowedTypes:
+                  items:
+                    example: optionId
+                    type: string
+                  type: array
+                calculationType:
+                  enum:
+                  - timeBased
+                  - customFieldBased
+                  example: timeBased
+                  type: string
+                capacity:
+                  type: number
+                color:
+                  example: Color
+                  type: string
+                created:
+                  example: '1970-01-01T00:00:00Z'
+                  format: date-time
+                  type: string
+                defaultEstimate:
+                  type: number
+                description:
+                  properties:
+                    type:
+                      enum:
+                      - text/plain
+                      type: string
+                    value:
+                      example: My text value
+                      type: string
+                  type: object
+                dueDate:
+                  example: '1970-01-01'
+                  format: date
+                  type: string
+                estimationField:
+                  example: Estimation Field
+                  type: string
+                finishedOn:
+                  example: '1970-01-01T00:00:00Z'
+                  format: date-time
+                  type: string
+                homePageContent:
+                  properties:
+                    type:
+                      enum:
+                      - text/html
+                      - text/plain
+                      type: string
+                    value:
+                      example: My text value
+                      type: string
+                  type: object
+                id:
+                  example: ID
+                  type: string
+                isTemplate:
+                  type: boolean
+                name:
+                  example: Name
+                  type: string
+                previousTimeSpent:
+                  example: 5 1/2d
+                  type: string
+                prioritizationField:
+                  example: Prioritization Field
+                  type: string
+                sortOrder:
+                  example: 0
+                  format: int32
+                  type: integer
+                startDate:
+                  example: '1970-01-01'
+                  format: date
+                  type: string
+                startedOn:
+                  example: '1970-01-01T00:00:00Z'
+                  format: date-time
+                  type: string
+                status:
+                  type: string
+                updated:
+                  example: '1970-01-01T00:00:00Z'
+                  format: date-time
+                  type: string
+                useReportFromTemplate:
+                  type: boolean
+              type: object
+            relationships:
+              properties:
+                author:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyUserId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - users
+                          type: string
+                      type: object
+                  type: object
+                parent:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MyPlanId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - plans
+                          type: string
+                      type: object
+                  type: object
+                project:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - projects
+                          type: string
+                      type: object
+                  type: object
+                projectSpan:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - projects
+                            type: string
+                        type: object
+                      type: array
+                    meta:
+                      properties:
+                        totalCount:
+                          format: int32
+                          type: integer
+                      type: object
+                  type: object
+                template:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MyPlanId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - plans
+                          type: string
+                      type: object
+                  type: object
+                workItems:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId/MyWorkItemId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - workitems
+                            type: string
+                        type: object
+                      type: array
+                    meta:
+                      properties:
+                        totalCount:
+                          format: int32
+                          type: integer
+                      type: object
+                  type: object
+              type: object
+            links:
+              properties:
+                portal:
+                  example: server-host-name/application-path/polarion/redirect/project/MyProjectId/plan?id=MyPlanId&revision=1234
+                  type: string
+                self:
+                  example: server-host-name/application-path/projects/MyProjectId/plans/MyPlanId?revision=1234
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/plans/MyPlanId?revision=1234
+              type: string
+          type: object
       type: object
     RelationshipDataBody:
       properties:
@@ -692,337 +1045,184 @@ components:
           - customfields
           type: string
       type: object
-    sparseFields:
-      properties:
-        categories:
-          description: Requested fields
-          example: '@all'
-          type: string
-        collections:
-          description: Requested fields
-          example: '@all'
-          type: string
-        customfields:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_parts:
-          description: Requested fields
-          example: '@all'
-          type: string
-        documents:
-          description: Requested fields
-          example: '@all'
-          type: string
-        enumerations:
-          description: Requested fields
-          example: '@all'
-          type: string
-        externallylinkedworkitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        featureselections:
-          description: Requested fields
-          example: '@all'
-          type: string
-        globalroles:
-          description: Requested fields
-          example: '@all'
-          type: string
-        icons:
-          description: Requested fields
-          example: '@all'
-          type: string
-        jobs:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_assignments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_slots:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_types:
-          description: Requested fields
-          example: '@all'
-          type: string
-        linkedoslcresources:
-          description: Requested fields
-          example: '@all'
-          type: string
-        linkedworkitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        metadata:
-          description: Requested fields
-          example: '@all'
-          type: string
-        page_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        page_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        pages:
-          description: Requested fields
-          example: '@all'
-          type: string
-        plans:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projectroles:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projects:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projecttemplates:
-          description: Requested fields
-          example: '@all'
-          type: string
-        revisions:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testparameter_definitions:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testparameters:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrecord_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrecords:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrun_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrun_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testruns:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststep_results:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststepresult_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststeps:
-          description: Requested fields
-          example: '@all'
-          type: string
-        usergroups:
-          description: Requested fields
-          example: '@all'
-          type: string
-        users:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_approvals:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workrecords:
-          description: Requested fields
-          example: '@all'
-          type: string
-      type: object
-    RelationshipsRequestBody:
-      description: List of generic contents
+    RelationshipResponseBody:
+      description: The Relationship's response body. Can return a single or a list of instances
       example:
         data:
         - type: MyResourceType
           id: MyProjectId/MyResourceId
       oneOf:
-      - $ref: '#/components/schemas/RelationshipDataSingleRequest'
-      - $ref: '#/components/schemas/RelationshipDataListRequest'
+      - $ref: '#/components/schemas/RelationshipDataSingleResponse'
+      - $ref: '#/components/schemas/RelationshipDataListResponse'
       type: object
-    plansSinglePatchRequest:
+    plansListPostRequest:
       properties:
         data:
-          properties:
-            type:
-              enum:
-              - plans
-              type: string
-            id:
-              example: MyProjectId/MyPlanId
-              type: string
-            attributes:
-              properties:
-                allowedTypes:
-                  items:
-                    example: optionId
+          items:
+            properties:
+              type:
+                enum:
+                - plans
+                type: string
+              attributes:
+                properties:
+                  allowedTypes:
+                    items:
+                      example: optionId
+                      type: string
+                    type: array
+                  calculationType:
+                    enum:
+                    - timeBased
+                    - customFieldBased
+                    example: timeBased
                     type: string
-                  type: array
-                calculationType:
-                  enum:
-                  - timeBased
-                  - customFieldBased
-                  example: timeBased
-                  type: string
-                capacity:
-                  type: number
-                color:
-                  example: Color
-                  type: string
-                defaultEstimate:
-                  type: number
-                description:
-                  properties:
-                    type:
-                      enum:
-                      - text/plain
-                      type: string
-                    value:
-                      example: My text value
-                      type: string
-                  type: object
-                dueDate:
-                  example: '1970-01-01'
-                  format: date
-                  type: string
-                estimationField:
-                  example: Estimation Field
-                  type: string
-                finishedOn:
-                  example: '1970-01-01T00:00:00Z'
-                  format: date-time
-                  type: string
-                homePageContent:
-                  properties:
-                    type:
-                      enum:
-                      - text/html
-                      - text/plain
-                      type: string
-                    value:
-                      example: My text value
-                      type: string
-                  type: object
-                isTemplate:
-                  type: boolean
-                name:
-                  example: Name
-                  type: string
-                previousTimeSpent:
-                  example: 5 1/2d
-                  type: string
-                prioritizationField:
-                  example: Prioritization Field
-                  type: string
-                sortOrder:
-                  example: 0
-                  format: int32
-                  type: integer
-                startDate:
-                  example: '1970-01-01'
-                  format: date
-                  type: string
-                startedOn:
-                  example: '1970-01-01T00:00:00Z'
-                  format: date-time
-                  type: string
-                status:
-                  type: string
-                useReportFromTemplate:
-                  type: boolean
-              type: object
-            relationships:
-              properties:
-                parent:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId/MyPlanId
-                          type: string
-                        type:
-                          enum:
-                          - plans
-                          type: string
-                      type: object
-                  type: object
-                projectSpan:
-                  properties:
-                    data:
-                      items:
+                  capacity:
+                    type: number
+                  color:
+                    example: Color
+                    type: string
+                  defaultEstimate:
+                    type: number
+                  description:
+                    properties:
+                      type:
+                        enum:
+                        - text/plain
+                        type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  dueDate:
+                    example: '1970-01-01'
+                    format: date
+                    type: string
+                  estimationField:
+                    example: Estimation Field
+                    type: string
+                  finishedOn:
+                    example: '1970-01-01T00:00:00Z'
+                    format: date-time
+                    type: string
+                  homePageContent:
+                    properties:
+                      type:
+                        enum:
+                        - text/html
+                        - text/plain
+                        type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  id:
+                    example: ID
+                    type: string
+                  isTemplate:
+                    type: boolean
+                  name:
+                    example: Name
+                    type: string
+                  previousTimeSpent:
+                    example: 5 1/2d
+                    type: string
+                  prioritizationField:
+                    example: Prioritization Field
+                    type: string
+                  sortOrder:
+                    example: 0
+                    format: int32
+                    type: integer
+                  startDate:
+                    example: '1970-01-01'
+                    format: date
+                    type: string
+                  startedOn:
+                    example: '1970-01-01T00:00:00Z'
+                    format: date-time
+                    type: string
+                  status:
+                    type: string
+                  useReportFromTemplate:
+                    type: boolean
+                type: object
+              relationships:
+                properties:
+                  parent:
+                    properties:
+                      data:
                         properties:
                           id:
-                            example: MyProjectId
+                            example: MyProjectId/MyPlanId
                             type: string
                           type:
                             enum:
-                            - projects
+                            - plans
                             type: string
                         type: object
-                      type: array
-                  type: object
-                workItems:
-                  properties:
-                    data:
-                      items:
+                    type: object
+                  projectSpan:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyProjectId
+                              type: string
+                            type:
+                              enum:
+                              - projects
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  template:
+                    properties:
+                      data:
                         properties:
                           id:
-                            example: MyProjectId/MyWorkItemId
+                            example: MyProjectId/MyPlanId
                             type: string
                           type:
                             enum:
-                            - workitems
+                            - plans
                             type: string
                         type: object
-                      type: array
-                  type: object
-              type: object
-          type: object
+                    type: object
+                  workItems:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyProjectId/MyWorkItemId
+                              type: string
+                            type:
+                              enum:
+                              - workitems
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    plansListDeleteRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - plans
+                type: string
+              id:
+                example: MyProjectId/MyPlanId
+                type: string
+            type: object
+          type: array
       type: object
     plansListGetResponse:
       properties:
@@ -1330,466 +1530,7 @@ components:
               type: integer
           type: object
       type: object
-    plansSingleGetResponse:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - plans
-              type: string
-            id:
-              example: MyProjectId/MyPlanId
-              type: string
-            revision:
-              example: '1234'
-              type: string
-            attributes:
-              properties:
-                allowedTypes:
-                  items:
-                    example: optionId
-                    type: string
-                  type: array
-                calculationType:
-                  enum:
-                  - timeBased
-                  - customFieldBased
-                  example: timeBased
-                  type: string
-                capacity:
-                  type: number
-                color:
-                  example: Color
-                  type: string
-                created:
-                  example: '1970-01-01T00:00:00Z'
-                  format: date-time
-                  type: string
-                defaultEstimate:
-                  type: number
-                description:
-                  properties:
-                    type:
-                      enum:
-                      - text/plain
-                      type: string
-                    value:
-                      example: My text value
-                      type: string
-                  type: object
-                dueDate:
-                  example: '1970-01-01'
-                  format: date
-                  type: string
-                estimationField:
-                  example: Estimation Field
-                  type: string
-                finishedOn:
-                  example: '1970-01-01T00:00:00Z'
-                  format: date-time
-                  type: string
-                homePageContent:
-                  properties:
-                    type:
-                      enum:
-                      - text/html
-                      - text/plain
-                      type: string
-                    value:
-                      example: My text value
-                      type: string
-                  type: object
-                id:
-                  example: ID
-                  type: string
-                isTemplate:
-                  type: boolean
-                name:
-                  example: Name
-                  type: string
-                previousTimeSpent:
-                  example: 5 1/2d
-                  type: string
-                prioritizationField:
-                  example: Prioritization Field
-                  type: string
-                sortOrder:
-                  example: 0
-                  format: int32
-                  type: integer
-                startDate:
-                  example: '1970-01-01'
-                  format: date
-                  type: string
-                startedOn:
-                  example: '1970-01-01T00:00:00Z'
-                  format: date-time
-                  type: string
-                status:
-                  type: string
-                updated:
-                  example: '1970-01-01T00:00:00Z'
-                  format: date-time
-                  type: string
-                useReportFromTemplate:
-                  type: boolean
-              type: object
-            relationships:
-              properties:
-                author:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyUserId
-                          type: string
-                        revision:
-                          example: '1234'
-                          type: string
-                        type:
-                          enum:
-                          - users
-                          type: string
-                      type: object
-                  type: object
-                parent:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId/MyPlanId
-                          type: string
-                        revision:
-                          example: '1234'
-                          type: string
-                        type:
-                          enum:
-                          - plans
-                          type: string
-                      type: object
-                  type: object
-                project:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId
-                          type: string
-                        revision:
-                          example: '1234'
-                          type: string
-                        type:
-                          enum:
-                          - projects
-                          type: string
-                      type: object
-                  type: object
-                projectSpan:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyProjectId
-                            type: string
-                          revision:
-                            example: '1234'
-                            type: string
-                          type:
-                            enum:
-                            - projects
-                            type: string
-                        type: object
-                      type: array
-                    meta:
-                      properties:
-                        totalCount:
-                          format: int32
-                          type: integer
-                      type: object
-                  type: object
-                template:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId/MyPlanId
-                          type: string
-                        revision:
-                          example: '1234'
-                          type: string
-                        type:
-                          enum:
-                          - plans
-                          type: string
-                      type: object
-                  type: object
-                workItems:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyProjectId/MyWorkItemId
-                            type: string
-                          revision:
-                            example: '1234'
-                            type: string
-                          type:
-                            enum:
-                            - workitems
-                            type: string
-                        type: object
-                      type: array
-                    meta:
-                      properties:
-                        totalCount:
-                          format: int32
-                          type: integer
-                      type: object
-                  type: object
-              type: object
-            links:
-              properties:
-                portal:
-                  example: server-host-name/application-path/polarion/redirect/project/MyProjectId/plan?id=MyPlanId&revision=1234
-                  type: string
-                self:
-                  example: server-host-name/application-path/projects/MyProjectId/plans/MyPlanId?revision=1234
-                  type: string
-              type: object
-            meta:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      detail:
-                        description: Human-readable explanation specific to this occurrence of the problem.
-                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                        type: string
-                      source:
-                        properties:
-                          parameter:
-                            description: String indicating which URI query parameter caused the error.
-                            example: revision
-                            type: string
-                          pointer:
-                            description: JSON Pointer to the associated entity in the request document.
-                            example: $.data
-                            type: string
-                          resource:
-                            description: Resource causing the error.
-                            properties:
-                              id:
-                                example: MyProjectId/id
-                                type: string
-                              type:
-                                example: type
-                                type: string
-                            type: object
-                        type: object
-                      status:
-                        description: HTTP status code applicable to this problem.
-                        example: '400'
-                        type: string
-                      title:
-                        description: Short, human-readable summary of the problem.
-                        example: Bad Request
-                        type: string
-                    type: object
-                  type: array
-              type: object
-          type: object
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            self:
-              example: server-host-name/application-path/projects/MyProjectId/plans/MyPlanId?revision=1234
-              type: string
-          type: object
-      type: object
-    plansListPostRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - plans
-                type: string
-              attributes:
-                properties:
-                  allowedTypes:
-                    items:
-                      example: optionId
-                      type: string
-                    type: array
-                  calculationType:
-                    enum:
-                    - timeBased
-                    - customFieldBased
-                    example: timeBased
-                    type: string
-                  capacity:
-                    type: number
-                  color:
-                    example: Color
-                    type: string
-                  defaultEstimate:
-                    type: number
-                  description:
-                    properties:
-                      type:
-                        enum:
-                        - text/plain
-                        type: string
-                      value:
-                        example: My text value
-                        type: string
-                    type: object
-                  dueDate:
-                    example: '1970-01-01'
-                    format: date
-                    type: string
-                  estimationField:
-                    example: Estimation Field
-                    type: string
-                  finishedOn:
-                    example: '1970-01-01T00:00:00Z'
-                    format: date-time
-                    type: string
-                  homePageContent:
-                    properties:
-                      type:
-                        enum:
-                        - text/html
-                        - text/plain
-                        type: string
-                      value:
-                        example: My text value
-                        type: string
-                    type: object
-                  id:
-                    example: ID
-                    type: string
-                  isTemplate:
-                    type: boolean
-                  name:
-                    example: Name
-                    type: string
-                  previousTimeSpent:
-                    example: 5 1/2d
-                    type: string
-                  prioritizationField:
-                    example: Prioritization Field
-                    type: string
-                  sortOrder:
-                    example: 0
-                    format: int32
-                    type: integer
-                  startDate:
-                    example: '1970-01-01'
-                    format: date
-                    type: string
-                  startedOn:
-                    example: '1970-01-01T00:00:00Z'
-                    format: date-time
-                    type: string
-                  status:
-                    type: string
-                  useReportFromTemplate:
-                    type: boolean
-                type: object
-              relationships:
-                properties:
-                  parent:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyProjectId/MyPlanId
-                            type: string
-                          type:
-                            enum:
-                            - plans
-                            type: string
-                        type: object
-                    type: object
-                  projectSpan:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyProjectId
-                              type: string
-                            type:
-                              enum:
-                              - projects
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  template:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyProjectId/MyPlanId
-                            type: string
-                          type:
-                            enum:
-                            - plans
-                            type: string
-                        type: object
-                    type: object
-                  workItems:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyProjectId/MyWorkItemId
-                              type: string
-                            type:
-                              enum:
-                              - workitems
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    RelationshipResponseBody:
-      description: The Relationship's response body. Can return a single or a list of instances
-      example:
-        data:
-        - type: MyResourceType
-          id: MyProjectId/MyResourceId
-      oneOf:
-      - $ref: '#/components/schemas/RelationshipDataSingleResponse'
-      - $ref: '#/components/schemas/RelationshipDataListResponse'
-      type: object
-    RelationshipDataListRequest:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/RelationshipDataBody'
-          type: array
-      type: object
     RelationshipDataSingleRequest:
-      properties:
-        data:
-          $ref: '#/components/schemas/RelationshipDataBody'
-      type: object
-    RelationshipDataSingleResponse:
       properties:
         data:
           $ref: '#/components/schemas/RelationshipDataBody'
@@ -1855,68 +1596,332 @@ components:
             type: object
           type: array
       type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    plansListDeleteRequest:
+    plansSinglePatchRequest:
       properties:
         data:
-          items:
-            properties:
-              type:
-                enum:
-                - plans
-                type: string
-              id:
-                example: MyProjectId/MyPlanId
-                type: string
-            type: object
-          type: array
+          properties:
+            type:
+              enum:
+              - plans
+              type: string
+            id:
+              example: MyProjectId/MyPlanId
+              type: string
+            attributes:
+              properties:
+                allowedTypes:
+                  items:
+                    example: optionId
+                    type: string
+                  type: array
+                calculationType:
+                  enum:
+                  - timeBased
+                  - customFieldBased
+                  example: timeBased
+                  type: string
+                capacity:
+                  type: number
+                color:
+                  example: Color
+                  type: string
+                defaultEstimate:
+                  type: number
+                description:
+                  properties:
+                    type:
+                      enum:
+                      - text/plain
+                      type: string
+                    value:
+                      example: My text value
+                      type: string
+                  type: object
+                dueDate:
+                  example: '1970-01-01'
+                  format: date
+                  type: string
+                estimationField:
+                  example: Estimation Field
+                  type: string
+                finishedOn:
+                  example: '1970-01-01T00:00:00Z'
+                  format: date-time
+                  type: string
+                homePageContent:
+                  properties:
+                    type:
+                      enum:
+                      - text/html
+                      - text/plain
+                      type: string
+                    value:
+                      example: My text value
+                      type: string
+                  type: object
+                isTemplate:
+                  type: boolean
+                name:
+                  example: Name
+                  type: string
+                previousTimeSpent:
+                  example: 5 1/2d
+                  type: string
+                prioritizationField:
+                  example: Prioritization Field
+                  type: string
+                sortOrder:
+                  example: 0
+                  format: int32
+                  type: integer
+                startDate:
+                  example: '1970-01-01'
+                  format: date
+                  type: string
+                startedOn:
+                  example: '1970-01-01T00:00:00Z'
+                  format: date-time
+                  type: string
+                status:
+                  type: string
+                useReportFromTemplate:
+                  type: boolean
+              type: object
+            relationships:
+              properties:
+                parent:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MyPlanId
+                          type: string
+                        type:
+                          enum:
+                          - plans
+                          type: string
+                      type: object
+                  type: object
+                projectSpan:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId
+                            type: string
+                          type:
+                            enum:
+                            - projects
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+                workItems:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId/MyWorkItemId
+                            type: string
+                          type:
+                            enum:
+                            - workitems
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+              type: object
+          type: object
       type: object
-    RelationshipDataListResponse:
+    sparseFields:
+      properties:
+        categories:
+          description: Requested fields
+          example: '@all'
+          type: string
+        collections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        customfields:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_parts:
+          description: Requested fields
+          example: '@all'
+          type: string
+        documents:
+          description: Requested fields
+          example: '@all'
+          type: string
+        enumerations:
+          description: Requested fields
+          example: '@all'
+          type: string
+        externallylinkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        featureselections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        globalroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        icons:
+          description: Requested fields
+          example: '@all'
+          type: string
+        jobs:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_assignments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_slots:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_types:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedoslcresources:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        metadata:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        pages:
+          description: Requested fields
+          example: '@all'
+          type: string
+        plans:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projectroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projects:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projecttemplates:
+          description: Requested fields
+          example: '@all'
+          type: string
+        revisions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameter_definitions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameters:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecord_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testruns:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststep_results:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststepresult_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststeps:
+          description: Requested fields
+          example: '@all'
+          type: string
+        usergroups:
+          description: Requested fields
+          example: '@all'
+          type: string
+        users:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_approvals:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+      type: object
+    RelationshipDataSingleResponse:
       properties:
         data:
-          items:
-            $ref: '#/components/schemas/RelationshipDataBody'
-          type: array
+          $ref: '#/components/schemas/RelationshipDataBody'
       type: object
   securitySchemes:
     bearerAuth:

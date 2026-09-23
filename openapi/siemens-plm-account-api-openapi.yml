@@ -150,6 +150,8 @@ paths:
         * The refresh token can be used to generate a new bearer token without re-authenticating.
 
         * The *grant\_type* must be set to "refresh\_token" and the *refresh\_token* must be provided that was obtained via the initial authentication.'
+      operationId: postToken
+      x-operation-id-source: derived
   /api/v1/Account/Logout:
     get:
       tags:

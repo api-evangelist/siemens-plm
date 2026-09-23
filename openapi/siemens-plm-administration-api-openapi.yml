@@ -13,7 +13,7 @@ paths:
     get:
       tags:
       - Administration
-      summary: Fetch a user User by {userName}. Only allowed for admins.
+      summary: Fetch a user User by {userName}. Only allowed for admins
       operationId: GetUser_GetUser
       security:
       - bearerHttpAuthentication: []
@@ -173,6 +173,20 @@ paths:
       - bearerHttpAuthentication: []
 components:
   schemas:
+    RoleAssignmentResponseModel:
+      type: object
+      properties:
+        client:
+          type: string
+          readOnly: true
+        role:
+          type: string
+          readOnly: true
+    Response_of_UserResponseModel:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserResponseModel'
     UserResponseModelAttributes:
       type: object
       properties:
@@ -212,20 +226,6 @@ components:
           readOnly: true
         attributes:
           $ref: '#/components/schemas/UserResponseModelAttributes'
-    RoleAssignmentResponseModel:
-      type: object
-      properties:
-        client:
-          type: string
-          readOnly: true
-        role:
-          type: string
-          readOnly: true
-    Response_of_UserResponseModel:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/UserResponseModel'
     ErrorLegacy:
       type: object
       properties:
@@ -233,19 +233,6 @@ components:
           type: string
           readOnly: true
   responses:
-    ErrorNotAcceptableLegacy:
-      description: The service is not able to respond using the request media-type or representation asked by the client in the Accept header.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-          examples:
-            Example:
-              value:
-                Detail: Media type not accepted
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
     ErrorInternalServerErrorLegacy:
       description: An unexpected error occurred and the server is not fulfilling the request.
       content:
@@ -256,6 +243,19 @@ components:
             Example:
               value:
                 Detail: Internal error
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorNotAcceptableLegacy:
+      description: The service is not able to respond using the request media-type or representation asked by the client in the Accept header.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Media type not accepted
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorLegacy'
