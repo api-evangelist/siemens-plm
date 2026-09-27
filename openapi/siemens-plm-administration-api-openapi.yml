@@ -172,66 +172,6 @@ paths:
       security:
       - bearerHttpAuthentication: []
 components:
-  schemas:
-    RoleAssignmentResponseModel:
-      type: object
-      properties:
-        client:
-          type: string
-          readOnly: true
-        role:
-          type: string
-          readOnly: true
-    Response_of_UserResponseModel:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/UserResponseModel'
-    UserResponseModelAttributes:
-      type: object
-      properties:
-        userName:
-          type: string
-          readOnly: true
-        emailAddress:
-          type: string
-          readOnly: true
-        firstName:
-          type: string
-          readOnly: true
-        lastName:
-          type: string
-          readOnly: true
-        active:
-          type: boolean
-          readOnly: true
-        roleAssignments:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleAssignmentResponseModel'
-          readOnly: true
-    ToggleActivationRequestModel:
-      required:
-      - active
-      type: object
-      properties:
-        active:
-          type: boolean
-          example: false
-    UserResponseModel:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
-        attributes:
-          $ref: '#/components/schemas/UserResponseModelAttributes'
-    ErrorLegacy:
-      type: object
-      properties:
-        Detail:
-          type: string
-          readOnly: true
   responses:
     ErrorInternalServerErrorLegacy:
       description: An unexpected error occurred and the server is not fulfilling the request.
@@ -259,19 +199,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorLegacy'
-    ErrorUnauthorizedLegacy:
-      description: The client is not providing valid authentication credentials for the target resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-          examples:
-            Example:
-              value:
-                Detail: Invalid user or password
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
     ErrorBadRequestLegacy:
       description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
       content:
@@ -285,6 +212,79 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorLegacy'
+    ErrorUnauthorizedLegacy:
+      description: The client is not providing valid authentication credentials for the target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Invalid user or password
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+  schemas:
+    UserResponseModelAttributes:
+      type: object
+      properties:
+        userName:
+          type: string
+          readOnly: true
+        emailAddress:
+          type: string
+          readOnly: true
+        firstName:
+          type: string
+          readOnly: true
+        lastName:
+          type: string
+          readOnly: true
+        active:
+          type: boolean
+          readOnly: true
+        roleAssignments:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleAssignmentResponseModel'
+          readOnly: true
+    UserResponseModel:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+        attributes:
+          $ref: '#/components/schemas/UserResponseModelAttributes'
+    ToggleActivationRequestModel:
+      required:
+      - active
+      type: object
+      properties:
+        active:
+          type: boolean
+          example: false
+    Response_of_UserResponseModel:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserResponseModel'
+    RoleAssignmentResponseModel:
+      type: object
+      properties:
+        client:
+          type: string
+          readOnly: true
+        role:
+          type: string
+          readOnly: true
+    ErrorLegacy:
+      type: object
+      properties:
+        Detail:
+          type: string
+          readOnly: true
   securitySchemes:
     bearerHttpAuthentication:
       type: http

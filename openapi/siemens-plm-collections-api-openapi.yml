@@ -768,19 +768,179 @@ paths:
       - Collections
 components:
   schemas:
-    RelationshipDataListResponse:
+    collectionsSinglePostResponse:
       properties:
         data:
-          items:
-            $ref: '#/components/schemas/RelationshipDataBody'
-          type: array
-      type: object
-    RelationshipDataListRequest:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/RelationshipDataBody'
-          type: array
+          properties:
+            type:
+              enum:
+              - collections
+              type: string
+            id:
+              example: MyProjectId/MyCollectionId
+              type: string
+            attributes:
+              properties:
+                closedOn:
+                  example: '1970-01-01T00:00:00Z'
+                  format: date-time
+                  type: string
+                created:
+                  example: '1970-01-01T00:00:00Z'
+                  format: date-time
+                  type: string
+                description:
+                  properties:
+                    type:
+                      enum:
+                      - text/html
+                      - text/plain
+                      type: string
+                    value:
+                      example: My text value
+                      type: string
+                  type: object
+                name:
+                  example: Name
+                  type: string
+                updated:
+                  example: '1970-01-01T00:00:00Z'
+                  format: date-time
+                  type: string
+              type: object
+            relationships:
+              properties:
+                author:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyUserId
+                          type: string
+                        type:
+                          enum:
+                          - users
+                          type: string
+                      type: object
+                  type: object
+                documents:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId/MySpaceId/MyDocumentId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - documents
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+                downstreamCollections:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId/MyCollectionId
+                            type: string
+                          type:
+                            enum:
+                            - collections
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+                project:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId
+                          type: string
+                        type:
+                          enum:
+                          - projects
+                          type: string
+                      type: object
+                  type: object
+                reusedFrom:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MyCollectionId
+                          type: string
+                        type:
+                          enum:
+                          - collections
+                          type: string
+                      type: object
+                  type: object
+                richPages:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId/MySpaceId/MyRichPageId
+                            type: string
+                          type:
+                            enum:
+                            - pages
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+                testRuns:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId/MyTestRunId
+                            type: string
+                          type:
+                            enum:
+                            - testruns
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+                upstreamCollections:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId/MyCollectionId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - collections
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+              type: object
+            links:
+              properties:
+                portal:
+                  example: server-host-name/application-path/polarion/redirect/project/MyProjectId/collection?id=MyCollectionId&revision=1234
+                  type: string
+                self:
+                  example: server-host-name/application-path/projects/MyProjectId/collections/MyCollectionId?revision=1234
+                  type: string
+              type: object
+          type: object
       type: object
     errors:
       properties:
@@ -823,73 +983,14 @@ components:
             type: object
           type: array
       type: object
-    RelationshipDataBody:
+    RelationshipDataListResponse:
       properties:
-        id:
-          example: MyProjectId/MyResourceId
-          type: string
-        type:
-          enum:
-          - collections
-          - categories
-          - documents
-          - document_attachments
-          - document_comments
-          - document_parts
-          - enumerations
-          - globalroles
-          - icons
-          - jobs
-          - linkedworkitems
-          - externallylinkedworkitems
-          - linkedoslcresources
-          - pages
-          - page_attachments
-          - page_comments
-          - plans
-          - projectroles
-          - projectgroups
-          - projects
-          - projecttemplates
-          - spaces
-          - testparameters
-          - testparameter_definitions
-          - testrecords
-          - teststep_results
-          - testruns
-          - testrun_attachments
-          - teststepresult_attachments
-          - testrun_comments
-          - usergroups
-          - users
-          - workitems
-          - workitem_attachments
-          - workitem_approvals
-          - workitem_comments
-          - featureselections
-          - teststeps
-          - workrecords
-          - revisions
-          - testrecord_attachments
-          - license_slots
-          - license_types
-          - license
-          - metadata
-          - license_assignments
-          - customfields
-          type: string
-      type: object
-    RelationshipResponseBody:
-      description: The Relationship's response body. Can return a single or a list of instances
-      example:
         data:
-        - type: MyResourceType
-          id: MyProjectId/MyResourceId
-      oneOf:
-      - $ref: '#/components/schemas/RelationshipDataSingleResponse'
-      - $ref: '#/components/schemas/RelationshipDataListResponse'
+          items:
+            $ref: '#/components/schemas/RelationshipDataBody'
+          type: array
       type: object
-    collectionsListPostResponse:
+    collectionsListDeleteRequest:
       properties:
         data:
           items:
@@ -901,200 +1002,8 @@ components:
               id:
                 example: MyProjectId/MyCollectionId
                 type: string
-              links:
-                properties:
-                  portal:
-                    example: server-host-name/application-path/polarion/redirect/project/MyProjectId/collection?id=MyCollectionId&revision=1234
-                    type: string
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/collections/MyCollectionId?revision=1234
-                    type: string
-                type: object
             type: object
           type: array
-      type: object
-    sparseFields:
-      properties:
-        categories:
-          description: Requested fields
-          example: '@all'
-          type: string
-        collections:
-          description: Requested fields
-          example: '@all'
-          type: string
-        customfields:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_parts:
-          description: Requested fields
-          example: '@all'
-          type: string
-        documents:
-          description: Requested fields
-          example: '@all'
-          type: string
-        enumerations:
-          description: Requested fields
-          example: '@all'
-          type: string
-        externallylinkedworkitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        featureselections:
-          description: Requested fields
-          example: '@all'
-          type: string
-        globalroles:
-          description: Requested fields
-          example: '@all'
-          type: string
-        icons:
-          description: Requested fields
-          example: '@all'
-          type: string
-        jobs:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_assignments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_slots:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_types:
-          description: Requested fields
-          example: '@all'
-          type: string
-        linkedoslcresources:
-          description: Requested fields
-          example: '@all'
-          type: string
-        linkedworkitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        metadata:
-          description: Requested fields
-          example: '@all'
-          type: string
-        page_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        page_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        pages:
-          description: Requested fields
-          example: '@all'
-          type: string
-        plans:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projectroles:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projects:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projecttemplates:
-          description: Requested fields
-          example: '@all'
-          type: string
-        revisions:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testparameter_definitions:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testparameters:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrecord_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrecords:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrun_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrun_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testruns:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststep_results:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststepresult_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststeps:
-          description: Requested fields
-          example: '@all'
-          type: string
-        usergroups:
-          description: Requested fields
-          example: '@all'
-          type: string
-        users:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_approvals:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workrecords:
-          description: Requested fields
-          example: '@all'
-          type: string
       type: object
     collectionsListGetResponse:
       properties:
@@ -1399,6 +1308,446 @@ components:
               type: integer
           type: object
       type: object
+    relationshipsListDeleteRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - collections
+                - categories
+                - documents
+                - document_attachments
+                - document_comments
+                - document_parts
+                - enumerations
+                - globalroles
+                - icons
+                - jobs
+                - linkedworkitems
+                - externallylinkedworkitems
+                - linkedoslcresources
+                - pages
+                - page_attachments
+                - page_comments
+                - plans
+                - projectroles
+                - projectgroups
+                - projects
+                - projecttemplates
+                - spaces
+                - testparameters
+                - testparameter_definitions
+                - testrecords
+                - teststep_results
+                - testruns
+                - testrun_attachments
+                - teststepresult_attachments
+                - testrun_comments
+                - usergroups
+                - users
+                - workitems
+                - workitem_attachments
+                - workitem_approvals
+                - workitem_comments
+                - featureselections
+                - teststeps
+                - workrecords
+                - revisions
+                - testrecord_attachments
+                - license_slots
+                - license_types
+                - license
+                - metadata
+                - license_assignments
+                - customfields
+                type: string
+              id:
+                example: MyProjectId/MyResourceId
+                type: string
+            type: object
+          type: array
+      type: object
+    collectionsListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - collections
+                type: string
+              attributes:
+                properties:
+                  description:
+                    properties:
+                      type:
+                        enum:
+                        - text/html
+                        - text/plain
+                        type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  id:
+                    example: ID
+                    type: string
+                  name:
+                    example: Name
+                    type: string
+                type: object
+              relationships:
+                properties:
+                  documents:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyProjectId/MySpaceId/MyDocumentId
+                              type: string
+                            revision:
+                              example: '1234'
+                              type: string
+                            type:
+                              enum:
+                              - documents
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  richPages:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyProjectId/MySpaceId/MyRichPageId
+                              type: string
+                            type:
+                              enum:
+                              - pages
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  testRuns:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyProjectId/MyTestRunId
+                              type: string
+                            type:
+                              enum:
+                              - testruns
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  upstreamCollections:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyProjectId/MyCollectionId
+                              type: string
+                            revision:
+                              example: '1234'
+                              type: string
+                            type:
+                              enum:
+                              - collections
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    RelationshipDataListRequest:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RelationshipDataBody'
+          type: array
+      type: object
+    RelationshipResponseBody:
+      description: The Relationship's response body. Can return a single or a list of instances
+      example:
+        data:
+        - type: MyResourceType
+          id: MyProjectId/MyResourceId
+      oneOf:
+      - $ref: '#/components/schemas/RelationshipDataSingleResponse'
+      - $ref: '#/components/schemas/RelationshipDataListResponse'
+      type: object
+    reuseCollectionRequestBody:
+      properties:
+        targetCollectionName:
+          description: The name of the new Collection.
+          example: Name
+          type: string
+        targetProjectId:
+          description: Project where new Collection will be created.
+          example: MyProjectId
+          type: string
+      type: object
+    sparseFields:
+      properties:
+        categories:
+          description: Requested fields
+          example: '@all'
+          type: string
+        collections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        customfields:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_parts:
+          description: Requested fields
+          example: '@all'
+          type: string
+        documents:
+          description: Requested fields
+          example: '@all'
+          type: string
+        enumerations:
+          description: Requested fields
+          example: '@all'
+          type: string
+        externallylinkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        featureselections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        globalroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        icons:
+          description: Requested fields
+          example: '@all'
+          type: string
+        jobs:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_assignments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_slots:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_types:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedoslcresources:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        metadata:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        pages:
+          description: Requested fields
+          example: '@all'
+          type: string
+        plans:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projectroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projects:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projecttemplates:
+          description: Requested fields
+          example: '@all'
+          type: string
+        revisions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameter_definitions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameters:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecord_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testruns:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststep_results:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststepresult_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststeps:
+          description: Requested fields
+          example: '@all'
+          type: string
+        usergroups:
+          description: Requested fields
+          example: '@all'
+          type: string
+        users:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_approvals:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+      type: object
+    RelationshipsRequestWithRevisionBody:
+      description: List of generic contents
+      example:
+        data:
+        - type: MyResourceType
+          id: MyProjectId/MyResourceId
+          revision: '1234'
+      oneOf:
+      - $ref: '#/components/schemas/RelationshipDataSingleRequest'
+      - $ref: '#/components/schemas/RelationshipDataListRequest'
+      type: object
+    RelationshipDataBody:
+      properties:
+        id:
+          example: MyProjectId/MyResourceId
+          type: string
+        type:
+          enum:
+          - collections
+          - categories
+          - documents
+          - document_attachments
+          - document_comments
+          - document_parts
+          - enumerations
+          - globalroles
+          - icons
+          - jobs
+          - linkedworkitems
+          - externallylinkedworkitems
+          - linkedoslcresources
+          - pages
+          - page_attachments
+          - page_comments
+          - plans
+          - projectroles
+          - projectgroups
+          - projects
+          - projecttemplates
+          - spaces
+          - testparameters
+          - testparameter_definitions
+          - testrecords
+          - teststep_results
+          - testruns
+          - testrun_attachments
+          - teststepresult_attachments
+          - testrun_comments
+          - usergroups
+          - users
+          - workitems
+          - workitem_attachments
+          - workitem_approvals
+          - workitem_comments
+          - featureselections
+          - teststeps
+          - workrecords
+          - revisions
+          - testrecord_attachments
+          - license_slots
+          - license_types
+          - license
+          - metadata
+          - license_assignments
+          - customfields
+          type: string
+      type: object
     collectionsSinglePatchRequest:
       properties:
         data:
@@ -1498,17 +1847,7 @@ components:
               type: object
           type: object
       type: object
-    RelationshipDataSingleRequest:
-      properties:
-        data:
-          $ref: '#/components/schemas/RelationshipDataBody'
-      type: object
-    RelationshipDataSingleResponse:
-      properties:
-        data:
-          $ref: '#/components/schemas/RelationshipDataBody'
-      type: object
-    relationshipsListDeleteRequest:
+    collectionsListPostResponse:
       properties:
         data:
           items:
@@ -1516,56 +1855,19 @@ components:
               type:
                 enum:
                 - collections
-                - categories
-                - documents
-                - document_attachments
-                - document_comments
-                - document_parts
-                - enumerations
-                - globalroles
-                - icons
-                - jobs
-                - linkedworkitems
-                - externallylinkedworkitems
-                - linkedoslcresources
-                - pages
-                - page_attachments
-                - page_comments
-                - plans
-                - projectroles
-                - projectgroups
-                - projects
-                - projecttemplates
-                - spaces
-                - testparameters
-                - testparameter_definitions
-                - testrecords
-                - teststep_results
-                - testruns
-                - testrun_attachments
-                - teststepresult_attachments
-                - testrun_comments
-                - usergroups
-                - users
-                - workitems
-                - workitem_attachments
-                - workitem_approvals
-                - workitem_comments
-                - featureselections
-                - teststeps
-                - workrecords
-                - revisions
-                - testrecord_attachments
-                - license_slots
-                - license_types
-                - license
-                - metadata
-                - license_assignments
-                - customfields
                 type: string
               id:
-                example: MyProjectId/MyResourceId
+                example: MyProjectId/MyCollectionId
                 type: string
+              links:
+                properties:
+                  portal:
+                    example: server-host-name/application-path/polarion/redirect/project/MyProjectId/collection?id=MyCollectionId&revision=1234
+                    type: string
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/collections/MyCollectionId?revision=1234
+                    type: string
+                type: object
             type: object
           type: array
       type: object
@@ -1849,317 +2151,15 @@ components:
               type: string
           type: object
       type: object
-    collectionsListPostRequest:
+    RelationshipDataSingleResponse:
       properties:
         data:
-          items:
-            properties:
-              type:
-                enum:
-                - collections
-                type: string
-              attributes:
-                properties:
-                  description:
-                    properties:
-                      type:
-                        enum:
-                        - text/html
-                        - text/plain
-                        type: string
-                      value:
-                        example: My text value
-                        type: string
-                    type: object
-                  id:
-                    example: ID
-                    type: string
-                  name:
-                    example: Name
-                    type: string
-                type: object
-              relationships:
-                properties:
-                  documents:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyProjectId/MySpaceId/MyDocumentId
-                              type: string
-                            revision:
-                              example: '1234'
-                              type: string
-                            type:
-                              enum:
-                              - documents
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  richPages:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyProjectId/MySpaceId/MyRichPageId
-                              type: string
-                            type:
-                              enum:
-                              - pages
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  testRuns:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyProjectId/MyTestRunId
-                              type: string
-                            type:
-                              enum:
-                              - testruns
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  upstreamCollections:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyProjectId/MyCollectionId
-                              type: string
-                            revision:
-                              example: '1234'
-                              type: string
-                            type:
-                              enum:
-                              - collections
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                type: object
-            type: object
-          type: array
+          $ref: '#/components/schemas/RelationshipDataBody'
       type: object
-    RelationshipsRequestWithRevisionBody:
-      description: List of generic contents
-      example:
-        data:
-        - type: MyResourceType
-          id: MyProjectId/MyResourceId
-          revision: '1234'
-      oneOf:
-      - $ref: '#/components/schemas/RelationshipDataSingleRequest'
-      - $ref: '#/components/schemas/RelationshipDataListRequest'
-      type: object
-    collectionsListDeleteRequest:
+    RelationshipDataSingleRequest:
       properties:
         data:
-          items:
-            properties:
-              type:
-                enum:
-                - collections
-                type: string
-              id:
-                example: MyProjectId/MyCollectionId
-                type: string
-            type: object
-          type: array
-      type: object
-    collectionsSinglePostResponse:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - collections
-              type: string
-            id:
-              example: MyProjectId/MyCollectionId
-              type: string
-            attributes:
-              properties:
-                closedOn:
-                  example: '1970-01-01T00:00:00Z'
-                  format: date-time
-                  type: string
-                created:
-                  example: '1970-01-01T00:00:00Z'
-                  format: date-time
-                  type: string
-                description:
-                  properties:
-                    type:
-                      enum:
-                      - text/html
-                      - text/plain
-                      type: string
-                    value:
-                      example: My text value
-                      type: string
-                  type: object
-                name:
-                  example: Name
-                  type: string
-                updated:
-                  example: '1970-01-01T00:00:00Z'
-                  format: date-time
-                  type: string
-              type: object
-            relationships:
-              properties:
-                author:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyUserId
-                          type: string
-                        type:
-                          enum:
-                          - users
-                          type: string
-                      type: object
-                  type: object
-                documents:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyProjectId/MySpaceId/MyDocumentId
-                            type: string
-                          revision:
-                            example: '1234'
-                            type: string
-                          type:
-                            enum:
-                            - documents
-                            type: string
-                        type: object
-                      type: array
-                  type: object
-                downstreamCollections:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyProjectId/MyCollectionId
-                            type: string
-                          type:
-                            enum:
-                            - collections
-                            type: string
-                        type: object
-                      type: array
-                  type: object
-                project:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId
-                          type: string
-                        type:
-                          enum:
-                          - projects
-                          type: string
-                      type: object
-                  type: object
-                reusedFrom:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId/MyCollectionId
-                          type: string
-                        type:
-                          enum:
-                          - collections
-                          type: string
-                      type: object
-                  type: object
-                richPages:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyProjectId/MySpaceId/MyRichPageId
-                            type: string
-                          type:
-                            enum:
-                            - pages
-                            type: string
-                        type: object
-                      type: array
-                  type: object
-                testRuns:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyProjectId/MyTestRunId
-                            type: string
-                          type:
-                            enum:
-                            - testruns
-                            type: string
-                        type: object
-                      type: array
-                  type: object
-                upstreamCollections:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyProjectId/MyCollectionId
-                            type: string
-                          revision:
-                            example: '1234'
-                            type: string
-                          type:
-                            enum:
-                            - collections
-                            type: string
-                        type: object
-                      type: array
-                  type: object
-              type: object
-            links:
-              properties:
-                portal:
-                  example: server-host-name/application-path/polarion/redirect/project/MyProjectId/collection?id=MyCollectionId&revision=1234
-                  type: string
-                self:
-                  example: server-host-name/application-path/projects/MyProjectId/collections/MyCollectionId?revision=1234
-                  type: string
-              type: object
-          type: object
-      type: object
-    reuseCollectionRequestBody:
-      properties:
-        targetCollectionName:
-          description: The name of the new Collection.
-          example: Name
-          type: string
-        targetProjectId:
-          description: Project where new Collection will be created.
-          example: MyProjectId
-          type: string
+          $ref: '#/components/schemas/RelationshipDataBody'
       type: object
   securitySchemes:
     bearerAuth:

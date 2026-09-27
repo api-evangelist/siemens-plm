@@ -556,48 +556,7 @@ paths:
       - Linked Work Items
 components:
   schemas:
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    backlinkedworkitemsListPostRequest:
+    linkedworkitemsListPostResponse:
       properties:
         data:
           items:
@@ -606,71 +565,14 @@ components:
                 enum:
                 - linkedworkitems
                 type: string
-              attributes:
-                properties:
-                  revision:
-                    example: '1234'
-                    type: string
-                  role:
-                    example: relates_to
-                    type: string
-                  suspect:
-                    type: boolean
-                type: object
-              relationships:
-                properties:
-                  sourceWorkItem:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyProjectId/MyWorkItemId
-                            type: string
-                          type:
-                            enum:
-                            - workitems
-                            type: string
-                        type: object
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    linkedworkitemsListPostRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - linkedworkitems
+              id:
+                example: MyProjectId/MyWorkItemId/parent/MyProjectId/MyLinkedWorkItemId
                 type: string
-              attributes:
+              links:
                 properties:
-                  revision:
-                    example: '1234'
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/linkedworkitems/parent/MyProjectId/MyLinkedWorkItemId?revision=1234
                     type: string
-                  role:
-                    example: relates_to
-                    type: string
-                  suspect:
-                    type: boolean
-                type: object
-              relationships:
-                properties:
-                  workItem:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyProjectId/MyWorkItemId
-                            type: string
-                          type:
-                            enum:
-                            - workitems
-                            type: string
-                        type: object
-                    type: object
                 type: object
             type: object
           type: array
@@ -815,7 +717,87 @@ components:
               type: integer
           type: object
       type: object
-    linkedworkitemsSingleGetResponse:
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    linkedworkitemsListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - linkedworkitems
+                type: string
+              attributes:
+                properties:
+                  revision:
+                    example: '1234'
+                    type: string
+                  role:
+                    example: relates_to
+                    type: string
+                  suspect:
+                    type: boolean
+                type: object
+              relationships:
+                properties:
+                  workItem:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyWorkItemId
+                            type: string
+                          type:
+                            enum:
+                            - workitems
+                            type: string
+                        type: object
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    linkedworkitemsSinglePatchRequest:
       properties:
         data:
           properties:
@@ -826,116 +808,17 @@ components:
             id:
               example: MyProjectId/MyWorkItemId/parent/MyProjectId/MyLinkedWorkItemId
               type: string
-            revision:
-              example: '1234'
-              type: string
             attributes:
               properties:
                 revision:
                   example: '1234'
                   type: string
-                role:
-                  example: relates_to
-                  type: string
                 suspect:
                   type: boolean
               type: object
-            relationships:
-              properties:
-                sourceWorkItem:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId/MyWorkItemId
-                          type: string
-                        revision:
-                          example: '1234'
-                          type: string
-                        type:
-                          enum:
-                          - workitems
-                          type: string
-                      type: object
-                  type: object
-                workItem:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId/MyWorkItemId
-                          type: string
-                        revision:
-                          example: '1234'
-                          type: string
-                        type:
-                          enum:
-                          - workitems
-                          type: string
-                      type: object
-                  type: object
-              type: object
-            links:
-              properties:
-                self:
-                  example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/linkedworkitems/parent/MyProjectId/MyLinkedWorkItemId?revision=1234
-                  type: string
-              type: object
-            meta:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      detail:
-                        description: Human-readable explanation specific to this occurrence of the problem.
-                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                        type: string
-                      source:
-                        properties:
-                          parameter:
-                            description: String indicating which URI query parameter caused the error.
-                            example: revision
-                            type: string
-                          pointer:
-                            description: JSON Pointer to the associated entity in the request document.
-                            example: $.data
-                            type: string
-                          resource:
-                            description: Resource causing the error.
-                            properties:
-                              id:
-                                example: MyProjectId/id
-                                type: string
-                              type:
-                                example: type
-                                type: string
-                            type: object
-                        type: object
-                      status:
-                        description: HTTP status code applicable to this problem.
-                        example: '400'
-                        type: string
-                      title:
-                        description: Short, human-readable summary of the problem.
-                        example: Bad Request
-                        type: string
-                    type: object
-                  type: array
-              type: object
-          type: object
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            self:
-              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/linkedworkitems/parent/MyProjectId/MyLinkedWorkItemId?revision=1234
-              type: string
           type: object
       type: object
-    linkedworkitemsListDeleteRequest:
+    backlinkedworkitemsListPostRequest:
       properties:
         data:
           items:
@@ -944,29 +827,32 @@ components:
                 enum:
                 - linkedworkitems
                 type: string
-              id:
-                example: MyProjectId/MyWorkItemId/parent/MyProjectId/MyLinkedWorkItemId
-                type: string
-            type: object
-          type: array
-      type: object
-    linkedworkitemsListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - linkedworkitems
-                type: string
-              id:
-                example: MyProjectId/MyWorkItemId/parent/MyProjectId/MyLinkedWorkItemId
-                type: string
-              links:
+              attributes:
                 properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/linkedworkitems/parent/MyProjectId/MyLinkedWorkItemId?revision=1234
+                  revision:
+                    example: '1234'
                     type: string
+                  role:
+                    example: relates_to
+                    type: string
+                  suspect:
+                    type: boolean
+                type: object
+              relationships:
+                properties:
+                  sourceWorkItem:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyWorkItemId
+                            type: string
+                          type:
+                            enum:
+                            - workitems
+                            type: string
+                        type: object
+                    type: object
                 type: object
             type: object
           type: array
@@ -1154,7 +1040,7 @@ components:
           example: '@all'
           type: string
       type: object
-    linkedworkitemsSinglePatchRequest:
+    linkedworkitemsSingleGetResponse:
       properties:
         data:
           properties:
@@ -1165,15 +1051,129 @@ components:
             id:
               example: MyProjectId/MyWorkItemId/parent/MyProjectId/MyLinkedWorkItemId
               type: string
+            revision:
+              example: '1234'
+              type: string
             attributes:
               properties:
                 revision:
                   example: '1234'
                   type: string
+                role:
+                  example: relates_to
+                  type: string
                 suspect:
                   type: boolean
               type: object
+            relationships:
+              properties:
+                sourceWorkItem:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MyWorkItemId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - workitems
+                          type: string
+                      type: object
+                  type: object
+                workItem:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MyWorkItemId
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - workitems
+                          type: string
+                      type: object
+                  type: object
+              type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/linkedworkitems/parent/MyProjectId/MyLinkedWorkItemId?revision=1234
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
           type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/linkedworkitems/parent/MyProjectId/MyLinkedWorkItemId?revision=1234
+              type: string
+          type: object
+      type: object
+    linkedworkitemsListDeleteRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - linkedworkitems
+                type: string
+              id:
+                example: MyProjectId/MyWorkItemId/parent/MyProjectId/MyLinkedWorkItemId
+                type: string
+            type: object
+          type: array
       type: object
   securitySchemes:
     bearerAuth:

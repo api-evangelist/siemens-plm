@@ -453,135 +453,6 @@ components:
               type: string
           type: object
       type: object
-    executeJobRequestBody:
-      properties:
-        jobId:
-          description: Id of job factory, e.g. jobs.cleanup
-          example: MyJobId
-          type: string
-        name:
-          example: My Job
-          type: string
-        nodeId:
-          example: MyNodeId
-          type:
-          - string
-          - 'null'
-        params:
-          description: Parameters of Job to be executed.
-          properties:
-            param1:
-              example: value1
-              type: string
-            param2:
-              example: value2
-              type: string
-          type:
-          - object
-          - 'null'
-        scope:
-          description: 'Scope of the job. Accepted formats: ''system'', ''project:{projectId}'', or ''path:/{path}''.'
-          example: system
-          type:
-          - string
-          - 'null'
-      type: object
-    jobsSinglePostResponse:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - jobs
-              type: string
-            id:
-              example: MyJobId
-              type: string
-            attributes:
-              properties:
-                jobId:
-                  example: example
-                  type: string
-                name:
-                  example: example
-                  type: string
-                state:
-                  example: example
-                  type: string
-                status:
-                  properties:
-                    message:
-                      example: message
-                      type: string
-                    type:
-                      enum:
-                      - OK
-                      - CANCELLED
-                      - FAILED
-                      - UNKNOWN
-                      type: string
-                  type: object
-              type: object
-            relationships:
-              properties:
-                document:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId/MySpaceId/MyDocumentId
-                          type: string
-                        type:
-                          enum:
-                          - documents
-                          type: string
-                      type: object
-                  type: object
-                documents:
-                  properties:
-                    data:
-                      items:
-                        properties:
-                          id:
-                            example: MyProjectId/MySpaceId/MyDocumentId
-                            type: string
-                          type:
-                            enum:
-                            - documents
-                            type: string
-                        type: object
-                      type: array
-                  type: object
-                project:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId
-                          type: string
-                        type:
-                          enum:
-                          - projects
-                          type: string
-                      type: object
-                  type: object
-              type: object
-            links:
-              properties:
-                downloads:
-                  example:
-                  - https://example.com/polarion/download/filename1
-                  - https://example.com/polarion/download/filename2
-                  type: array
-                log:
-                  example: server-host-name/application-path/polarion/job-report?jobId=MyJobId
-                  type: string
-                self:
-                  example: server-host-name/application-path/jobs/MyJobId
-                  type: string
-              type: object
-          type: object
-      type: object
     jobsListGetResponse:
       properties:
         data:
@@ -754,6 +625,102 @@ components:
             totalCount:
               format: int32
               type: integer
+          type: object
+      type: object
+    jobsSinglePostResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - jobs
+              type: string
+            id:
+              example: MyJobId
+              type: string
+            attributes:
+              properties:
+                jobId:
+                  example: example
+                  type: string
+                name:
+                  example: example
+                  type: string
+                state:
+                  example: example
+                  type: string
+                status:
+                  properties:
+                    message:
+                      example: message
+                      type: string
+                    type:
+                      enum:
+                      - OK
+                      - CANCELLED
+                      - FAILED
+                      - UNKNOWN
+                      type: string
+                  type: object
+              type: object
+            relationships:
+              properties:
+                document:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MySpaceId/MyDocumentId
+                          type: string
+                        type:
+                          enum:
+                          - documents
+                          type: string
+                      type: object
+                  type: object
+                documents:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId/MySpaceId/MyDocumentId
+                            type: string
+                          type:
+                            enum:
+                            - documents
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+                project:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId
+                          type: string
+                        type:
+                          enum:
+                          - projects
+                          type: string
+                      type: object
+                  type: object
+              type: object
+            links:
+              properties:
+                downloads:
+                  example:
+                  - https://example.com/polarion/download/filename1
+                  - https://example.com/polarion/download/filename2
+                  type: array
+                log:
+                  example: server-host-name/application-path/polarion/job-report?jobId=MyJobId
+                  type: string
+                self:
+                  example: server-host-name/application-path/jobs/MyJobId
+                  type: string
+              type: object
           type: object
       type: object
     sparseFields:
@@ -938,6 +905,39 @@ components:
           description: Requested fields
           example: '@all'
           type: string
+      type: object
+    executeJobRequestBody:
+      properties:
+        jobId:
+          description: Id of job factory, e.g. jobs.cleanup
+          example: MyJobId
+          type: string
+        name:
+          example: My Job
+          type: string
+        nodeId:
+          example: MyNodeId
+          type:
+          - string
+          - 'null'
+        params:
+          description: Parameters of Job to be executed.
+          properties:
+            param1:
+              example: value1
+              type: string
+            param2:
+              example: value2
+              type: string
+          type:
+          - object
+          - 'null'
+        scope:
+          description: 'Scope of the job. Accepted formats: ''system'', ''project:{projectId}'', or ''path:/{path}''.'
+          example: system
+          type:
+          - string
+          - 'null'
       type: object
   securitySchemes:
     bearerAuth:

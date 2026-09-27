@@ -359,77 +359,6 @@ components:
             type: object
           type: array
       type: object
-    document_partsListPostRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - document_parts
-                type: string
-              attributes:
-                properties:
-                  layout:
-                    example: 0
-                    format: int32
-                    type: integer
-                  level:
-                    example: 0
-                    format: int32
-                    type: integer
-                  type:
-                    example: workitem
-                    type: string
-                type: object
-              relationships:
-                properties:
-                  nextPart:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
-                            type: string
-                          type:
-                            enum:
-                            - document_parts
-                            type: string
-                        type: object
-                    type: object
-                  previousPart:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
-                            type: string
-                          type:
-                            enum:
-                            - document_parts
-                            type: string
-                        type: object
-                    type: object
-                  workItem:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyProjectId/MyWorkItemId
-                            type: string
-                          revision:
-                            example: '1234'
-                            type: string
-                          type:
-                            enum:
-                            - workitems
-                            type: string
-                        type: object
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
     document_partsListGetResponse:
       properties:
         data:
@@ -780,7 +709,7 @@ components:
           example: '@all'
           type: string
       type: object
-    document_partsListPostResponse:
+    document_partsListPostRequest:
       properties:
         data:
           items:
@@ -789,14 +718,64 @@ components:
                 enum:
                 - document_parts
                 type: string
-              id:
-                example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
-                type: string
-              links:
+              attributes:
                 properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts/workitem_MyWorkItemId?revision=1234
+                  layout:
+                    example: 0
+                    format: int32
+                    type: integer
+                  level:
+                    example: 0
+                    format: int32
+                    type: integer
+                  type:
+                    example: workitem
                     type: string
+                type: object
+              relationships:
+                properties:
+                  nextPart:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                            type: string
+                          type:
+                            enum:
+                            - document_parts
+                            type: string
+                        type: object
+                    type: object
+                  previousPart:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                            type: string
+                          type:
+                            enum:
+                            - document_parts
+                            type: string
+                        type: object
+                    type: object
+                  workItem:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyWorkItemId
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - workitems
+                            type: string
+                        type: object
+                    type: object
                 type: object
             type: object
           type: array
@@ -947,6 +926,27 @@ components:
               example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts/workitem_MyWorkItemId?revision=1234
               type: string
           type: object
+      type: object
+    document_partsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - document_parts
+                type: string
+              id:
+                example: MyProjectId/MySpaceId/MyDocumentId/workitem_MyWorkItemId
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/spaces/MySpaceId/documents/MyDocumentId/parts/workitem_MyWorkItemId?revision=1234
+                    type: string
+                type: object
+            type: object
+          type: array
       type: object
   securitySchemes:
     bearerAuth:

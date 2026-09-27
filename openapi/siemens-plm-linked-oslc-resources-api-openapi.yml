@@ -217,7 +217,7 @@ paths:
       - Linked Oslc Resources
 components:
   schemas:
-    linkedoslcresourcesListDeleteRequest:
+    linkedoslcresourcesListPostRequest:
       properties:
         data:
           items:
@@ -226,9 +226,18 @@ components:
                 enum:
                 - linkedoslcresources
                 type: string
-              id:
-                example: MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId
-                type: string
+              attributes:
+                properties:
+                  label:
+                    example: Label
+                    type: string
+                  role:
+                    example: http://open-services.net/ns/cm#relatedChangeRequest
+                    type: string
+                  uri:
+                    example: Uri
+                    type: string
+                type: object
             type: object
           type: array
       type: object
@@ -273,7 +282,7 @@ components:
             type: object
           type: array
       type: object
-    linkedoslcresourcesListPostRequest:
+    linkedoslcresourcesListDeleteRequest:
       properties:
         data:
           items:
@@ -282,18 +291,9 @@ components:
                 enum:
                 - linkedoslcresources
                 type: string
-              attributes:
-                properties:
-                  label:
-                    example: Label
-                    type: string
-                  role:
-                    example: http://open-services.net/ns/cm#relatedChangeRequest
-                    type: string
-                  uri:
-                    example: Uri
-                    type: string
-                type: object
+              id:
+                example: MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId
+                type: string
             type: object
           type: array
       type: object

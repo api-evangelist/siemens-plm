@@ -184,83 +184,36 @@ paths:
       - Profitability Calculation
 components:
   schemas:
-    DataType:
-      type: string
-      enum:
-      - double
-      - integer
-      - date
-      - string
-      - object
-      - reference
-      - bool
-      - url
-      example: double
-    ErrorResponse:
-      type: object
-      properties:
-        Errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-          readOnly: true
-    Column:
-      title: Column
-      type: object
-      required:
-      - dataType
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 0
-          description: Name of the data field
-        displayName:
-          type: string
-          maxLength: 255
-          minLength: 0
-          description: Displayname of the column
-        dataType:
-          $ref: '#/components/schemas/DataType'
-    ErrorLegacy:
-      type: object
-      properties:
-        Detail:
-          type: string
-          readOnly: true
-    ProfitabilityCalculationReportError:
-      title: ProfitabilityCalculationReportError
-      type: object
-      description: Partial error of a profitability calculation report request.
-      required:
-      - status
-      - detail
-      properties:
-        status:
-          type: integer
-          format: int32
-          minimum: 0
-          description: Http status code
-          readOnly: true
-        detail:
-          type: string
-          description: Detail description of the error
-        profitabilityCalculationId:
-          type: integer
-          format: int32
-          minimum: 0
-          description: Id of the requested profitability calculation
-          readOnly: true
-        projectId:
-          type: integer
-          format: int32
-          minimum: 0
-          description: Id of the requested project
-          readOnly: true
     Error:
       type: object
       properties:
         detail:
+          type: string
+          readOnly: true
+    DataSet:
+      title: DataSet
+      type: object
+      description: Represents a two-dimensional data set with column descriptions including column data types.
+      required:
+      - data
+      - columns
+      properties:
+        data:
+          type: array
+          description: Array of objects defining a two-dimensional array via the property names of the objects. See the 'columns' field for the display names and data types.
+          maxItems: 100000
+          items:
+            type: object
+        columns:
+          type: array
+          description: Columns of the dataset describing the names and the datatypes
+          maxItems: 100000
+          items:
+            $ref: '#/components/schemas/Column'
+    ErrorLegacy:
+      type: object
+      properties:
+        Detail:
           type: string
           readOnly: true
     AggregatedProfitabilityCalculationReportError:
@@ -292,29 +245,76 @@ components:
           minimum: 0
           description: Id of the requested folder
           readOnly: true
-    DataSet:
-      title: DataSet
+    DataType:
+      type: string
+      enum:
+      - double
+      - integer
+      - date
+      - string
+      - object
+      - reference
+      - bool
+      - url
+      example: double
+    ProfitabilityCalculationReportError:
+      title: ProfitabilityCalculationReportError
       type: object
-      description: Represents a two-dimensional data set with column descriptions including column data types.
+      description: Partial error of a profitability calculation report request.
       required:
-      - data
-      - columns
+      - status
+      - detail
       properties:
-        data:
+        status:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Http status code
+          readOnly: true
+        detail:
+          type: string
+          description: Detail description of the error
+        profitabilityCalculationId:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Id of the requested profitability calculation
+          readOnly: true
+        projectId:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Id of the requested project
+          readOnly: true
+    Column:
+      title: Column
+      type: object
+      required:
+      - dataType
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+          description: Name of the data field
+        displayName:
+          type: string
+          maxLength: 255
+          minLength: 0
+          description: Displayname of the column
+        dataType:
+          $ref: '#/components/schemas/DataType'
+    ErrorResponse:
+      type: object
+      properties:
+        Errors:
           type: array
-          description: Array of objects defining a two-dimensional array via the property names of the objects. See the 'columns' field for the display names and data types.
-          maxItems: 100000
           items:
-            type: object
-        columns:
-          type: array
-          description: Columns of the dataset describing the names and the datatypes
-          maxItems: 100000
-          items:
-            $ref: '#/components/schemas/Column'
+            $ref: '#/components/schemas/Error'
+          readOnly: true
   responses:
-    ErrorInternalServerErrorLegacy:
-      description: An unexpected error occurred and the server is not fulfilling the request.
+    ErrorBadRequestLegacy:
+      description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
       content:
         application/json:
           schema:
@@ -322,12 +322,12 @@ components:
           examples:
             Example:
               value:
-                Detail: Internal error
+                Detail: Invalid JSON format
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorLegacy'
-    ErrorInternalServerError:
-      description: An unexpected error occurred and the server is not fulfilling the request.
+    ErrorRequestTimeout:
+      description: The request timed out because a server did not respond within the expected waiting time
       content:
         application/json:
           schema:
@@ -336,7 +336,7 @@ components:
             Example:
               value:
                 errors:
-                - detail: Internal error
+                - detail: Request timed out
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
@@ -350,60 +350,6 @@ components:
             Example:
               value:
                 Detail: Request timed out
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-    ErrorNotAcceptable:
-      description: The service is not able to respond using the request media-type or representation asked by the client in the Accept header.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Media type not accepted
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ErrorNotAcceptableLegacy:
-      description: The service is not able to respond using the request media-type or representation asked by the client in the Accept header.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-          examples:
-            Example:
-              value:
-                Detail: Media type not accepted
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-    ErrorBadRequest:
-      description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Invalid JSON format
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ErrorBadRequestLegacy:
-      description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-          examples:
-            Example:
-              value:
-                Detail: Invalid JSON format
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorLegacy'
@@ -421,8 +367,8 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ErrorRequestTimeout:
-      description: The request timed out because a server did not respond within the expected waiting time
+    ErrorNotAcceptable:
+      description: The service is not able to respond using the request media-type or representation asked by the client in the Accept header.
       content:
         application/json:
           schema:
@@ -431,7 +377,47 @@ components:
             Example:
               value:
                 errors:
-                - detail: Request timed out
+                - detail: Media type not accepted
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorInternalServerErrorLegacy:
+      description: An unexpected error occurred and the server is not fulfilling the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Internal error
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorNotAcceptableLegacy:
+      description: The service is not able to respond using the request media-type or representation asked by the client in the Accept header.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Media type not accepted
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorInternalServerError:
+      description: An unexpected error occurred and the server is not fulfilling the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Internal error
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
@@ -448,7 +434,37 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorLegacy'
+    ErrorBadRequest:
+      description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Invalid JSON format
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
+    ProfitabilityCalculationIds:
+      name: ProfitabilityCalculationIds
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+      description: Ids of the profitability calculations to be exported.
+      example:
+      - 3
+      - 17
+      - 732
     ProjectIds:
       name: ProjectIds
       in: query
@@ -473,22 +489,6 @@ components:
         format: uuid
         example: cbbb4ada-3550-4939-a138-4da02757d460
       description: GUID of the export configuration.
-    ProfitabilityCalculationIds:
-      name: ProfitabilityCalculationIds
-      in: query
-      required: false
-      schema:
-        type: array
-        items:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 2147483647
-      description: Ids of the profitability calculations to be exported.
-      example:
-      - 3
-      - 17
-      - 732
   securitySchemes:
     bearerHttpAuthentication:
       type: http

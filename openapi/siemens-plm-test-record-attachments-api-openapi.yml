@@ -562,102 +562,6 @@ paths:
       - Test Record Attachments
 components:
   schemas:
-    PostTestRecordAttachmentsRequestBody:
-      properties:
-        files:
-          items:
-            description: attachments content
-            format: binary
-            type: string
-          type: array
-        resource:
-          $ref: '#/components/schemas/testrecord_attachmentsListPostRequest'
-      title: PostTestRecordAttachmentsRequestBody
-      type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    testrecord_attachmentsListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - testrecord_attachments
-                type: string
-              id:
-                example: MyProjectId/MyTestRunId/MyProjectId/MyTestcaseId/0/MyAttachmentId
-                type: string
-              links:
-                properties:
-                  content:
-                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId/0/attachments/MyAttachmentId/content
-                    type: string
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId/0/attachments/MyAttachmentId
-                    type: string
-                type: object
-            type: object
-          type: array
-      type: object
-    testrecord_attachmentsSinglePatchRequest:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - testrecord_attachments
-              type: string
-            id:
-              example: MyProjectId/MyTestRunId/MyProjectId/MyTestcaseId/0/MyAttachmentId
-              type: string
-            attributes:
-              properties:
-                title:
-                  example: Title
-                  type: string
-              type: object
-          type: object
-      type: object
     testrecord_attachmentsListPostRequest:
       properties:
         data:
@@ -677,21 +581,6 @@ components:
                     type: string
                 type: object
               lid:
-                type: string
-            type: object
-          type: array
-      type: object
-    testrecord_attachmentsListDeleteRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - testrecord_attachments
-                type: string
-              id:
-                example: MyProjectId/MyTestRunId/MyProjectId/MyTestcaseId/0/MyAttachmentId
                 type: string
             type: object
           type: array
@@ -826,6 +715,90 @@ components:
               example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId/0/attachments/MyAttachmentId
               type: string
           type: object
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    testrecord_attachmentsSinglePatchRequest:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - testrecord_attachments
+              type: string
+            id:
+              example: MyProjectId/MyTestRunId/MyProjectId/MyTestcaseId/0/MyAttachmentId
+              type: string
+            attributes:
+              properties:
+                title:
+                  example: Title
+                  type: string
+              type: object
+          type: object
+      type: object
+    PatchTestRecordAttachmentsRequestBody:
+      properties:
+        content:
+          description: attachments content
+          format: binary
+          type: string
+        resource:
+          $ref: '#/components/schemas/testrecord_attachmentsSinglePatchRequest'
+      required:
+      - resource
+      title: PatchTestRecordAttachmentsRequestBody
+      type: object
+    PostTestRecordAttachmentsRequestBody:
+      properties:
+        files:
+          items:
+            description: attachments content
+            format: binary
+            type: string
+          type: array
+        resource:
+          $ref: '#/components/schemas/testrecord_attachmentsListPostRequest'
+      title: PostTestRecordAttachmentsRequestBody
       type: object
     testrecord_attachmentsListGetResponse:
       properties:
@@ -977,6 +950,30 @@ components:
               format: int32
               type: integer
           type: object
+      type: object
+    testrecord_attachmentsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testrecord_attachments
+                type: string
+              id:
+                example: MyProjectId/MyTestRunId/MyProjectId/MyTestcaseId/0/MyAttachmentId
+                type: string
+              links:
+                properties:
+                  content:
+                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId/0/attachments/MyAttachmentId/content
+                    type: string
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testrecords/MyProjectId/MyTestcaseId/0/attachments/MyAttachmentId
+                    type: string
+                type: object
+            type: object
+          type: array
       type: object
     sparseFields:
       properties:
@@ -1161,17 +1158,20 @@ components:
           example: '@all'
           type: string
       type: object
-    PatchTestRecordAttachmentsRequestBody:
+    testrecord_attachmentsListDeleteRequest:
       properties:
-        content:
-          description: attachments content
-          format: binary
-          type: string
-        resource:
-          $ref: '#/components/schemas/testrecord_attachmentsSinglePatchRequest'
-      required:
-      - resource
-      title: PatchTestRecordAttachmentsRequestBody
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testrecord_attachments
+                type: string
+              id:
+                example: MyProjectId/MyTestRunId/MyProjectId/MyTestcaseId/0/MyAttachmentId
+                type: string
+            type: object
+          type: array
       type: object
   securitySchemes:
     bearerAuth:

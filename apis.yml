@@ -78,6 +78,12 @@ apis:
   baseURL: https://developer.siemens.com
   tags:
   - Industrial IoT
+  - Time Series
+  - Asset Management
+  - Manufacturing
+  - Insights Hub
+  tags_raw:
+  - Industrial IoT
   - IIoT
   - Time Series
   - Asset Management

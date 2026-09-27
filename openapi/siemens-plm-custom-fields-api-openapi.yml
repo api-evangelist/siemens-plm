@@ -440,6 +440,59 @@ paths:
       - Custom Fields
 components:
   schemas:
+    customfieldsSinglePatchRequest:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - customfields
+              type: string
+            id:
+              example: MyProjectId/workitems/epic
+              type: string
+            attributes:
+              properties:
+                fields:
+                  items:
+                    properties:
+                      defaultValue:
+                        type: string
+                      dependsOn:
+                        type: string
+                      description:
+                        type: string
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      parameters:
+                        items:
+                          properties:
+                            key:
+                              example: parameter1
+                              type: string
+                            name:
+                              example: parameter1
+                              type: string
+                            title:
+                              example: MyParameter
+                              type: string
+                          type: object
+                        type: array
+                      required:
+                        type: boolean
+                      type:
+                        properties:
+                          kind:
+                            example: string
+                            type: string
+                        type: object
+                    type: object
+                  type: array
+              type: object
+          type: object
+      type: object
     errors:
       properties:
         errors:
@@ -481,7 +534,7 @@ components:
             type: object
           type: array
       type: object
-    customfieldsListPostResponse:
+    customfieldsListPostRequest:
       properties:
         data:
           items:
@@ -490,13 +543,50 @@ components:
                 enum:
                 - customfields
                 type: string
-              id:
-                example: MyProjectId/workitems/epic
-                type: string
-              links:
+              attributes:
                 properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/customfields/workitems/epic
+                  fields:
+                    items:
+                      properties:
+                        defaultValue:
+                          type: string
+                        dependsOn:
+                          type: string
+                        description:
+                          type: string
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        parameters:
+                          items:
+                            properties:
+                              key:
+                                example: parameter1
+                                type: string
+                              name:
+                                example: parameter1
+                                type: string
+                              title:
+                                example: MyParameter
+                                type: string
+                            type: object
+                          type: array
+                        required:
+                          type: boolean
+                        type:
+                          properties:
+                            kind:
+                              example: string
+                              type: string
+                          type: object
+                      type: object
+                    type: array
+                  resourceType:
+                    example: id
+                    type: string
+                  targetType:
+                    example: id
                     type: string
                 type: object
             type: object
@@ -618,64 +708,6 @@ components:
               example: server-host-name/application-path/projects/MyProjectId/customfields/workitems/epic
               type: string
           type: object
-      type: object
-    customfieldsListPostRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - customfields
-                type: string
-              attributes:
-                properties:
-                  fields:
-                    items:
-                      properties:
-                        defaultValue:
-                          type: string
-                        dependsOn:
-                          type: string
-                        description:
-                          type: string
-                        id:
-                          type: string
-                        name:
-                          type: string
-                        parameters:
-                          items:
-                            properties:
-                              key:
-                                example: parameter1
-                                type: string
-                              name:
-                                example: parameter1
-                                type: string
-                              title:
-                                example: MyParameter
-                                type: string
-                            type: object
-                          type: array
-                        required:
-                          type: boolean
-                        type:
-                          properties:
-                            kind:
-                              example: string
-                              type: string
-                          type: object
-                      type: object
-                    type: array
-                  resourceType:
-                    example: id
-                    type: string
-                  targetType:
-                    example: id
-                    type: string
-                type: object
-            type: object
-          type: array
       type: object
     sparseFields:
       properties:
@@ -860,58 +892,26 @@ components:
           example: '@all'
           type: string
       type: object
-    customfieldsSinglePatchRequest:
+    customfieldsListPostResponse:
       properties:
         data:
-          properties:
-            type:
-              enum:
-              - customfields
-              type: string
-            id:
-              example: MyProjectId/workitems/epic
-              type: string
-            attributes:
-              properties:
-                fields:
-                  items:
-                    properties:
-                      defaultValue:
-                        type: string
-                      dependsOn:
-                        type: string
-                      description:
-                        type: string
-                      id:
-                        type: string
-                      name:
-                        type: string
-                      parameters:
-                        items:
-                          properties:
-                            key:
-                              example: parameter1
-                              type: string
-                            name:
-                              example: parameter1
-                              type: string
-                            title:
-                              example: MyParameter
-                              type: string
-                          type: object
-                        type: array
-                      required:
-                        type: boolean
-                      type:
-                        properties:
-                          kind:
-                            example: string
-                            type: string
-                        type: object
-                    type: object
-                  type: array
-              type: object
-          type: object
+          items:
+            properties:
+              type:
+                enum:
+                - customfields
+                type: string
+              id:
+                example: MyProjectId/workitems/epic
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/customfields/workitems/epic
+                    type: string
+                type: object
+            type: object
+          type: array
       type: object
   securitySchemes:
     bearerAuth:
