@@ -584,7 +584,7 @@ paths:
       - Enumerations
 components:
   schemas:
-    enumerationsSingleGetResponse:
+    enumerationsSinglePatchRequest:
       properties:
         data:
           properties:
@@ -597,12 +597,6 @@ components:
               type: string
             attributes:
               properties:
-                enumContext:
-                  example: id
-                  type: string
-                enumName:
-                  example: id
-                  type: string
                 options:
                   items:
                     properties:
@@ -656,69 +650,29 @@ components:
                         type: boolean
                     type: object
                   type: array
-                targetType:
-                  example: id
-                  type: string
-              type: object
-            links:
-              properties:
-                self:
-                  example: server-host-name/application-path/enumerations/%7E/status/%7E
-                  type: string
-              type: object
-            meta:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      detail:
-                        description: Human-readable explanation specific to this occurrence of the problem.
-                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                        type: string
-                      source:
-                        properties:
-                          parameter:
-                            description: String indicating which URI query parameter caused the error.
-                            example: revision
-                            type: string
-                          pointer:
-                            description: JSON Pointer to the associated entity in the request document.
-                            example: $.data
-                            type: string
-                          resource:
-                            description: Resource causing the error.
-                            properties:
-                              id:
-                                example: MyProjectId/id
-                                type: string
-                              type:
-                                example: type
-                                type: string
-                            type: object
-                        type: object
-                      status:
-                        description: HTTP status code applicable to this problem.
-                        example: '400'
-                        type: string
-                      title:
-                        description: Short, human-readable summary of the problem.
-                        example: Bad Request
-                        type: string
-                    type: object
-                  type: array
               type: object
           type: object
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+      type: object
+    enumerationsListPostResponse:
+      properties:
+        data:
           items:
+            properties:
+              type:
+                enum:
+                - enumerations
+                type: string
+              id:
+                example: ~/status/~
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/enumerations/%7E/status/%7E
+                    type: string
+                type: object
             type: object
           type: array
-        links:
-          properties:
-            self:
-              example: server-host-name/application-path/enumerations/%7E/status/%7E
-              type: string
-          type: object
       type: object
     enumerationsListGetResponse:
       properties:
@@ -876,116 +830,6 @@ components:
               type: integer
           type: object
       type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    enumerationsSinglePatchRequest:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - enumerations
-              type: string
-            id:
-              example: ~/status/~
-              type: string
-            attributes:
-              properties:
-                options:
-                  items:
-                    properties:
-                      color:
-                        example: '#F9FF4D'
-                        type: string
-                      columnWidth:
-                        example: 90%
-                        type: string
-                      createDefect:
-                        example: true
-                        type: boolean
-                      default:
-                        example: true
-                        type: boolean
-                      description:
-                        example: Description
-                        type: string
-                      hidden:
-                        example: false
-                        type: boolean
-                      iconURL:
-                        example: /polarion/icons/default/enums/status_open.gif
-                        type: string
-                      id:
-                        example: open
-                        type: string
-                      limited:
-                        example: true
-                        type: boolean
-                      minValue:
-                        example: 30.0
-                        type: number
-                      name:
-                        example: Open
-                        type: string
-                      oppositeName:
-                        example: Opposite Name
-                        type: string
-                      parent:
-                        example: true
-                        type: boolean
-                      requiresSignatureForTestCaseExecution:
-                        example: true
-                        type: boolean
-                      templateWorkItem:
-                        example: exampleTemplate
-                        type: string
-                      terminal:
-                        example: true
-                        type: boolean
-                    type: object
-                  type: array
-              type: object
-          type: object
-      type: object
     enumerationsListPostRequest:
       properties:
         data:
@@ -1063,23 +907,43 @@ components:
             type: object
           type: array
       type: object
-    enumerationsListPostResponse:
+    errors:
       properties:
-        data:
+        errors:
           items:
             properties:
-              type:
-                enum:
-                - enumerations
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
                 type: string
-              id:
-                example: ~/status/~
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
                 type: string
-              links:
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
                 properties:
-                  self:
-                    example: server-host-name/application-path/enumerations/%7E/status/%7E
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
                     type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
                 type: object
             type: object
           type: array
@@ -1266,6 +1130,142 @@ components:
           description: Requested fields
           example: '@all'
           type: string
+      type: object
+    enumerationsSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - enumerations
+              type: string
+            id:
+              example: ~/status/~
+              type: string
+            attributes:
+              properties:
+                enumContext:
+                  example: id
+                  type: string
+                enumName:
+                  example: id
+                  type: string
+                options:
+                  items:
+                    properties:
+                      color:
+                        example: '#F9FF4D'
+                        type: string
+                      columnWidth:
+                        example: 90%
+                        type: string
+                      createDefect:
+                        example: true
+                        type: boolean
+                      default:
+                        example: true
+                        type: boolean
+                      description:
+                        example: Description
+                        type: string
+                      hidden:
+                        example: false
+                        type: boolean
+                      iconURL:
+                        example: /polarion/icons/default/enums/status_open.gif
+                        type: string
+                      id:
+                        example: open
+                        type: string
+                      limited:
+                        example: true
+                        type: boolean
+                      minValue:
+                        example: 30.0
+                        type: number
+                      name:
+                        example: Open
+                        type: string
+                      oppositeName:
+                        example: Opposite Name
+                        type: string
+                      parent:
+                        example: true
+                        type: boolean
+                      requiresSignatureForTestCaseExecution:
+                        example: true
+                        type: boolean
+                      templateWorkItem:
+                        example: exampleTemplate
+                        type: string
+                      terminal:
+                        example: true
+                        type: boolean
+                    type: object
+                  type: array
+                targetType:
+                  example: id
+                  type: string
+              type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/enumerations/%7E/status/%7E
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/enumerations/%7E/status/%7E
+              type: string
+          type: object
       type: object
   securitySchemes:
     bearerAuth:

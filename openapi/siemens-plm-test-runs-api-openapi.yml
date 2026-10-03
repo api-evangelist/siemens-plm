@@ -1189,7 +1189,7 @@ paths:
       - Test Runs
 components:
   schemas:
-    testrunsListPostRequest:
+    testrunsListPostResponse:
       properties:
         data:
           items:
@@ -1197,6 +1197,33 @@ components:
               type:
                 enum:
                 - testruns
+                type: string
+              id:
+                example: MyProjectId/MyTestRunId
+                type: string
+              links:
+                properties:
+                  portal:
+                    example: server-host-name/application-path/polarion/redirect/project/MyProjectId/testrun?id=MyTestRunId&revision=1234
+                    type: string
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId?revision=1234
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    testrunsListPatchRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testruns
+                type: string
+              id:
+                example: MyProjectId/MyTestRunId
                 type: string
               attributes:
                 properties:
@@ -1218,14 +1245,9 @@ components:
                         example: My text value
                         type: string
                     type: object
-                  id:
-                    example: ID
-                    type: string
                   idPrefix:
                     example: MyTestRunIdPrefix
                     type: string
-                  isTemplate:
-                    type: boolean
                   keepInHistory:
                     type: boolean
                   query:
@@ -1299,24 +1321,182 @@ components:
                             type: string
                         type: object
                     type: object
-                  template:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyProjectId/MyTestRunId
-                            type: string
-                          type:
-                            enum:
-                            - testruns
-                            type: string
-                        type: object
-                    type: object
                 type: object
             type: object
           type: array
       type: object
-    testparametersListGetResponse:
+    testparametersListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testparameters
+                type: string
+              attributes:
+                properties:
+                  name:
+                    example: Example Test Parameter value
+                    type: string
+                  value:
+                    example: Example Test Parameter value
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    PostImportActionRequestBody:
+      properties:
+        file:
+          description: excel file content
+          format: binary
+          type: string
+        resource:
+          $ref: '#/components/schemas/importTestResultsRequestBody'
+      required:
+      - file
+      title: PostImportActionRequestBody
+      type: object
+    testrunsListDeleteRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testruns
+                type: string
+              id:
+                example: MyProjectId/MyTestRunId
+                type: string
+            type: object
+          type: array
+      type: object
+    testparameter_definitionsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testparameter_definitions
+                type: string
+              id:
+                example: MyProjectId/MyTestParamDefinition
+                type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions/MyTestParamDefinition
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    testparametersSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - testparameters
+              type: string
+            id:
+              example: MyProjectId/MyTestRunId/MyTestParameter
+              type: string
+            revision:
+              example: '1234'
+              type: string
+            attributes:
+              properties:
+                name:
+                  example: Example Test Parameter value
+                  type: string
+                value:
+                  example: Example Test Parameter value
+                  type: string
+              type: object
+            relationships:
+              properties:
+                definition:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId/MyTestParamDefinition
+                          type: string
+                        revision:
+                          example: '1234'
+                          type: string
+                        type:
+                          enum:
+                          - testparameter_definitions
+                          type: string
+                      type: object
+                  type: object
+              type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters/MyTestParameter
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters/MyTestParameter
+              type: string
+          type: object
+      type: object
+    testparametersListDeleteRequest:
       properties:
         data:
           items:
@@ -1328,115 +1508,8 @@ components:
               id:
                 example: MyProjectId/MyTestRunId/MyTestParameter
                 type: string
-              revision:
-                example: '1234'
-                type: string
-              attributes:
-                properties:
-                  name:
-                    example: Example Test Parameter value
-                    type: string
-                  value:
-                    example: Example Test Parameter value
-                    type: string
-                type: object
-              relationships:
-                properties:
-                  definition:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyProjectId/MyTestParamDefinition
-                            type: string
-                          revision:
-                            example: '1234'
-                            type: string
-                          type:
-                            enum:
-                            - testparameter_definitions
-                            type: string
-                        type: object
-                    type: object
-                type: object
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters/MyTestParameter
-                    type: string
-                type: object
-              meta:
-                properties:
-                  errors:
-                    items:
-                      properties:
-                        detail:
-                          description: Human-readable explanation specific to this occurrence of the problem.
-                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                          type: string
-                        source:
-                          properties:
-                            parameter:
-                              description: String indicating which URI query parameter caused the error.
-                              example: revision
-                              type: string
-                            pointer:
-                              description: JSON Pointer to the associated entity in the request document.
-                              example: $.data
-                              type: string
-                            resource:
-                              description: Resource causing the error.
-                              properties:
-                                id:
-                                  example: MyProjectId/id
-                                  type: string
-                                type:
-                                  example: type
-                                  type: string
-                              type: object
-                          type: object
-                        status:
-                          description: HTTP status code applicable to this problem.
-                          example: '400'
-                          type: string
-                        title:
-                          description: Short, human-readable summary of the problem.
-                          example: Bad Request
-                          type: string
-                      type: object
-                    type: array
-                type: object
             type: object
           type: array
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            first:
-              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=1
-              type: string
-            last:
-              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=9
-              type: string
-            next:
-              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=6
-              type: string
-            prev:
-              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=4
-              type: string
-            self:
-              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=5
-              type: string
-          type: object
-        meta:
-          properties:
-            totalCount:
-              format: int32
-              type: integer
-          type: object
       type: object
     testrunsSingleGetResponse:
       properties:
@@ -1685,113 +1758,246 @@ components:
               type: string
           type: object
       type: object
-    jobsSinglePostResponse:
+    testrunsListPostRequest:
       properties:
         data:
-          properties:
-            type:
-              enum:
-              - jobs
-              type: string
-            id:
-              example: MyJobId
-              type: string
-            attributes:
-              properties:
-                jobId:
-                  example: example
-                  type: string
-                name:
-                  example: example
-                  type: string
-                state:
-                  example: example
-                  type: string
-                status:
-                  properties:
-                    message:
-                      example: message
-                      type: string
-                    type:
-                      enum:
-                      - OK
-                      - CANCELLED
-                      - FAILED
-                      - UNKNOWN
-                      type: string
-                  type: object
-              type: object
-            relationships:
-              properties:
-                document:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId/MySpaceId/MyDocumentId
-                          type: string
-                        type:
-                          enum:
-                          - documents
-                          type: string
-                      type: object
-                  type: object
-                documents:
-                  properties:
-                    data:
-                      items:
+          items:
+            properties:
+              type:
+                enum:
+                - testruns
+                type: string
+              attributes:
+                properties:
+                  finishedOn:
+                    example: '1970-01-01T00:00:00Z'
+                    format: date-time
+                    type: string
+                  groupId:
+                    example: Group ID
+                    type: string
+                  homePageContent:
+                    properties:
+                      type:
+                        enum:
+                        - text/html
+                        - text/plain
+                        type: string
+                      value:
+                        example: My text value
+                        type: string
+                    type: object
+                  id:
+                    example: ID
+                    type: string
+                  idPrefix:
+                    example: MyTestRunIdPrefix
+                    type: string
+                  isTemplate:
+                    type: boolean
+                  keepInHistory:
+                    type: boolean
+                  query:
+                    example: Query
+                    type: string
+                  selectTestCasesBy:
+                    enum:
+                    - manualSelection
+                    - staticQueryResult
+                    - dynamicQueryResult
+                    - staticLiveDoc
+                    - dynamicLiveDoc
+                    - automatedProcess
+                    example: manualSelection
+                    type: string
+                  status:
+                    example: open
+                    type: string
+                  title:
+                    example: Title
+                    type: string
+                  type:
+                    example: manual
+                    type: string
+                  useReportFromTemplate:
+                    type: boolean
+                type: object
+              relationships:
+                properties:
+                  document:
+                    properties:
+                      data:
                         properties:
                           id:
                             example: MyProjectId/MySpaceId/MyDocumentId
+                            type: string
+                          revision:
+                            example: '1234'
                             type: string
                           type:
                             enum:
                             - documents
                             type: string
                         type: object
-                      type: array
-                  type: object
-                project:
-                  properties:
-                    data:
-                      properties:
-                        id:
-                          example: MyProjectId
-                          type: string
-                        type:
-                          enum:
-                          - projects
-                          type: string
-                      type: object
-                  type: object
-              type: object
-            links:
-              properties:
-                downloads:
-                  example:
-                  - https://example.com/polarion/download/filename1
-                  - https://example.com/polarion/download/filename2
-                  type: array
-                log:
-                  example: server-host-name/application-path/polarion/job-report?jobId=MyJobId
-                  type: string
-                self:
-                  example: server-host-name/application-path/jobs/MyJobId
-                  type: string
-              type: object
-          type: object
+                    type: object
+                  projectSpan:
+                    properties:
+                      data:
+                        items:
+                          properties:
+                            id:
+                              example: MyProjectId
+                              type: string
+                            type:
+                              enum:
+                              - projects
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  summaryDefect:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyWorkItemId
+                            type: string
+                          type:
+                            enum:
+                            - workitems
+                            type: string
+                        type: object
+                    type: object
+                  template:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyTestRunId
+                            type: string
+                          type:
+                            enum:
+                            - testruns
+                            type: string
+                        type: object
+                    type: object
+                type: object
+            type: object
+          type: array
       type: object
-    PostImportActionRequestBody:
+    importTestResultsRequestBody:
       properties:
-        file:
-          description: excel file content
-          format: binary
+        defectTemplateId:
+          example: MyProjectId/MyDefectId
           type: string
-        resource:
-          $ref: '#/components/schemas/importTestResultsRequestBody'
-      required:
-      - file
-      title: PostImportActionRequestBody
+        retest:
+          example: false
+          type: boolean
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    workflowActionsActionResponseBody:
+      properties:
+        data:
+          items:
+            properties:
+              id:
+                example: '0'
+                type: string
+              available:
+                type: boolean
+              clearedFields:
+                items:
+                  type: string
+                type: array
+              isAddingSignature:
+                type: boolean
+              isSignatureRequired:
+                type: boolean
+              name:
+                example: actionName
+                type: string
+              nativeActionId:
+                example: nativeActionId
+                type: string
+              requiredFields:
+                items:
+                  type: string
+                type: array
+              requiredRoles:
+                items:
+                  type: string
+                type: array
+              targetStatus:
+                example: done
+                type: string
+              unavailableReason:
+                type: string
+            type: object
+          type: array
+        links:
+          properties:
+            first:
+              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/actions/getWorkflowActions?page%5Bnumber%5D=1
+              type: string
+            last:
+              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/actions/getWorkflowActions?page%5Bnumber%5D=9
+              type: string
+            next:
+              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/actions/getWorkflowActions?page%5Bnumber%5D=6
+              type: string
+            prev:
+              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/actions/getWorkflowActions?page%5Bnumber%5D=4
+              type: string
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/actions/getWorkflowActions?page%5Bsize%5D=10&page%5Bnumber%5D=5
+              type: string
+          type: object
+        meta:
+          properties:
+            totalCount:
+              format: int32
+              type: integer
+          type: object
       type: object
     testrunsSinglePatchRequest:
       properties:
@@ -1903,61 +2109,119 @@ components:
               type: object
           type: object
       type: object
-    workflowActionsActionResponseBody:
+    testparametersListGetResponse:
       properties:
         data:
           items:
             properties:
+              type:
+                enum:
+                - testparameters
+                type: string
               id:
-                example: '0'
+                example: MyProjectId/MyTestRunId/MyTestParameter
                 type: string
-              available:
-                type: boolean
-              clearedFields:
-                items:
-                  type: string
-                type: array
-              isAddingSignature:
-                type: boolean
-              isSignatureRequired:
-                type: boolean
-              name:
-                example: actionName
+              revision:
+                example: '1234'
                 type: string
-              nativeActionId:
-                example: nativeActionId
-                type: string
-              requiredFields:
-                items:
-                  type: string
-                type: array
-              requiredRoles:
-                items:
-                  type: string
-                type: array
-              targetStatus:
-                example: done
-                type: string
-              unavailableReason:
-                type: string
+              attributes:
+                properties:
+                  name:
+                    example: Example Test Parameter value
+                    type: string
+                  value:
+                    example: Example Test Parameter value
+                    type: string
+                type: object
+              relationships:
+                properties:
+                  definition:
+                    properties:
+                      data:
+                        properties:
+                          id:
+                            example: MyProjectId/MyTestParamDefinition
+                            type: string
+                          revision:
+                            example: '1234'
+                            type: string
+                          type:
+                            enum:
+                            - testparameter_definitions
+                            type: string
+                        type: object
+                    type: object
+                type: object
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters/MyTestParameter
+                    type: string
+                type: object
+              meta:
+                properties:
+                  errors:
+                    items:
+                      properties:
+                        detail:
+                          description: Human-readable explanation specific to this occurrence of the problem.
+                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                          type: string
+                        source:
+                          properties:
+                            parameter:
+                              description: String indicating which URI query parameter caused the error.
+                              example: revision
+                              type: string
+                            pointer:
+                              description: JSON Pointer to the associated entity in the request document.
+                              example: $.data
+                              type: string
+                            resource:
+                              description: Resource causing the error.
+                              properties:
+                                id:
+                                  example: MyProjectId/id
+                                  type: string
+                                type:
+                                  example: type
+                                  type: string
+                              type: object
+                          type: object
+                        status:
+                          description: HTTP status code applicable to this problem.
+                          example: '400'
+                          type: string
+                        title:
+                          description: Short, human-readable summary of the problem.
+                          example: Bad Request
+                          type: string
+                      type: object
+                    type: array
+                type: object
+            type: object
+          type: array
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
             type: object
           type: array
         links:
           properties:
             first:
-              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/actions/getWorkflowActions?page%5Bnumber%5D=1
+              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=1
               type: string
             last:
-              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/actions/getWorkflowActions?page%5Bnumber%5D=9
+              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=9
               type: string
             next:
-              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/actions/getWorkflowActions?page%5Bnumber%5D=6
+              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=6
               type: string
             prev:
-              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/actions/getWorkflowActions?page%5Bnumber%5D=4
+              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=4
               type: string
             self:
-              example: server-host-name/application-path/projects/MyProjectId/workitems/MyWorkItemId/actions/getWorkflowActions?page%5Bsize%5D=10&page%5Bnumber%5D=5
+              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters?page%5Bsize%5D=10&page%5Bnumber%5D=5
               type: string
           type: object
         meta:
@@ -1967,96 +2231,76 @@ components:
               type: integer
           type: object
       type: object
-    testparametersSingleGetResponse:
+    testparameter_definitionsListGetResponse:
       properties:
         data:
-          properties:
-            type:
-              enum:
-              - testparameters
-              type: string
-            id:
-              example: MyProjectId/MyTestRunId/MyTestParameter
-              type: string
-            revision:
-              example: '1234'
-              type: string
-            attributes:
-              properties:
-                name:
-                  example: Example Test Parameter value
-                  type: string
-                value:
-                  example: Example Test Parameter value
-                  type: string
-              type: object
-            relationships:
-              properties:
-                definition:
-                  properties:
-                    data:
+          items:
+            properties:
+              type:
+                enum:
+                - testparameter_definitions
+                type: string
+              id:
+                example: MyProjectId/MyTestParamDefinition
+                type: string
+              revision:
+                example: '1234'
+                type: string
+              attributes:
+                properties:
+                  name:
+                    example: Test Parameter Definition example
+                    type: string
+                type: object
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions/MyTestParamDefinition
+                    type: string
+                type: object
+              meta:
+                properties:
+                  errors:
+                    items:
                       properties:
-                        id:
-                          example: MyProjectId/MyTestParamDefinition
+                        detail:
+                          description: Human-readable explanation specific to this occurrence of the problem.
+                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
                           type: string
-                        revision:
-                          example: '1234'
+                        source:
+                          properties:
+                            parameter:
+                              description: String indicating which URI query parameter caused the error.
+                              example: revision
+                              type: string
+                            pointer:
+                              description: JSON Pointer to the associated entity in the request document.
+                              example: $.data
+                              type: string
+                            resource:
+                              description: Resource causing the error.
+                              properties:
+                                id:
+                                  example: MyProjectId/id
+                                  type: string
+                                type:
+                                  example: type
+                                  type: string
+                              type: object
+                          type: object
+                        status:
+                          description: HTTP status code applicable to this problem.
+                          example: '400'
                           type: string
-                        type:
-                          enum:
-                          - testparameter_definitions
+                        title:
+                          description: Short, human-readable summary of the problem.
+                          example: Bad Request
                           type: string
                       type: object
-                  type: object
-              type: object
-            links:
-              properties:
-                self:
-                  example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters/MyTestParameter
-                  type: string
-              type: object
-            meta:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      detail:
-                        description: Human-readable explanation specific to this occurrence of the problem.
-                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                        type: string
-                      source:
-                        properties:
-                          parameter:
-                            description: String indicating which URI query parameter caused the error.
-                            example: revision
-                            type: string
-                          pointer:
-                            description: JSON Pointer to the associated entity in the request document.
-                            example: $.data
-                            type: string
-                          resource:
-                            description: Resource causing the error.
-                            properties:
-                              id:
-                                example: MyProjectId/id
-                                type: string
-                              type:
-                                example: type
-                                type: string
-                            type: object
-                        type: object
-                      status:
-                        description: HTTP status code applicable to this problem.
-                        example: '400'
-                        type: string
-                      title:
-                        description: Short, human-readable summary of the problem.
-                        example: Bad Request
-                        type: string
-                    type: object
-                  type: array
-              type: object
-          type: object
+                    type: array
+                type: object
+            type: object
+          type: array
         included:
           description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
           items:
@@ -2064,9 +2308,27 @@ components:
           type: array
         links:
           properties:
-            self:
-              example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters/MyTestParameter
+            first:
+              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=1
               type: string
+            last:
+              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=9
+              type: string
+            next:
+              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=6
+              type: string
+            prev:
+              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=4
+              type: string
+            self:
+              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=5
+              type: string
+          type: object
+        meta:
+          properties:
+            totalCount:
+              format: int32
+              type: integer
           type: object
       type: object
     testparameter_definitionsListPostRequest:
@@ -2166,423 +2428,6 @@ components:
               example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions/MyTestParamDefinition
               type: string
           type: object
-      type: object
-    testrunsListDeleteRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - testruns
-                type: string
-              id:
-                example: MyProjectId/MyTestRunId
-                type: string
-            type: object
-          type: array
-      type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    testparameter_definitionsListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - testparameter_definitions
-                type: string
-              id:
-                example: MyProjectId/MyTestParamDefinition
-                type: string
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions/MyTestParamDefinition
-                    type: string
-                type: object
-            type: object
-          type: array
-      type: object
-    testrunsListPatchRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - testruns
-                type: string
-              id:
-                example: MyProjectId/MyTestRunId
-                type: string
-              attributes:
-                properties:
-                  finishedOn:
-                    example: '1970-01-01T00:00:00Z'
-                    format: date-time
-                    type: string
-                  groupId:
-                    example: Group ID
-                    type: string
-                  homePageContent:
-                    properties:
-                      type:
-                        enum:
-                        - text/html
-                        - text/plain
-                        type: string
-                      value:
-                        example: My text value
-                        type: string
-                    type: object
-                  idPrefix:
-                    example: MyTestRunIdPrefix
-                    type: string
-                  keepInHistory:
-                    type: boolean
-                  query:
-                    example: Query
-                    type: string
-                  selectTestCasesBy:
-                    enum:
-                    - manualSelection
-                    - staticQueryResult
-                    - dynamicQueryResult
-                    - staticLiveDoc
-                    - dynamicLiveDoc
-                    - automatedProcess
-                    example: manualSelection
-                    type: string
-                  status:
-                    example: open
-                    type: string
-                  title:
-                    example: Title
-                    type: string
-                  type:
-                    example: manual
-                    type: string
-                  useReportFromTemplate:
-                    type: boolean
-                type: object
-              relationships:
-                properties:
-                  document:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyProjectId/MySpaceId/MyDocumentId
-                            type: string
-                          revision:
-                            example: '1234'
-                            type: string
-                          type:
-                            enum:
-                            - documents
-                            type: string
-                        type: object
-                    type: object
-                  projectSpan:
-                    properties:
-                      data:
-                        items:
-                          properties:
-                            id:
-                              example: MyProjectId
-                              type: string
-                            type:
-                              enum:
-                              - projects
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  summaryDefect:
-                    properties:
-                      data:
-                        properties:
-                          id:
-                            example: MyProjectId/MyWorkItemId
-                            type: string
-                          type:
-                            enum:
-                            - workitems
-                            type: string
-                        type: object
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    sparseFields:
-      properties:
-        categories:
-          description: Requested fields
-          example: '@all'
-          type: string
-        collections:
-          description: Requested fields
-          example: '@all'
-          type: string
-        customfields:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        document_parts:
-          description: Requested fields
-          example: '@all'
-          type: string
-        documents:
-          description: Requested fields
-          example: '@all'
-          type: string
-        enumerations:
-          description: Requested fields
-          example: '@all'
-          type: string
-        externallylinkedworkitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        featureselections:
-          description: Requested fields
-          example: '@all'
-          type: string
-        globalroles:
-          description: Requested fields
-          example: '@all'
-          type: string
-        icons:
-          description: Requested fields
-          example: '@all'
-          type: string
-        jobs:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_assignments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_slots:
-          description: Requested fields
-          example: '@all'
-          type: string
-        license_types:
-          description: Requested fields
-          example: '@all'
-          type: string
-        linkedoslcresources:
-          description: Requested fields
-          example: '@all'
-          type: string
-        linkedworkitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        metadata:
-          description: Requested fields
-          example: '@all'
-          type: string
-        page_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        page_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        pages:
-          description: Requested fields
-          example: '@all'
-          type: string
-        plans:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projectroles:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projects:
-          description: Requested fields
-          example: '@all'
-          type: string
-        projecttemplates:
-          description: Requested fields
-          example: '@all'
-          type: string
-        revisions:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testparameter_definitions:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testparameters:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrecord_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrecords:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrun_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testrun_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        testruns:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststep_results:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststepresult_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        teststeps:
-          description: Requested fields
-          example: '@all'
-          type: string
-        usergroups:
-          description: Requested fields
-          example: '@all'
-          type: string
-        users:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_approvals:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_attachments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitem_comments:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workitems:
-          description: Requested fields
-          example: '@all'
-          type: string
-        workrecords:
-          description: Requested fields
-          example: '@all'
-          type: string
-      type: object
-    testparametersListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - testparameters
-                type: string
-              id:
-                example: MyProjectId/MyTestRunId/MyTestParameter
-                type: string
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters/MyTestParameter
-                    type: string
-                type: object
-            type: object
-          type: array
-      type: object
-    testrunsListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - testruns
-                type: string
-              id:
-                example: MyProjectId/MyTestRunId
-                type: string
-              links:
-                properties:
-                  portal:
-                    example: server-host-name/application-path/polarion/redirect/project/MyProjectId/testrun?id=MyTestRunId&revision=1234
-                    type: string
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId?revision=1234
-                    type: string
-                type: object
-            type: object
-          type: array
       type: object
     testrunsListGetResponse:
       properties:
@@ -2854,137 +2699,286 @@ components:
               type: integer
           type: object
       type: object
-    testparametersListPostRequest:
+    sparseFields:
       properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - testparameters
-                type: string
-              attributes:
-                properties:
-                  name:
-                    example: Example Test Parameter value
-                    type: string
-                  value:
-                    example: Example Test Parameter value
-                    type: string
-                type: object
-            type: object
-          type: array
-      type: object
-    importTestResultsRequestBody:
-      properties:
-        defectTemplateId:
-          example: MyProjectId/MyDefectId
+        categories:
+          description: Requested fields
+          example: '@all'
           type: string
-        retest:
-          example: false
-          type: boolean
+        collections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        customfields:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        document_parts:
+          description: Requested fields
+          example: '@all'
+          type: string
+        documents:
+          description: Requested fields
+          example: '@all'
+          type: string
+        enumerations:
+          description: Requested fields
+          example: '@all'
+          type: string
+        externallylinkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        featureselections:
+          description: Requested fields
+          example: '@all'
+          type: string
+        globalroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        icons:
+          description: Requested fields
+          example: '@all'
+          type: string
+        jobs:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_assignments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_slots:
+          description: Requested fields
+          example: '@all'
+          type: string
+        license_types:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedoslcresources:
+          description: Requested fields
+          example: '@all'
+          type: string
+        linkedworkitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        metadata:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        page_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        pages:
+          description: Requested fields
+          example: '@all'
+          type: string
+        plans:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projectroles:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projects:
+          description: Requested fields
+          example: '@all'
+          type: string
+        projecttemplates:
+          description: Requested fields
+          example: '@all'
+          type: string
+        revisions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameter_definitions:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testparameters:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecord_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testrun_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        testruns:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststep_results:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststepresult_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        teststeps:
+          description: Requested fields
+          example: '@all'
+          type: string
+        usergroups:
+          description: Requested fields
+          example: '@all'
+          type: string
+        users:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_approvals:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_attachments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitem_comments:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workitems:
+          description: Requested fields
+          example: '@all'
+          type: string
+        workrecords:
+          description: Requested fields
+          example: '@all'
+          type: string
       type: object
-    testparameter_definitionsListGetResponse:
+    jobsSinglePostResponse:
       properties:
         data:
-          items:
-            properties:
-              type:
-                enum:
-                - testparameter_definitions
-                type: string
-              id:
-                example: MyProjectId/MyTestParamDefinition
-                type: string
-              revision:
-                example: '1234'
-                type: string
-              attributes:
-                properties:
-                  name:
-                    example: Test Parameter Definition example
-                    type: string
-                type: object
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions/MyTestParamDefinition
-                    type: string
-                type: object
-              meta:
-                properties:
-                  errors:
-                    items:
+          properties:
+            type:
+              enum:
+              - jobs
+              type: string
+            id:
+              example: MyJobId
+              type: string
+            attributes:
+              properties:
+                jobId:
+                  example: example
+                  type: string
+                name:
+                  example: example
+                  type: string
+                state:
+                  example: example
+                  type: string
+                status:
+                  properties:
+                    message:
+                      example: message
+                      type: string
+                    type:
+                      enum:
+                      - OK
+                      - CANCELLED
+                      - FAILED
+                      - UNKNOWN
+                      type: string
+                  type: object
+              type: object
+            relationships:
+              properties:
+                document:
+                  properties:
+                    data:
                       properties:
-                        detail:
-                          description: Human-readable explanation specific to this occurrence of the problem.
-                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        id:
+                          example: MyProjectId/MySpaceId/MyDocumentId
                           type: string
-                        source:
-                          properties:
-                            parameter:
-                              description: String indicating which URI query parameter caused the error.
-                              example: revision
-                              type: string
-                            pointer:
-                              description: JSON Pointer to the associated entity in the request document.
-                              example: $.data
-                              type: string
-                            resource:
-                              description: Resource causing the error.
-                              properties:
-                                id:
-                                  example: MyProjectId/id
-                                  type: string
-                                type:
-                                  example: type
-                                  type: string
-                              type: object
-                          type: object
-                        status:
-                          description: HTTP status code applicable to this problem.
-                          example: '400'
-                          type: string
-                        title:
-                          description: Short, human-readable summary of the problem.
-                          example: Bad Request
+                        type:
+                          enum:
+                          - documents
                           type: string
                       type: object
-                    type: array
-                type: object
-            type: object
-          type: array
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            first:
-              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=1
-              type: string
-            last:
-              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=9
-              type: string
-            next:
-              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=6
-              type: string
-            prev:
-              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=4
-              type: string
-            self:
-              example: server-host-name/application-path/projects/MyProjectId/testparameterdefinitions?page%5Bsize%5D=10&page%5Bnumber%5D=5
-              type: string
-          type: object
-        meta:
-          properties:
-            totalCount:
-              format: int32
-              type: integer
+                  type: object
+                documents:
+                  properties:
+                    data:
+                      items:
+                        properties:
+                          id:
+                            example: MyProjectId/MySpaceId/MyDocumentId
+                            type: string
+                          type:
+                            enum:
+                            - documents
+                            type: string
+                        type: object
+                      type: array
+                  type: object
+                project:
+                  properties:
+                    data:
+                      properties:
+                        id:
+                          example: MyProjectId
+                          type: string
+                        type:
+                          enum:
+                          - projects
+                          type: string
+                      type: object
+                  type: object
+              type: object
+            links:
+              properties:
+                downloads:
+                  example:
+                  - https://example.com/polarion/download/filename1
+                  - https://example.com/polarion/download/filename2
+                  type: array
+                log:
+                  example: server-host-name/application-path/polarion/job-report?jobId=MyJobId
+                  type: string
+                self:
+                  example: server-host-name/application-path/jobs/MyJobId
+                  type: string
+              type: object
           type: object
       type: object
-    testparametersListDeleteRequest:
+    testparametersListPostResponse:
       properties:
         data:
           items:
@@ -2996,6 +2990,12 @@ components:
               id:
                 example: MyProjectId/MyTestRunId/MyTestParameter
                 type: string
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/testparameters/MyTestParameter
+                    type: string
+                type: object
             type: object
           type: array
       type: object

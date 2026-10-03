@@ -120,6 +120,15 @@ components:
           type: string
         message:
           type: string
+    TcPCMResponseModel:
+      type: object
+      properties:
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
     Guid:
       title: GUID
       type: string
@@ -127,6 +136,26 @@ components:
       maxLength: 36
       description: Global unique identifier
       example: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+    ImportMasterDataRequestModel:
+      type: object
+      properties:
+        Data:
+          type: array
+          items:
+            type: object
+          example:
+          - Designation: Carbon
+            Unique identifier: Custom.Unique.Carbon
+            Type: Cost value
+          - Designation: Reinvestment rate
+            Unique identifier: Custom.Unique.Reinvestment
+            Type: Unit
+        PlantUniqueKey:
+          type: string
+          example: TcPCM-001
+        ConfigurationGuid:
+          type: string
+          example: 9231ad11-744e-481a-b9ec-bce80979ccbd
     ExportMasterDataRequestModel:
       type: object
       properties:
@@ -148,35 +177,6 @@ components:
           type: string
           example: e1548f26-af8d-4173-9881-7ce1de530911
           description: Export configuration Guid
-    ImportMasterDataRequestModel:
-      type: object
-      properties:
-        Data:
-          type: array
-          items:
-            type: object
-          example:
-          - Designation: Carbon
-            Unique identifier: Custom.Unique.Carbon
-            Type: Cost value
-          - Designation: Reinvestment rate
-            Unique identifier: Custom.Unique.Reinvestment
-            Type: Unit
-        PlantUniqueKey:
-          type: string
-          example: TcPCM-001
-        ConfigurationGuid:
-          type: string
-          example: 9231ad11-744e-481a-b9ec-bce80979ccbd
-    TcPCMResponseModel:
-      type: object
-      properties:
-        success:
-          type: boolean
-        code:
-          type: string
-        message:
-          type: string
   securitySchemes:
     bearerHttpAuthentication:
       type: http

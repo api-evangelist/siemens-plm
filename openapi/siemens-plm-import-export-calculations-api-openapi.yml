@@ -157,6 +157,76 @@ paths:
       deprecated: false
 components:
   schemas:
+    TcPCMWebApiResponseModel_of_DataTable:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
+    ExportCalculationsRequestModel:
+      type: object
+      properties:
+        ProjectIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+          description: List of requested project ids. All calculation of the projects get exported
+        CalculationIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+            example: 2056
+          description: List of requested calculation ids
+        ConfigurationGuid:
+          type: string
+          example: b14473ea-a58c-4d73-afa8-ba7c65613a0e
+          description: Guid of the export configuration
+        Year:
+          type: integer
+          description: Year of the project assumptions which are used for the calculation  export in case of lifetime projects (4 digit year). Available since version 2512.
+    ExportToolCalculationCbdMaterialProperty:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        value:
+          type: string
+          readOnly: true
+    ExportToolCalculationCbdToolProperty:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        value:
+          type: string
+          readOnly: true
+        unit:
+          type: string
+          readOnly: true
+    ExportToolCalculationCdbRequest:
+      required:
+      - ToolCalculationId
+      - CostBreakDownConfigurationUniqueKey
+      type: object
+      properties:
+        ToolCalculationId:
+          format: int32
+          type: integer
+          example: 1015
+        CostBreakDownConfigurationUniqueKey:
+          type: string
+          example: Siemens.TCPCM.CostBreakdownForTools.StandardCBDforinjecttools.WebApi
     ImportCalculationsRequestModel:
       type: object
       properties:
@@ -197,47 +267,6 @@ components:
       required:
       - Data
       - ConfigurationGuid
-    ExportToolCalculationCbdMaterialProperty:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        value:
-          type: string
-          readOnly: true
-    ExportToolCalculationCbdMaterial:
-      type: object
-      properties:
-        properties:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExportToolCalculationCbdMaterialProperty'
-          readOnly: true
-    TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ExportToolCalculationCbdResponse'
-        success:
-          type: boolean
-        code:
-          type: string
-        message:
-          type: string
-    TcPCMWebApiResponseModel_of_DataTable:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-        success:
-          type: boolean
-        code:
-          type: string
-        message:
-          type: string
     ExportToolCalculationCbdResponse:
       type: object
       properties:
@@ -258,54 +287,25 @@ components:
           items:
             $ref: '#/components/schemas/ExportToolCalculationCbdMaterial'
           readOnly: true
-    ExportCalculationsRequestModel:
+    ExportToolCalculationCbdMaterial:
       type: object
       properties:
-        ProjectIds:
+        properties:
           type: array
           items:
-            format: int32
-            type: integer
-          description: List of requested project ids. All calculation of the projects get exported
-        CalculationIds:
-          type: array
-          items:
-            format: int32
-            type: integer
-            example: 2056
-          description: List of requested calculation ids
-        ConfigurationGuid:
-          type: string
-          example: b14473ea-a58c-4d73-afa8-ba7c65613a0e
-          description: Guid of the export configuration
-        Year:
-          type: integer
-          description: Year of the project assumptions which are used for the calculation  export in case of lifetime projects (4 digit year). Available since version 2512.
-    ExportToolCalculationCdbRequest:
-      required:
-      - ToolCalculationId
-      - CostBreakDownConfigurationUniqueKey
+            $ref: '#/components/schemas/ExportToolCalculationCbdMaterialProperty'
+          readOnly: true
+    TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse:
       type: object
       properties:
-        ToolCalculationId:
-          format: int32
-          type: integer
-          example: 1015
-        CostBreakDownConfigurationUniqueKey:
+        data:
+          $ref: '#/components/schemas/ExportToolCalculationCbdResponse'
+        success:
+          type: boolean
+        code:
           type: string
-          example: Siemens.TCPCM.CostBreakdownForTools.StandardCBDforinjecttools.WebApi
-    ExportToolCalculationCbdToolProperty:
-      type: object
-      properties:
-        name:
+        message:
           type: string
-          readOnly: true
-        value:
-          type: string
-          readOnly: true
-        unit:
-          type: string
-          readOnly: true
   securitySchemes:
     bearerHttpAuthentication:
       type: http

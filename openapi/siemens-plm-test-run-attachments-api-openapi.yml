@@ -429,24 +429,40 @@ paths:
       - Test Run Attachments
 components:
   schemas:
-    testrun_attachmentsSinglePatchRequest:
+    testrun_attachmentsListPostRequest:
       properties:
         data:
-          properties:
-            type:
-              enum:
-              - testrun_attachments
-              type: string
-            id:
-              example: MyProjectId/MyTestRunId/MyAttachmentId
-              type: string
-            attributes:
-              properties:
-                title:
-                  example: Title
-                  type: string
-              type: object
-          type: object
+          items:
+            properties:
+              type:
+                enum:
+                - testrun_attachments
+                type: string
+              attributes:
+                properties:
+                  fileName:
+                    example: File Name
+                    type: string
+                  title:
+                    example: Title
+                    type: string
+                type: object
+              lid:
+                type: string
+            type: object
+          type: array
+      type: object
+    PostTestRunAttachmentsRequestBody:
+      properties:
+        files:
+          items:
+            description: attachments content
+            format: binary
+            type: string
+          type: array
+        resource:
+          $ref: '#/components/schemas/testrun_attachmentsListPostRequest'
+      title: PostTestRunAttachmentsRequestBody
       type: object
     testrun_attachmentsListGetResponse:
       properties:
@@ -599,6 +615,30 @@ components:
               type: integer
           type: object
       type: object
+    testrun_attachmentsListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testrun_attachments
+                type: string
+              id:
+                example: MyProjectId/MyTestRunId/MyAttachmentId
+                type: string
+              links:
+                properties:
+                  content:
+                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/attachments/MyAttachmentId/content?revision=1234
+                    type: string
+                  self:
+                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/attachments/MyAttachmentId?revision=1234
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
     errors:
       properties:
         errors:
@@ -636,80 +676,6 @@ components:
                         example: type
                         type: string
                     type: object
-                type: object
-            type: object
-          type: array
-      type: object
-    testrun_attachmentsListPostRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - testrun_attachments
-                type: string
-              attributes:
-                properties:
-                  fileName:
-                    example: File Name
-                    type: string
-                  title:
-                    example: Title
-                    type: string
-                type: object
-              lid:
-                type: string
-            type: object
-          type: array
-      type: object
-    PostTestRunAttachmentsRequestBody:
-      properties:
-        files:
-          items:
-            description: attachments content
-            format: binary
-            type: string
-          type: array
-        resource:
-          $ref: '#/components/schemas/testrun_attachmentsListPostRequest'
-      title: PostTestRunAttachmentsRequestBody
-      type: object
-    testrun_attachmentsListDeleteRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - testrun_attachments
-                type: string
-              id:
-                example: MyProjectId/MyTestRunId/MyAttachmentId
-                type: string
-            type: object
-          type: array
-      type: object
-    testrun_attachmentsListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - testrun_attachments
-                type: string
-              id:
-                example: MyProjectId/MyTestRunId/MyAttachmentId
-                type: string
-              links:
-                properties:
-                  content:
-                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/attachments/MyAttachmentId/content?revision=1234
-                    type: string
-                  self:
-                    example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/attachments/MyAttachmentId?revision=1234
-                    type: string
                 type: object
             type: object
           type: array
@@ -1039,6 +1005,40 @@ components:
               example: server-host-name/application-path/projects/MyProjectId/testruns/MyTestRunId/attachments/MyAttachmentId?revision=1234
               type: string
           type: object
+      type: object
+    testrun_attachmentsSinglePatchRequest:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - testrun_attachments
+              type: string
+            id:
+              example: MyProjectId/MyTestRunId/MyAttachmentId
+              type: string
+            attributes:
+              properties:
+                title:
+                  example: Title
+                  type: string
+              type: object
+          type: object
+      type: object
+    testrun_attachmentsListDeleteRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - testrun_attachments
+                type: string
+              id:
+                example: MyProjectId/MyTestRunId/MyAttachmentId
+                type: string
+            type: object
+          type: array
       type: object
   securitySchemes:
     bearerAuth:

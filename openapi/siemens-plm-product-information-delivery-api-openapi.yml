@@ -86,28 +86,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Prices:
-      type: object
-      properties:
-        newPart:
-          type:
-          - string
-          - 'null'
-          example: 300 €
-        sparePart:
-          type:
-          - string
-          - 'null'
-          example: 500 €
-        repairPart:
-          type:
-          - string
-          - 'null'
-          example: 400 €
-      required:
-      - newPart
-      - sparePart
-      - repairPart
     Delivery:
       type: object
       properties:
@@ -170,6 +148,28 @@ components:
       - productGroup
       - deliveryTimes
       - prices
+    Prices:
+      type: object
+      properties:
+        newPart:
+          type:
+          - string
+          - 'null'
+          example: 300 €
+        sparePart:
+          type:
+          - string
+          - 'null'
+          example: 500 €
+        repairPart:
+          type:
+          - string
+          - 'null'
+          example: 400 €
+      required:
+      - newPart
+      - sparePart
+      - repairPart
     DeliveryTimes:
       type: object
       properties:
