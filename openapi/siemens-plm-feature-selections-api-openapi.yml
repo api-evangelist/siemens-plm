@@ -463,6 +463,47 @@ components:
               type: string
           type: object
       type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
     featureselectionsListGetResponse:
       properties:
         data:
@@ -585,47 +626,6 @@ components:
               format: int32
               type: integer
           type: object
-      type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
-                type: object
-            type: object
-          type: array
       type: object
   securitySchemes:
     bearerAuth:

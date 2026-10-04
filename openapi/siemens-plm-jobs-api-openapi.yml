@@ -258,80 +258,6 @@ paths:
       - Jobs
 components:
   schemas:
-    executeJobRequestBody:
-      properties:
-        jobId:
-          description: Id of job factory, e.g. jobs.cleanup
-          example: MyJobId
-          type: string
-        name:
-          example: My Job
-          type: string
-        nodeId:
-          example: MyNodeId
-          type:
-          - string
-          - 'null'
-        params:
-          description: Parameters of Job to be executed.
-          properties:
-            param1:
-              example: value1
-              type: string
-            param2:
-              example: value2
-              type: string
-          type:
-          - object
-          - 'null'
-        scope:
-          description: 'Scope of the job. Accepted formats: ''system'', ''project:{projectId}'', or ''path:/{path}''.'
-          example: system
-          type:
-          - string
-          - 'null'
-      type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
     sparseFields:
       properties:
         categories:
@@ -514,6 +440,80 @@ components:
           description: Requested fields
           example: '@all'
           type: string
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    executeJobRequestBody:
+      properties:
+        jobId:
+          description: Id of job factory, e.g. jobs.cleanup
+          example: MyJobId
+          type: string
+        name:
+          example: My Job
+          type: string
+        nodeId:
+          example: MyNodeId
+          type:
+          - string
+          - 'null'
+        params:
+          description: Parameters of Job to be executed.
+          properties:
+            param1:
+              example: value1
+              type: string
+            param2:
+              example: value2
+              type: string
+          type:
+          - object
+          - 'null'
+        scope:
+          description: 'Scope of the job. Accepted formats: ''system'', ''project:{projectId}'', or ''path:/{path}''.'
+          example: system
+          type:
+          - string
+          - 'null'
       type: object
     jobsSinglePostResponse:
       properties:

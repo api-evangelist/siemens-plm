@@ -86,6 +86,56 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Prices:
+      type: object
+      properties:
+        newPart:
+          type:
+          - string
+          - 'null'
+          example: 300 €
+        sparePart:
+          type:
+          - string
+          - 'null'
+          example: 500 €
+        repairPart:
+          type:
+          - string
+          - 'null'
+          example: 400 €
+      required:
+      - newPart
+      - sparePart
+      - repairPart
+    DeliveryTimes:
+      type: object
+      properties:
+        newPart:
+          type:
+          - integer
+          - 'null'
+          example: 20
+          minimum: 0
+          format: int32
+        sparePart:
+          type:
+          - integer
+          - 'null'
+          example: 30
+          minimum: 0
+          format: int32
+        repairPart:
+          type:
+          - integer
+          - 'null'
+          example: 10
+          minimum: 0
+          format: int32
+      required:
+      - newPart
+      - sparePart
+      - repairPart
     Delivery:
       type: object
       properties:
@@ -148,56 +198,6 @@ components:
       - productGroup
       - deliveryTimes
       - prices
-    Prices:
-      type: object
-      properties:
-        newPart:
-          type:
-          - string
-          - 'null'
-          example: 300 €
-        sparePart:
-          type:
-          - string
-          - 'null'
-          example: 500 €
-        repairPart:
-          type:
-          - string
-          - 'null'
-          example: 400 €
-      required:
-      - newPart
-      - sparePart
-      - repairPart
-    DeliveryTimes:
-      type: object
-      properties:
-        newPart:
-          type:
-          - integer
-          - 'null'
-          example: 20
-          minimum: 0
-          format: int32
-        sparePart:
-          type:
-          - integer
-          - 'null'
-          example: 30
-          minimum: 0
-          format: int32
-        repairPart:
-          type:
-          - integer
-          - 'null'
-          example: 10
-          minimum: 0
-          format: int32
-      required:
-      - newPart
-      - sparePart
-      - repairPart
   securitySchemes:
     Authorization:
       type: apiKey

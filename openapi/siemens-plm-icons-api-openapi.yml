@@ -427,263 +427,6 @@ paths:
       - Icons
 components:
   schemas:
-    iconsSingleGetResponse:
-      properties:
-        data:
-          properties:
-            type:
-              enum:
-              - icons
-              type: string
-            id:
-              example: default/example.gif
-              type: string
-            revision:
-              example: '1234'
-              type: string
-            attributes:
-              properties:
-                iconUrl:
-                  example: pathexample
-                  type: string
-                id:
-                  example: pathexample
-                  type: string
-                path:
-                  example: pathexample
-                  type: string
-              type: object
-            links:
-              properties:
-                self:
-                  example: server-host-name/application-path/enumerations/defaulticons/example.gif
-                  type: string
-              type: object
-            meta:
-              properties:
-                errors:
-                  items:
-                    properties:
-                      detail:
-                        description: Human-readable explanation specific to this occurrence of the problem.
-                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                        type: string
-                      source:
-                        properties:
-                          parameter:
-                            description: String indicating which URI query parameter caused the error.
-                            example: revision
-                            type: string
-                          pointer:
-                            description: JSON Pointer to the associated entity in the request document.
-                            example: $.data
-                            type: string
-                          resource:
-                            description: Resource causing the error.
-                            properties:
-                              id:
-                                example: MyProjectId/id
-                                type: string
-                              type:
-                                example: type
-                                type: string
-                            type: object
-                        type: object
-                      status:
-                        description: HTTP status code applicable to this problem.
-                        example: '400'
-                        type: string
-                      title:
-                        description: Short, human-readable summary of the problem.
-                        example: Bad Request
-                        type: string
-                    type: object
-                  type: array
-              type: object
-          type: object
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            self:
-              example: server-host-name/application-path/enumerations/defaulticons/example.gif
-              type: string
-          type: object
-      type: object
-    iconsListGetResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - icons
-                type: string
-              id:
-                example: default/example.gif
-                type: string
-              revision:
-                example: '1234'
-                type: string
-              attributes:
-                properties:
-                  iconUrl:
-                    example: pathexample
-                    type: string
-                  id:
-                    example: pathexample
-                    type: string
-                  path:
-                    example: pathexample
-                    type: string
-                type: object
-              links:
-                properties:
-                  self:
-                    example: server-host-name/application-path/enumerations/defaulticons/example.gif
-                    type: string
-                type: object
-              meta:
-                properties:
-                  errors:
-                    items:
-                      properties:
-                        detail:
-                          description: Human-readable explanation specific to this occurrence of the problem.
-                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                          type: string
-                        source:
-                          properties:
-                            parameter:
-                              description: String indicating which URI query parameter caused the error.
-                              example: revision
-                              type: string
-                            pointer:
-                              description: JSON Pointer to the associated entity in the request document.
-                              example: $.data
-                              type: string
-                            resource:
-                              description: Resource causing the error.
-                              properties:
-                                id:
-                                  example: MyProjectId/id
-                                  type: string
-                                type:
-                                  example: type
-                                  type: string
-                              type: object
-                          type: object
-                        status:
-                          description: HTTP status code applicable to this problem.
-                          example: '400'
-                          type: string
-                        title:
-                          description: Short, human-readable summary of the problem.
-                          example: Bad Request
-                          type: string
-                      type: object
-                    type: array
-                type: object
-            type: object
-          type: array
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        links:
-          properties:
-            first:
-              example: server-host-name/application-path/enumerations/defaulticons?page%5Bsize%5D=10&page%5Bnumber%5D=1
-              type: string
-            last:
-              example: server-host-name/application-path/enumerations/defaulticons?page%5Bsize%5D=10&page%5Bnumber%5D=9
-              type: string
-            next:
-              example: server-host-name/application-path/enumerations/defaulticons?page%5Bsize%5D=10&page%5Bnumber%5D=6
-              type: string
-            prev:
-              example: server-host-name/application-path/enumerations/defaulticons?page%5Bsize%5D=10&page%5Bnumber%5D=4
-              type: string
-            self:
-              example: server-host-name/application-path/enumerations/defaulticons?page%5Bsize%5D=10&page%5Bnumber%5D=5
-              type: string
-          type: object
-        meta:
-          properties:
-            totalCount:
-              format: int32
-              type: integer
-          type: object
-      type: object
-    PostIconsRequestBody:
-      properties:
-        files:
-          items:
-            description: icons' content
-            format: binary
-            type: string
-          type: array
-        resource:
-          $ref: '#/components/schemas/iconsListPostRequest'
-      title: PostIconsRequestBody
-      type: object
-    iconsListPostRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - icons
-                type: string
-            type: object
-          type: array
-      type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
     sparseFields:
       properties:
         categories:
@@ -867,6 +610,145 @@ components:
           example: '@all'
           type: string
       type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
+    PostIconsRequestBody:
+      properties:
+        files:
+          items:
+            description: icons' content
+            format: binary
+            type: string
+          type: array
+        resource:
+          $ref: '#/components/schemas/iconsListPostRequest'
+      title: PostIconsRequestBody
+      type: object
+    iconsSingleGetResponse:
+      properties:
+        data:
+          properties:
+            type:
+              enum:
+              - icons
+              type: string
+            id:
+              example: default/example.gif
+              type: string
+            revision:
+              example: '1234'
+              type: string
+            attributes:
+              properties:
+                iconUrl:
+                  example: pathexample
+                  type: string
+                id:
+                  example: pathexample
+                  type: string
+                path:
+                  example: pathexample
+                  type: string
+              type: object
+            links:
+              properties:
+                self:
+                  example: server-host-name/application-path/enumerations/defaulticons/example.gif
+                  type: string
+              type: object
+            meta:
+              properties:
+                errors:
+                  items:
+                    properties:
+                      detail:
+                        description: Human-readable explanation specific to this occurrence of the problem.
+                        example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                        type: string
+                      source:
+                        properties:
+                          parameter:
+                            description: String indicating which URI query parameter caused the error.
+                            example: revision
+                            type: string
+                          pointer:
+                            description: JSON Pointer to the associated entity in the request document.
+                            example: $.data
+                            type: string
+                          resource:
+                            description: Resource causing the error.
+                            properties:
+                              id:
+                                example: MyProjectId/id
+                                type: string
+                              type:
+                                example: type
+                                type: string
+                            type: object
+                        type: object
+                      status:
+                        description: HTTP status code applicable to this problem.
+                        example: '400'
+                        type: string
+                      title:
+                        description: Short, human-readable summary of the problem.
+                        example: Bad Request
+                        type: string
+                    type: object
+                  type: array
+              type: object
+          type: object
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            self:
+              example: server-host-name/application-path/enumerations/defaulticons/example.gif
+              type: string
+          type: object
+      type: object
     iconsListPostResponse:
       properties:
         data:
@@ -887,6 +769,124 @@ components:
                 type: object
             type: object
           type: array
+      type: object
+    iconsListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - icons
+                type: string
+            type: object
+          type: array
+      type: object
+    iconsListGetResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - icons
+                type: string
+              id:
+                example: default/example.gif
+                type: string
+              revision:
+                example: '1234'
+                type: string
+              attributes:
+                properties:
+                  iconUrl:
+                    example: pathexample
+                    type: string
+                  id:
+                    example: pathexample
+                    type: string
+                  path:
+                    example: pathexample
+                    type: string
+                type: object
+              links:
+                properties:
+                  self:
+                    example: server-host-name/application-path/enumerations/defaulticons/example.gif
+                    type: string
+                type: object
+              meta:
+                properties:
+                  errors:
+                    items:
+                      properties:
+                        detail:
+                          description: Human-readable explanation specific to this occurrence of the problem.
+                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                          type: string
+                        source:
+                          properties:
+                            parameter:
+                              description: String indicating which URI query parameter caused the error.
+                              example: revision
+                              type: string
+                            pointer:
+                              description: JSON Pointer to the associated entity in the request document.
+                              example: $.data
+                              type: string
+                            resource:
+                              description: Resource causing the error.
+                              properties:
+                                id:
+                                  example: MyProjectId/id
+                                  type: string
+                                type:
+                                  example: type
+                                  type: string
+                              type: object
+                          type: object
+                        status:
+                          description: HTTP status code applicable to this problem.
+                          example: '400'
+                          type: string
+                        title:
+                          description: Short, human-readable summary of the problem.
+                          example: Bad Request
+                          type: string
+                      type: object
+                    type: array
+                type: object
+            type: object
+          type: array
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        links:
+          properties:
+            first:
+              example: server-host-name/application-path/enumerations/defaulticons?page%5Bsize%5D=10&page%5Bnumber%5D=1
+              type: string
+            last:
+              example: server-host-name/application-path/enumerations/defaulticons?page%5Bsize%5D=10&page%5Bnumber%5D=9
+              type: string
+            next:
+              example: server-host-name/application-path/enumerations/defaulticons?page%5Bsize%5D=10&page%5Bnumber%5D=6
+              type: string
+            prev:
+              example: server-host-name/application-path/enumerations/defaulticons?page%5Bsize%5D=10&page%5Bnumber%5D=4
+              type: string
+            self:
+              example: server-host-name/application-path/enumerations/defaulticons?page%5Bsize%5D=10&page%5Bnumber%5D=5
+              type: string
+          type: object
+        meta:
+          properties:
+            totalCount:
+              format: int32
+              type: integer
+          type: object
       type: object
   securitySchemes:
     bearerAuth:

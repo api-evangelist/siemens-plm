@@ -183,44 +183,184 @@ paths:
       tags:
       - Profitability Calculation
 components:
+  parameters:
+    ExportConfigurationGuid:
+      name: ExportConfigurationGuid
+      in: query
+      required: true
+      schema:
+        type: string
+        format: uuid
+        example: cbbb4ada-3550-4939-a138-4da02757d460
+      description: GUID of the export configuration.
+    ProjectIds:
+      name: ProjectIds
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+      description: All profitability calculations of these projects are exported.
+      example:
+      - 53
+      - 88
+    ProfitabilityCalculationIds:
+      name: ProfitabilityCalculationIds
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+      description: Ids of the profitability calculations to be exported.
+      example:
+      - 3
+      - 17
+      - 732
+  responses:
+    ErrorNotAcceptableLegacy:
+      description: The service is not able to respond using the request media-type or representation asked by the client in the Accept header.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Media type not accepted
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorRequestTimeout:
+      description: The request timed out because a server did not respond within the expected waiting time
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Request timed out
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorRequestTimeoutLegacy:
+      description: The request timed out because a server did not respond within the expected waiting time
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Request timed out
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorUnauthorizedLegacy:
+      description: The client is not providing valid authentication credentials for the target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Invalid user or password
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorInternalServerError:
+      description: An unexpected error occurred and the server is not fulfilling the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Internal error
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorBadRequestLegacy:
+      description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Invalid JSON format
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorNotAcceptable:
+      description: The service is not able to respond using the request media-type or representation asked by the client in the Accept header.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Media type not accepted
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorInternalServerErrorLegacy:
+      description: An unexpected error occurred and the server is not fulfilling the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+          examples:
+            Example:
+              value:
+                Detail: Internal error
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorLegacy'
+    ErrorBadRequest:
+      description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Invalid JSON format
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorUnauthorized:
+      description: The client is not providing valid authentication credentials for the target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Invalid user or password
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        Errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-          readOnly: true
-    ProfitabilityCalculationReportError:
-      title: ProfitabilityCalculationReportError
-      type: object
-      description: Partial error of a profitability calculation report request.
-      required:
-      - status
-      - detail
-      properties:
-        status:
-          type: integer
-          format: int32
-          minimum: 0
-          description: Http status code
-          readOnly: true
-        detail:
-          type: string
-          description: Detail description of the error
-        profitabilityCalculationId:
-          type: integer
-          format: int32
-          minimum: 0
-          description: Id of the requested profitability calculation
-          readOnly: true
-        projectId:
-          type: integer
-          format: int32
-          minimum: 0
-          description: Id of the requested project
-          readOnly: true
     DataType:
       type: string
       enum:
@@ -233,6 +373,32 @@ components:
       - bool
       - url
       example: double
+    Column:
+      title: Column
+      type: object
+      required:
+      - dataType
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+          description: Name of the data field
+        displayName:
+          type: string
+          maxLength: 255
+          minLength: 0
+          description: Displayname of the column
+        dataType:
+          $ref: '#/components/schemas/DataType'
+    ErrorResponse:
+      type: object
+      properties:
+        Errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+          readOnly: true
     AggregatedProfitabilityCalculationReportError:
       title: ProfitabilityCalculationReportError
       type: object
@@ -282,213 +448,47 @@ components:
           maxItems: 100000
           items:
             $ref: '#/components/schemas/Column'
-    Error:
+    ProfitabilityCalculationReportError:
+      title: ProfitabilityCalculationReportError
       type: object
+      description: Partial error of a profitability calculation report request.
+      required:
+      - status
+      - detail
       properties:
+        status:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Http status code
+          readOnly: true
         detail:
           type: string
+          description: Detail description of the error
+        profitabilityCalculationId:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Id of the requested profitability calculation
           readOnly: true
-    Column:
-      title: Column
-      type: object
-      required:
-      - dataType
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          minLength: 0
-          description: Name of the data field
-        displayName:
-          type: string
-          maxLength: 255
-          minLength: 0
-          description: Displayname of the column
-        dataType:
-          $ref: '#/components/schemas/DataType'
+        projectId:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Id of the requested project
+          readOnly: true
     ErrorLegacy:
       type: object
       properties:
         Detail:
           type: string
           readOnly: true
-  responses:
-    ErrorUnauthorizedLegacy:
-      description: The client is not providing valid authentication credentials for the target resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-          examples:
-            Example:
-              value:
-                Detail: Invalid user or password
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-    ErrorUnauthorized:
-      description: The client is not providing valid authentication credentials for the target resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Invalid user or password
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ErrorNotAcceptable:
-      description: The service is not able to respond using the request media-type or representation asked by the client in the Accept header.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Media type not accepted
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ErrorNotAcceptableLegacy:
-      description: The service is not able to respond using the request media-type or representation asked by the client in the Accept header.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-          examples:
-            Example:
-              value:
-                Detail: Media type not accepted
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-    ErrorInternalServerErrorLegacy:
-      description: An unexpected error occurred and the server is not fulfilling the request.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-          examples:
-            Example:
-              value:
-                Detail: Internal error
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-    ErrorBadRequest:
-      description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Invalid JSON format
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ErrorRequestTimeoutLegacy:
-      description: The request timed out because a server did not respond within the expected waiting time
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-          examples:
-            Example:
-              value:
-                Detail: Request timed out
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-    ErrorBadRequestLegacy:
-      description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-          examples:
-            Example:
-              value:
-                Detail: Invalid JSON format
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorLegacy'
-    ErrorInternalServerError:
-      description: An unexpected error occurred and the server is not fulfilling the request.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Internal error
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ErrorRequestTimeout:
-      description: The request timed out because a server did not respond within the expected waiting time
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Request timed out
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    ExportConfigurationGuid:
-      name: ExportConfigurationGuid
-      in: query
-      required: true
-      schema:
-        type: string
-        format: uuid
-        example: cbbb4ada-3550-4939-a138-4da02757d460
-      description: GUID of the export configuration.
-    ProfitabilityCalculationIds:
-      name: ProfitabilityCalculationIds
-      in: query
-      required: false
-      schema:
-        type: array
-        items:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 2147483647
-      description: Ids of the profitability calculations to be exported.
-      example:
-      - 3
-      - 17
-      - 732
-    ProjectIds:
-      name: ProjectIds
-      in: query
-      required: false
-      schema:
-        type: array
-        items:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 2147483647
-      description: All profitability calculations of these projects are exported.
-      example:
-      - 53
-      - 88
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          readOnly: true
   securitySchemes:
     bearerHttpAuthentication:
       type: http

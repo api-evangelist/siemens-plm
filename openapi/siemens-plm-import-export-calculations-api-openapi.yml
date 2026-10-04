@@ -157,19 +157,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    TcPCMWebApiResponseModel_of_DataTable:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-        success:
-          type: boolean
-        code:
-          type: string
-        message:
-          type: string
     ExportCalculationsRequestModel:
       type: object
       properties:
@@ -193,14 +180,13 @@ components:
         Year:
           type: integer
           description: Year of the project assumptions which are used for the calculation  export in case of lifetime projects (4 digit year). Available since version 2512.
-    ExportToolCalculationCbdMaterialProperty:
+    ExportToolCalculationCbdMaterial:
       type: object
       properties:
-        name:
-          type: string
-          readOnly: true
-        value:
-          type: string
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExportToolCalculationCbdMaterialProperty'
           readOnly: true
     ExportToolCalculationCbdToolProperty:
       type: object
@@ -227,6 +213,59 @@ components:
         CostBreakDownConfigurationUniqueKey:
           type: string
           example: Siemens.TCPCM.CostBreakdownForTools.StandardCBDforinjecttools.WebApi
+    TcPCMWebApiResponseModel_of_DataTable:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
+    TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ExportToolCalculationCbdResponse'
+        success:
+          type: boolean
+        code:
+          type: string
+        message:
+          type: string
+    ExportToolCalculationCbdResponse:
+      type: object
+      properties:
+        toolCalculationId:
+          format: int32
+          type: integer
+          readOnly: true
+        costBreakDownConfigurationUniqueKey:
+          type: string
+          readOnly: true
+        toolProperties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExportToolCalculationCbdToolProperty'
+          readOnly: true
+        materials:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExportToolCalculationCbdMaterial'
+          readOnly: true
+    ExportToolCalculationCbdMaterialProperty:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        value:
+          type: string
+          readOnly: true
     ImportCalculationsRequestModel:
       type: object
       properties:
@@ -267,45 +306,6 @@ components:
       required:
       - Data
       - ConfigurationGuid
-    ExportToolCalculationCbdResponse:
-      type: object
-      properties:
-        toolCalculationId:
-          format: int32
-          type: integer
-          readOnly: true
-        costBreakDownConfigurationUniqueKey:
-          type: string
-          readOnly: true
-        toolProperties:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExportToolCalculationCbdToolProperty'
-          readOnly: true
-        materials:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExportToolCalculationCbdMaterial'
-          readOnly: true
-    ExportToolCalculationCbdMaterial:
-      type: object
-      properties:
-        properties:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExportToolCalculationCbdMaterialProperty'
-          readOnly: true
-    TcPCMWebApiResponseModel_of_ExportToolCalculationCbdResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ExportToolCalculationCbdResponse'
-        success:
-          type: boolean
-        code:
-          type: string
-        message:
-          type: string
   securitySchemes:
     bearerHttpAuthentication:
       type: http

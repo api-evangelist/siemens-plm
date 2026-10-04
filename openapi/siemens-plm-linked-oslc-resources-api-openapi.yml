@@ -217,172 +217,6 @@ paths:
       - Linked Oslc Resources
 components:
   schemas:
-    linkedoslcresourcesListPostRequest:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - linkedoslcresources
-                type: string
-              attributes:
-                properties:
-                  label:
-                    example: Label
-                    type: string
-                  role:
-                    example: http://open-services.net/ns/cm#relatedChangeRequest
-                    type: string
-                  uri:
-                    example: Uri
-                    type: string
-                type: object
-            type: object
-          type: array
-      type: object
-    linkedoslcresourcesListGetResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - linkedoslcresources
-                type: string
-              id:
-                example: MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId
-                type: string
-              revision:
-                example: '1234'
-                type: string
-              attributes:
-                properties:
-                  label:
-                    example: Label
-                    type: string
-                  role:
-                    example: http://open-services.net/ns/cm#relatedChangeRequest
-                    type: string
-                  uri:
-                    example: Uri
-                    type: string
-                type: object
-              links:
-                type: object
-              meta:
-                properties:
-                  errors:
-                    items:
-                      properties:
-                        detail:
-                          description: Human-readable explanation specific to this occurrence of the problem.
-                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                          type: string
-                        source:
-                          properties:
-                            parameter:
-                              description: String indicating which URI query parameter caused the error.
-                              example: revision
-                              type: string
-                            pointer:
-                              description: JSON Pointer to the associated entity in the request document.
-                              example: $.data
-                              type: string
-                            resource:
-                              description: Resource causing the error.
-                              properties:
-                                id:
-                                  example: MyProjectId/id
-                                  type: string
-                                type:
-                                  example: type
-                                  type: string
-                              type: object
-                          type: object
-                        status:
-                          description: HTTP status code applicable to this problem.
-                          example: '400'
-                          type: string
-                        title:
-                          description: Short, human-readable summary of the problem.
-                          example: Bad Request
-                          type: string
-                      type: object
-                    type: array
-                type: object
-            type: object
-          type: array
-        included:
-          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
-          items:
-            type: object
-          type: array
-        meta:
-          properties:
-            totalCount:
-              format: int32
-              type: integer
-          type: object
-      type: object
-    linkedoslcresourcesListPostResponse:
-      properties:
-        data:
-          items:
-            properties:
-              type:
-                enum:
-                - linkedoslcresources
-                type: string
-              id:
-                example: MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId
-                type: string
-              links:
-                type: object
-            type: object
-          type: array
-      type: object
-    errors:
-      properties:
-        errors:
-          items:
-            properties:
-              status:
-                description: HTTP status code applicable to this problem.
-                example: '400'
-                type: string
-              title:
-                description: Short, human-readable summary of the problem.
-                example: Bad Request
-                type: string
-              detail:
-                description: Human-readable explanation specific to this occurrence of the problem.
-                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
-                type: string
-              source:
-                properties:
-                  parameter:
-                    description: String indicating which URI query parameter caused the error.
-                    example: revision
-                    type: string
-                  pointer:
-                    description: JSON Pointer to the associated entity in the request document.
-                    example: $.data
-                    type: string
-                  resource:
-                    description: Resource causing the error.
-                    properties:
-                      id:
-                        example: MyProjectId/id
-                        type: string
-                      type:
-                        example: type
-                        type: string
-                    type: object
-                type: object
-            type: object
-          type: array
-      type: object
     sparseFields:
       properties:
         categories:
@@ -566,6 +400,71 @@ components:
           example: '@all'
           type: string
       type: object
+    linkedoslcresourcesListPostRequest:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - linkedoslcresources
+                type: string
+              attributes:
+                properties:
+                  label:
+                    example: Label
+                    type: string
+                  role:
+                    example: http://open-services.net/ns/cm#relatedChangeRequest
+                    type: string
+                  uri:
+                    example: Uri
+                    type: string
+                type: object
+            type: object
+          type: array
+      type: object
+    errors:
+      properties:
+        errors:
+          items:
+            properties:
+              status:
+                description: HTTP status code applicable to this problem.
+                example: '400'
+                type: string
+              title:
+                description: Short, human-readable summary of the problem.
+                example: Bad Request
+                type: string
+              detail:
+                description: Human-readable explanation specific to this occurrence of the problem.
+                example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                type: string
+              source:
+                properties:
+                  parameter:
+                    description: String indicating which URI query parameter caused the error.
+                    example: revision
+                    type: string
+                  pointer:
+                    description: JSON Pointer to the associated entity in the request document.
+                    example: $.data
+                    type: string
+                  resource:
+                    description: Resource causing the error.
+                    properties:
+                      id:
+                        example: MyProjectId/id
+                        type: string
+                      type:
+                        example: type
+                        type: string
+                    type: object
+                type: object
+            type: object
+          type: array
+      type: object
     linkedoslcresourcesListDeleteRequest:
       properties:
         data:
@@ -580,6 +479,107 @@ components:
                 type: string
             type: object
           type: array
+      type: object
+    linkedoslcresourcesListPostResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - linkedoslcresources
+                type: string
+              id:
+                example: MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId
+                type: string
+              links:
+                type: object
+            type: object
+          type: array
+      type: object
+    linkedoslcresourcesListGetResponse:
+      properties:
+        data:
+          items:
+            properties:
+              type:
+                enum:
+                - linkedoslcresources
+                type: string
+              id:
+                example: MyProjectId/MyWorkItemId/http://server-host-name/ns/cm#relatedChangeRequest/http://server-host-name/application-path/oslc/services/projects/MyProjectId/workitems/MyWorkItemId
+                type: string
+              revision:
+                example: '1234'
+                type: string
+              attributes:
+                properties:
+                  label:
+                    example: Label
+                    type: string
+                  role:
+                    example: http://open-services.net/ns/cm#relatedChangeRequest
+                    type: string
+                  uri:
+                    example: Uri
+                    type: string
+                type: object
+              links:
+                type: object
+              meta:
+                properties:
+                  errors:
+                    items:
+                      properties:
+                        detail:
+                          description: Human-readable explanation specific to this occurrence of the problem.
+                          example: 'Unexpected token, BEGIN_ARRAY expected, but was : BEGIN_OBJECT (at $.data)'
+                          type: string
+                        source:
+                          properties:
+                            parameter:
+                              description: String indicating which URI query parameter caused the error.
+                              example: revision
+                              type: string
+                            pointer:
+                              description: JSON Pointer to the associated entity in the request document.
+                              example: $.data
+                              type: string
+                            resource:
+                              description: Resource causing the error.
+                              properties:
+                                id:
+                                  example: MyProjectId/id
+                                  type: string
+                                type:
+                                  example: type
+                                  type: string
+                              type: object
+                          type: object
+                        status:
+                          description: HTTP status code applicable to this problem.
+                          example: '400'
+                          type: string
+                        title:
+                          description: Short, human-readable summary of the problem.
+                          example: Bad Request
+                          type: string
+                      type: object
+                    type: array
+                type: object
+            type: object
+          type: array
+        included:
+          description: Related entities might be returned, see <a href="https://docs.sw.siemens.com/en-US/doc/230235217/PL20250606201928474.polarion_help_sc.xid2134849/xid2134871" target="_blank">REST API User Guide</a>.
+          items:
+            type: object
+          type: array
+        meta:
+          properties:
+            totalCount:
+              format: int32
+              type: integer
+          type: object
       type: object
   securitySchemes:
     bearerAuth:

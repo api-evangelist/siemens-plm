@@ -43,12 +43,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-          readOnly: true
     ErrorResponse:
       type: object
       properties:
@@ -57,7 +51,27 @@ components:
           items:
             $ref: '#/components/schemas/Error'
           readOnly: true
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+          readOnly: true
   responses:
+    ErrorConflict:
+      description: The request could not be completed due to a conflict with the current state of the target resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Conflict with current state of the resource
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     ErrorBadRequest:
       description: The request could not be processed by the server because the request is perceived as client error (such as, malformed request syntax, invalid request message framing, or deceptive request routing).
       content:
@@ -69,6 +83,20 @@ components:
               value:
                 errors:
                 - detail: Invalid JSON format
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorForbidden:
+      description: The client is not allowed to access the resource. The client SHOULD not repeat the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            Example:
+              value:
+                errors:
+                - detail: Not allowed to access calculation with id '271'
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
@@ -86,34 +114,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ErrorInternalServerError:
-      description: An unexpected error occurred and the server is not fulfilling the request.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Internal error
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    ErrorConflict:
-      description: The request could not be completed due to a conflict with the current state of the target resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            Example:
-              value:
-                errors:
-                - detail: Conflict with current state of the resource
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     ErrorUnauthorized:
       description: The client is not providing valid authentication credentials for the target resource.
       content:
@@ -128,8 +128,8 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ErrorForbidden:
-      description: The client is not allowed to access the resource. The client SHOULD not repeat the request.
+    ErrorInternalServerError:
+      description: An unexpected error occurred and the server is not fulfilling the request.
       content:
         application/json:
           schema:
@@ -138,7 +138,7 @@ components:
             Example:
               value:
                 errors:
-                - detail: Not allowed to access calculation with id '271'
+                - detail: Internal error
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
