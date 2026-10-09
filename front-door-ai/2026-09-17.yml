@@ -7,14 +7,17 @@ front_door_ai:
   probed_at: '2026-09-17'
   host: www.plm.automation.siemens.com
   final_host: www.siemens.com
-  ownership: inherited
+  ownership: own
   owner: siemens-plm
   shares_host_with: null
-  inherited_from: www.siemens.com
+  inherited_from: null
+  alias_of: www.siemens.com
   verdict: scored
-  score: null
+  score: 17
+  band: 5
+  band_label: prominent
   host_score: 17
-  density: null
+  density: 17.03
   words: 998
   tiers:
     agentic: 1
